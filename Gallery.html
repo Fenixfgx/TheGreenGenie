@@ -8,17 +8,16 @@
       }
       
       @keyframes slide-forever {
-  0% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
+        0% {
+          transform: translateX(0%);
+        }
+        50% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
 
       * {
         box-sizing: border-box;
@@ -34,7 +33,7 @@
         scroll-behavior: smooth;
         padding: 20px;
         width: 100%;
-        animation: slide-forever 20s linear infinite;
+        animation: slide-forever 60s linear infinite;
       }
       
       .image-container {
@@ -86,18 +85,6 @@
 
       .gallery:after {
         background: linear-gradient(to right, white 0%, transparent 100%);
-      }
-
-      @keyframes slide-forever {
-        0% {
-          transform: translateX(0%);
-        }
-        50% {
-          transform: translateX(-50%);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
       }
     </style>
   </head>
