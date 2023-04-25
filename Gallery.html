@@ -115,4 +115,21 @@
   gallery.addEventListener('mouseout', () => {
     gallery.style.animationPlayState = 'running';
   });
+   
+   let touchStartX = 0;
+let touchEndX = 0;
+
+gallery.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+});
+
+gallery.addEventListener('touchend', (event) => {
+  touchEndX = event.changedTouches[0].screenX;
+  if (touchEndX < touchStartX) {
+    gallery.style.animationDirection = 'normal';
+  } else {
+    gallery.style.animationDirection = 'reverse';
+  }
+});
+
 </script>
