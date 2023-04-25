@@ -7,13 +7,16 @@
         box-sizing: border-box;
       }
 
+      .gallery-wrapper {
+        overflow: hidden;
+        width: 100%;
+      }
+
       .gallery {
         display: flex;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
         padding: 20px;
-        width: 100%;
+        width: 1290px;
+        animation: gallery-scroll 30s linear infinite;
       }
 
       .image-container {
@@ -51,39 +54,62 @@
       .image-container:hover .title {
         opacity: 1;
       }
+
+      @keyframes gallery-scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="gallery">
+<div class="gallery-wrapper">
+      <div class="gallery">
+        <div class="image-container">
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (1).jpg" alt="Image 1">
+          <div class="title">Título 1</div>
+        </div>
+  <div class="image-container">
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (2).jpg" alt="Image 1">
+          <div class="title">Título 2</div>
+        </div>
       <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (1).jpg" alt="Image 1">
-        <div class="title">Título 1</div>
-      </div>
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (3).jpg" alt="Image 1">
+          <div class="title">Título 3</div>
+        </div>
       <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (2).jpg" alt="Image 2">
-        <div class="title">Título 2</div>
-      </div>
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (4).jpg" alt="Image 1">
+          <div class="title">Título 4</div>
+        </div>
       <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (3).jpg" alt="Image 3">
-        <div class="title">Título 3</div>
-      </div>
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (5).jpg" alt="Image 1">
+          <div class="title">Título 5</div>
+        </div>
       <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (4).jpg" alt="Image 4">
-        <div class="title">Título 4</div>
-      </div>
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (6).jpg" alt="Image 1">
+          <div class="title">Título 6</div>
+        </div>
       <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (5).jpg" alt="Image 5">
-        <div class="title">Título 5</div>
-      </div>
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (7).jpg" alt="Image 1">
+          <div class="title">Título 7</div>
+        </div>
       <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (6).jpg" alt="Image 6">
-        <div class="title">Título 6</div>
-      </div>
-      <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (7).jpg" alt="Image 7">
-        <div class="title">Título 7</div>
-      </div>
-      <div class="image-container">
-        <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (8).jpg" alt="Image 7">
-        <div class="title">Título 8</div>
-      </div>
+          <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (8).jpg" alt="Image 1">
+          <div class="title">Título 8</div>
+        </div>
+      
+ <script>
+  const gallery = document.querySelector('.gallery');
+  let animation = gallery.style.animation;
+
+  gallery.addEventListener('mouseover', () => {
+    gallery.style.animationPlayState = 'paused';
+  });
+
+  gallery.addEventListener('mouseout', () => {
+    gallery.style.animationPlayState = 'running';
+  });
+</script>
