@@ -1,219 +1,82 @@
-/*------------------------------
-Map
-------------------------------*/
-const map = (value, x1, y1, x2, y2) => (value - x1) * (y2 - x2) / (y1 - x1) + x2;
+var $slider = $('.slideshow .slider'),
+  maxItems = $('.item', $slider).length,
+  dragging = false,
+  tracking,
+  rightTracking;
 
+$sliderRight = $('.slideshow').clone().addClass('slideshow-right').appendTo($('.split-slideshow'));
 
-/*------------------------------
-Mouse
-------------------------------*/
-const mouse = {
-  x: 0,
-  y: 0 };
+rightItems = $('.item', $sliderRight).toArray();
+reverseItems = rightItems.reverse();
+$('.slider', $sliderRight).html('');
+for (i = 0; i < maxItems; i++) {
+  $(reverseItems[i]).appendTo($('.slider', $sliderRight));
+}
 
-const mouseMove = e => {
-  mouse.x = e.clientX || e.touches[0].clientX;
-  mouse.y = e.clientY || e.touches[0].clientY;
-};
-window.addEventListener('mousemove', mouseMove);
-window.addEventListener('touchstart', mouseMove);
-window.addEventListener('touchmove', mouseMove);
+$slider.addClass('slideshow-left');
+$('.slideshow-left').slick({
+  vertical: true,
+  verticalSwiping: true,
+  arrows: false,
+  infinite: true,
+  dots: true,
+  speed: 1000,
+  cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)'
+}).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 
-
-/*------------------------------
-GLSL TEMPLATE
-------------------------------*/
-class GLSLTemplate {
-  constructor(opt) {
-    Object.assign(this, opt);
-
-    this.loadImages();
+  if (currentSlide > nextSlide && nextSlide == 0 && currentSlide == maxItems - 1) {
+    $('.slideshow-right .slider').slick('slickGoTo', -1);
+    $('.slideshow-text').slick('slickGoTo', maxItems);
+  } else if (currentSlide < nextSlide && currentSlide == 0 && nextSlide == maxItems - 1) {
+    $('.slideshow-right .slider').slick('slickGoTo', maxItems);
+    $('.slideshow-text').slick('slickGoTo', -1);
+  } else {
+    $('.slideshow-right .slider').slick('slickGoTo', maxItems - 1 - nextSlide);
+    $('.slideshow-text').slick('slickGoTo', nextSlide);
   }
-
-
-  /*------------------------------
-  Load Image
-  ------------------------------*/
-  loadImages() {
-    this.textures = [];
-    let loadedImages = 0;
-
-    // loop images
-    for (let i = 0; i < this.images.length; i++) {
-      const textureLoader = new THREE.TextureLoader();
-      textureLoader.crossOrigin = '';
-      textureLoader.load(this.images[i], img => {
-        img.magFilter = THREE.NearestFilter;
-        this.textures.push({ texture: img });
-        this.checkLoadedImages();
-      });
-    }
+}).on("mousewheel", function(event) {
+  event.preventDefault();
+  if (event.deltaX > 0 || event.deltaY < 0) {
+    $(this).slick('slickNext');
+  } else if (event.deltaX < 0 || event.deltaY > 0) {
+    $(this).slick('slickPrev');
+  };
+  
+}).on('mousedown touchstart', function(){
+  dragging = true;
+  tracking = $('.slick-track', $slider).css('transform');
+  tracking = parseInt(tracking.split(',')[5]);
+  rightTracking = $('.slideshow-right .slick-track').css('transform');
+  rightTracking = parseInt(rightTracking.split(',')[5]);
+}).on('mousemove touchmove', function(){
+  if (dragging) {
+    newTracking = $('.slideshow-left .slick-track').css('transform');
+    newTracking = parseInt(newTracking.split(',')[5]);
+    diffTracking = newTracking - tracking;
+    $('.slideshow-right .slick-track').css({'transform': 'matrix(1, 0, 0, 1, 0, ' + (rightTracking - diffTracking) + ')'});
   }
+}).on('mouseleave touchend mouseup', function(){
+  dragging = false;
+});
 
-  /*------------------------------
-  Check Load Images
-  ------------------------------*/
-  checkLoadedImages() {
-    if (this.textures.length === this.images.length) {
-      this.setTexturesRatio();
-      this.setup();
-    }
-  }
+$('.slideshow-right .slider').slick({
+  swipe: false,
+  vertical: true,
+  arrows: false,
+  infinite: true,
+  speed: 950,
+  cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+  initialSlide: maxItems - 1
+});
+$('.slideshow-text').slick({
+  swipe: false,
+  vertical: true,
+  arrows: false,
+  infinite: true,
+  speed: 900,
+  cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)'
+});
 
-
-  /*------------------------------
-  Set Textures Ratio
-  ------------------------------*/
-  setTexturesRatio() {
-    this.winRatio = window.innerWidth / window.innerHeight;
-    console.log(this.winRatio);
-    for (let i = 0; i < this.textures.length; i++) {
-      const t = this.textures[i];
-      const textureRatio = t.texture.image.naturalWidth / t.texture.image.naturalHeight;
-      t.ratio = this.winRatio > textureRatio ? new THREE.Vector2(1.0, textureRatio / this.winRatio) : new THREE.Vector2(this.winRatio / textureRatio, 1.0);
-    }
-  }
-
-
-  /*------------------------------
-  Setup
-  ------------------------------*/
-  setup() {
-    this.uniforms = {
-      time: { type: "f", value: 1.0 },
-      resolution: { type: "v2", value: new THREE.Vector2() },
-      u_mouse: { type: "v2", value: new THREE.Vector2(0, 0) },
-      texture_0: { type: "t", value: this.textures[0].texture },
-      ratio_0: { type: "v2", value: this.textures[0].ratio },
-      texture_1: { type: "t", value: this.textures[1].texture },
-      ratio_1: { type: "v2", value: this.textures[1].ratio } };
-
-    this.vertexShader = `
-			void main() {
-				gl_Position = vec4(position, 1.0);
-			  }
-		`;
-    this.fragmentShader = `
-			uniform vec2 resolution;
-			uniform float time;
-      uniform vec2 u_mouse;
-      uniform sampler2D texture_0;
-      uniform sampler2D texture_1;
-      uniform vec2 ratio_0;
-      uniform vec2 ratio_1;
-
-			void main(){
-        
-				vec2 uv = gl_FragCoord.xy / resolution.xy;
-
-        // IMAGE 0
-        vec2 ratio_image_0 = uv * ratio_0;
-        if (ratio_0.x < 1.) {
-          ratio_image_0.x += ((1. - ratio_0.x) / 2.);
-        }
-        if (ratio_0.y < 1.) {
-          ratio_image_0.y += ((1. - ratio_0.y) / 2.);
-        }
-        vec4 image_0 = texture2D(texture_0, ratio_image_0);
-
-        
-        // IMAGE 1
-        vec2 ratio_image_1 = uv * ratio_1;
-        if (ratio_1.x < 1.) {
-          ratio_image_1.x += ((1. - ratio_1.x) / 2.);
-        }
-        if (ratio_1.y < 1.) {
-          ratio_image_1.y += ((1. - ratio_1.y) / 2.);
-        }
-        vec4 image_1 = texture2D(texture_1, ratio_image_1);
-
-
-        // SLIDE PROGRESS
-        float slideProgress = u_mouse.y;
-        float colorProgress = uv.y + slideProgress;
-        colorProgress = slideProgress * 4.8 - uv.y * 3. + uv.x * 0.8 - 0.8;
-        colorProgress = clamp(colorProgress, 0., 1.);
-
-        
-				// gl_FragColor = vec4(vec3(colorProgress), 0.0);
-        // gl_FragColor = image_1;
-        gl_FragColor = mix(image_0,image_1,colorProgress);
-			}
-		`;
-
-    this.startTime = Date.now();
-    this.camera = new THREE.Camera();
-    this.scene = new THREE.Scene();
-
-    this.init();
-  }
-
-
-  /*------------------------------
-  Init
-  ------------------------------*/
-  init() {
-    this.camera.position.z = 1;
-    this.geometry = new THREE.PlaneBufferGeometry(16, 9);
-    this.material = new THREE.ShaderMaterial({
-      uniforms: this.uniforms,
-      vertexShader: this.vertexShader,
-      fragmentShader: this.fragmentShader });
-
-
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.scene.add(this.mesh);
-    this.renderer = new THREE.WebGLRenderer();
-    this.container.appendChild(this.renderer.domElement);
-
-    this.resize();
-    this.render();
-    this.events();
-  }
-
-
-  /*------------------------------
-  Events
-  ------------------------------*/
-  events() {
-    window.addEventListener('resize', this.resize.bind(this), false);
-  }
-
-
-  /*------------------------------
-  Resize
-  ------------------------------*/
-  resize() {
-    this.setTexturesRatio();
-    this.uniforms.resolution.value.x = window.innerWidth;
-    this.uniforms.resolution.value.y = window.innerHeight;
-    this.uniforms.ratio_0.value = this.textures[0].ratio;
-    this.uniforms.ratio_1.value = this.textures[1].ratio;
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-  }
-
-
-  /*------------------------------
-  Render
-  ------------------------------*/
-  render() {
-    this.currentTime = Date.now();
-    this.elaspedSeconds = (this.currentTime - this.startTime) / 1000.0;
-    this.uniforms.time.value = this.elaspedSeconds;
-    this.uniforms.u_mouse.value.x = map(mouse.x, 0, window.innerWidth, 0, 1);
-    this.uniforms.u_mouse.value.y = map(mouse.y, 0, window.innerHeight, 1, 0);
-
-    this.renderer.render(this.scene, this.camera);
-    this.RaF = requestAnimationFrame(this.render.bind(this));
-  }}
-
-
-
-/*------------------------------
-Initialize
-------------------------------*/
-const shader = new GLSLTemplate({
-  container: document.getElementById('container'),
-  images: [
-  'https://images.unsplash.com/photo-1418386767268-77cdab4edcaa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=1920&q=90',
-  'https://images.unsplash.com/photo-1474433188271-d3f339f41911?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=1920&q=90'] });
+var slideInterval = setInterval(function() {
+  $('.slideshow-left').slick('slickNext');
+}, 2700);
