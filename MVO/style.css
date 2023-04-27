@@ -26,8 +26,9 @@ body h1 {
   left: 50%;
   transform: translateX(-50%);
   position: relative;
-  background: white;
+  background: #ffffffeb;
   padding: 50px;
+  padding-top: 30px;
   padding-bottom: 80px;
   width: 70%;
   height: 300px;
