@@ -18,13 +18,20 @@
 }
 
 .gallery {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 20px;
-  width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px;
+    width: 100%;
 }
+
+@media screen and (max-width: 767px) {
+  .gallery {
+    margin-left: 10%;
+  }
+}
+
 
 .gallery::-webkit-scrollbar {
   display: none;
@@ -147,6 +154,8 @@
       <div class="arrow left-arrow">&lt;</div>
       <div class="arrow right-arrow">&gt;</div>
 
+
+      
       <div class="image-container">
         <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (1).jpg" alt="Image 1">
         <div class="title">EUCALIPTO SILVER DOLLAR</div>
