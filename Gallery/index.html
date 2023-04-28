@@ -11,6 +11,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    
     <title>Galería Responsive</title>
     <style>
       * {
@@ -24,6 +30,7 @@
     scroll-behavior: smooth;
     padding: 20px;
     width: 100%;
+  font-family: lato;
 }
 
 @media screen and (max-width: 767px) {
@@ -34,6 +41,10 @@
 
 
 .gallery::-webkit-scrollbar {
+  display: none;
+}
+      
+.body::-webkit-scrollbar {
   display: none;
 }
 
@@ -149,7 +160,7 @@
       
     </style>
   </head>
-    <body>
+    <body class="body">
     <div class="gallery">
       <div class="arrow left-arrow">&lt;</div>
       <div class="arrow right-arrow">&gt;</div>
