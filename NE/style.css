@@ -5,11 +5,36 @@
   bottom: 10px;
   right: 10px;
   width: 40px;
-  height: 100%;
+  height: 40px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   transition: all 0.2s ease;
+}
+.about .bg_links {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  backdrop-filter: blur(5px);
+  position: absolute;
+}
+.about .logo {
+  width: 40px;
+  height: 40px;
+  z-index: 9;
+  background-image: url(https://rafaelavlucas.github.io/assets/codepen/logo_white.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: 10px 7px;
+  opacity: 0.9;
+  transition: all 1s 0.2s ease;
+  bottom: 0;
+  right: 0;
 }
 .about .social {
   opacity: 0;
@@ -174,8 +199,7 @@ body {
 }
 .wrapper .module-team .team .title {
   text-align: center;
-  margin-bottom: 10px;
-  margin-top: 0px;
+  margin-bottom: 80px;
   color: #6F7073;
   font-size: 44px;
   line-height: normal;
@@ -274,7 +298,7 @@ body {
   top: 0;
   border-radius: 4px 4px 0px 0px;
   transition: all 0.4s ease;
-  background: linear-gradient(140deg, #D45B7A, #FDA576);
+  background: linear-gradient(140deg, #4fafca, #52a27e);
   z-index: 1;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .more {
@@ -349,7 +373,7 @@ body {
   z-index: 1;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .photo:after {
-  background: linear-gradient(140deg, #D45B7A, #FDA576);
+  background: linear-gradient(140deg, #0d72ae, #419773);
   z-index: 2;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .photo img {
@@ -391,15 +415,9 @@ body {
   line-height: 22px;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .social {
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  background-color: rgba(234, 234, 234, 0.5);
-  box-shadow: inset 0px 11px 13px -20px #6F7073;
-  width: 100%;
-  position: absolute;
+  position: inherit;
   bottom: 0;
-  height: 50px;
+  height: 100px;
   padding: 0 20px;
   box-sizing: border-box;
   border-radius: 0px 0px 4px 4px;
