@@ -334,6 +334,7 @@ p, .ft-fm-2{
   .tabbed-about-us-v2.tabbed-about-us .details p{
     font-size: 14px;
     margin-bottom: 15px;
+		text-align: -webkit-center;
   }
 /*.pie*/
   .pie-value{
@@ -380,5 +381,26 @@ p, .ft-fm-2{
     width: 130px;
     right: 0;
     left: initial;
+  }
+}
+
+/* estilo para pantallas grandes */
+.iframe-container {
+  width: 50%; /* ancho del contenedor del iframe */
+  float: left;
+}
+.iframe-class {
+  width: 100%; /* ancho del iframe */
+  height: 500px; /* altura del iframe */
+}
+
+/* estilo para pantallas pequeñas */
+@media (max-width: 768px) { /* ancho máximo para pantallas pequeñas */
+  .iframe-container {
+    display: none; /* ocultar el contenedor del iframe */
+  }
+  .content {
+    width: 100%; /* ajustar el ancho del contenido al 100% */
+    float: none; /* quitar el flotamiento */
   }
 }
