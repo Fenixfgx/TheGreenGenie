@@ -7,6 +7,7 @@
 }
 .slider {
   overflow-x: scroll;
+  overflow: hidden;
 }
 .holder {
   width: 300%;

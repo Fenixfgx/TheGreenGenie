@@ -1,7 +1,4 @@
 var slider = {
-  
-  // Not sure if keeping element collections like this
-  // together is useful or not.
   el: {
     slider: $("#slider"),
     allSlides: $(".slide"),
@@ -10,30 +7,45 @@ var slider = {
   },
   
   timing: 800,
-  slideWidth: 400, // could measure this
- 
-  // In this simple example, might just move the
-  // binding here to the init function
+  slideWidth: 400,
+  
+  // Add a new function to move the slider to the right
+  moveSliderRight: function() {
+    var $slider = this.el.slider;
+    var currentScrollLeft = $slider.scrollLeft();
+    var maxScrollLeft = this.slideWidth * (this.el.allSlides.length - 1);
+    
+    if (currentScrollLeft >= maxScrollLeft) {
+      // If we've reached the end, scroll back to the beginning
+      $slider.animate({ scrollLeft: 0 }, this.timing);
+      this.changeActiveNav(this.el.allNavButtons[0]);
+    } else {
+      // Otherwise, move the slider to the right
+      $slider.animate({ scrollLeft: currentScrollLeft + this.slideWidth }, this.timing);
+      this.changeActiveNav(this.el.allNavButtons[currentScrollLeft/this.slideWidth + 1]);
+    }
+  },
+  
   init: function() {
     this.bindUIEvents();
+    
+    // Add interval to move slider to the right every 15 seconds
+    setInterval(function() {
+      slider.moveSliderRight();
+    }, 7000);
   },
   
   bindUIEvents: function() {
-    // You can either manually scroll...
     this.el.slider.on("scroll", function(event) {
       slider.moveSlidePosition(event);
     });
-    // ... or click a thing
+    
     this.el.sliderNav.on("click", "a", function(event) {
       slider.handleNavClick(event, this);
     });
-    // What would be cool is if it had touch
-    // events where you could swipe but it
-    // also kinda snapped into place.
   },
   
   moveSlidePosition: function(event) {
-    // Magic Numbers =(
     this.el.allSlides.css({
       "background-position": $(event.target).scrollLeft()/6-100+ "px 0"
     });  
@@ -54,10 +66,6 @@ var slider = {
     this.el.allNavButtons.removeClass("active");
     $(el).addClass("active");
   }
-  
 };
 
 slider.init();
-
-// https://codepen.io/BaylorRae/pen/ImGBC
-// Originally added click links, so I ported over and re-wrote
