@@ -404,3 +404,26 @@ p, .ft-fm-2{
     float: none; /* quitar el flotamiento */
   }
 }
+
+.fade {
+  -webkit-animation: fade 0.5s;
+          animation: fade 0.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

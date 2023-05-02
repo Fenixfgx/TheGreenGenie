@@ -74,6 +74,7 @@
     left: 5%;
     width: 90%;
     height: 70%;
+		max-height: 470px;
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -114,6 +115,20 @@
 			    text-align-last: center;
     }
   }
+	
+	@keyframes modal-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#modal {
+  animation: modal-appear 0.5s ease-out;
+}
+
 </style>
 	
 <script>
