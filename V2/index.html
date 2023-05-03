@@ -2,9 +2,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>TheGreenGenie</title>
+  <title>CodePen - Sticky Slider Navigation (Responsive)</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
+
 
 </head>
 <body>
@@ -24,8 +24,80 @@
 <body>
 <!-- partial:index.partial.html -->
 <head>
+	  <script src="https://use.fontawesome.com/5c25b8d8cc.js"></script>
+<link rel="stylesheet" href="./style.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+	
+	<!-- Socialbar -->
+	
+<div class="social-bar" style="position: fixed; z-index:12;">
+	<a href="https://www.facebook.com/profile.php?id=100088185960212&mibextid=ZbWKwL">
+		<div class="social-bar__item social-bar__fb">
+			<i class="fa fa-facebook" aria-hidden="true"></i>
+		</div>
+	</a>
+	
+	<a href="https://instagram.com/the_green_genie_sas?igshid=ZDdkNTZiNTM=">
+		<div class="social-bar__item social-bar__instagram">
+			<i class="fa fa-instagram" aria-hidden="true"></i>
+		</div>
+	</a>
+	
+	<a href="https://youtube.com/@GREENGENIE-qn4yt">
+		<div class="social-bar__item social-bar__youtube">
+			<i class="fa fa-youtube" aria-hidden="true"></i>
+		</div>
+	</a>
+</div>
+
+<style>
+.social-bar {
+  position: fixed;
+  left: -15px;
+  top: 40%;
+  background-color: white;
+}
+.social-bar__item {
+  padding: 10px 10px 10px 25px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  transition-property: transform, opacity;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
+}
+.social-bar__item:hover {
+  transform: translate(15px);
+  opacity: 0.9;
+}
+.social-bar__fb {
+  background-color: #3b5999;
+}
+.social-bar__twitter {
+  background-color: #55acee;
+}
+.social-bar__linkedin {
+  background-color: #0077B5;
+}
+.social-bar__instagram {
+  background-color: #e49b40;
+}
+.social-bar__youtube {
+  background-color: #bd081c;
+}
+</style>
+	
+<!-- Whatsapp -->	
+	
+	<!-- partial:index.partial.html -->
+<!-- wpp-btn-mobile -->
+<div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div" style=""><a id="WhatsApp-button" href="https://wa.me/573046234592" target="_blank" class="phoneJs" title="WhatsApp 360imagem"><div class="cbh-ph-circle"></div><div class="cbh-ph-circle-fill"></div><div class="cbh-ph-img-circle1"></div></a></div>
+
+	
+	
+	
 <!-- Hero -->
 	 
 	<article style="
@@ -37,14 +109,14 @@
   left: 50%;
   transform: translateX(-50%);
 ">
-<a href="https://facebook.com/username" target="_blank">
+<a href="https://www.facebook.com/profile.php?id=100088185960212&mibextid=ZbWKwL" target="_blank">
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" style="width: 50px;height: 50px;">
    <path id="facebook" fill="#ffffff" d="M17.252,11.106V8.65c0-0.922,0.611-1.138,1.041-1.138h2.643V3.459l-3.639-0.015
 	c-4.041,0-4.961,3.023-4.961,4.961v2.701H10v4.178h2.336v11.823h4.916V15.284h3.316l0.428-4.178H17.252z"></path>
   </svg>
 </a>
 
-<a href="https://instagram.com/username" target="_blank">
+<a href="https://instagram.com/the_green_genie_sas?igshid=ZDdkNTZiNTM=" target="_blank">
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve" style="
     width: 50px;
     height: 50px;
@@ -58,9 +130,6 @@
 	s6.336-2.842,6.336-6.335c0-0.842-0.17-1.645-0.467-2.379h3.459V22.107z"></path>
   </svg>
 </a>
- 
-  
-
 </article>
 	
   <section class="et-hero-tabs">
@@ -148,7 +217,7 @@
     <a href="https://www.otrapagina.com" class="boton">Ver Catalogo Completo</a>
   </body>
 
-<iframe id="Gallery" title="Galeria" width="100%" height="100%" style="border:none" src="https://fenixfgx.github.io/TheGreenGenie/Gallery/">
+<iframe id="Gallery" title="Galeria" width="100%" height="100%" style="z-index: 13;border:none" src="https://fenixfgx.github.io/TheGreenGenie/Gallery/">
 </iframe>
     </section>
     <section class="et-slide" id="tab-react">
@@ -179,6 +248,8 @@
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
 
+	
+	
 </body>
 </html>
 <!-- partial -->
