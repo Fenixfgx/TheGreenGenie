@@ -248,12 +248,20 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         The Green Genie <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
-              <img src="" class="modal-image img-responsive" style="max-width: 60%; margin-top: -15px; margin-left: 30px; margin-bottom: 12px;">
+              <img src="" class="modal-image img-responsive" style="max-width: 60%; margin-top: -15px; margin-left: 30px; margin-bottom: 12px; transition: transform 0.5s ease;">
+
+              <script> $(".modal-image").hover(function() {
+  $(this).css("transform", "scale(1.5)");
+}, function() {
+  $(this).css("transform", "scale(1)");
+});
+</script>
+              
             </div>
             <div class="col-md-6">
               <p class="modal-text"style="
