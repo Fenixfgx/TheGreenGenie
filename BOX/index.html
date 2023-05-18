@@ -2,82 +2,74 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Elegant Responsive Pure CSS3 Slider</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>CodePen - lightSlider</title>
+  <link rel='stylesheet' href='//sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>sl2</title>
-  <link rel="stylesheet" href="./style.css">
+<div class="demo">
+    <ul id="lightSlider">
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01248.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01248.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01257.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01257.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01205.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01205.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01210.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01210.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01231.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01231.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01224.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01224.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01149.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01149.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01158.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01158.jpg" /> 
+        </li>
+        
+    </ul>
+</div>
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<article id="slider">
+<style>
+.demo {
+    max-width: 100%;
+    max-height: 430px;
+}
 
-<input checked type='radio' name='slider' id='slide1'/>
-<input type='radio' name='slider' id='slide2'/>
-<input type='radio' name='slider' id='slide3'/>
-<input type='radio' name='slider' id='slide4'/>
-<input type='radio' name='slider' id='slide5'/>
-<div id="slides">
-	<div id="container">
-		<div class="inner">
-			<article>
-			<img src="http://placehold.it/942X400"/>
-			</article>
-			<article>
-			<div class='caption'>
-				<bar>A Bubble on Flower</bar>
-			</div>
-			<img src="https://0.s3.envato.com/files/84450220/img/Dummy1-942X400.jpg"/>
-			</article>
-			<article>
-			<div class='caption'>
-				<bar>A Small Elephant <a href="#">read more</a></bar>
-			</div>
-			<img src="https://0.s3.envato.com/files/84450220/img/Dummy2-942X400.jpg"/>
-			</article>
-			<article>
-			<div class='caption'>
-				<bar>A Yellow Flower <a href="#">read more</a></bar>
-			</div>
-			<img src="https://0.s3.envato.com/files/84450220/img/Dummy3-942X400.jpg"/>
-			</article>
-			<article>
-			<div class='caption'>
-				<bar>A Pink Flower</bar>
-			</div>
-			<img src="https://0.s3.envato.com/files/84450220/img/Dummy4-942X400.jpg"/>
-			</article>
-		</div>
-	</div>
-</div>
-<div id="commands">
-	<label for='slide1'></label>
-	<label for='slide2'></label>
-	<label for='slide3'></label>
-	<label for='slide4'></label>
-	<label for='slide5'></label>
-</div>
-<div id="active">
-	<label for='slide1'></label>
-	<label for='slide2'></label>
-	<label for='slide3'></label>
-	<label for='slide4'></label>
-	<label for='slide5'></label>
-</div>
-</article>
+ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom: 0;
+    overflow: hidden; /* Evita que los elementos flotantes se desborden */
+}
+
+li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+</style>
 <!-- partial -->
-  
-</body>
-</html>
-<!-- partial -->
-  
+  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='//sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script><script  src="./script.js"></script>
+
 </body>
 </html>
