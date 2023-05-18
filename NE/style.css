@@ -214,7 +214,6 @@ body {
 .wrapper .module-team .team .title:before {
   content: "";
   position: absolute;
-  background: #6F7073;
   border-radius: 50px;
   bottom: 0;
   opacity: 0.2;
