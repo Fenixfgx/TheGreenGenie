@@ -199,7 +199,6 @@ body {
 }
 .wrapper .module-team .team .title {
   text-align: center;
-  margin-bottom: 80px;
   color: #6F7073;
   font-size: 44px;
   line-height: normal;
@@ -208,15 +207,13 @@ body {
   letter-spacing: 1.3px;
   position: relative;
   display: flex;
+  margin-top: -30px;
   justify-content: center;
   align-items: flex-start;
-  height: 100px;
 }
 .wrapper .module-team .team .title:before {
   content: "";
   position: absolute;
-  width: 80px;
-  height: 10px;
   background: #6F7073;
   border-radius: 50px;
   bottom: 0;
@@ -241,10 +238,11 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin-bottom: -30px;
 }
 .wrapper .module-team .team .team-cards .swiper-container {
   max-width: 920px;
-  height: 360px;
+  height: 250px;
   padding: 0 20px;
   cursor: default;
   /* Card */
@@ -265,11 +263,12 @@ body {
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide {
   background-color: white;
   width: 280px !important;
-  height: 320px;
+  height: 245px;
   border-radius: 4px;
   box-shadow: inset 0px 0px 0px 1px #EDEEF4;
   position: relative;
   transition: all 0.4s ease;
+  border-radius: 19px;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide:before {
   content: "";
@@ -302,10 +301,6 @@ body {
   z-index: 1;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .more {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  z-index: 2;
   right: 20px;
   top: 20px;
   display: flex;
@@ -346,13 +341,13 @@ body {
   }
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .photo {
-  width: 120px;
-  height: 120px;
+  width: 145px;
+  height: 145px;
   border-radius: 100%;
   overflow: hidden;
   z-index: 1;
   position: absolute;
-  top: 40px;
+  top: 15px;
   border: 3px solid #FFFFFF;
   transition: all 0.4s ease;
   box-shadow: 0px 4px 10px rgba(111, 112, 115, 0.3);
@@ -390,6 +385,7 @@ body {
   position: absolute;
   transform: translateY(50px);
   transition: all 0.3s ease;
+  top: 125px;
 }
 .wrapper .module-team .team .team-cards .swiper-container .swiper-slide .card .text .name {
   font-size: 20px;
