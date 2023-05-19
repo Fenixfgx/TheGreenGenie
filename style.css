@@ -152,3 +152,9 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+@media only screen and (max-width: 1024px) {
+  #Example2 {
+    margin-top: 3%;
+  }
+}
