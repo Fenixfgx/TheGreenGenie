@@ -47,7 +47,7 @@ var slider = {
   
   moveSlidePosition: function(event) {
     this.el.allSlides.css({
-      "background-position": $(event.target).scrollLeft()/6-100+ "px 0"
+      "background-positio": $(event.target).scrollLeft()/6-100+ "px 0"
     });  
   },
   

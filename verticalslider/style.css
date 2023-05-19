@@ -17,7 +17,7 @@
   width: 400px;
   height: 350px;
   position: relative;
-  background-position: -100px 0;
+  
 }
 .temp {
   position: absolute;
@@ -29,13 +29,18 @@
   font-weight: 100;
 }
 #slide-0 {
-  background-image: url(http://farm8.staticflickr.com/7347/8731666710_34d07e709e_z.jpg);
+  background-image: url(http://www.thegreengenie.com.co/images/DSC01164.jpg);
+  
+  background-position: 0px 0px; /* Reemplaza X e Y con los valores deseados */
 }
+
 #slide-1 {
-  background-image: url(http://farm8.staticflickr.com/7384/8730654121_05bca33388_z.jpg);
+  background-image: url(http://www.thegreengenie.com.co/images/DSC01173.jpg);
+  background-size: cover;
 }
 #slide-2 {
-  background-image: url(http://farm8.staticflickr.com/7382/8732044638_9337082fc6_z.jpg);
+  background-image: url(http://www.thegreengenie.com.co/images/DSC01192.JPG);
+  background-size: cover;
 }
 .slide:before {
   content: "";
