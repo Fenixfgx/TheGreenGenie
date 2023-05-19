@@ -30,8 +30,8 @@
 }
 #slide-0 {
   background-image: url(http://www.thegreengenie.com.co/images/DSC01164.jpg);
-  
-  background-position: 0px 0px; /* Reemplaza X e Y con los valores deseados */
+  background-size: cover;
+  background-position: center;
 }
 
 #slide-1 {
@@ -41,6 +41,7 @@
 #slide-2 {
   background-image: url(http://www.thegreengenie.com.co/images/DSC01192.JPG);
   background-size: cover;
+  background-position: center;
 }
 .slide:before {
   content: "";
