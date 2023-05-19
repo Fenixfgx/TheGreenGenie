@@ -17,55 +17,59 @@
 
 <!-- ========== ABOUT US SECTION ========== -->
 <section id="about-us" class="about-us-bg section-common-space" style="background-color: transparent">
-<div class="container" style="
+  <div class="container" style="
     background-color: #f0f8ffe3;
     margin-top: 4%;
     margin-bottom: -80px;
     border-radius: 35px;
-		height: 480px;
-    ">
-				<!-- ========== SECTION HEADER ========== -->
-				<div class="section-header section-header-v2 text-center">
-					<h2 class="section-title">Nuestra Historia</h2>
+    height: 480px;
+  ">
+    <!-- ========== SECTION HEADER ========== -->
+    <div class="section-header section-header-v2 text-center">
+      <h2 class="section-title">Nuestra Historia</h2>
+    </div> <!-- //section-header -->
+    <div class="tabbed-about-us tabbed-about-us-v2">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- ========== NAV TABS ========== -->
+          <ul class="tabs-nav" role="tablist">
+            <div class="container">
+              <div class="iframe-container">								
+                <iframe class="iframe-class" width="100%" height="420px" style="border:none;margin-top: -100px;" src="https://www.thegreengenie.com.co/verticalslider"></iframe>
+              </div>
+            </div>
+          </ul>
+        </div> <!-- //.col-sm-6 -->
+        <div class="col-sm-6">
+          <div class="tab-content">
+            <!-- ========== TAB PANE ========== -->
+            <div role="tabpanel" class="tab-pane active" id="web">
+              <div class="details-wrapper">
+                <div class="details">
+                  <p style="margin-top: -53px;">
+                    La empresa The Green Genie comenzó su historia en la industria de flores y follajes después de años en búsqueda de oportunidades laborales. Después de adquirir experiencia en el comercio nacional, se decidió expandir a nivel internacional y exportar productos de alta calidad, tales como ruscus, hypericum, cocculos, eucalipto baby blue, entre otros. Estamos ubicados en Cachipay Cundinamarca, Colombia, y contamos con un equipo humano que se encarga de todo el proceso de producción, desde sembrar y cultivar hasta cortar y seleccionar cuidadosamente los tallos para exportación.
+                  </p>
+                  <button id="saber-mas" style="width: 166px;font-size: large;height: 31px;text-shadow: 0 0 black;color: green;background-color: inherit;margin-left: 20%; border-radius: 12px;">Saber Más...</button>
+                </div> <!-- //details -->
+              </div> <!-- //.details-wrapper -->
+            </div> <!-- //tab-pane -->
+          </div> <!-- //tab-content -->
+        </div>
+      </div><!-- //.row -->
+    </div> <!-- //tabbed-about-us -->
+  </div> <!-- //container -->
+</section>
 
-				</div> <!-- //section-header -->
-				<div class="tabbed-about-us tabbed-about-us-v2">
-					<div class="row">
-						<div class="col-sm-6">
-							<!-- ========== NAV TABS ========== -->
-							<ul class="tabs-nav" role="tablist">
-<div class="container">
-  <div class="iframe-container">								
-<iframe class="iframe-class" width="100%" height="420px" style="border:none;margin-top: -100px;" src="https://www.thegreengenie.com.co/verticalslider">
-</iframe>
-		</div>
-	</div>
-							</ul>
-						</div> <!-- //.col-sm-6 -->
-						<div class="col-sm-6">
-							<div class="tab-content">
-								<!-- ========== TAB PANE ========== -->
-								<div role="tabpanel" class="tab-pane active" id="web">
-									<div class="details-wrapper">
-										<div class="details">
-	<p style="
-    margin-top: -53px;
-    
-">La empresa The Green Genie comenzó su historia en la industria de flores y follajes después de años en búsqueda de oportunidades laborales. Después de adquirir experiencia en el comercio nacional, se decidió expandir a nivel internacional y exportar productos de alta calidad, tales como ruscus, hypericum, cocculos, eucalipto baby blue, entre otros. Estmos ubicados en Cachipay Cundinamarca, Colombia, y contamos con un equipo humano que se encarga de todo el proceso de producción, desde sembrar y cultivar hasta cortar y seleccionar cuidadosamente los tallos para exportación. 
-											</p>
-<button id="saber-mas" style="width: 166px;font-size: large;height: 31px;text-shadow: 0 0 black;color: green;background-color: inherit;margin-left: 20%; border-radius: 12px;">Saber Más...</button>
-
-										</div> <!-- //details -->
-									</div> <!-- //.details-wrapper -->
-								</div> <!-- //tab-pane -->
-							</div> <!-- //tab-content -->
-						</div>
-					</div><!-- //.row -->
-				</div> <!-- //tabbed-about-us -->
-			</div> <!-- //container -->
-		</section>
 		<!-- //End About us -->
-	
+	<style>
+/* Estilos personalizados para "laptop" */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #about-us .container {
+    margin-top: 0%;
+  }
+}
+</style>
+
 <style>
   /* Agregar estilo al modal */
   #modal {
