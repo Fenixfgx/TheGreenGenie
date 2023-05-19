@@ -553,7 +553,7 @@ body {
 }
 .slider__text-item h3 {
   margin: 0;
-  font-size: 3.5em;
+  font-size: 2.3em;
   padding: 0 .3em;
   position: relative;
   font-weight: 700;
@@ -564,7 +564,7 @@ body {
   transform: translateX(100%);
 }
 .slider__text-item-head {
-  top: -0.5em;
+  top: -2.7em;
   transform: translateZ(3em);
 }
 .slider__text-item-info {
