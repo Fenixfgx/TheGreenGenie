@@ -298,7 +298,7 @@ alt4="Características principales: Planta perenne, hojas estrechas, flores mora
               <img src="" class="modal-image img-responsive" style="max-width: 60%; margin-top: -15px; margin-left: 30px; margin-bottom: 12px; transition: transform 0.5s ease;">
 
 <script>
-$(".modal-image").on("click", function(e) {
+$(document).on("click", ".modal-image", function(e) {
   var $container = $(this).parent();
   var parentOffset = $container.offset();
   var relX = e.pageX - parentOffset.left;
@@ -343,50 +343,38 @@ $(".modal-image").on("click", function(e) {
       });
     }
   });
-  
-  $(document).on("click", function(e) {
+
+  $(document).one("click", function(e) {
     if (!$(e.target).closest(".modal-image").length) {
-      $container.css({
-        "overflow": "visible"
-      });
-
-      var $image = $(".modal-image");
-      $image.css({
-        "transition": "transform 0.5s"
-      });
-
-      // Retrasar la restauración de la imagen a su estado original
-      setTimeout(function() {
-        $image.css({
-          "transform": "scale(1) translate(0, 0)",
-          "transform-origin": "center",
-          "transition": "transform 0.3s",
-          "z-index": "auto"
-        });
-      }, 500); // Cambiar el valor si deseas un tiempo de espera más prolongado
-
-      $image.off("mousemove");
-      $(document).off("click");
+      resetImage();
     }
   });
-});
 
-$(".modal-image").mouseleave(function() {
-  var $container = $(this).parent();
-  var $image = $(this);
-  
-  $container.css({
-    "overflow": "visible"
+  $(this).one("mouseleave", function() {
+    resetImage();
   });
-  
-  $image.css({
-    "transform": "scale(1) translate(0, 0)",
-    "transform-origin": "center",
-    "transition": "transform 0.3s",
-    "z-index": "auto"
-  });
-  
-  $image.off("mousemove");
+
+  function resetImage() {
+    $container.css({
+      "overflow": "visible"
+    });
+
+    var $image = $(".modal-image");
+    $image.css({
+      "transition": "transform 0.5s"
+    });
+
+    setTimeout(function() {
+      $image.css({
+        "transform": "scale(1) translate(0, 0)",
+        "transform-origin": "center",
+        "transition": "transform 0.3s",
+        "z-index": "auto"
+      });
+    }, 500);
+
+    $image.off("mousemove");
+  }
 });
 </script>
 
@@ -407,7 +395,6 @@ $(".modal-image").mouseleave(function() {
       </div>
     </div>
   </div>
-
   
 <script>
 const gallery = document.querySelector('.gallery');
