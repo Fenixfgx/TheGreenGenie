@@ -177,7 +177,7 @@ body {
 .wrapper .module-team:before {
   width: 100%;
   height: 380px;
-  background-color: #EAEAEA;
+  background-color: ffff;
   content: "";
   position: absolute;
   z-index: -1;
