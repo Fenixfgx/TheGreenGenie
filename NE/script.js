@@ -64,7 +64,7 @@ window.addEventListener("load", event => {
             dribbble: "https://dribbble.com/rafaelalucas",
         },
                         {
-            name: "Jazmín",
+            name: "Jazmín Guevara",
             role: "Coordinadora de Ventas",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Jazmin.jpg",
