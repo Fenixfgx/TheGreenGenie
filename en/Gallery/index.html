@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    
+    <title>Galería Responsive</title>
+    <style>
+      * {
+  box-sizing: border-box;
+}
+
+.gallery {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px;
+    width: 100%;
+  font-family: lato;
+}
+
+@media screen and (max-width: 767px) {
+  .gallery {
+    margin-left: 10%;
+  }
+}
+
+
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+      
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+.image-container {
+  flex: 0 0 auto;
+  width: 250px;
+  margin-right: 20px;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+      
+
+.image-container:hover img {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.image-container .title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0 0 0 / 25%);
+  color: #fff;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .title {
+  opacity: 1;
+}
+
+.image-container .subtitle {
+ position: absolute;
+    top: 85%;
+    width: 60%;
+    text-align: center;
+    left: 0;
+    right: 0;
+    background-color: rgb(0 0 0 / 25%);
+    color: #fff;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .subtitle {
+  opacity: 1;
+}      
+      
+.arrow {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255 255 255 / 0%);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  z-index: 1; /* agrega esta propiedad */
+}
+
+
+.arrow:hover {
+  background-color: rgba(242 0 0 / 80%);
+}
+
+.left-arrow {
+  position: fixed;
+  left: 10px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  color: transparent;
+}
+
+
+.right-arrow {
+  right: 10px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  color: transparent;
+}
+
+.arrow:before {
+  content: '';
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(225deg);
+}
+
+.left-arrow:before {
+  left: 18px;
+}
+
+.right-arrow:before {
+  right: 18px;
+  transform: rotate(41deg);
+}
+
+      
+    </style>
+  </head>
+<body class="body" style="
+    background: url(https://fenixfgx.github.io/TheGreenGenie/images/floor.jpg);
+    background-position-y: -56px;
+    background-position-x: center;
+">
+<div class="gallery">
+  <div class="arrow left-arrow"></div>
+  <div class="arrow right-arrow"></div>
+
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (1).jpg" alt="EUCALIPTO SILVER DOLLAR" alt2="Nombre científico: Eucalyptus cinerea."
+alt3="Descripción: El Eucalipto Silver Dollar es un árbol perenne con hojas redondeadas de color verde plateado. Las hojas son fragantes y se utilizan con frecuencia en arreglos florales y decoración debido a su aspecto distintivo."
+alt4="Características principales: Hojas redondeadas de color verde plateado, fragantes." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">EUCALIPTO SILVER DOLLAR</div>
+    <div class="subtitle">50/55/60 CM</div>
+  </div>
+  
+<div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (2).jpg" alt="COCCULUS" alt2="Nombre científico: Cocculus laurifolius."
+    alt3="Descripción: Cocculus laurifolius es un arbusto perenne con hojas laureadas y vistosas. Es apreciado en jardinería por su follaje exuberante y su capacidad para agregar belleza y color a los espacios exteriores."
+    alt4="Características principales: Arbusto perenne, hojas laureadas y vistosas, follaje exuberante." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">COCCULUS</div>
+    <div class="subtitle">Subtitulo</div>
+</div>
+
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (3).jpg" alt="RUSCUS" alt2="Nombre científico: Ruscus aculeatus."
+alt3="Descripción: El Ruscus es una planta perenne de hojas verdes oscuro en forma de lanza. Se utiliza ampliamente en arreglos florales y decoración debido a su aspecto elegante y duradero."
+alt4="Características principales: Hojas verdes oscuro en forma de lanza, duradero." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">RUSCUS</div>
+    <div class="subtitle">50/55/60 CM</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (4).jpg" alt="EUCALIPTO BABY BLUE" alt2="Nombre científico: Eucalyptus pulverulenta."
+alt3="Descripción: El Eucalipto Baby Blue es un árbol perenne con hojas redondeadas de color azul plateado. Se utiliza ampliamente en arreglos florales y decoración debido a su aspecto delicado y encantador."
+alt4="Características principales: Hojas redondeadas de color azul plateado, delicado y encantador." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">EUCALIPTO BABY BLUE</div>
+    <div class="subtitle">50/55/60 CM</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (5).jpg" alt="HELECHO DE CUERO" alt2="Nombre científico: Rumohra adiantiformis."
+alt3="Descripción: El Helecho de Cuero es una planta perenne con frondas verdes brillantes y textura similar al cuero. Se utiliza comúnmente en arreglos florales y decoración debido a su aspecto exótico y resistencia."
+alt4="Características principales: Frondas verdes brillantes, textura similar al cuero, resistente." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">HELECHO DE CUERO</div>
+    <div class="subtitle">Subtitulo</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (6).jpg" alt="MONSTERA" alt2="Nombre científico: Monstera deliciosa."
+alt3="Descripción: La Monstera es una planta trepadora con hojas grandes y perforadas. Es muy popular en la decoración de interiores y se utiliza en arreglos florales debido a su apariencia tropical y llamativa."
+alt4="Características principales: Planta trepadora, hojas grandes y perforadas, apariencia tropical." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">MONSTERA</div>
+    <div class="subtitle">Subtitulo</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (7).jpg" alt="BRILLANTINA" alt2="Nombre científico: Lonicera pileata."
+    alt3="Descripción: Lonicera pileata, comúnmente conocida como Brillantina, es un arbusto perenne de hoja perenne. Tiene hojas pequeñas y brillantes de color verde oscuro que le dan un aspecto atractivo. Es apreciada en jardinería por su resistencia y facilidad de mantenimiento."
+    alt4="Características principales: Arbusto perenne de hoja perenne, hojas pequeñas y brillantes de color verde oscuro." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">BRILLANTINA</div>
+    <div class="subtitle">Subtitulo</div>
+</div>
+
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (8).jpg" alt="TREE FERN" alt2="Nombre científico: Cyathea cooperi."
+alt3="Descripción: La Tree Fern es una planta perenne de gran tamaño con frondas verdes y textura delicada. Se utiliza comúnmente en jardines y paisajismo para agregar un toque tropical y exuberante."
+alt4="Características principales: Planta perenne de gran tamaño, frondas verdes y textura delicada, toque tropical." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">TREE FERN</div>
+    <div class="subtitle">Subtitulo</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (9).jpg" alt="PINO" alt2="Nombre científico: Pinus sp."
+alt3="Descripción: El Pino es un árbol perenne de hojas verdes y forma cónica. Se utiliza ampliamente en jardinería y paisajismo debido a su apariencia clásica y su capacidad para proporcionar sombra."
+alt4="Características principales: Árbol perenne de hojas verdes y forma cónica, proporciona sombra." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">PINO</div>
+    <div class="subtitle">Subtitulo</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (10).jpg" alt="PALMA RIVELINA" alt2="Nombre científico: Livistona chinensis."
+alt3="Descripción: La Palma Rivelina es una palmera perenne con hojas en forma de abanico y tronco esbelto. Es muy apreciada en jardinería y paisajismo por su elegancia y resistencia."
+alt4="Características principales: Palmera perenne, hojas en forma de abanico, tronco esbelto, elegante y resistente." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">PALMA RIVELINA</div>
+    <div class="subtitle">50/55/+60 CM</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (11).jpg" alt="CINTA LIRIOPE" alt2="Nombre científico: Liriope muscari."
+alt3="Descripción: La Cinta Liriope es una planta perenne con hojas estrechas y flores moradas. Se utiliza comúnmente en jardines y paisajismo como bordura o cubierta de suelo debido a su resistencia y belleza."
+alt4="Características principales: Planta perenne, hojas estrechas, flores moradas, resistente y hermosa." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">CINTA LIRIOPE</div>
+    <div class="subtitle">Subtitulo</div>
+  </div>
+  
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (12).jpg" alt="HYPERICUM VERDE" alt2="Nombre científico: Hypericum perforatum."
+    alt3="Descripción: Hypericum perforatum, comúnmente conocido como Hypericum Verde, es una planta herbácea perenne con botones en este caso verdes brillantes y hojas verde oscuro. Es conocida por sus propiedades medicinales y se utiliza en remedios naturales. Además, es apreciada en la jardinería por su belleza y resistencia."
+    alt4="Características principales: Planta herbácea perenne, hojas verde oscuro." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">HYPERICUM VERDE</div>
+    <div class="subtitle">Subtitulo</div>
+</div>
+
+
+  <div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (13).jpg" alt="HYPERICUM ROJO" alt2="Nombre científico: Hypericum perforatum."
+    alt3="Descripción: Hypericum perforatum, comúnmente conocido como Hypericum Rojo, es una planta herbácea perenne con botones en este caso Rojos brillantes y hojas verde oscuro. Es conocida por sus propiedades medicinales y se utiliza en remedios naturales. Además, es apreciada en la jardinería por su belleza y resistencia."
+    alt4="Características principales: Planta herbácea perenne, hojas verde oscuro." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">HYPERICUM ROJO</div>
+    <div class="subtitle">Subtitulo</div>
+</div>
+  
+<div class="image-container">
+    <img src="https://fenixfgx.github.io/TheGreenGenie/images/a (14).jpg" alt="HYPERICUM ROSADO" alt2="Nombre científico: Hypericum perforatum."
+    alt3="Descripción: Hypericum perforatum, comúnmente conocido como Hypericum Rosado, es una planta herbácea perenne con botones en este caso Rosados brillantes y hojas verde oscuro. Es conocida por sus propiedades medicinales y se utiliza en remedios naturales. Además, es apreciada en la jardinería por su belleza y resistencia."
+    alt4="Características principales: Planta herbácea perenne, hojas verde oscuro." class="img-responsive modal-img" data-toggle="modal" data-target="#myModal">
+    <div class="title">HYPERICUM ROSADO</div>
+    <div class="subtitle">Subtitulo</div>
+</div>
+
+<div id="myModal" class="modal fade in" role="dialog" style="overflow: hidden;">
+<div class="modal-dialog modal-lg" style="margin-top: 5px;">
+      <div class="modal-content">
+        <div class="modal-header">
+         The Green Genie <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="" class="modal-image img-responsive" style="max-width: 60%; margin-top: -15px; margin-left: 30px; margin-bottom: 12px; transition: transform 0.5s ease;">
+
+<script>
+$(document).on("click", ".modal-image", function(e) {
+  var $container = $(this).parent();
+  var parentOffset = $container.offset();
+  var relX = e.pageX - parentOffset.left;
+  var relY = e.pageY - parentOffset.top;
+  var width = $container.width();
+  var height = $container.height();
+  var scale = 2;
+  var translateX = (width / 2 - relX) * (scale - 1);
+  var translateY = (height / 2 - relY) * (scale - 1);
+
+  if (relX < 0 || relX > width || relY < 0 || relY > height) {
+    return;
+  }
+
+  $container.css({
+    "overflow": "hidden"
+  });
+
+  $(this).css({
+    "transform": "scale(" + scale + ") translate(" + translateX + "px, " + translateY + "px)",
+    "transform-origin": relX + "px " + relY + "px",
+    "transition": "transform 0.3s",
+    "z-index": "9999"
+  });
+
+  $(this).mousemove(function(e) {
+    var relX = e.pageX - parentOffset.left;
+    var relY = e.pageY - parentOffset.top;
+    var translateX = (width / 2 - relX) * (scale - 1);
+    var translateY = (height / 2 - relY) * (scale - 1);
+
+    if (relX < 0 || relX > width || relY < 0 || relY > height) {
+      $(this).css({
+        "transform": "scale(1) translate(0, 0)",
+        "transform-origin": "center",
+        "transition": "transform 0.3s"
+      });
+    } else {
+      $(this).css({
+        "transform": "scale(" + scale + ") translate(" + translateX + "px, " + translateY + "px)",
+        "transform-origin": relX + "px " + relY + "px"
+      });
+    }
+  });
+
+  $(document).one("click", function(e) {
+    if (!$(e.target).closest(".modal-image").length) {
+      resetImage();
+    }
+  });
+
+  $(this).one("mouseleave", function() {
+    resetImage();
+  });
+
+  function resetImage() {
+    $container.css({
+      "overflow": "visible"
+    });
+
+    var $image = $(".modal-image");
+    $image.css({
+      "transition": "transform 0.5s"
+    });
+
+    setTimeout(function() {
+      $image.css({
+        "transform": "scale(1) translate(0, 0)",
+        "transform-origin": "center",
+        "transition": "transform 0.3s",
+        "z-index": "auto"
+      });
+    }, 500);
+
+    $image.off("mousemove");
+  }
+});
+</script>
+
+
+            </div>
+            <div class="col-md-6">
+              <p class="modal-text"style="
+    font-size: larger;"></p>
+              <p class="modal-text2"style="
+    font-size: larger;"></p>
+              <p class="modal-text3"style="
+    font-size: larger;"></p>
+              <p class="modal-text4"style="
+    font-size: larger;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<script>
+const gallery = document.querySelector('.gallery');
+const imageContainer = document.querySelectorAll('.image-container');
+const arrowButtons = document.querySelectorAll('.arrow');
+const scrollDistance = imageContainer[0].clientWidth + parseInt(window.getComputedStyle(imageContainer[0]).marginRight);
+const galleryWidth = scrollDistance * imageContainer.length;
+let currentScrollPosition = 0;
+let scrollInterval = setInterval(() => {
+  gallery.scrollBy(scrollDistance, 0);
+  if (gallery.scrollLeft >= galleryWidth - gallery.clientWidth) {
+    gallery.scrollTo({
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+}, 5000);
+
+arrowButtons.forEach(button => {
+  button.addEventListener('mouseover', () => {
+    clearInterval(scrollInterval);
+  });
+  button.addEventListener('click', () => {
+    const direction = button.classList.contains('left-arrow') ? -1 : 1;
+    currentScrollPosition += direction * scrollDistance;
+    gallery.scrollTo({
+      left: currentScrollPosition,
+      behavior: 'smooth'
+    });
+    if (currentScrollPosition < 0) {
+      currentScrollPosition = galleryWidth - gallery.clientWidth;
+    } else if (currentScrollPosition >= galleryWidth - gallery.clientWidth) {
+      currentScrollPosition = 0;
+    }
+  });
+  button.addEventListener('mouseout', () => {
+    scrollInterval = setInterval(() => {
+      gallery.scrollBy(scrollDistance, 0);
+      if (gallery.scrollLeft >= galleryWidth - gallery.clientWidth) {
+        gallery.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
+    }, 3000);
+  });
+});
+
+imageContainer.forEach(container => {
+  container.addEventListener('mouseover', () => {
+    clearInterval(scrollInterval);
+  });
+  container.addEventListener('mouseout', () => {
+    scrollInterval = setInterval(() => {
+      gallery.scrollBy(scrollDistance, 0);
+      if (gallery.scrollLeft >= galleryWidth - gallery.clientWidth) {
+        gallery.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
+    }, 3000);
+  });
+});
+
+</script>
+
+  <script>
+  
+$(document).ready(function() {
+      $(".modal-img").click(function() {
+        var imgSrc = $(this).attr("src");
+        $(".modal-image").attr("src", imgSrc);
+        var modalText = $(this).attr("alt");
+        $(".modal-text").text(modalText);
+        var modalText2 = $(this).attr("alt2");
+        $(".modal-text2").text(modalText2);
+        var modalText3 = $(this).attr("alt3");
+        $(".modal-text3").text(modalText3);
+        var modalText4 = $(this).attr("alt4");
+        $(".modal-text4").text(modalText4);
+      });
+    });
+</script>    
+      
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
