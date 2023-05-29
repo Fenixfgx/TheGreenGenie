@@ -1,11 +1,11 @@
-window.addEventListener("load", event => {
+﻿window.addEventListener("load", event => {
 
     var swiperWrapper = document.querySelector('.swiper-wrapper');
 
     /* The Team */
     var team = [{
             name: "Efrain Rodríguez",
-            role: "Representante Legal",
+            role: "Legal Representative",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Efrain.jpg",
             website: "https://rafaelalucas.com",
@@ -15,7 +15,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Cristian Rodríguez",
-            role: "Subgerente General",
+            role: "Deputy General Manager",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Cristian.jpg",
             website: "https://rafaelalucas.com",
@@ -25,7 +25,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Carlos Rodríguez",
-            role: "Supervisor de Calidad y Producción",
+            role: "Quality and Production Supervisor",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Carlos.jpg",
             website: "https://rafaelalucas.com",
@@ -35,7 +35,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Dina Marcela Ortiz",
-            role: "Coordinadora Administrativa",
+            role: "Administrative Coordinator",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/perf.JPG",
             website: "https://rafaelalucas.com",
@@ -45,7 +45,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Humberto Rodríguez",
-            role: "Jefe Administrativo",
+            role: "Administrative Manager",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Humberto.jpg",
             website: "https://rafaelalucas.com",
@@ -55,7 +55,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Angie Lizett",
-            role: "Secretaria",
+            role: "Secretary",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Angie.jpg",
             website: "https://rafaelalucas.com",
@@ -65,7 +65,7 @@ window.addEventListener("load", event => {
         },
                         {
             name: "Jazmín Guevara",
-            role: "Coordinadora de Ventas",
+            role: "Sales Coordinator",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Jazmin.jpg",
             website: "https://rafaelalucas.com",
