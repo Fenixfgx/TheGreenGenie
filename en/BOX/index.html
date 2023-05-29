@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - lightSlider</title>
+  <link rel='stylesheet' href='//sachinchoolur.github.io/lightslider/dist/css/lightslider.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="demo">
+    <ul id="lightSlider">
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01248.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01248.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01257.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01257.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01205.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01205.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01210.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01210.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01231.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01231.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01224.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01224.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01149.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01149.jpg" />
+        </li>
+        <li data-thumb="http://www.thegreengenie.com.co/images/DSC01158.jpg">
+            <img src="http://www.thegreengenie.com.co/images/DSC01158.jpg" /> 
+        </li>
+        
+    </ul>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+</div>
+
+<style>
+.demo {
+    max-width: 100%;
+    max-height: 430px;
+}
+
+ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom: 0;
+    overflow: hidden; /* Evita que los elementos flotantes se desborden */
+}
+
+li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+</style>
+<!-- partial -->
+  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='//sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
