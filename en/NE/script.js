@@ -55,7 +55,7 @@
         },
         {
             name: "Angie Lizett",
-            role: "Secretary",
+            role: "Administrative Coordinator",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Angie.jpg",
             website: "https://rafaelalucas.com",
