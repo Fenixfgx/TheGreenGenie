@@ -55,7 +55,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Angie Lizett",
-            role: "Secretaria",
+            role: "Coordinadora Administrativa",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Angie.jpg",
             website: "https://rafaelalucas.com",
