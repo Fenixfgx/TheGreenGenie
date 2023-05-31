@@ -35,7 +35,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Dina Marcela Ortiz",
-            role: "Coordinadora Administrativa",
+            role: "Fundadora",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/perf.JPG",
             website: "https://rafaelalucas.com",
@@ -45,7 +45,7 @@ window.addEventListener("load", event => {
         },
         {
             name: "Humberto Rodríguez",
-            role: "Jefe Administrativo",
+            role: "Fundador",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Humberto.jpg",
             website: "https://rafaelalucas.com",
