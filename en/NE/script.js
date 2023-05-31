@@ -35,7 +35,7 @@
         },
         {
             name: "Dina Marcela Ortiz",
-            role: "Administrative Coordinator",
+            role: "Foundress",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/perf.JPG",
             website: "https://rafaelalucas.com",
@@ -45,7 +45,7 @@
         },
         {
             name: "Humberto Rodríguez",
-            role: "Administrative Manager",
+            role: "Founder",
             desc: "Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.",
             photo: "http://www.thegreengenie.com.co/images/Humberto.jpg",
             website: "https://rafaelalucas.com",
