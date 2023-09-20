@@ -149,43 +149,42 @@ function atvImg(){
 
 	}
 	
-	if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', handleOrientation);
-    }
+	var covers = document.querySelectorAll('.cover.atvImg');
 
-    // Almacena los elementos con la clase "cover atvImg"
-    var atvImgElements = document.querySelectorAll('.cover.atvImg');
+    // Recorre todos los elementos seleccionados
+    covers.forEach(function (cover) {
+        // Detectar el soporte de la API de DeviceOrientation
+        if (window.DeviceOrientationEvent) {
+            cover.addEventListener('deviceorientation', handleOrientation);
 
-    // Inicializa las variables de orientación inicial
-    var initialGamma = 0;
-    var initialBeta = 0;
+            var initialGamma = 0;
+            var initialBeta = 0;
 
-    // Función para manejar la orientación del dispositivo
-    function handleOrientation(event) {
-        if (initialGamma === 0 && initialBeta === 0) {
-            initialGamma = event.gamma;
-            initialBeta = event.beta;
+            // Función para manejar la orientación del dispositivo
+            function handleOrientation(event) {
+                if (initialGamma === 0 && initialBeta === 0) {
+                    initialGamma = event.gamma;
+                    initialBeta = event.beta;
+                }
+
+                var gammaDiff = event.gamma - initialGamma;
+                var betaDiff = event.beta - initialBeta;
+
+                // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
+                var movementSpeed = 2;
+
+                // Aplica la transformación a las tarjetas dentro de este elemento "cover"
+                var layers = cover.querySelectorAll('.atvImg-layer');
+                for (var i = 0; i < layers.length; i++) {
+                    var layer = layers[i];
+                    var offsetX = gammaDiff * movementSpeed * (i + 1);
+                    var offsetY = betaDiff * movementSpeed * (i + 1);
+
+                    layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
+                }
+            }
         }
 
-        var gammaDiff = event.gamma - initialGamma;
-        var betaDiff = event.beta - initialBeta;
-
-        // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
-        var movementSpeed = 2;
-
-        // Aplica la transformación a las tarjetas solo para los elementos seleccionados
-        atvImgElements.forEach(function (atvImgElement) {
-            var layers = atvImgElement.querySelectorAll('.atvImg-layer');
-
-            for (var i = 0; i < layers.length; i++) {
-                var layer = layers[i];
-                var offsetX = gammaDiff * movementSpeed * (i + 1);
-                var offsetY = betaDiff * movementSpeed * (i + 1);
-
-                layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
-            }
-        });
-    }
 
 }
 
