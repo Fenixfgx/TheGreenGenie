@@ -168,3 +168,8 @@ document.getElementById('imageButton').addEventListener('click', function() {
     imageLink.download = 'Tarjeta The Green Genie.jpg'; // Nombre del archivo a descargar
     imageLink.click();
 });
+
+document.getElementById('redirectButton').addEventListener('click', function() {
+    // Redirigir a una URL específica
+    window.location.href = 'https://www.thegreengenie.com.co'; // Reemplaza la URL con la que desees redirigir
+});
