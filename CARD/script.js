@@ -167,19 +167,16 @@ function atvImg(){
         var betaDiff = event.beta - initialBeta;
 
         // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
-        var movementSpeed = 2;
+        var movementSpeed = 1;
 
-        // Aplica la transformación a las tarjetas específicas
-        var coverAtvImgs = document.querySelectorAll('.cover.atvImg');
-        coverAtvImgs.forEach(function (cover, index) {
-            var layers = cover.querySelectorAll('.atvImg-layer');
-            layers.forEach(function (layer, i) {
-                var offsetX = gammaDiff * movementSpeed * (i + 1);
-                var offsetY = betaDiff * movementSpeed * (i + 1);
+        // Aplica la transformación a las tarjetas
+        for (var i = 0; i < totalLayerElems; i++) {
+            var layer = layers[i];
+            var offsetX = gammaDiff * movementSpeed * (i + 1);
+            var offsetY = betaDiff * movementSpeed * (i + 1);
 
-                layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
-            });
-        });
+            layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
+        }
     }
 
 
