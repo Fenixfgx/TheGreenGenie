@@ -149,41 +149,38 @@ function atvImg(){
 
 	}
 	
-	var covers = document.querySelectorAll('.cover.atvImg');
+	if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', handleOrientation);
+    }
 
-    // Recorre todos los elementos seleccionados
-    covers.forEach(function (cover) {
-        // Detectar el soporte de la API de DeviceOrientation
-        if (window.DeviceOrientationEvent) {
-            cover.addEventListener('deviceorientation', handleOrientation);
+    var initialGamma = 0;
+    var initialBeta = 0;
 
-            var initialGamma = 0;
-            var initialBeta = 0;
-
-            // Función para manejar la orientación del dispositivo
-            function handleOrientation(event) {
-                if (initialGamma === 0 && initialBeta === 0) {
-                    initialGamma = event.gamma;
-                    initialBeta = event.beta;
-                }
-
-                var gammaDiff = event.gamma - initialGamma;
-                var betaDiff = event.beta - initialBeta;
-
-                // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
-                var movementSpeed = 2;
-
-                // Aplica la transformación a las tarjetas dentro de este elemento "cover"
-                var layers = cover.querySelectorAll('.atvImg-layer');
-                for (var i = 0; i < layers.length; i++) {
-                    var layer = layers[i];
-                    var offsetX = gammaDiff * movementSpeed * (i + 1);
-                    var offsetY = betaDiff * movementSpeed * (i + 1);
-
-                    layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
-                }
-            }
+    // Función para manejar la orientación del dispositivo
+    function handleOrientation(event) {
+        if (initialGamma === 0 && initialBeta === 0) {
+            initialGamma = event.gamma;
+            initialBeta = event.beta;
         }
+
+        var gammaDiff = event.gamma - initialGamma;
+        var betaDiff = event.beta - initialBeta;
+
+        // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
+        var movementSpeed = 2;
+
+        // Aplica la transformación a las tarjetas específicas
+        var coverAtvImgs = document.querySelectorAll('.cover.atvImg');
+        coverAtvImgs.forEach(function (cover, index) {
+            var layers = cover.querySelectorAll('.atvImg-layer');
+            layers.forEach(function (layer, i) {
+                var offsetX = gammaDiff * movementSpeed * (i + 1);
+                var offsetY = betaDiff * movementSpeed * (i + 1);
+
+                layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
+            });
+        });
+    }
 
 
 }
