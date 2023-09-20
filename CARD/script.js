@@ -149,7 +149,7 @@ function atvImg(){
 
 	}
 	
-	 if (window.DeviceOrientationEvent) {
+	if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', handleOrientation);
     }
 
@@ -158,18 +158,22 @@ function atvImg(){
         var beta = event.beta; // Inclinación hacia adelante y hacia atrás (en grados)
         var gamma = event.gamma; // Inclinación hacia los lados (en grados)
 
-        // Aplica la rotación a las tarjetas sin desplazarlas
+        // Ajusta la velocidad de inclinación de acuerdo a tus preferencias
+        var tiltSpeed = 2;
+
+        // Aplica la inclinación a las tarjetas y a las imágenes
         for (var i = 0; i < totalImgs; i++) {
             var card = imgs[i];
+            var img = card.querySelector('.atvImg-layer');
 
-            // Calcula la rotación en función de los ángulos de inclinación
-            var rotationX = beta * 0.5; // Ajusta el factor para la rotación
-            var rotationY = gamma * 0.5; // Ajusta el factor para la rotación
+            // Calcula la inclinación en función de los ángulos de inclinación
+            var tiltX = beta * tiltSpeed;
+            var tiltY = gamma * tiltSpeed;
 
-            card.style.transform = 'perspective(500px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)';
+            card.style.transform = 'rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
+            img.style.transform = 'rotateX(' + (-tiltX) + 'deg) rotateY(' + (-tiltY) + 'deg)';
         }
     }
-
 }
 
 atvImg();
