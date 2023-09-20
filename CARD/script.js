@@ -159,7 +159,7 @@ function atvImg(){
         var gamma = event.gamma; // Inclinación hacia los lados (en grados)
 
         // Ajusta la velocidad de inclinación de acuerdo a tus preferencias
-        var tiltSpeed = 0.0002;
+        var tiltSpeed = 0.5;
 
         // Aplica la inclinación a las tarjetas y a las imágenes
         for (var i = 0; i < totalImgs; i++) {
