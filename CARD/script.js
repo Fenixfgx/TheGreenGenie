@@ -150,40 +150,42 @@ function atvImg(){
 	}
 	
 	if (window.DeviceOrientationEvent) {
-            window.addEventListener('deviceorientation', handleOrientation);
+        window.addEventListener('deviceorientation', handleOrientation);
+    }
+
+    // Almacena los elementos con la clase "cover atvImg"
+    var atvImgElements = document.querySelectorAll('.cover.atvImg');
+
+    // Inicializa las variables de orientación inicial
+    var initialGamma = 0;
+    var initialBeta = 0;
+
+    // Función para manejar la orientación del dispositivo
+    function handleOrientation(event) {
+        if (initialGamma === 0 && initialBeta === 0) {
+            initialGamma = event.gamma;
+            initialBeta = event.beta;
         }
 
-        var initialGamma = 0;
-        var initialBeta = 0;
+        var gammaDiff = event.gamma - initialGamma;
+        var betaDiff = event.beta - initialBeta;
 
-        // Función para manejar la orientación del dispositivo
-        function handleOrientation(event) {
-            var elementsToTransform = document.querySelectorAll('.device-orientation');
-            
-            if (initialGamma === 0 && initialBeta === 0) {
-                initialGamma = event.gamma;
-                initialBeta = event.beta;
+        // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
+        var movementSpeed = 2;
+
+        // Aplica la transformación a las tarjetas solo para los elementos seleccionados
+        atvImgElements.forEach(function (atvImgElement) {
+            var layers = atvImgElement.querySelectorAll('.atvImg-layer');
+
+            for (var i = 0; i < layers.length; i++) {
+                var layer = layers[i];
+                var offsetX = gammaDiff * movementSpeed * (i + 1);
+                var offsetY = betaDiff * movementSpeed * (i + 1);
+
+                layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
             }
-
-            var gammaDiff = event.gamma - initialGamma;
-            var betaDiff = event.beta - initialBeta;
-
-            // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
-            var movementSpeed = 2;
-
-            // Aplica la transformación solo a los elementos con la clase "device-orientation"
-            elementsToTransform.forEach(function(element) {
-                var layers = element.querySelectorAll('.atvImg-layer');
-
-                for (var i = 0; i < layers.length; i++) {
-                    var layer = layers[i];
-                    var offsetX = gammaDiff * movementSpeed * (i + 1);
-                    var offsetY = betaDiff * movementSpeed * (i + 1);
-
-                    layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
-                }
-            });
-        }
+        });
+    }
 
 }
 
