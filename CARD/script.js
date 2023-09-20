@@ -148,32 +148,23 @@ function atvImg(){
 		}
 
 	}
-	
-	if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', handleOrientation);
-    }
 
-    // Función para manejar la orientación del dispositivo
-    function handleOrientation(event) {
-        var beta = event.beta; // Inclinación hacia adelante y hacia atrás (en grados)
-        var gamma = event.gamma; // Inclinación hacia los lados (en grados)
-
-        // Ajusta la velocidad de inclinación de acuerdo a tus preferencias
-        var tiltSpeed = 0.5;
-
-        // Aplica la inclinación a las tarjetas y a las imágenes
-        for (var i = 0; i < totalImgs; i++) {
-            var card = imgs[i];
-            var img = card.querySelector('.atvImg-layer');
-
-            // Calcula la inclinación en función de los ángulos de inclinación
-            var tiltX = beta * tiltSpeed;
-            var tiltY = gamma * tiltSpeed;
-
-            card.style.transform = 'rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
-            img.style.transform = 'rotateX(' + (-tiltX) + 'deg) rotateY(' + (-tiltY) + 'deg)';
-        }
-    }
 }
 
 atvImg();
+
+document.getElementById('pdfButton').addEventListener('click', function() {
+    // Crear un enlace temporal para descargar el PDF
+    var pdfLink = document.createElement('a');
+    pdfLink.href = 'https://www.thegreengenie.com.co/CARD/TARJETAGREENGENIE.pdf'; // Reemplaza 'ruta_del_archivo.pdf' con la ubicación de tu PDF
+    pdfLink.download = 'Tarjeta The Green Genie.pdf'; // Nombre del archivo a descargar
+    pdfLink.click();
+});
+
+document.getElementById('imageButton').addEventListener('click', function() {
+    // Crear un enlace temporal para descargar la imagen
+    var imageLink = document.createElement('a');
+    imageLink.href = 'https://www.thegreengenie.com.co/CARD/TarjetaDigitalTheGreenGenie2.jpg'; // Reemplaza 'ruta_de_la_imagen.jpg' con la ubicación de tu imagen
+    imageLink.download = 'Tarjeta The Green Genie.jpg'; // Nombre del archivo a descargar
+    imageLink.click();
+});
