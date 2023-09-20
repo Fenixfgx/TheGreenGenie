@@ -149,7 +149,7 @@ function atvImg(){
 
 	}
 	
-	if (window.DeviceOrientationEvent) {
+	 if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', handleOrientation);
     }
 
@@ -159,16 +159,17 @@ function atvImg(){
         var gamma = event.gamma; // Inclinación hacia los lados (en grados)
 
         // Aplica la rotación a las tarjetas sin desplazarlas
-        for (var i = 0; i < totalLayerElems; i++) {
-            var layer = layers[i];
+        for (var i = 0; i < totalImgs; i++) {
+            var card = imgs[i];
 
             // Calcula la rotación en función de los ángulos de inclinación
             var rotationX = beta * 0.5; // Ajusta el factor para la rotación
             var rotationY = gamma * 0.5; // Ajusta el factor para la rotación
 
-            layer.style.transform = 'rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)';
+            card.style.transform = 'perspective(500px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)';
         }
     }
+
 }
 
 atvImg();
