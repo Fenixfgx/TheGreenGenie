@@ -158,20 +158,15 @@ function atvImg(){
         var beta = event.beta; // Inclinación hacia adelante y hacia atrás (en grados)
         var gamma = event.gamma; // Inclinación hacia los lados (en grados)
 
-        // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
-        var movementSpeed = 2;
-
-        // Aplica la transformación a las tarjetas
+        // Aplica la rotación a las tarjetas sin desplazarlas
         for (var i = 0; i < totalLayerElems; i++) {
             var layer = layers[i];
-            var offsetX = gamma * movementSpeed * (i + 1); // Ajusta el factor para la velocidad
-            var offsetY = beta * movementSpeed * (i + 1); // Ajusta el factor para la velocidad
 
             // Calcula la rotación en función de los ángulos de inclinación
             var rotationX = beta * 0.5; // Ajusta el factor para la rotación
             var rotationY = gamma * 0.5; // Ajusta el factor para la rotación
 
-            layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)';
+            layer.style.transform = 'rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)';
         }
     }
 }
