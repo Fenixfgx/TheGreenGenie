@@ -150,26 +150,40 @@ function atvImg(){
 	}
 	
 	if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', handleOrientation);
-    }
-
-    // Función para manejar la orientación del dispositivo
-    function handleOrientation(event) {
-        var beta = event.beta; // Inclinación hacia adelante y hacia atrás
-        var gamma = event.gamma; // Inclinación hacia los lados
-
-        // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
-        var movementSpeed = 2;
-
-        // Aplica la transformación a las tarjetas
-        for (var i = 0; i < totalLayerElems; i++) {
-            var layer = layers[i];
-            var offsetX = gamma * movementSpeed * (i + 1); // Ajusta el factor para la velocidad
-            var offsetY = beta * movementSpeed * (i + 1); // Ajusta el factor para la velocidad
-
-            layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
+            window.addEventListener('deviceorientation', handleOrientation);
         }
-    }
+
+        var initialGamma = 0;
+        var initialBeta = 0;
+
+        // Función para manejar la orientación del dispositivo
+        function handleOrientation(event) {
+            var elementsToTransform = document.querySelectorAll('.device-orientation');
+            
+            if (initialGamma === 0 && initialBeta === 0) {
+                initialGamma = event.gamma;
+                initialBeta = event.beta;
+            }
+
+            var gammaDiff = event.gamma - initialGamma;
+            var betaDiff = event.beta - initialBeta;
+
+            // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
+            var movementSpeed = 2;
+
+            // Aplica la transformación solo a los elementos con la clase "device-orientation"
+            elementsToTransform.forEach(function(element) {
+                var layers = element.querySelectorAll('.atvImg-layer');
+
+                for (var i = 0; i < layers.length; i++) {
+                    var layer = layers[i];
+                    var offsetX = gammaDiff * movementSpeed * (i + 1);
+                    var offsetY = betaDiff * movementSpeed * (i + 1);
+
+                    layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
+                }
+            });
+        }
 
 }
 
