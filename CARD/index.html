@@ -21,35 +21,6 @@
 	</div>
 
 </div>
-
-<script>
-        // JavaScript para la detección de movimiento
-        let layers = document.querySelectorAll('.atvImg-layer');
-        let initialBeta = null;
-        let initialGamma = null;
-
-        if (window.DeviceOrientationEvent) {
-            window.addEventListener('deviceorientation', handleOrientation);
-        }
-
-        function handleOrientation(event) {
-            if (initialBeta === null && initialGamma === null) {
-                initialBeta = event.beta;
-                initialGamma = event.gamma;
-            }
-
-            let betaDiff = event.beta - initialBeta;
-            let gammaDiff = event.gamma - initialGamma;
-
-            for (let layer of layers) {
-                let layerIndex = parseInt(layer.getAttribute('data-layer'));
-                let offsetX = gammaDiff * layerIndex * 2;
-                let offsetY = betaDiff * layerIndex * 2;
-
-                layer.style.transform = `translateX(${offsetX}px) translateY(${offsetY}px)`;
-            }
-        }
-    </script>
 <!-- partial -->
   <script  src="./script.js"></script>
 

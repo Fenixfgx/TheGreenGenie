@@ -148,6 +148,28 @@ function atvImg(){
 		}
 
 	}
+	
+	if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', handleOrientation);
+    }
+
+    // Función para manejar la orientación del dispositivo
+    function handleOrientation(event) {
+        var beta = event.beta; // Inclinación hacia adelante y hacia atrás
+        var gamma = event.gamma; // Inclinación hacia los lados
+
+        // Ajusta la velocidad de movimiento de acuerdo a tus preferencias
+        var movementSpeed = 2;
+
+        // Aplica la transformación a las tarjetas
+        for (var i = 0; i < totalLayerElems; i++) {
+            var layer = layers[i];
+            var offsetX = gamma * movementSpeed * (i + 1); // Ajusta el factor para la velocidad
+            var offsetY = beta * movementSpeed * (i + 1); // Ajusta el factor para la velocidad
+
+            layer.style.transform = 'translateX(' + offsetX + 'px) translateY(' + offsetY + 'px)';
+        }
+    }
 
 }
 
