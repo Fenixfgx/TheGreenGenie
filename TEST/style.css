@@ -717,8 +717,29 @@ img {
   fill: #a9a9a9;
 }
 
-.tooltip {
-  background-color: #333;
-  color: #fff;
-  padding: 1em;
+.map {
+  margin-top: 30px;
+  max-height: 500px;
+}
+
+@media all and (max-width: 500px) {
+  .map {
+    margin-top: -311px;
+    max-height: 500px;
+  }
+}
+.Counter {
+  margin-top: 30px;
+  max-height: 500px;
+  z-index: 15;
+}
+
+@media all and (max-width: 500px) {
+  .Counter {
+    border: none;
+    margin-top: -424px;
+    z-index: 15;
+    height: 500px;
+    position: absolute;
+  }
 }
