@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>TEST WEB</title>
+  <title>TEST WEBPAGE</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -37,7 +37,7 @@
 <!-- wpp-btn-mobile -->
 <div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div" style=""><a id="WhatsApp-button" href="https://wa.me/573046234592" target="_blank" class="phoneJs" title="WhatsApp 360imagem"><div class="cbh-ph-circle"></div><div class="cbh-ph-circle-fill"></div><div class="cbh-ph-img-circle1"></div></a></div>
 
-<section class="et-hero-tabs" style="margin-top: 10px;height: fit-content;">
+<section class="et-hero-tabs first"  id="tab-index" style="height: fit-content;">
 <video width="100%" autoplay muted loop src="https://thegreengenie.com.co/30.m4v"></video>
 <div style="display: contents;">
 
@@ -105,17 +105,19 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
     <div id="search-results">
 	</div>
 	<div class="et-hero-tabs-container">
-<img src="https://www.thegreengenie.com.co/images/favicon.png?rand=c5e2" alt="Logo de tu sitio" style="width: 246px;height: 130px;top: -68px;position: relative;"><a class="et-hero-tab" href="#tab-es6">Productos</a>
+<img src="https://www.thegreengenie.com.co/images/favicon.png?rand=c5e2" alt="Logo de tu sitio" style="width: 246px;height: 130px;top: -68px;position: relative;">
+	<a class="et-hero-tab" href="#tab-index">Inicio</a>
+  <a class="et-hero-tab" href="#tab-es6">Productos</a>
   <a class="et-hero-tab" href="#tab-NC">Nuestros Cultivos</a>
   <a class="et-hero-tab" href="#tab-flexbox">Catalogo</a>
-  <a class="et-hero-tab" href="#tab-react">MVO</a>
-  <a class="et-hero-tab" href="#tab-angular">Nuestro Equipo</a>
+  <!--<a class="et-hero-tab" href="#tab-react">MVO</a>-->
+  <a class="et-hero-tab" href="#tab-angular">Acerca de Nosotros</a>
   <a class="et-hero-tab" href="#tab-other">Contáctanos</a>
   <span class="et-hero-tab-slider" style="width: 0px; left: 0px;"></span>
 </div>
 </div>
   </section>
-
+	
   <!-- Main -->
   <main class="et-main">
 <style>
@@ -135,12 +137,12 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
     }
   }
 </style>
-
-<section class="et-slide" id="tab-es6">
+<div id="tab-es6" class="selector" style=""></div>
+<section class="et-slide" >
 <div class="OURP ourp-custom" style="margin-top: 20px;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<H1>OUR PRODUCTS</H1>
+<H1 >OUR PRODUCTS</H1>
  
 <div class="cards-list">
   
@@ -151,10 +153,27 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
   </div>
 </div>
 
-  <div class="card 2">
+  <div class="card 3">
   <div class="card_image">
-    <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+  </div>
+  <div class="card_title">
+    <p>Card Title</p>
+  </div>
+</div>
+  
+  <div class="card 4">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
     </div>
+  <div class="card_title title-black">
+    <p>Card Title</p>
+  </div>
+  </div>
+
+  
+<div class="card 1">
+  <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
   <div class="card_title title-white">
     <p>Card Title</p>
   </div>
@@ -180,6 +199,7 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
 
 </div>
 </div>
+	
 </section>
 		
 		<section class="et-slide" id="tab-NC" style="
