@@ -481,6 +481,13 @@ a {
     transform: translateY(0);
   }
 }
+.image-grid-p {
+  display: flex;
+  margin-top: 12px;
+  margin-bottom: -70px;
+  place-content: center;
+}
+
 .image-grid {
   display: flex;
   justify-content: space-between;
@@ -634,4 +641,84 @@ img {
   .ourp-custom H1 {
     font-size: 1.5rem;
   }
+}
+.wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#tooltip {
+  padding: 15px;
+  background-color: #eee;
+  color: #9c9c9c;
+  width: 100%;
+  text-align: center;
+}
+
+.land {
+  fill: #ccc;
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.2s ease-out;
+}
+
+.landCo {
+  fill: #3d9b75;
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.2s ease-out;
+}
+
+.landEc {
+  fill: #07a8b5;
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.2s ease-out;
+}
+
+.landUs {
+  fill: #3d9b75;
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.2s ease-out;
+}
+
+.landJp {
+  fill: #3d9b75;
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.2s ease-out;
+}
+
+.landRu {
+  fill: #369f86;
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  transition: 0.2s ease-out;
+}
+
+.land:hover {
+  fill: #a9a9a9;
+}
+
+.tooltip {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
 }
