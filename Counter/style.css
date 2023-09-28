@@ -5,7 +5,6 @@ body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  margin-top: 200px;
 }
 
 .col-md-3 {
@@ -27,7 +26,7 @@ i {
   font-size: 20px !Important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 500px) {
   .col-md-3 {
     border-right: 0px dashed black;
     border-bottom: 1px dashed black;
