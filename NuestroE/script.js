@@ -377,3 +377,21 @@ window.addEventListener("load", event => {
 
     /* end */
 });
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtén todos los elementos con la clase "et-hero-tab"
+  var tabs = document.querySelectorAll('.et-hero-tab');
+
+  // Agrega un evento de clic a cada botón
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(event) {
+      // Evita el comportamiento predeterminado del enlace
+      event.preventDefault();
+
+      // Obtiene la URL del enlace clicado
+      var url = tab.getAttribute('href');
+
+      // Redirige a la URL correspondiente
+      window.location.href = url;
+    });
+  });
+});
