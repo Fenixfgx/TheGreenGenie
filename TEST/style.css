@@ -486,8 +486,15 @@ a {
   margin-top: 12px;
   margin-bottom: -70px;
   place-content: center;
+  z-index: 12;
+  position: relative;
 }
 
+@media (max-width: 980px) and (min-width: 349px) {
+  .image-grid-p {
+    display: none;
+  }
+}
 .image-grid {
   display: flex;
   justify-content: space-between;
@@ -571,14 +578,16 @@ img {
 }
 @media (max-width: 980px) and (min-width: 349px) {
   .ourp-custom .card {
-    width: 150px;
-    height: 150px;
+    width: 104px;
+    height: 104px;
   }
 }
 @media (min-width: 1100px) {
   .ourp-custom .card {
-    width: 190px;
-    height: 190px;
+    width: 150px;
+    height: 150px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
 }
 .ourp-custom .card .card_image {
@@ -738,7 +747,8 @@ img {
     z-index: 13;
     position: absolute;
     margin-top: -160px;
-    margin-left: 12%;
+    margin-left: 6%;
+    margin-bottom: 12px;
   }
 }
 .container {
@@ -760,7 +770,7 @@ img {
   text-align: center;
 }
 
-@media (max-width: 1210px) {
+@media (max-width: 10210px) {
   .counters .counter {
     font-size: 3em;
   }
@@ -784,6 +794,7 @@ img {
   .counters .container {
     grid-template-columns: repeat(2, 1fr);
     font-size: 0.8em;
+    margin-top: 68px;
   }
 }
 .counters .counter {
@@ -819,12 +830,12 @@ h3 {
 
 @media (max-width: 410px) {
   .pf {
-    margin-top: -80px;
+    margin-top: 39px;
   }
 }
 .btnx {
   margin-top: 35px;
-  margin-bottom: -55px;
+  margin-bottom: 10px;
 }
 
 .boton {
