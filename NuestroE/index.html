@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Nuestro Equipo</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-!--<!DOCTYPE html> 
+<!DOCTYPE html> 
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
@@ -293,12 +282,29 @@ src="https://www.theGreenGenie.com.co/NC">
   </main>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+
+	
 	
 </body>
 </html>
+	
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtén todos los elementos con la clase "et-hero-tab"
+  var tabs = document.querySelectorAll('.et-hero-tab');
 
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+  // Agrega un evento de clic a cada botón
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(event) {
+      // Evita el comportamiento predeterminado del enlace
+      event.preventDefault();
 
-</body>
-</html>
+      // Obtiene la URL del enlace clicado
+      var url = tab.getAttribute('href');
+
+      // Redirige a la URL correspondiente
+      window.location.href = url;
+    });
+  });
+});
+</script>
