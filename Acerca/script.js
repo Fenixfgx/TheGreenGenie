@@ -166,3 +166,12 @@ const counters = document.querySelectorAll('.counter');
 counters.forEach(counter => {
   observer.observe(counter);
 });
+
+$('.acordeon').on('click','.acordeon__titulo',function() {
+  var t = $(this);
+  var p = t.parent().siblings().find('.acordeon__contenido');
+  var tp = t.next();
+  var temp = 200;
+  p.slideUp(temp);
+  tp.slideToggle(temp);
+});
