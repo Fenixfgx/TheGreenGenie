@@ -1,8 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>DAX Nuestro Equipo</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
 <!DOCTYPE html> 
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>NUES</title>
+  <title>V2</title>
 	
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
@@ -137,62 +148,7 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
 </div>
 	
 <iframe class="ifr" src="https://www.thegreengenie.com.co/NE/index.html"> </iframe>
-	
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css'><link rel="stylesheet" href="./style.css">
 
-<body>
-<!-- partial:index.partial.html -->
-<!-- about -->
-
-<!-- end about -->
-
-<div class="wrapper">
-
-   <section class="module-team">
-
-      <div class="team">
-         <div class="team-cards">
-
-            <!-- Slider main container -->
-            <div class="swiper-container">
-               <!-- Additional required wrapper -->
-               <div class="swiper-wrapper"></div>
-
-            </div>
-
-            <div class="swiper-pagination"></div>
-            <!-- If we need navigation buttons -->
-            <div class="navigation">
-               <div class="swiper-button-prev"></div>
-               <div class="swiper-button-next"></div>
-            </div>
-         </div>
-
-      </div>
-</div>
-
-</section>
-
-</div> 
-
-<script> 
-// Obtenemos el botón de flecha derecha
-const nextButton = document.querySelector('.swiper-button-next');
-
-// Definimos una función que haga click en el botón de flecha derecha
-function clickNextButton() {
-  nextButton.click();
-}
-
-// Activamos el click en el botón de flecha derecha cada 10 segundos
-setInterval(clickNextButton, 8000);
-</script>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js'></script><script  src="./script.js"></script>
-
-</body>
 </section>
 	<div>
 <p class="pf">THE GREEN GENIE CONTACT: <a href="tel:+573222180626" style="color: white;">+57 3222180626</a> | <a href="mailto:salesmanagerthegreengenie@hotmail.com" style=" color: white;">salesmanagerthegreengenie@hotmail.com</a></p>
@@ -285,5 +241,31 @@ src="https://www.theGreenGenie.com.co/NC">
 
 	
 	
+</body>
+</html>
+	
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtén todos los elementos con la clase "et-hero-tab"
+  var tabs = document.querySelectorAll('.et-hero-tab');
+
+  // Agrega un evento de clic a cada botón
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(event) {
+      // Evita el comportamiento predeterminado del enlace
+      event.preventDefault();
+
+      // Obtiene la URL del enlace clicado
+      var url = tab.getAttribute('href');
+
+      // Redirige a la URL correspondiente
+      window.location.href = url;
+    });
+  });
+});
+</script>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
 </html>
