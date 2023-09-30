@@ -902,3 +902,8 @@ h3 {
   margin-right: 20px;
   /* Espacio entre los botones (puedes ajustar según tus necesidades) */
 }
+
+@media (max-width: 410px) {
+.our{
+	background-color: white;
+	}}
