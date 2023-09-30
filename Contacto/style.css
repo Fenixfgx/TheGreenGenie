@@ -1848,6 +1848,7 @@ body {
   -moz-text-align-last: center;
        text-align-last: center;
   text-align: -webkit-center;
+  margin-top: 45px;
 }
 
 .grid-itemX {
@@ -1889,8 +1890,8 @@ body {
 
 .border {
   background-color: #ffffffad;
-  padding-top: 47px;
-  padding-bottom: 47px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   border-radius: 12px;
 }
 
@@ -1915,9 +1916,10 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #ffffffb5;
-  margin-bottom: 30px;
+  /* width: 32%; */
   max-width: 312px;
   min-width: 300px;
   margin-left: 7px;
   margin: auto;
+  margin-bottom: 30px;
 }
