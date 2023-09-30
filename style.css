@@ -15,8 +15,10 @@ a {
   align-items: center;
   height: 100vh;
   position: relative;
-  background: #eee;
+  background-image: url(https://www.thegreengenie.com.co/images/FFY.jpg);
   text-align: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .et-hero-tabs h1,
 .et-slide h1 {
