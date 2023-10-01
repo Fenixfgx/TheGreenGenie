@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Bellota:ital,wght@1,700&family=Caveat:wght@700&display=swap");
 body {
   font-family: "Century Gothic", "Lato", sans-serif;
+  background: linear-gradient(#369f8600, #8ed9e5ab, #0080004d, #ffffff);
 }
 
 a {
@@ -994,4 +995,85 @@ h3 {
   font-size: 1.2rem;
   font-weight: 200;
   text-align: justify;
+}
+
+@-webkit-keyframes slidy {
+  0% {
+    left: 0%;
+  }
+  20% {
+    left: 0%;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+}
+
+@keyframes slidy {
+  0% {
+    left: 0%;
+  }
+  20% {
+    left: 0%;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+}
+body {
+  margin: 0;
+}
+
+div#slider {
+  overflow: hidden;
+}
+
+div#slider figure img {
+  width: 20%;
+  float: left;
+}
+
+div#slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  -webkit-animation: 30s slidy infinite;
+          animation: 30s slidy infinite;
+}
+
+.borde {
+  box-shadow: 0 0 15px #ddd;
+  border-radius: 12px;
+  max-width: 450px;
+  margin-top: 13%;
+}
+
+@media (max-width: 914px) {
+  .borde {
+    margin-top: 35%;
+  }
+}
+.NH {
+  border-radius: 12px;
 }
