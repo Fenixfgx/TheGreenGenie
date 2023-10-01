@@ -1066,12 +1066,13 @@ div#slider figure {
   box-shadow: 0 0 15px #ddd;
   border-radius: 12px;
   max-width: 450px;
-  margin-top: 13%;
+  margin-top: 13% !important;
+  margin: auto;
 }
 
 @media (max-width: 914px) {
   .borde {
-    margin-top: 35%;
+    margin-top: 35% !important;
   }
 }
 .NH {
