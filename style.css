@@ -959,14 +959,14 @@ h3 {
     pointer-events: none; /* Evitar que el usuario interactúe con los elementos ocultos */
 }
 .TEXt {
-    top: 50%;
+    top: 85%;
     left: 50%;
 }
 .TEXt2 {
-top: 50%;
+top: 85%;
     left: 50%;
 }
 .TEXt3 {
-top: 50%;
+top: 85%;
     left: 50%;
 }
