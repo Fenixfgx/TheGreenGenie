@@ -35,7 +35,7 @@
 	
 <!-- partial:index.partial.html -->
 <!-- wpp-btn-mobile -->
-<div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div" style=""><a id="WhatsApp-button" href="https://wa.me/573046234592" target="_blank" class="phoneJs" title="WhatsApp 360imagem"><div class="cbh-ph-circle"></div><div class="cbh-ph-circle-fill"></div><div class="cbh-ph-img-circle1"></div></a></div>
+<div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div" style=""><a id="WhatsApp-button" href="https://wa.me/573222180626" target="_blank" class="phoneJs" title="WhatsApp 360imagem"><div class="cbh-ph-circle"></div><div class="cbh-ph-circle-fill"></div><div class="cbh-ph-img-circle1"></div></a></div>
 
 <section class="et-hero-tabs first"  id="tab-index" style="height: fit-content;">
 
@@ -213,14 +213,16 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
         </div>
 
  <div class="informacion-containeri" style="font-size: 1.4em;">
+	 <div class="informacion-inicial">
+                Seleccione un botón para ver la información.
+            </div>
             <div class="informacioni" id="unidad-info">Corresponde al valor humano de la solidaridad para mantenernos homogéneos en el trabajo realizado dentro de la compañía.</div>
 <div class="informacioni" id="creatividad-info">Es el valor vinculado a las diversas competencias y la capacidad de innovar en el momento de ofrecer nuestros productos.</div>
 <div class="informacioni" id="amabilidad-info">Virtud esencial en nuestra compañía en el cual se manifiesta la cortesía, el respeto, y la benevolencia en la forma de relacionarnos.</div>
 <div class="informacioni" id="puntualidad-info">Como actitud humana la consideramos esencial a la hora de cumplir con nuestras responsabilidades y compromisos adquiridos con nuestros clientes.</div>
         </div>
     </div>
-
- <script>
+<script>
         var informacionVisible = null;
 
         function mostrarInformacion(boton) {
@@ -234,6 +236,9 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
 
             // Actualiza la variable informacionVisible
             informacionVisible = boton;
+
+            // Oculta el texto inicial
+            document.querySelector('.informacion-inicial').style.display = 'none';
         }
     </script>
 </body>

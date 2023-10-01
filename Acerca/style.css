@@ -893,7 +893,8 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* Distribuir las casillas en la fila */
+  max-width: 1200px;
+  margin: auto;
 }
 
 .grid-item {
