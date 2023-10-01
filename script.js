@@ -185,3 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+const texts = document.querySelectorAll('.TEXt, .TEXt2, .TEXt3');
+let currentIndex = 0;
+
+function showText() {
+    texts[currentIndex].style.opacity = '0';
+    currentIndex = (currentIndex + 1) % texts.length;
+    texts[currentIndex].style.opacity = '1';
+}
+
+showText(); // Mostrar el primer texto inmediatamente
+
+setInterval(showText, 5000); // Cambiar el texto con una transición cada 2 segundos
