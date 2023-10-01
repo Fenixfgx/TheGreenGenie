@@ -131,6 +131,51 @@ menuItems.forEach(function(item) {
     });
 });
 
+// Función que inicia la animación cuando el elemento es visible en el viewport
+function startCounterAnimation(entry) {
+  const counter = entry.target;
+  const target = +counter.getAttribute('data-target');
+  let count = 0;
+  const increment = target / 170; // Ajusta la velocidad según sea necesario
+
+  const updateCount = () => {
+    if (count < target) {
+      count += increment;
+      counter.innerText = Math.round(count);
+      requestAnimationFrame(updateCount);
+    } else {
+      counter.innerText = target;
+    }
+  };
+
+  updateCount();
+}
+
+// Configuración del IntersectionObserver
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startCounterAnimation(entry);
+      observer.unobserve(entry.target); // Deja de observar el elemento una vez que comienza la animación
+    }
+  });
+});
+
+// Observar todos los elementos con la clase '.counter'
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  observer.observe(counter);
+});
+
+$('.acordeon').on('click','.acordeon__titulo',function() {
+  var t = $(this);
+  var p = t.parent().siblings().find('.acordeon__contenido');
+  var tp = t.next();
+  var temp = 200;
+  p.slideUp(temp);
+  tp.slideToggle(temp);
+});
+
 window.addEventListener("load", event => {
 
     var swiperWrapper = document.querySelector('.swiper-wrapper');
