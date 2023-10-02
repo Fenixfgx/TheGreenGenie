@@ -91,18 +91,35 @@ onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" on
 onmouseover="this.style.backgroundColor='#15996f'; this.style.color='white';" onmouseout="this.style.backgroundColor='white'; this.style.color='black';" href="https://www.thegreengenie.com.co/Contacto">Contáctanos</a>
     </div>
 	
+<div class="search-list-container">
 <div class="search-container">
     <div class="search-icon">
-<svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" style="
-    padding-left: 5px;
-    padding-top: 3px;
-    margin-right: -5px;
-"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z" fill="#000000"></path></g></svg>
+        <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <path d="M448 768A320 320 0 1 0 448 128a320 320 0 0 0 0 640z m297.344-76.992l214.592 214.592-54.336 54.336-214.592-214.592a384 384 0 1 1 54.336-54.336z" fill="#000000"></path>
+        </svg>
     </div>
     <input type="text" id="search-input" placeholder="Search..." style="padding: 7px; border: none; border-radius: 2px; outline: none;">
 </div>
-    <div id="search-results">
-	</div>
+<div id="search-results">
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="product-modal">
+    <div class="modal-content">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <h2 id="modal-title">Producto</h2>
+        <img id="modal-image" src="" alt="Imagen del producto">
+        <p id="modal-description">Descripción del producto.</p>
+			<a>Contacto:</a>
+        <div class="modal-buttons">
+	<a href="https://wa.me/+573222180626"><img style="width: 40px; padding-left: 2px; padding-right: 2px;" src="https://www.thegreengenie.com.co/images/WB.png" alt="WhatsApp"></a>
+            <a href="skype:CristianR-TGG?chat" target="_blank">
+<img style="width: 40px; padding-left: 2px; padding-right: 2px;" src="https://www.thegreengenie.com.co/images/SB.png" alt="Skype">
+            </a>
+        </div>
+    </div>
+</div>
 <div class="et-hero-tabs-container">
 <img src="https://www.thegreengenie.com.co/images/favicon.png?rand=c5e2" alt="Logo de tu sitio" style="width: 246px;height: 130px;top: -68px;position: relative;">
 	<a class="et-hero-tab" href="https://www.thegreengenie.com.co/">Inicio</a>
