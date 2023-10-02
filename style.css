@@ -14,7 +14,7 @@ a {
     align-items: center;
     height: 100vh;
     position: relative;
-    background: linear-gradient(#369f8600,#8ed9e559,#0080001f, #ffffff);
+    background: linear-gradient(#369f8600,#8ed9e5ab,#0080004d, #ffffff);
     text-align: center;
     background-size: cover;
     h1 {
@@ -627,7 +627,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   height: inherit;
   border-radius: 50%;
   object-fit: cover;
-  background-color: #ffffff6e;
+	background-color: #ffffff8c;
 }
 
 .ourp-custom .card .card_title {
@@ -960,14 +960,14 @@ h3 {
     pointer-events: none; /* Evitar que el usuario interactúe con los elementos ocultos */
 }
 .TEXt {
-    top: 85%;
-    left: 50%;
+    top: 83%;
+    left: 30%;
 }
 .TEXt2 {
-top: 85%;
-    left: 50%;
+top: 83%;
+    left: 30%;
 }
 .TEXt3 {
-top: 85%;
-    left: 50%;
+top: 83%;
+    left: 30%;
 }
