@@ -396,3 +396,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+// Obtener todos los botones por su clase
+var skypeButtons = document.querySelectorAll(".skypeButton");
+
+// Agregar un evento de clic a cada botón para redirigir a Skype al hacer clic
+skypeButtons.forEach(function(button) {
+  button.addEventListener("click", function() {
+    var destination = button.getAttribute("data-destination");
+    var skypeURL = "skype:" + destination + "?chat";
+    window.location.href = skypeURL;
+  });
+});
