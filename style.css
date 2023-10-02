@@ -14,7 +14,7 @@ a {
     align-items: center;
     height: 100vh;
     position: relative;
-    background: linear-gradient(#369f8600,#8ed9e5ab,#0080004d, #ffffff);
+    background: linear-gradient(#369f8600, #8ed9e540, #0080001f, #ffffff);
     text-align: center;
     background-size: cover;
     h1 {
@@ -960,14 +960,14 @@ h3 {
     pointer-events: none; /* Evitar que el usuario interactúe con los elementos ocultos */
 }
 .TEXt {
-    top: 83%;
-    left: 30%;
+    top: 36%;
+    right: -23%;
 }
 .TEXt2 {
-top: 83%;
-    left: 30%;
+top: 36%;
+    right: -23%;
 }
 .TEXt3 {
-top: 83%;
-    left: 30%;
+top: 36%;
+    right: -23%;
 }
