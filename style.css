@@ -971,3 +971,11 @@ top: 36%;
 top: 36%;
     right: -17%;
 }
+
+@media (max-width: 450px) {
+.TEXt, .TEXt2, .TEXt3 {
+	  left: 50%;
+    font-size: 1em;
+    width: 78%;
+    top: 48%;
+	}}
