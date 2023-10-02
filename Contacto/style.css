@@ -811,7 +811,7 @@ h3 {
   display: flex;
   place-content: center;
   padding-bottom: 12px;
-  margin-left: 7px;
+  padding-left: 7px;
   padding-top: 12px;
   background-color: white;
 }
@@ -1923,4 +1923,13 @@ body {
   margin-left: 7px;
   margin: auto;
   margin-bottom: 30px;
+}
+
+@media (max-width: 450px) {
+  .Banner {
+    padding-left: 1%;
+    padding-right: 16px;
+    padding-top: 10px;
+    text-align: center;
+  }
 }
