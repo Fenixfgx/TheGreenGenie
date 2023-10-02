@@ -197,4 +197,4 @@ function showText() {
 
 showText(); // Mostrar el primer texto inmediatamente
 
-setInterval(showText, 5000); // Cambiar el texto con una transición cada 2 segundos
+setInterval(showText, 7000); // Cambiar el texto con una transición cada 2 segundos
