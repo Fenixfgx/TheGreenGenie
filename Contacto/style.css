@@ -1864,6 +1864,7 @@ body {
   .grid-itemX {
     width: 100%;
     /* En dispositivos móviles, las casillas ocuparán el 100% del ancho */
+    z-index: 3;
   }
 
   .grid-itemX:first-child {
@@ -1902,7 +1903,7 @@ body {
     margin-top: -48px;
     margin-bottom: 0px;
     background-color: #ffffffc9;
-    z-index: -1;
+    z-index: 2;
   }
 }
 .boton-container {
