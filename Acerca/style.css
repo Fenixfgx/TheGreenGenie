@@ -927,6 +927,12 @@ h3 {
   margin-top: 117px;
 }
 
+@media (max-width: 402px) {
+  .TI {
+    margin-top: 10px;
+    font-size: 2.2em;
+  }
+}
 @media (min-width: 1042px) {
   .SECTOR {
     margin-top: 91px;
@@ -1072,11 +1078,20 @@ div#slider figure {
   margin: auto;
 }
 
-@media (max-width: 914px) {
+@media (max-width: 414px) {
+  .borde {
+    margin-top: 0px !important;
+  }
+}
+@media (max-width: 914px) and (min-width: 414px) {
   .borde {
     margin-top: 35% !important;
   }
 }
 .NH {
   border-radius: 12px;
+}
+
+.noq {
+  display: none;
 }
