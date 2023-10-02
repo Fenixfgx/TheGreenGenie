@@ -198,3 +198,84 @@ function showText() {
 showText(); // Mostrar el primer texto inmediatamente
 
 setInterval(showText, 7000); // Cambiar el texto con una transición cada 2 segundos
+
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+const productModal = document.getElementById("product-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalImage = document.getElementById("modal-image");
+const modalDescription = document.getElementById("modal-description");
+const closeModalButton = document.getElementById("close-modal");
+
+// Simulación de datos de búsqueda (reemplaza esto con tus propios datos)
+const searchData = [
+    { name: "EUCALIPTO SILVER DOLLAR", description: "El Eucalipto Silver Dollar es un árbol perenne con hojas redondeadas de color verde plateado. Las hojas son fragantes y se utilizan con frecuencia en arreglos florales y decoración debido a su aspecto distintivo.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(1).jpg" },
+    { name: "COCCULUS", description: "Cocculus laurifolius es un arbusto perenne con hojas laureadas y vistosas. Es apreciado en jardinería por su follaje exuberante y su capacidad para agregar belleza y color a los espacios exteriores.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(2).jpg" },
+    { name: "RUSCUS", description: "El Ruscus es una planta perenne de hojas verdes oscuro en forma de lanza. Se utiliza ampliamente en arreglos florales y decoración debido a su aspecto elegante y duradero.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(3).jpg" },
+	{ name: "EUCALIPTO BABY BLUE", description: "El Eucalipto Baby Blue es un árbol perenne con hojas redondeadas de color azul plateado. Se utiliza ampliamente en arreglos florales y decoración debido a su aspecto delicado y encantador.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(4).jpg" },
+	{ name: "HELECHO DE CUERO", description: "El Helecho de Cuero es una planta perenne con frondas verdes brillantes y textura similar al cuero. Se utiliza comúnmente en arreglos florales y decoración debido a su aspecto exótico y resistencia.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(5).jpg" },
+	{ name: "MONSTERA", description: "La Monstera es una planta trepadora con hojas grandes y perforadas. Es muy popular en la decoración de interiores y se utiliza en arreglos florales debido a su apariencia tropical y llamativa.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(6).jpg" },
+	{ name: "BRILLANTINA", description: "Lonicera pileata, comúnmente conocida como Brillantina, es un arbusto perenne de hoja perenne. Tiene hojas pequeñas y brillantes de color verde oscuro que le dan un aspecto atractivo. Es apreciada en jardinería por su resistencia y facilidad de mantenimiento.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(7).jpg" },
+	{ name: "TREE FERN", description: "La Tree Fern es una planta perenne de gran tamaño con frondas verdes y textura delicada. Se utiliza comúnmente en jardines y paisajismo para agregar un toque tropical y exuberante.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(8).jpg" },
+	{ name: "PINO", description: " El Pino es un árbol perenne de hojas verdes y forma cónica. Se utiliza ampliamente en jardinería y paisajismo debido a su apariencia clásica y su capacidad para proporcionar sombra.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(9).jpg" },
+	{ name: "PALMA RIVELINA", description: "La Palma Rivelina es una palmera perenne con hojas en forma de abanico y tronco esbelto. Es muy apreciada en jardinería y paisajismo por su elegancia y resistencia.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(10).jpg" },
+	{ name: "CINTA LIRIOPE", description: "La Cinta Liriope es una planta perenne con hojas estrechas y flores moradas. Se utiliza comúnmente en jardines y paisajismo como bordura o cubierta de suelo debido a su resistencia y belleza.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(11).jpg" },
+	{ name: "HYPERICUM VERDE", description: "Hypericum perforatum, comúnmente conocido como Hypericum Verde, es una planta herbácea perenne con botones en este caso verdes brillantes y hojas verde oscuro. Es conocida por sus propiedades medicinales y se utiliza en remedios naturales. Además, es apreciada en la jardinería por su belleza y resistencia.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(12).jpg" },
+	{ name: "HYPERICUM ROJO", description: " Hypericum perforatum, comúnmente conocido como Hypericum Rojo, es una planta herbácea perenne con botones en este caso Rojos brillantes y hojas verde oscuro. Es conocida por sus propiedades medicinales y se utiliza en remedios naturales. Además, es apreciada en la jardinería por su belleza y resistencia.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(13).jpg" },
+	{ name: "HYPERICUM ROSADO", description: "Hypericum perforatum, comúnmente conocido como Hypericum Rosado, es una planta herbácea perenne con botones en este caso Rosados brillantes y hojas verde oscuro. Es conocida por sus propiedades medicinales y se utiliza en remedios naturales. Además, es apreciada en la jardinería por su belleza y resistencia.", image: "https://fenixfgx.github.io/TheGreenGenie/images/a%20(14).jpg" },
+];
+
+searchInput.addEventListener("input", () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredResults = searchData.filter(item =>
+        item.name.toLowerCase().startsWith(searchTerm)
+    );
+
+    displayResults(filteredResults);
+});
+
+function displayResults(results) {
+    searchResults.innerHTML = "";
+
+    if (results.length === 0 || searchInput.value.trim() === "") {
+        searchResults.style.display = "none";
+        return;
+    }
+
+    searchResults.style.display = "block";
+
+    results.forEach(result => {
+        const resultItem = document.createElement("div");
+        resultItem.classList.add("search-result-item");
+        resultItem.innerHTML = `
+            <img src="${result.image}" alt="${result.name}" width="38" height="38">
+            <span>${result.name}</span>
+        `;
+
+        resultItem.addEventListener("click", () => {
+            openModal(result);
+        });
+
+        searchResults.appendChild(resultItem);
+    });
+}
+
+function openModal(product) {
+    modalTitle.textContent = product.name;
+    modalImage.src = product.image;
+    modalImage.alt = product.name;
+    modalDescription.textContent = product.description;
+    productModal.style.display = "block";
+}
+
+// Cerrar el modal al hacer clic en el botón de cierre
+closeModalButton.addEventListener("click", () => {
+    productModal.style.display = "none";
+});
+
+// Cerrar el modal al hacer clic fuera de él
+window.addEventListener("click", (event) => {
+    if (event.target === productModal) {
+        productModal.style.display = "none";
+    }
+});
