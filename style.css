@@ -777,6 +777,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 @media all and (max-width: 500px) {
   .ourp-custom H1 {
     font-size: 1.5rem;
+		margin-top: 127px;
   }
 }
 
@@ -1070,8 +1071,9 @@ top: 36%;
 .TEXt, .TEXt2, .TEXt3 {
 	  left: 50%;
     font-size: 1em;
-    width: 78%;
-    top: 48%;
+    width: 93%;
+    top: 137%;
+    padding: 10px;
 	}}
 
 .expanded {
