@@ -774,10 +774,17 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
     margin-bottom: 36px;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 350px) {
   .ourp-custom H1 {
     font-size: 1.5rem;
 		margin-top: 127px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .ourp-custom H1 {
+    font-size: 1.5rem;
+		margin-top: 5px;
   }
 }
 
