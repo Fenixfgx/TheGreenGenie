@@ -28,7 +28,7 @@ body {
   }
 }
 .slide .slide__img img {
-  max-width: 100%;
+  min-width: 100%;
   height: auto;
   opacity: 1 !important;
   -webkit-animation-duration: 3s;
