@@ -927,7 +927,7 @@ h3 {
   margin-top: 117px;
 }
 
-@media (max-width: 402px) {
+@media (max-width: 500px) {
   .TI {
     margin-top: 10px;
     font-size: 2.2em;
@@ -1097,6 +1097,15 @@ div#slider figure {
     display: none;
   }
 }
+@media (min-width: 414px) {
+  .noq2 {
+    display: none;
+  }
+}
+.noq3 {
+  display: none;
+}
+
 /* Estilos para la barra de búsqueda */
 .search-container {
   text-align: center;
@@ -1269,4 +1278,12 @@ div#slider figure {
 .modal-content img {
   max-height: 265px;
   margin: auto;
+}
+
+.cut {
+  margin-bottom: -37px;
+}
+
+.ir {
+  margin-bottom: -60px;
 }
