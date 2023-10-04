@@ -693,8 +693,8 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 
 @media (max-width: 980px) and (min-width: 349px){
    .ourp-custom .card {
-    width: 104px;
-    height: 104px;
+    width: 109px;
+    height: 109px;
     margin-left: 10px;
     margin-right: 10px;
     }
