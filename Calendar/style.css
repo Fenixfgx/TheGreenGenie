@@ -1,0 +1,44 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#calendar {
+    width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+    margin-top: 20px;
+}
+
+.day {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  margin: 5px;
+  min-height: 50px;
+}
+
+.green {
+  background-color: lightgreen;
+}
+/* styles.css */
+
+/* Agrega estas clases de colores de fondo */
+.red-background {
+  background-color: red;
+}
+
+.orange-background {
+  background-color: orange;
+}
+
+.green-background {
+  background-color: lightgreen;
+}
+
+
+  div {
+    margin-bottom: 3px;
+  }
