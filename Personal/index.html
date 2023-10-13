@@ -22,7 +22,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span style="display: none;"class="close" id="closeModal">&times; </span>
-<h2 style="margin-top: 0px;text-align: center;height: 57px;" id="modalTitle"></h2>
+<h2 style="margin-top: 0px;text-align: center;/* padding-bottom: 12px;" id="modalTitle"></h2>
 <p><strong>Horas Nominal:</strong> <span id="modalE"></span></p>
 <p><strong>Horas Extra:</strong> <span id="modalF"></span></p>
           <p><strong>Salario Nominal:</strong> <span id="modalB"></span></p>
@@ -30,7 +30,7 @@
 <p style="border-top: solid;padding-top: 12px;"><strong>Salario Total:</strong> <span id="modalD"></span></p>
         </div>
     </div>
-<canvas id="MiGrafica" class="GR"></canvas>
+<canvas id="MiGrafica" class="GR" style="box-sizing: border-box; display: block; height: 276px; width: 276px;" width="276" height="276"></canvas>
     </div>
   <div style="display: none;">
     <label for="horasNominal">Horas Nominal:</label>
@@ -66,6 +66,17 @@
             },
           ],
         },
+      options: {
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 16 // Tamaño de fuente de las etiquetas
+            }
+          }
+        }
+      }
+    }
       });
     }
 

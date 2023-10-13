@@ -34,7 +34,7 @@ button:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     color: #000;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 16px;
     padding: 10px 20px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -49,9 +49,15 @@ button:hover {
 
 .modal{
   margin-left: 12px;
+    width: 30%;
+    padding: 12px;
 }
 
 .GR {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+p {
+  font-size: 20px;
 }
