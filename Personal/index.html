@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>PERSONAL</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Hoja de Cálculo de Google</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1 style=" text-align: center;">Personal Activo en Informe</h1>
+  <div style=" display: flex;">
+    <div id="table-container"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span style="display: none;"class="close" id="closeModal">&times; </span>
+<h2 style="margin-top: 0px;text-align: center;height: 57px;" id="modalTitle"></h2>
+<p><strong>Horas Nominal:</strong> <span id="modalE"></span></p>
+<p><strong>Horas Extra:</strong> <span id="modalF"></span></p>
+          <p><strong>Salario Nominal:</strong> <span id="modalB"></span></p>
+<p><strong>Salario Extra:</strong> <span id="modalC"></span></p>
+<p style="border-top: solid;padding-top: 12px;"><strong>Salario Total:</strong> <span id="modalD"></span></p>
+        </div>
+    </div>
+<canvas id="MiGrafica" class="GR"></canvas>
+    </div>
+  <div style="display: none;">
+    <label for="horasNominal">Horas Nominal:</label>
+    <input type="text" id="horasNominal">
+  </div>
+  <div style="display: none;">
+    <label for="horasExtra">Horas Extra:</label>
+    <input type="text" id="horasExtra">
+  </div>
+<script>
+    var miCanvas = document.getElementById("MiGrafica").getContext("2d");
+    var chart; // Variable para almacenar la instancia del gráfico
+    var horasNominalInput = document.getElementById("horasNominal");
+    var horasExtraInput = document.getElementById("horasExtra");
+
+    function actualizarGrafica() {
+      if (chart) {
+        chart.destroy(); // Destruir la instancia anterior del gráfico si existe
+      }
+
+      const horasNominal = parseFloat(horasNominalInput.value) || 0;
+      const horasExtra = parseFloat(horasExtraInput.value) || 0;
+
+      chart = new Chart(miCanvas, {
+        type: "doughnut",
+        data: {
+          labels: ["Horas Nominal", "Horas Extra"],
+          datasets: [
+            {
+              label: "Salario",
+              data: [horasNominal, horasExtra],
+              backgroundColor: ["#2a37c3e0", "#FFC300"],
+            },
+          ],
+        },
+      });
+    }
+
+    // Llama a la función de actualización al cargar la página
+    actualizarGrafica();
+  </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
