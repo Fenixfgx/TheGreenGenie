@@ -1,3 +1,7 @@
+document.getElementById('reloadButton').addEventListener('click', function() {
+  location.reload();
+});
+
 // ID de tu hoja de cálculo de Google Sheets
 const sheetId = '1QbMV4FncWFhlMrq5GysbGQQUjfX1aZwkrRldXePrM20';
 
@@ -19,14 +23,19 @@ function openModal(title, b, c, d, e, f) {
   // Establece los valores en los campos de entrada
     const horasNominalInput = document.getElementById("horasNominal");
     const horasExtraInput = document.getElementById("horasExtra");
-    horasNominalInput.value = b;
-    horasExtraInput.value = c;
+    const NominalInput = document.getElementById("Nominal");
+    const ExtraInput = document.getElementById("Extra");
+    horasNominalInput.value = e;
+    horasExtraInput.value = f;
+    NominalInput.value = b;
+    ExtraInput.value = c;
   
   // Agrega el símbolo "$" de prefijo a los valores en el modal
     document.getElementById("modalB").textContent = "$" + b;
     document.getElementById("modalC").textContent = "$" + c;
   
   actualizarGrafica();
+  actualizarGrafica2();
   
     modal.style.display = 'block';
 }
