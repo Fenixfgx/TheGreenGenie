@@ -119,7 +119,7 @@ function showSweetAlert(rowData) {
   // Usar SweetAlert2 para mostrar una alerta personalizada
   Swal.fire({
     title: name,
-    html: `<div>Fecha: ${f}</div><div>Novedades: ${novedades}</div><div>Hora de Entrada: ${b}</div><div>Ingreso a Almuerzo: ${c}</div><div>Regreso de Almuerzo: ${d}</div><div>Hora de Salida: ${e}</div>`,
+    html: `<div>Fecha: ${f}</div><div>Novedades: ${novedades}</div><div>Hora de Entrada: ${b}</div><div>Ingreso a Almuerzo: ${c}</div><div>Regreso de Almuerzo: ${d}</div><div>Hora de Salida: ${e}</div><div>Horas Nominales: ${m}</div><div>Horas Extra: ${n}</div>`,
     icon: 'info',
   });
 }
