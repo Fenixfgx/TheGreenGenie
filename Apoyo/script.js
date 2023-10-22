@@ -1,86 +1,79 @@
-////Naming elements
-//Cranes
-var craneLineOne = document.getElementsByClassName("crane-line-one");
-var craneLineTwo = document.getElementsByClassName("crane-line-two");
-var craneKnot = document.getElementsByClassName("crane-knot");
+let input = document.getElementById('input');
+let result = document.getElementById('result');
+let inputMultiplicacion = document.getElementById('inputMultiplicacion');
+let tasaMonedaInput = document.getElementById('tasaMoneda');
+let resultMultiplicacion = document.getElementById('resultMultiplicacion');
 
-// Star
-var starPiece = document.getElementsByClassName("star-piece");
-var starCut = document.getElementsByClassName("star-cut");
-var starShadow = document.getElementsByClassName("star-shadow");
-
-var wholeKnot = document.getElementsByClassName("whole-knot");
-
-// Roller
-var roller = document.getElementsByClassName("roller");
-var rollerFold = document.getElementsByClassName("roller-fold");
-var rollerShadow = document.getElementsByClassName("roller-fold-shadow");
-
-
-
-//// Animation
-// Crane 1
-var tlCraneOne = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 5.9,
+input.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        calculate();
+    }
 });
-tlCraneOne.set(craneLineOne, {transformOrigin:"50% 0%",})
-										.to(craneLineOne, 1, {scaleY:1.4})
-										.to(craneLineOne, 2, {scaleY:1}, 3)
 
-// Crane 2
-var tlCraneTwo = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 0,
-});
-tlCraneTwo.set(craneLineTwo, {transformOrigin:"50% 0%",})
-										.to(craneLineTwo, 2, {rotation: -8, scaleY:.92})
-										.to(craneLineTwo, 2, {rotation: 0, scaleY:1}, 2)
+function addToInput(value) {
+    input.value += value;
+}
 
-//star
-var tlstar = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 5.9,
-});
-tlstar.to(wholeKnot, 1, {y:38})
-						.to(wholeKnot, 2, {y:0}, 3)
+function clearInput() {
+    input.value = '';
+}
 
-var tlcut = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 4,
-})
-tlcut.to(starCut, .1, {opacity:1}, 1)
-					.to(starCut, 2, {opacity:0}, 4.9)
+function calculate() {
+    try {
+        let expression = input.value;
 
+        // Reemplazar los signos "+" y "-" por separadores ","
+        expression = expression.replace(/\+/g, ',').replace(/\-/g, ',-');
 
-//starShadow
-var tlstarsh = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 5.9,
-});
-tlstarsh.from(starShadow, 0, {
-	transformOrigin:"50% 50%",
-	scale:0})
-								.to(starShadow, 1, {scale:1.75})
-								.to(starShadow, 2, {scale:0}, 3)
+        // Dividir la expresión en partes usando ","
+        const parts = expression.split(',');
 
+        // Inicializar las variables para las horas y los minutos
+        let totalHours = 0;
+        let totalMinutes = 0;
 
-//roller
-var tlstar = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 0,
-});
-tlstar.to(roller, 2, {y:-6, x:18})
-						.to(roller, 2, {y:0, x:0}, 2)
+        // Iterar sobre las partes
+        for (const part of parts) {
+            // Dividir cada parte en horas y minutos
+            const [hours, minutes] = part.split(':').map(Number);
 
+            // Sumar o restar las horas y minutos según sea necesario
+            totalHours += hours;
+            totalMinutes += minutes;
 
-//rollerShadow
-var tlrollerSh = new TimelineMax({
-	repeat: -1,
-	repeatDelay: 0,
-});
-tlrollerSh.set(rollerShadow, {
-	transformOrigin:"100% 50%",
-	opacity:0.05})
-	.to(rollerShadow, .5, {opacity:0})							
-	.to(rollerShadow, 2, {opacity:0.05}, 2)
+            // Ajustar las horas y minutos
+            if (totalMinutes >= 60 || totalMinutes <= -60) {
+                totalHours += Math.floor(totalMinutes / 60);
+                totalMinutes %= 60;
+            }
+        }
+
+        // Mostrar el resultado
+        result.textContent = totalHours + ':' + (totalMinutes < 10 ? '0' : '') + totalMinutes;
+    } catch (error) {
+        result.textContent = 'Error';
+    }
+}
+function calculateMultiplicacion() {
+    try {
+        // Obtener las horas y minutos ingresados
+        const [hours, minutes] = inputMultiplicacion.value.split(':').map(Number);
+        
+        // Obtener la tasa de moneda ingresada
+        const tasaMoneda = parseFloat(tasaMonedaInput.value);
+        
+        // Calcular el total en minutos
+        const totalMinutes = hours * 60 + minutes;
+        
+        // Calcular el total multiplicando por la tasa de moneda
+        const totalMultiplicacion = totalMinutes * tasaMoneda / 60;
+        
+        // Formatear el resultado con puntuación
+        const formattedResult = '$' + totalMultiplicacion.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        
+        // Mostrar el resultado formateado
+        resultMultiplicacion.textContent = formattedResult;
+    } catch (error) {
+        resultMultiplicacion.textContent = 'Error';
+    }
+}

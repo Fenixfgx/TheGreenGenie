@@ -1,28 +1,57 @@
 body {
-  background: #c0dbe3;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: -webkit-center;
+  display: flex
 }
 
-.container {
-  margin: 0em auto;
-  margin-top:-3.5em;
-	position: relative;
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    height: 500px;
+  margin-right: 12px;
 }
 
-.container svg {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.calculator2 {
+    /* display: grid; */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    /* height: 500px; */
+    margin-right: 12px;
 }
 
-/*Animation Elements*/
-.crane-line-one {}
-.crane-line-two {}
-.crane-knot {}
+.input {
+    grid-column: span 4;
+    padding: 10px;
+    font-size: 24px;
+}
 
-.star-piece {}
-.star-cut {opacity: 0;}
-.star-shadow {opacity: .35}
+button {
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
 
-.roller {}
-.roller-fold {}
-.roller-fold-shadow {opacity:0.08}
+button:hover {
+    background-color: #ccc;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 24px;
+}
