@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    text-align-last: center;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #0ec31229;
+}
+
+button {
+  background: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}button {
+  background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    width: 132px;
+    display: block;
+    z-index: 2;
+    position: fixed;
+}
+
+button:hover {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}
