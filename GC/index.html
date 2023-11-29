@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - GENERADOR DE CARTAS 2</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexy.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="display:none">
+<div class="cardas" data-state="#aboutas">
+  <div class="cardas-header">
+    <div class="cardas-cover"></div>
+    <img class="cardas-avatar" id="fotoas" alt="avatar" />
+    <h1 class="cardas-fullname" id="nombreas"></h1>
+    <h2 class="cardas-apel" id="apellidoas"></h2>
+    <h2 class="cardas-jobtitle" id="profesionas"></h2>
+  </div>
+  <div class="cardas-main">
+    <div class="cardas-section is-active" id="aboutas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">ACERCA DE</div>
+        <p class="cardas-desc" id="acercaas">
+        </p>
+<div style="margin-top: 12px;">
+       <p class="cardas-desc" >Edad: <span id="edadas"></span> Años.</p>
+</div>
+      </div>
+
+    </div>
+    <div class="cardas-section" id="experienceas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">EXPERIENCIA LABORAL</div>
+        <div class="cardas-timeline">
+          <div class="cardas-item" >
+            <div class="cardas-item-title" id="expas"></div>
+          </div>
+          <div class="cardas-item" style="display:none" >
+            
+          </div>
+          <div class="cardas-item" style="display:none">
+            <div class="cardas-item-title"></div>
+            <div class="cardas-item-desc"></div>
+          </div>
+          <div class="cardas-item" style="display:none">
+            <div class="cardas-item-title"></div>
+            <div class="cardas-item-desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cardas-section" id="contactas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">CONTACTO</div>
+        <div class="cardas-contact-wrapper">
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+           <p id="ubicacionas">  </p>
+          </div>
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg><p id="telas">  </p>
+          </div>
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <path d="M22 6l-10 7L2 6" />
+            </svg>
+            <p id="emailas">  </p>
+          </div>
+          </div>
+      </div>
+    </div>
+     </div>
+</div>
+</div>
+<style>
+.cardas {
+    margin-bottom: 25px;
+    width: 500px;
+    max-width: 700px; 
+}
+</style>
+
+ <div id="card-container"></div>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+  
+  const buttons = document.querySelectorAll(".cardas-buttons button");
+const sections = document.querySelectorAll(".cardas-section");
+const card = document.querySelector(".cardas");
+
+const handleButtonClick = (e) => {
+  const targetSection = e.target.getAttribute("data-section");
+  const section = document.querySelector(targetSection);
+  targetSection !== "#aboutas"
+    ? card.classList.add("is-active")
+    : card.classList.remove("is-active");
+  card.setAttribute("data-state", targetSection);
+  sections.forEach((s) => s.classList.remove("is-active"));
+  buttons.forEach((b) => b.classList.remove("is-active"));
+  e.target.classList.add("is-active");
+  section.classList.add("is-active");
+};
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", handleButtonClick);
+});
+  
+  const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+  const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+  const SHEET_NAME = 'prueba';
+
+  gapi.load('client:auth2', initClient);
+
+  function initClient() {
+    gapi.client.init({
+      apiKey: API_KEY,
+      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    }).then(() => {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: SHEET_NAME,
+      }).then((response) => {
+        const data = response.result.values;
+
+        const cardContainer = document.getElementById("card-container");
+
+        for (let i = 1; i < data.length; i++) {
+          const cardClone = document.querySelector(".cardas").cloneNode(true);
+          cardClone.setAttribute("data-state", "#" + i);
+
+          const nombreas = cardClone.querySelector("#nombreas");
+          const apellidoas = cardClone.querySelector("#apellidoas");
+          const profesionas = cardClone.querySelector("#profesionas");
+          const acercaas = cardClone.querySelector("#acercaas");
+          const ubicacionas = cardClone.querySelector("#ubicacionas");
+          const telas = cardClone.querySelector("#telas");
+          const emailas = cardClone.querySelector("#emailas");
+          const expas = cardClone.querySelector("#expas");
+          const edadas = cardClone.querySelector("#edadas");
+          const fotoas = cardClone.querySelector("#fotoas");
+
+          nombreas.innerHTML = data[i][1];
+          apellidoas.innerHTML = data[i][2];
+          profesionas.innerHTML = data[i][11];
+          acercaas.innerHTML = data[i][14];
+          ubicacionas.innerHTML = data[i][13];
+          telas.innerHTML = data[i][10];
+          emailas.innerHTML = data[i][20];
+          edadas.innerHTML = data[i][12];
+          expas.innerHTML = data[i][16];
+          fotoas.src = data[i][15];
+
+          cardContainer.appendChild(cardClone);
+          setupCardButtons(cardClone);
+        }
+      });
+    });
+  }
+
+function setupCardButtons(card) {
+    const buttons = card.querySelectorAll(".cardas-buttons button");
+    const sections = card.querySelectorAll(".cardas-section");
+
+    const handleButtonClick = (e) => {
+        const targetSection = e.target.getAttribute("data-section");
+        const section = card.querySelector(targetSection);
+        targetSection !== "#aboutas"
+            ? card.classList.add("is-active")
+            : card.classList.remove("is-active");
+        card.setAttribute("data-state", targetSection);
+        sections.forEach((s) => s.classList.remove("is-active"));
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        e.target.classList.add("is-active");
+        section.classList.add("is-active");
+    };
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", handleButtonClick);
+    });
+
+    const telasButton = card.querySelector("#telas");
+    telasButton.addEventListener("click", () => {
+        const phoneNumber = telasButton.textContent.trim();
+        if (phoneNumber !== "") {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+    });
+
+    const emailasButton = card.querySelector("#emailas");
+    emailasButton.addEventListener("click", () => {
+        const emailAddress = emailasButton.textContent.trim();
+        if (emailAddress !== "") {
+            window.location.href = `mailto:${emailAddress}`;
+        }
+    });
+}
+
+</script>
+<!-- partial -->
+  
+</body>
+</html>
