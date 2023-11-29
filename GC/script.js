@@ -1,16 +1,16 @@
-function imprimirComoPDF() {
-  // Obtén el contenido de la clase "cardas"
-  var contenido = document.querySelector('.cardas').innerHTML;
+function imprimirContenido() {
+  // Oculta todo excepto el contenido que deseas imprimir
+  var elementosAImprimir = document.querySelector('.cardas').innerHTML;
+  var elementosNoImprimir = document.body.querySelectorAll(':not(.cardas)');
+  elementosNoImprimir.forEach(function (elemento) {
+    elemento.style.display = 'none';
+  });
 
-  // Configuración de opciones para la creación del PDF
-  var opciones = {
-    margin: 10,
-    filename: 'tarjeta.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } };
+  // Imprime el contenido visible
+  window.print();
 
-
-  // Crear el PDF
-  html2pdf().from(contenido).set(opciones).outputPdf();
+  // Restaura la visibilidad de los elementos ocultados
+  elementosNoImprimir.forEach(function (elemento) {
+    elemento.style.display = '';
+  });
 }
