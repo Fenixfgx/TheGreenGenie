@@ -1,12 +1,16 @@
-function imprimir() {
-  // Obtener el contenido de la clase 'cardas'
+function imprimirComoPDF() {
+  // Obtén el contenido de la clase "cardas"
   var contenido = document.querySelector('.cardas').innerHTML;
 
-  // Crear un nuevo elemento de tipo 'iframe'
-  var ventanaImpresion = window.open('', '_blank');
-  ventanaImpresion.document.write('<html><head><title>Imprimir</title></head><body>' + contenido + '</body></html>');
+  // Configuración de opciones para la creación del PDF
+  var opciones = {
+    margin: 10,
+    filename: 'tarjeta.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } };
 
-  // Cerrar el documento después de la impresión
-  ventanaImpresion.document.close();
-  ventanaImpresion.print();
+
+  // Crear el PDF
+  html2pdf().from(contenido).set(opciones).outputPdf();
 }
