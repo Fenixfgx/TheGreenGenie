@@ -399,3 +399,25 @@ p {
 .pp2 {
   padding-left: -10px;
 }
+
+.cardas {
+  display: none;
+}
+
+.fechainp {
+  margin-left: 220px;
+  margin-bottom: 12px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: -1px 6px 8px 0 grey;
+  position: fixed;
+  z-index: 5;
+}
+
+.text {
+  border-radius: 7px;
+  border-color: darkorchid;
+  border-width: thin;
+  text-align: -webkit-center;
+}

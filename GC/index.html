@@ -21,6 +21,8 @@
     }
   </style>
 <button class="imprimir-btn" onclick="imprimirContenido()" style=" position: absolute; z-index: 2; ">Imprimir</button>
+<div class="fechainp"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: none;" id="fechaInput" placeholder="Fecha">
+<button onclick="buscarPorFecha()">Buscar</button></div>
 <div style="display:none">
 <div class="cardas" data-state="#aboutas">
   <div class="cardas-header">
@@ -293,7 +295,7 @@ buttons.forEach((btn) => {
   
   const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
   const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
-  const SHEET_NAME = 'prueba';
+  const SHEET_NAME = 'BaseCF';
 
   gapi.load('client:auth2', initClient);
 
