@@ -73,6 +73,24 @@ a lo declarado en la en la guía aérea&nbsp;<spawn style="font-weight: bold;" i
   <div class="pp" style="display: flex;position: absolute;margin-top: 400px; margin-left: 230px; margin-right: 62px;"> 
   <p id="destinatario" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
     </div>
+  <div class="pp" style="display: flex;position: absolute;margin-top: 420px; margin-left: 60px; margin-right: 62px;"> 
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">CAJAS FULL:&nbsp;</p>
+</div>
+  <div class="pp" style="display: flex;position: absolute;margin-top: 420px; margin-left: 230px; margin-right: 62px;"> 
+  <p id="cajas" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
+    </div>
+  <div class="pp" style="display: flex;position: absolute;margin-top: 440px; margin-left: 60px; margin-right: 62px;"> 
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+</div>
+  <div class="pp" style="display: flex;position: absolute;margin-top: 440px; margin-left: 230px; margin-right: 62px;"> 
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">Quarter Box</p>
+    </div>
+<div class="pp" style="display: flex;position: absolute;margin-top: 460px; margin-left: 60px; margin-right: 62px;"> 
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+</div>
+<div class="pp" style="display: flex;position: absolute;margin-top: 460px; margin-left: 230px; margin-right: 62px;"> 
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">Half Boxes&nbsp;&nbsp;<spawn style="font-weight: bold;" id="hb"></spawn></p>
+</div>
   </div>
   <div class="cardas-main">
     <div class="cardas-section is-active" >
@@ -199,8 +217,8 @@ buttons.forEach((btn) => {
           const destino = cardClone.querySelector("#destino");
           const agencia = cardClone.querySelector("#agencia");
           const destinatario = cardClone.querySelector("#destinatario");
-          const edadas = cardClone.querySelector("#edadas");
-          const fotoas = cardClone.querySelector("#fotoas");
+          const cajas = cardClone.querySelector("#cajas");
+          const hb = cardClone.querySelector("#hb");
 
           fecha.innerHTML = data[i][1];
           aerolinea.innerHTML = data[i][9];
@@ -210,8 +228,8 @@ buttons.forEach((btn) => {
           destino.innerHTML = data[i][11];
           agencia.innerHTML = data[i][10];
           destinatario.innerHTML = data[i][2];
-          expas.innerHTML = data[i][16];
-          fotoas.src = data[i][15];
+          cajas.innerHTML = data[i][6];
+          hb.innerHTML = data[i][5];
 
           cardContainer.appendChild(cardClone);
           setupCardButtons(cardClone);
