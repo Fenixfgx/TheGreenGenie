@@ -12,30 +12,68 @@
 <link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexy.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
-
+<style>
+    /* Estilos para ocultar el botón de imprimir al imprimir la página */
+    @media print {
+      .imprimir-btn {
+        display: none !important;
+      }
+    }
+  </style>
+<button class="imprimir-btn" onclick="imprimirContenido()" style=" position: absolute; z-index: 2; ">Imprimir</button>
 <div style="display:none">
 <div class="cardas" data-state="#aboutas">
   <div class="cardas-header">
     <div class="cardas-cover"></div>
-    <img class="cardas-avatar" id="fotoas" alt="avatar" />
-    <h1 class="cardas-fullname" id="nombreas"></h1>
-    <h2 class="cardas-apel" id="apellidoas"></h2>
-    <h2 class="cardas-jobtitle" id="profesionas"></h2>
+    <div style="display: flex; margin-top: 60px; margin-left: 60px; font-family: sans-serif; font-size: 12px;">
+    <img class="logo" alt="logo" src="https://www.thegreengenie.com.co/logoimp.png" style="width: 120px;"/>
+    <img style="display:none;" class="cardas-avatar" id="fotoas" alt="avatar" />
+<div class="top" style="text-align: right;position: absolute;right: 12px;margin-top: 2px; margin-right: 60px;"> 
+<p style="margin: 0px; font-weight: bold;">THE GREEN GENIE SAS</p>
+<p style="margin: 0px;">Nit:901473190-9</p>
+<p style="margin: 0px;">Finca San Antonio</p>  
+<p style="margin: 0px;">Cel: 3222180626/ 3228829871</p>
+<p style="margin: 0px;">Cachipay Cundinamarca</p>
+  </div> </div>
+<div style="display: flex;position: absolute;margin-top: 20px; padding-top: 60px;margin-left: 60px; margin-right: 62px;"> 
+<p style="margin: 0px;font-family: sans-serif; font-size: 12px;">Bogotá&nbsp;</di><p id="fecha" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
+</div>
+  <p style="position: absolute;margin-top: 180px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 12px;">Señores:</p>
+    <p style="position: absolute;margin-top: 200px;margin-left: 60px;font-family: sans-serif; font-size: 12px;">DEPARTAMENTO DE SEGURIDAD&nbsp;<spawn id="aerolinea"></spawn>&nbsp;Y/O POLICIA ANTINARCOTICOS</p>
+  <p style="position: absolute;margin-top: 230px;margin-left: 60px;font-family: sans-serif; font-size: 12px;">Compañia Antinarcóticos 'El Dorado' Bogotá</p>
+  <p style="position: absolute;margin-top: 250px;margin-left: 60px;font-family: sans-serif; font-size: 12px;">REF: CARTA DE RESPONSABILIDAD</p>
+  <p style="position: absolute;margin-top: 270px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 12px;">Yo Cristian Rodríguez con C.C. 1.003.505.466 en calidad de asistente de exportaciones de la empresa 
+THE GREEN GENIE S.A.S con Nit 901473190-9, certifico que el contenido de la presente carga se ajusta 
+a lo declarado en la en la guía aérea&nbsp;<spawn id="guia"></spawn>&nbsp;y guia hija&nbsp;<spawn id="hija"></spawn>&nbsp;</p>
+ <div style="display: flex;position: absolute;margin-top: 290px; padding-top: 60px;margin-left: 60px; margin-right: 62px;"> 
+<p style="margin: 0px;font-family: sans-serif; font-size: 12px;">AEROLINEA:&nbsp;</p>
+</div>
+  <div style="display: flex;position: absolute;margin-top: 290px; padding-top: 60px;margin-left: 230px; margin-right: 62px;"> 
+  <p id="AERO" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
+    </div>
+  <div style="display: flex;position: absolute;margin-top: 310px; padding-top: 60px;margin-left: 60px; margin-right: 62px;"> 
+<p style="margin: 0px;font-family: sans-serif; font-size: 12px;">ORIGEN:&nbsp;</p><p style="margin-left: 100px; font-family: sans-serif; font-size: 12px; margin: 0px;">BOGOTÁ D.C.</p>
+</div>
+  <div style="display: flex;position: absolute;margin-top: 330px; padding-top: 60px;margin-left: 60px; margin-right: 62px;"> 
+<p style="margin: 0px;font-family: sans-serif; font-size: 12px;">DESTINO (PAIS):&nbsp;</p><p id="destino" style="margin-left: 100px; font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
+</div>
+  <div style="display: flex;position: absolute;margin-top: 350px; padding-top: 60px;margin-left: 60px; margin-right: 62px;"> 
+<p style="margin: 0px;font-family: sans-serif; font-size: 12px;">AGENCIA DE CARGA:&nbsp;</p><p id="agencia" style="margin-left: 100px; font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
+</div>
+  <div style="display: flex;position: absolute;margin-top: 370px; padding-top: 60px;margin-left: 60px; margin-right: 62px;"> 
+<p style="margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE DESTINATARIO:&nbsp;</p><p id="destinatario" style="margin-left: 100px; font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
+</div>
   </div>
   <div class="cardas-main">
-    <div class="cardas-section is-active" id="aboutas">
+    <div class="cardas-section is-active" >
       <div class="cardas-content">
-        <div class="cardas-subtitle">ACERCA DE</div>
         <p class="cardas-desc" id="acercaas">
         </p>
-<div style="margin-top: 12px;">
-       <p class="cardas-desc" >Edad: <span id="edadas"></span> Años.</p>
-  <button onclick="imprimirContenido()">Imprimir</button>
-</div>
+
       </div>
 
     </div>
-    <div class="cardas-section" id="experienceas">
+    <div style="display:none;"class="cardas-section" id="experienceas">
       <div class="cardas-content">
         <div class="cardas-subtitle">EXPERIENCIA LABORAL</div>
         <div class="cardas-timeline">
@@ -56,7 +94,7 @@
         </div>
       </div>
     </div>
-    <div class="cardas-section" id="contactas">
+    <div style="display:none;"class="cardas-section" id="contactas">
       <div class="cardas-content">
         <div class="cardas-subtitle">CONTACTO</div>
         <div class="cardas-contact-wrapper">
@@ -90,6 +128,7 @@
     margin-bottom: 25px;
     width: 500px;
     max-width: 700px; 
+    height: 600px;
 }
 </style>
 
@@ -142,25 +181,25 @@ buttons.forEach((btn) => {
           const cardClone = document.querySelector(".cardas").cloneNode(true);
           cardClone.setAttribute("data-state", "#" + i);
 
-          const nombreas = cardClone.querySelector("#nombreas");
-          const apellidoas = cardClone.querySelector("#apellidoas");
-          const profesionas = cardClone.querySelector("#profesionas");
-          const acercaas = cardClone.querySelector("#acercaas");
-          const ubicacionas = cardClone.querySelector("#ubicacionas");
-          const telas = cardClone.querySelector("#telas");
-          const emailas = cardClone.querySelector("#emailas");
-          const expas = cardClone.querySelector("#expas");
+          const fecha = cardClone.querySelector("#fecha");
+          const aerolinea = cardClone.querySelector("#aerolinea");
+          const guia = cardClone.querySelector("#guia");
+          const hija = cardClone.querySelector("#hija");
+          const AERO = cardClone.querySelector("#AERO");
+          const destino = cardClone.querySelector("#destino");
+          const agencia = cardClone.querySelector("#agencia");
+          const destinatario = cardClone.querySelector("#destinatario");
           const edadas = cardClone.querySelector("#edadas");
           const fotoas = cardClone.querySelector("#fotoas");
 
-          nombreas.innerHTML = data[i][1];
-          apellidoas.innerHTML = data[i][2];
-          profesionas.innerHTML = data[i][11];
-          acercaas.innerHTML = data[i][14];
-          ubicacionas.innerHTML = data[i][13];
-          telas.innerHTML = data[i][10];
-          emailas.innerHTML = data[i][20];
-          edadas.innerHTML = data[i][12];
+          fecha.innerHTML = data[i][1];
+          aerolinea.innerHTML = data[i][9];
+          guia.innerHTML = data[i][7];
+          hija.innerHTML = data[i][8];
+          AERO.innerHTML = data[i][9];
+          destino.innerHTML = data[i][11];
+          agencia.innerHTML = data[i][10];
+          destinatario.innerHTML = data[i][2];
           expas.innerHTML = data[i][16];
           fotoas.src = data[i][15];
 

@@ -1,16 +1,19 @@
 function imprimirContenido() {
-  // Oculta todo excepto el contenido que deseas imprimir
-  var elementosAImprimir = document.querySelector('.cardas').innerHTML;
-  var elementosNoImprimir = document.body.querySelectorAll(':not(.cardas)');
-  elementosNoImprimir.forEach(function (elemento) {
-    elemento.style.display = 'none';
-  });
+  const cardContainers = document.querySelectorAll('.cardas');
+  let contenido = '';
 
-  // Imprime el contenido visible
-  window.print();
+  // Iniciar desde la segunda tarjeta
+  for (let index = 1; index < cardContainers.length; index++) {
+    contenido += cardContainers[index].outerHTML;
 
-  // Restaura la visibilidad de los elementos ocultados
-  elementosNoImprimir.forEach(function (elemento) {
-    elemento.style.display = '';
-  });
+    // Agregar un salto de página después de cada tarjeta, excepto la última
+    if (index < cardContainers.length - 1) {
+      contenido += '<div style="page-break-after: always;"></div>';
+    }
+  }
+
+  const ventanaImpresion = window.open('', '_blank');
+  ventanaImpresion.document.write('<html><head><title>Imprimir</title></head><body>' + contenido + '</body></html>');
+  ventanaImpresion.print();
+  ventanaImpresion.close();
 }
