@@ -405,7 +405,7 @@ p {
 }
 
 .fechainp {
-  margin-left: 300px;
+  margin-left: 100px;
   margin-bottom: 12px;
   background-color: white;
   padding: 12px;
@@ -420,4 +420,8 @@ p {
   border-color: darkorchid;
   border-width: thin;
   text-align: -webkit-center;
+}
+
+.divi {
+  margin-left: -192px;
 }

@@ -22,19 +22,58 @@ function imprimirContenido() {
   ventanaImpresion.close();
 }
 
-function buscarPorFecha() {
+function buscarPorFechaYDestinatario() {
   const fechaInput = document.getElementById("fechaInput").value;
+  const destinatarioInput = document.getElementById("destinatarioInput").value;
 
   const tarjetas = document.querySelectorAll(".cardas");
   tarjetas.forEach(tarjeta => {
     const fechaTarjeta = tarjeta.querySelector("#fecha").textContent.trim();
-    if (fechaTarjeta === fechaInput) {
+    const destinatarioTarjeta = tarjeta.querySelector("#destinatario").textContent.trim();
+
+    if (fechaTarjeta === fechaInput && destinatarioTarjeta === destinatarioInput) {
       tarjeta.style.display = "block";
     } else {
       tarjeta.style.display = "none";
     }
   });
 }
+
+function obtenerDestinatariosPorFecha() {
+  const fechaInput = document.getElementById("fechaInput").value;
+
+  const tarjetas = document.querySelectorAll(".cardas");
+  const destinatarios = new Set();
+
+  tarjetas.forEach(tarjeta => {
+    const fechaTarjeta = tarjeta.querySelector("#fecha").textContent.trim();
+    const destinatarioTarjeta = tarjeta.querySelector("#destinatario").textContent.trim();
+
+    if (fechaTarjeta === fechaInput) {
+      destinatarios.add(destinatarioTarjeta);
+    }
+  });
+
+  return Array.from(destinatarios);
+}
+
+function actualizarListaDestinatarios() {
+  const destinatarioInput = document.getElementById("destinatarioInput");
+  const destinatariosPorFecha = obtenerDestinatariosPorFecha();
+
+  // Limpiar la lista actual de destinatarios
+  destinatarioInput.innerHTML = '';
+
+  // Crear y agregar nuevas opciones a la lista de destinatarios
+  destinatariosPorFecha.forEach(destinatario => {
+    const option = document.createElement('option');
+    option.value = destinatario;
+    option.text = destinatario;
+    destinatarioInput.appendChild(option);
+  });
+}
+
+
 window.onload = function () {
   const tarjetas = document.querySelectorAll(".cardas");
   tarjetas.forEach(tarjeta => {

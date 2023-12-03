@@ -22,7 +22,11 @@
   </style>
 <button class="imprimir-btn" onclick="imprimirContenido()" style=" position: absolute; z-index: 2; ">Imprimir</button>
 <div class="fechainp"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: none;" id="fechaInput" placeholder="Fecha">
-<button onclick="buscarPorFecha()">Buscar</button></div>
+<select id="destinatarioInput">
+  <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+</select>
+<button onclick="actualizarListaDestinatarios()">Act</button>
+<button onclick="buscarPorFechaYDestinatario()">Buscar</button></div>
 <div style="display:none">
 <div class="cardas" data-state="#aboutas">
   <div class="cardas-header">
@@ -80,42 +84,47 @@ a lo declarado en la en la guía aérea&nbsp;<spawn style="font-weight: bold;" i
 </div>
   <div class="pp" style="display: flex;position: absolute;margin-top: 315px; margin-left: 230px; margin-right: 62px;"> 
   <p id="cajas" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
-    </div>
+    </div><div class="divi">
   <div class="pp" style="display: flex;position: absolute;margin-top: 330px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+<p id="D1" style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
   <div class="pp" style="display: flex;position: absolute;margin-top: 330px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">Quarter Box</p>
-    </div>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="IT1"></p>&nbsp;<p style="font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT1"></p>
+    </div></div>
+<div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 345px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+<p id="D2" style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 345px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">Half Boxes&nbsp;&nbsp;<spawn style="font-weight: bold;" id="hb"></spawn></p>
-</div>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="IT2">Half Boxes</p>&nbsp;<p style="font-weight: bold; font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT2"></p>
+</div></div>
+<div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 360px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+<p id="D3" style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 360px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">EB&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="IT3"></p>&nbsp;<p style="font-weight: bold; font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT3"></p>
+</div></div>
+<div class="pp" style="display: flex; position: absolute; margin-top: 375px; margin-left: 60px; margin-right: 62px;">
+  <p id="D4" style="font-weight: bold; margin: 0px; font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 375px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+<div class="pp" style="display: flex; position: absolute; margin-top: 375px; margin-left: 230px; margin-right: 62px;">
+  <p id="IT4" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>&nbsp;
+  <p style="font-weight: bold; font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT4"></p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 375px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">Full&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
+
+<div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">TOTAL PIEZAS:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">?&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
+  <p id="totalpiezas"style="font-weight: bold; font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 405px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">SELLO DE SEGURIDAD:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 405px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">?123456&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">654789 consecutivo?&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 420px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE CONDUCTOR 1:&nbsp;</p>
@@ -197,7 +206,7 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 805px; margin-left: 400px; margin-right: 62px;"> 
 <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">CC:</p>
-</div>
+</div></div>
   </div>
   <div class="cardas-main">
     <div class="cardas-section is-active" >
@@ -264,9 +273,11 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
     width: 700px;
     max-width: 700px; 
     height: 1000px;
+    transform-origin: top left;
+    transform: scale(1);
 }
 </style>
-<div id="card-container" style="margin: auto;"></div>
+<div id="card-container"></div>
 
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
@@ -294,7 +305,7 @@ buttons.forEach((btn) => {
   
   const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
   const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
-  const SHEET_NAME = 'BaseCF';
+  const SHEET_NAME = 'BaseFiltro';
 
   gapi.load('client:auth2', initClient);
 
@@ -324,20 +335,45 @@ buttons.forEach((btn) => {
           const agencia = cardClone.querySelector("#agencia");
           const destinatario = cardClone.querySelector("#destinatario");
           const cajas = cardClone.querySelector("#cajas");
-          const hb = cardClone.querySelector("#hb");
+          const IT1 = cardClone.querySelector("#IT1");
+          const ITT1 = cardClone.querySelector("#ITT1");
+          const IT2 = cardClone.querySelector("#IT2");
+          const ITT2 = cardClone.querySelector("#ITT2");
+          const IT3 = cardClone.querySelector("#IT3");
+          const ITT3 = cardClone.querySelector("#ITT3");
+          const IT4 = cardClone.querySelector("#IT4");
+          const ITT4 = cardClone.querySelector("#ITT4");
+          const D1 = cardClone.querySelector("#D1");
+          const D2 = cardClone.querySelector("#D2");
+          const D3 = cardClone.querySelector("#D3");
+          const D4 = cardClone.querySelector("#D4");
+          const totalpiezas = cardClone.querySelector("#totalpiezas");
           const AC = cardClone.querySelector("#AC");
 
-          fecha.innerHTML = data[i][1];
-          aerolinea.innerHTML = data[i][9];
-          guia.innerHTML = data[i][7];
-          hija.innerHTML = data[i][8];
-          AERO.innerHTML = data[i][9];
-          destino.innerHTML = data[i][11];
-          agencia.innerHTML = data[i][10];
-          destinatario.innerHTML = data[i][2];
-          cajas.innerHTML = data[i][6];
-          hb.innerHTML = data[i][5];
-          AC.innerHTML = data[i][10];
+          fecha.innerHTML = data[i][7];
+          aerolinea.innerHTML = data[i][74];
+          guia.innerHTML = data[i][75];
+          hija.innerHTML = data[i][76];
+          AERO.innerHTML = data[i][74];
+          destino.innerHTML = data[i][77];
+          agencia.innerHTML = data[i][6];
+          destinatario.innerHTML = data[i][5];
+          cajas.innerHTML = data[i][78];
+          IT1.innerHTML = data[i][57];
+          ITT1.innerHTML = data[i][58];
+          IT2.innerHTML = data[i][59];
+          ITT2.innerHTML = data[i][60];
+          IT3.innerHTML = data[i][61];
+          ITT3.innerHTML = data[i][62];
+          IT4.innerHTML = data[i][63];
+          ITT4.innerHTML = data[i][64];
+          totalpiezas.innerHTML = data[i][73];
+          AC.innerHTML = data[i][6];
+          D1.innerHTML = data[i][65];
+          D2.innerHTML = data[i][66];
+          D3.innerHTML = data[i][67];
+          D4.innerHTML = data[i][68];
+          
 
           cardContainer.appendChild(cardClone);
           setupCardButtons(cardClone);
