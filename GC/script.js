@@ -77,7 +77,7 @@ function actualizarListaDestinatarios() {
 window.onload = function () {
   const tarjetas = document.querySelectorAll(".cardas");
   tarjetas.forEach(tarjeta => {
-    tarjeta.style.display = "none";
+    tarjeta.style.display = "block";
   });
 };
 
