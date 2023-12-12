@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexy.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<!-- Asegúrate de tener conexión a internet para cargar SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <style>
     /* Estilos para ocultar el botón de imprimir al imprimir la página */
     @media print {
@@ -27,7 +30,7 @@
 </select>
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button onclick="buscarPorFechaYDestinatario()">Buscar</button>
-<button id="reloadButton">Recargar Datos</button>
+<button onclick="fetchData()">Recargar Datos</button>
 
 </div>
 <div style="display:none">
@@ -85,7 +88,7 @@
 <table>
   <tr>
 <td style="font-weight: bold; font-family: sans-serif; font-size: 12px;">Invoice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td style="font-weight: bold; font-family: sans-serif; font-size: 12px;" id="Counterf">CODE</td><td style="font-weight: bold; font-family: sans-serif; font-size: 12px;" id="nuemro">num</td>
+<td style="font-weight: bold; font-family: sans-serif; font-size: 12px;" id="Counterf">CODE</td>
   </tr>
   
   
@@ -1026,6 +1029,39 @@ function fetchData() {
   // Limpia el contenedor antes de cargar los nuevos datos
   cardContainer.innerHTML = '';
   // Vuelve a llamar a la función initClient para obtener los datos actualizados
+ // Asegúrate de incluir SweetAlert JS antes de este código
+
+function mostrarConfirmacion() {
+  const mensaje = "Espere 30 segundos";
+
+  // Muestra el mensaje de confirmación usando SweetAlert
+  Swal.fire({
+    title: mensaje,
+    html: "I will close in <b></b> milliseconds.",
+    icon: 'info',
+    timer: 30000, // 30 segundos en milisegundos
+    timerProgressBar: true,
+    showConfirmButton: false,
+    didOpen: () => {
+    Swal.showLoading();
+    const timer = Swal.getPopup().querySelector("b");
+    timerInterval = setInterval(() => {
+      timer.textContent = `${Swal.getTimerLeft()}`;
+    }, 100);
+  },
+    willClose: () => {
+      // Acciones a realizar después de que se cierre SweetAlert
+      Swal.fire({
+        title: 'Tiempo cumplido',
+        icon: 'success',
+      });
+    },
+  });
+}
+
+// Llama a la función para mostrar la confirmación
+mostrarConfirmacion();
+
   initClient();
 }
 
