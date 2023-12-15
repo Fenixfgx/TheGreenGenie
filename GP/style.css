@@ -470,3 +470,13 @@ p {
   position: absolute;
   top: 864px;
 }
+
+.textopc {
+  left: -7px;
+  position: absolute;
+  top: 830px;
+}
+
+.line {
+  top: 748px;
+}
