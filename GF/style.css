@@ -434,7 +434,120 @@ table {
   border-style: solid;
 }
 
-.tabla2 {
-  padding-top: 214px;
-  padding-left: -260px;
+.secondf {
+  position: absolute;
+  left: 0px;
+  top: 130px;
+}
+
+.tercerf {
+  position: absolute;
+  left: 2px;
+  top: 229px;
+}
+
+.cuartof {
+  position: absolute;
+  left: 2px;
+  top: 174px;
+}
+
+.quintof {
+  position: absolute;
+  left: 0px;
+  top: 230px;
+}
+
+.sextof {
+  position: absolute;
+  left: 0px;
+  top: 422px;
+}
+
+.sextof1 {
+  position: absolute;
+  left: 0px;
+  top: 456px;
+}
+
+.titulof {
+  height: 100px;
+}
+
+.septimof {
+  position: absolute;
+  left: 4px;
+  top: 476px;
+}
+
+.septimof2 {
+  position: absolute;
+  left: 4px;
+  top: 456px;
+}
+
+.septimof3 {
+  position: absolute;
+  left: 0px;
+  top: 493px;
+}
+
+.septimof4 {
+  position: absolute;
+  left: 0px;
+  top: 456px;
+}
+
+.septimof5 {
+  position: absolute;
+  left: 4px;
+  top: 476px;
+}
+
+.septimof6 {
+  position: absolute;
+  left: 4px;
+  top: 456px;
+}
+
+.octavof {
+  position: absolute;
+  left: 4px;
+  top: 456px;
+}
+
+.novenof {
+  position: absolute;
+  left: 4px;
+  top: 823px;
+}
+
+.decimof {
+  position: absolute;
+  left: 4px;
+  top: 790px;
+}
+
+.decimof1 {
+  position: absolute;
+  left: 4px;
+  top: 876px;
+}
+
+.footer {
+  position: absolute;
+  left: 4px;
+  top: 855px;
+}
+
+.factura {
+  position: absolute;
+  left: 4px;
+  top: 1005px;
+}
+
+.Copy {
+  position: absolute;
+  left: 4px;
+  top: 958px;
 }
