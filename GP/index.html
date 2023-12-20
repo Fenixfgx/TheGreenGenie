@@ -177,27 +177,41 @@
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">80.537.981</p>
     </div>
     
-<div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">TIPO VEHICULO:&nbsp;</p>
+    <div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 60px; margin-right: 62px;"> 
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">AYUDANTE 4:&nbsp;</p>
 </div>
   <div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">FURGON</p>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">FABIAN LEON</p>
+    </div>
+    
+<div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 450px; margin-right: 62px;"> 
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">CC&nbsp;</p>
+</div>
+  <div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 500px; margin-right: 62px;"> 
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">1.073.130.457</p>
     </div>
     
 <div class="pp" style="display: flex;position: absolute;margin-top: 410px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">PLACA:&nbsp;</p>
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">TIPO VEHICULO:&nbsp;</p>
 </div>
   <div class="pp" style="display: flex;position: absolute;margin-top: 410px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">KSO395/GQQ498/JOU655</p>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">FURGON</p>
     </div>
     
 <div class="pp" style="display: flex;position: absolute;margin-top: 430px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">PRECINTOS:&nbsp;</p>
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">PLACA:&nbsp;</p>
 </div>
   <div class="pp" style="display: flex;position: absolute;margin-top: 430px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">654789</p>
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">KSO395/GQQ498/JOU655</p>
     </div>
-<div class="tablaplanilla" style="width: 600px; margin-top: 480px; margin-left: 60px; font-family: sans-serif;">
+    
+<div class="pp" style="display: flex;position: absolute;margin-top: 450px; margin-left: 60px; margin-right: 62px;"> 
+<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">PRECINTOS:&nbsp;</p>
+</div>
+  <div class="pp" style="display: flex;position: absolute;margin-top: 450px; margin-left: 230px; margin-right: 62px;"> 
+  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="Precintos"></p>
+    </div>
+<div class="tablaplanilla" style="width: 600px; margin-top: 500px; margin-left: 60px; font-family: sans-serif;">
 <table style="width: 600px; border-collapse: collapse; font-size: 12px;">
   <tr>
     <td style="border: 1px solid black; text-align: center; padding: 2px; font-weight: bold;" colspan="5">INFORMACIÓN CAJAS</td>
@@ -239,7 +253,7 @@
 </table>
 </div>
 
-<div class="tablaplanilla1" style="width: 600px; margin-top: 40px; margin-left: 60px; font-family: sans-serif;">
+<div class="tablaplanilla1" style="width: 650px; margin-top: 40px; margin-left: 60px; font-family: sans-serif;">
   <table style="width: 160px; border-collapse: collapse; font-size: 11px;">
     <tr>
       <td style="border: 1px solid black; text-align: center; padding: 2px; width: 91px; font-weight: bold;">TOTAL BULTOS:</td>
@@ -417,6 +431,7 @@ buttons.forEach((btn) => {
           const TPP = cardClone.querySelector("#TPP");
           const TTP = cardClone.querySelector("#TTP");
           const FBE = cardClone.querySelector("#FBE");
+          const Precintos = cardClone.querySelector("#Precintos");
 
           fecha.innerHTML = data[i][7];
           aerolinea.innerHTML = data[i][74];
@@ -449,6 +464,7 @@ buttons.forEach((btn) => {
           TPP.innerHTML = data[i][73];
           TTP.innerHTML = data[i][103];
           FBE.innerHTML = data[i][78];
+          Precintos.innerHTML = data[i][104];
           
  
           cardContainer.appendChild(cardClone);
