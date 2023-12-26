@@ -291,26 +291,6 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
   
-  const buttons = document.querySelectorAll(".cardas-buttons button");
-const sections = document.querySelectorAll(".cardas-section");
-const card = document.querySelector(".cardas");
-
-const handleButtonClick = (e) => {
-  const targetSection = e.target.getAttribute("data-section");
-  const section = document.querySelector(targetSection);
-  targetSection !== "#aboutas"
-    ? card.classList.add("is-active")
-    : card.classList.remove("is-active");
-  card.setAttribute("data-state", targetSection);
-  sections.forEach((s) => s.classList.remove("is-active"));
-  buttons.forEach((b) => b.classList.remove("is-active"));
-  e.target.classList.add("is-active");
-  section.classList.add("is-active");
-};
-
-buttons.forEach((btn) => {
-  btn.addEventListener("click", handleButtonClick);
-});
   
   const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
   const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
@@ -391,44 +371,7 @@ buttons.forEach((btn) => {
       });
     });
   }
-
-function setupCardButtons(card) {
-    const buttons = card.querySelectorAll(".cardas-buttons button");
-    const sections = card.querySelectorAll(".cardas-section");
-
-    const handleButtonClick = (e) => {
-        const targetSection = e.target.getAttribute("data-section");
-        const section = card.querySelector(targetSection);
-        targetSection !== "#aboutas"
-            ? card.classList.add("is-active")
-            : card.classList.remove("is-active");
-        card.setAttribute("data-state", targetSection);
-        sections.forEach((s) => s.classList.remove("is-active"));
-        buttons.forEach((b) => b.classList.remove("is-active"));
-        e.target.classList.add("is-active");
-        section.classList.add("is-active");
-    };
-
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", handleButtonClick);
-    });
-
-    const telasButton = card.querySelector("#telas");
-    telasButton.addEventListener("click", () => {
-        const phoneNumber = telasButton.textContent.trim();
-        if (phoneNumber !== "") {
-            window.location.href = `tel:${phoneNumber}`;
-        }
-    });
-
-    const emailasButton = card.querySelector("#emailas");
-    emailasButton.addEventListener("click", () => {
-        const emailAddress = emailasButton.textContent.trim();
-        if (emailAddress !== "") {
-            window.location.href = `mailto:${emailAddress}`;
-        }
-    });
-}
+ 
 
 </script>
 <!-- partial -->
