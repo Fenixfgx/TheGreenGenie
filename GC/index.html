@@ -387,11 +387,48 @@ buttons.forEach((btn) => {
           
 
           cardContainer.appendChild(cardClone);
-          setupCardButtons(cardClone);
         }
       });
     });
   }
+
+function setupCardButtons(card) {
+    const buttons = card.querySelectorAll(".cardas-buttons button");
+    const sections = card.querySelectorAll(".cardas-section");
+
+    const handleButtonClick = (e) => {
+        const targetSection = e.target.getAttribute("data-section");
+        const section = card.querySelector(targetSection);
+        targetSection !== "#aboutas"
+            ? card.classList.add("is-active")
+            : card.classList.remove("is-active");
+        card.setAttribute("data-state", targetSection);
+        sections.forEach((s) => s.classList.remove("is-active"));
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        e.target.classList.add("is-active");
+        section.classList.add("is-active");
+    };
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", handleButtonClick);
+    });
+
+    const telasButton = card.querySelector("#telas");
+    telasButton.addEventListener("click", () => {
+        const phoneNumber = telasButton.textContent.trim();
+        if (phoneNumber !== "") {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+    });
+
+    const emailasButton = card.querySelector("#emailas");
+    emailasButton.addEventListener("click", () => {
+        const emailAddress = emailasButton.textContent.trim();
+        if (emailAddress !== "") {
+            window.location.href = `mailto:${emailAddress}`;
+        }
+    });
+}
 
 </script>
 <!-- partial -->
