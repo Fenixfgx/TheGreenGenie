@@ -27,21 +27,14 @@
 </select>
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
- <script>
-        window.addEventListener('message', function(event) {
-            if (event.data.tipo === 'actualizarFecha') {
-                // Actualizar el valor del input texto dentro del iframe
-                const inputFechaIframe = document.getElementById('fechaInput');
-                inputFechaIframe.value = event.data.fecha;
-            }
-        });
-    </script>
+
 <script>
         window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarFecha') {
                 // Actualizar el valor del input date dentro del iframe
                 const inputFechaIframe = document.getElementById('fechaIn');
                 inputFechaIframe.value = event.data.fecha;
+              actualizarFormatoFecha();
             }
         });
 
