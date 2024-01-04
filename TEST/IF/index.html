@@ -9,17 +9,20 @@
     <iframe src="tuiframe.html" id="miIframe" width="600" height="400"></iframe>
 
     <script>
-        // Obtener referencia al iframe
         const iframe = document.getElementById('miIframe');
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        const iframeWindow = iframe.contentWindow;
 
-        // Obtener referencia al botón dentro del iframe
-        const botonDentroIframe = iframeDocument.getElementById('buscarDentro');
-
-        // Función para manejar el clic en el botón fuera del iframe
         document.getElementById('buscarFuera').addEventListener('click', function() {
-            // Simular el clic del botón dentro del iframe al hacer clic fuera del iframe
-            botonDentroIframe.click();
+            // Enviar un mensaje al iframe al hacer clic en el botón fuera del iframe
+            iframeWindow.postMessage('buscarDentro', '*');
+        });
+
+        // Manejar el mensaje del iframe
+        window.addEventListener('message', function(event) {
+            if (event.data === 'buscarDentro') {
+                // Realizar la acción deseada cuando se recibe el mensaje del iframe
+                alert('¡Se ha presionado el botón dentro del iframe!');
+            }
         });
     </script>
 </body>

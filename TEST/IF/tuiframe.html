@@ -4,13 +4,22 @@
     <title>Contenido del Iframe</title>
 </head>
 <body>
-    <!-- Botón dentro del iframe -->
     <button id="buscarDentro">Buscar dentro del iframe</button>
 
     <script>
-        // Acción que se realizará al hacer clic en el botón dentro del iframe
-        document.getElementById('buscarDentro').addEventListener('click', function() {
-            alert('¡Se ha presionado el botón dentro del iframe!');
+        const botonDentroIframe = document.getElementById('buscarDentro');
+
+        botonDentroIframe.addEventListener('click', function() {
+            // Enviar un mensaje al documento principal al hacer clic en el botón dentro del iframe
+            window.parent.postMessage('buscarDentro', '*');
+        });
+
+        // Manejar el mensaje del documento principal
+        window.addEventListener('message', function(event) {
+            if (event.data === 'buscarDentro') {
+                // Realizar la acción deseada cuando se recibe el mensaje del documento principal
+                alert('¡Se ha presionado el botón fuera del iframe!');
+            }
         });
     </script>
 </body>
