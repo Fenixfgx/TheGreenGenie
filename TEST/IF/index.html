@@ -6,9 +6,7 @@
 <body>
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()">
     <br><br>
-    <select id="destinatarioPrincipal" onchange="seleccionarDestinatarioPrincipal()">
-        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
-    </select>
+    <input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
     <br><br>
     <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
@@ -38,21 +36,13 @@
             });
         }
 
-        function seleccionarDestinatarioPrincipal() {
-            // Obtener la opción seleccionada del select en el documento principal
-            const destinatarioPrincipal = document.getElementById('destinatarioPrincipal').value;
-
-            // Enviar la opción seleccionada a cada iframe
-            iframes.forEach(function(iframeWindow) {
-                iframeWindow.postMessage({ tipo: 'actualizarDestinatario', seleccionado: destinatarioPrincipal }, '*');
-            });
-        }
-
         window.addEventListener('message', function(event) {
-            if (event.data.tipo === 'actualizarDestinatario') {
-                // Actualizar las opciones del select con los datos recibidos del mensaje
-                const destinatarioPrincipal = document.getElementById('destinatarioPrincipal');
-                destinatarioPrincipal.innerHTML = event.data.opciones.map(opcion => `<option value="${opcion}">${opcion}</option>`).join('');
+            if (event.data === 'activarBotonBuscar') {
+                // Activar el botón dentro de ambos iframes cuando se recibe el mensaje del documento principal
+                iframes.forEach(function(iframeWindow) {
+                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
+                    botonDentroIframe.click();
+                });
             }
         });
     </script>
