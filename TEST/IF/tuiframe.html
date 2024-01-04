@@ -21,12 +21,21 @@
     }
   </style>
 <button class="imprimir-btn" onclick="imprimirContenido()" style=" position: absolute; z-index: 2; ">Imprimir</button>
-<div class="fechainp"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: none;" id="fechaInput" placeholder="Fecha">
+<div class="fechainp"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
 <select id="destinatarioInput">
   <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
 </select>
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
+ <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.tipo === 'actualizarFecha') {
+                // Actualizar el valor del input texto dentro del iframe
+                const inputFechaIframe = document.getElementById('fechaInput');
+                inputFechaIframe.value = event.data.fecha;
+            }
+        });
+    </script>
 <script>
         window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarFecha') {
