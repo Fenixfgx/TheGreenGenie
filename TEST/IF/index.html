@@ -15,6 +15,18 @@
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
 
+<script>
+        const selectPrincipal = document.getElementById('destinatarioInput');
+
+        window.addEventListener('message', function(event) {
+            if (event.data.tipo === 'actualizarSelectPrincipal') {
+                // Actualizar el select en el documento principal con la opción recibida del iframe
+                const selectedOption = event.data.selectedOption;
+                selectPrincipal.value = selectedOption;
+            }
+        });
+    </script>
+
     <script>
         const iframes = [
             document.getElementById('miIframe1').contentWindow,
