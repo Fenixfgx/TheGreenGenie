@@ -4,6 +4,8 @@
     <title>Página Principal</title>
 </head>
 <body>
+    <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()">
+    <br><br>
     <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
@@ -22,10 +24,29 @@
             });
         });
 
+        function actualizarFormatoFecha() {
+            // Obtener el valor del input fecha
+            const fecha = document.getElementById('fechaIn').value;
+
+            // Enviar el valor de fecha a cada iframe
+            iframes.forEach(function(iframeWindow) {
+                iframeWindow.postMessage({ tipo: 'actualizarFecha', fecha: fecha }, '*');
+            });
+        }
+
         window.addEventListener('message', function(event) {
             if (event.data === 'activarBotonBuscar') {
                 // Activar el botón dentro de ambos iframes cuando se recibe el mensaje del documento principal
                 iframes.forEach(function(iframeWindow) {
+                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
+                    botonDentroIframe.click();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+(iframeWindow) {
                     const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
                     botonDentroIframe.click();
                 });
