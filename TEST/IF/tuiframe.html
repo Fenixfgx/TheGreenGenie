@@ -29,19 +29,25 @@
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
 
 <script>
-        window.addEventListener('message', function(event) {
+ window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarFecha') {
                 // Actualizar el valor del input date dentro del iframe
                 const inputFechaIframe = document.getElementById('fechaIn');
                 inputFechaIframe.value = event.data.fecha;
-              actualizarFormatoFecha();
+
+                // Ejecutar la función actualizarFormatoFecha() al recibir el mensaje
+                actualizarFormatoFecha();
+            } else if (event.data.tipo === 'actualizarDestinatario') {
+                // Actualizar las opciones del select con los datos recibidos del mensaje
+                const destinatarioInput = document.getElementById('destinatarioInput');
+                destinatarioInput.innerHTML = event.data.opciones;
+
+                // Seleccionar una opción específica si se recibe un valor seleccionado del mensaje
+                if (event.data.seleccionado) {
+                    destinatarioInput.value = event.data.seleccionado;
+                }
             }
         });
-
-        function buscarPorFechaYDestinatario() {
-            // Lógica de búsqueda según la fecha dentro del iframe
-            alert('Buscar dentro del iframe: ' + document.getElementById('fechaIn').value);
-        }
     </script>
   <script>
         window.addEventListener('message', function(event) {
