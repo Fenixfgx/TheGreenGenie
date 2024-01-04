@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Prueba Iframe</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html>
 <head>
     <title>Página Principal</title>
@@ -16,7 +6,7 @@
 <body>
     <button id="buscarFuera">Buscar fuera del iframe</button>
     <br><br>
-    <iframe src="https://www.thegreengenie.com.co/GC/" id="miIframe" width="600" height="400"></iframe>
+    <iframe src="tuiframe.html" id="miIframe" width="600" height="400"></iframe>
 
     <script>
         // Obtener referencia al iframe
@@ -24,7 +14,7 @@
         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
         // Obtener referencia al botón dentro del iframe
-        const botonDentroIframe = iframeDocument.getElementById('buscarPorFechaYDestinatario()');
+        const botonDentroIframe = iframeDocument.getElementById('buscarDentro');
 
         // Función para manejar el clic en el botón fuera del iframe
         document.getElementById('buscarFuera').addEventListener('click', function() {
@@ -32,9 +22,5 @@
             botonDentroIframe.click();
         });
     </script>
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
