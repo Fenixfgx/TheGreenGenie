@@ -6,32 +6,12 @@
 <body>
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()">
     <br><br>
-    <button id="buscarFuera">Buscar en ambos iframes</button>
+    <input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
     <br><br>
-    <select id="destinatarioInput">
-        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
-    </select>
+    <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
-
- <script>
-        const selectPrincipal = document.getElementById('destinatarioInput');
-
-        window.addEventListener('message', function(event) {
-            if (event.data.tipo === 'actualizarSelectPrincipal') {
-                selectPrincipal.innerHTML = event.data.optionsHTML;
-                if (event.data.selectedOption) {
-                    selectPrincipal.value = event.data.selectedOption;
-                }
-            }
-        });
-
-        window.onload = function() {
-            const iframe = document.getElementById('miIframe').contentWindow;
-            iframe.postMessage({ tipo: 'actualizarOpcionesSelectPrincipal' }, '*');
-        };
-    </script>
 
     <script>
         const iframes = [
@@ -57,17 +37,12 @@
         }
 
         window.addEventListener('message', function(event) {
-            if (event.data.tipo === 'actualizarFecha') {
-                // Actualizar el valor del input date en el iframe y el select en el documento principal
-                const inputFechaIframe = document.getElementById('fechaIn');
-                inputFechaIframe.value = event.data.fecha;
-                actualizarFormatoFecha();
-            }
-            if (event.data.tipo === 'actualizarSelect') {
-                // Actualizar las opciones y la opción seleccionada en el select del documento principal
-                const selectPrincipal = document.getElementById('destinatarioInput');
-                selectPrincipal.innerHTML = event.data.optionsHTML;
-                selectPrincipal.value = event.data.selectedOption;
+            if (event.data === 'activarBotonBuscar') {
+                // Activar el botón dentro de ambos iframes cuando se recibe el mensaje del documento principal
+                iframes.forEach(function(iframeWindow) {
+                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
+                    botonDentroIframe.click();
+                });
             }
         });
     </script>
