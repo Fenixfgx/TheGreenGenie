@@ -15,16 +15,22 @@
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
 
-<script>
+ <script>
         const selectPrincipal = document.getElementById('destinatarioInput');
 
         window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarSelectPrincipal') {
-                // Actualizar el select en el documento principal con la opción recibida del iframe
-                const selectedOption = event.data.selectedOption;
-                selectPrincipal.value = selectedOption;
+                selectPrincipal.innerHTML = event.data.optionsHTML;
+                if (event.data.selectedOption) {
+                    selectPrincipal.value = event.data.selectedOption;
+                }
             }
         });
+
+        window.onload = function() {
+            const iframe = document.getElementById('miIframe').contentWindow;
+            iframe.postMessage({ tipo: 'actualizarOpcionesSelectPrincipal' }, '*');
+        };
     </script>
 
     <script>

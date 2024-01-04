@@ -28,9 +28,8 @@
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
 
-<script>
   
-       // Lógica para llenar dinámicamente el select en el iframe
+  <script>
         const selectIframe = document.getElementById('destinatarioInput');
         const optionsIframe = ["Opción 1", "Opción 2", "Opción 3"]; // Ejemplo de opciones
 
@@ -40,15 +39,22 @@
             selectIframe.appendChild(newOption);
         });
 
-        // Escuchar cambios en el select y enviar los datos al documento principal
         selectIframe.addEventListener('change', function() {
             const selectedOption = selectIframe.value;
-
-            // Enviar la opción seleccionada al documento principal
             window.parent.postMessage({ tipo: 'actualizarSelectPrincipal', selectedOption: selectedOption }, '*');
         });
+
+        window.addEventListener('message', function(event) {
+            if (event.data.tipo === 'actualizarOpcionesSelectPrincipal') {
+                const optionsHTML = Array.from(selectIframe.options).map(option => option.outerHTML).join('');
+                window.parent.postMessage({ tipo: 'actualizarSelectPrincipal', optionsHTML: optionsHTML }, '*');
+            }
+        });
+
+        // ... (el resto del código)
+    </script>
   
-  
+<script>
  window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarFecha') {
                 // Actualizar el valor del input date dentro del iframe
