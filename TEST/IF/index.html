@@ -17,11 +17,11 @@
             iframeWindow.postMessage('buscarDentro', '*');
         });
 
-        // Manejar el mensaje del iframe
         window.addEventListener('message', function(event) {
-            if (event.data === 'buscarDentro') {
-                // Realizar la acción deseada cuando se recibe el mensaje del iframe
-                alert('¡Se ha presionado el botón dentro del iframe!');
+            if (event.data === 'activarBotonBuscar') {
+                // Activar el botón dentro del iframe cuando se recibe el mensaje del iframe
+                const botonDentroIframe = iframe.contentDocument.getElementById('buscarDentro');
+                botonDentroIframe.click();
             }
         });
     </script>
