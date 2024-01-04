@@ -6,7 +6,7 @@
 <body>
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()">
     <br><br>
-    <select id="destinatarioPrincipal">
+    <select id="destinatarioPrincipal" onchange="seleccionarDestinatarioPrincipal()">
         <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
     </select>
     <br><br>
@@ -48,20 +48,11 @@
             });
         }
 
-        // Llenar el select del documento principal con opciones
-        const selectDestinatarioPrincipal = document.getElementById('destinatarioPrincipal');
-        // Aquí llenarías el select con las opciones necesarias mediante JavaScript
-
-        // Agregar un listener para enviar la opción seleccionada a los iframes
-        selectDestinatarioPrincipal.addEventListener('change', seleccionarDestinatarioPrincipal);
-
         window.addEventListener('message', function(event) {
-            if (event.data === 'activarBotonBuscar') {
-                // Activar el botón dentro de ambos iframes cuando se recibe el mensaje del documento principal
-                iframes.forEach(function(iframeWindow) {
-                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
-                    botonDentroIframe.click();
-                });
+            if (event.data.tipo === 'actualizarDestinatario') {
+                // Actualizar las opciones del select con los datos recibidos del mensaje
+                const destinatarioPrincipal = document.getElementById('destinatarioPrincipal');
+                destinatarioPrincipal.innerHTML = event.data.opciones.map(opcion => `<option value="${opcion}">${opcion}</option>`).join('');
             }
         });
     </script>
