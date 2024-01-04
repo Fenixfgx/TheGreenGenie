@@ -27,6 +27,20 @@
 </select>
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
+<script>
+        window.addEventListener('message', function(event) {
+            if (event.data.tipo === 'actualizarFecha') {
+                // Actualizar el valor del input date dentro del iframe
+                const inputFechaIframe = document.getElementById('fechaIn');
+                inputFechaIframe.value = event.data.fecha;
+            }
+        });
+
+        function buscarPorFechaYDestinatario() {
+            // Lógica de búsqueda según la fecha dentro del iframe
+            alert('Buscar dentro del iframe: ' + document.getElementById('fechaIn').value);
+        }
+    </script>
   <script>
         window.addEventListener('message', function(event) {
             if (event.data === 'buscarDentro') {
