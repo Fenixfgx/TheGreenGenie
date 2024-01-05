@@ -10,6 +10,10 @@
     <br><br>
     <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
+    <select id="destinatarioInput">
+        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+    </select>
+    <br><br>
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
 
@@ -35,6 +39,19 @@
                 iframeWindow.postMessage({ tipo: 'actualizarFecha', fecha: fecha }, '*');
             });
         }
+
+        if (event.data.tipo === 'actualizarSelect') {
+                // Obtener las opciones del select del iframe
+                const opcionesSelectIframe = event.data.opciones;
+
+                // Actualizar el select del documento principal
+                const selectPrincipal = document.getElementById('destinatarioInput');
+                selectPrincipal.innerHTML = opcionesSelectIframe;
+
+                // Seleccionar la opción actual en el select del documento principal
+                const opcionSeleccionada = event.data.opcionSeleccionada;
+                selectPrincipal.value = opcionSeleccionada;
+            }
 
         window.addEventListener('message', function(event) {
             if (event.data === 'activarBotonBuscar') {
