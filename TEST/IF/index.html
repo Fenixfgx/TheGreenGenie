@@ -5,11 +5,11 @@
 </head>
 <body>
     <div style=" background-color: #ffffffe0; width: 840px; margin: auto; text-align: -webkit-center; height: 31px;  padding-top: 12px; padding-bottom: 12px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; z-index: 2; position: fixed; left: 20%; box-shadow: 0px 4px 9px 0px #409b0757;">
-    <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()">
-    <button id="buscarFuera">Buscar en ambos iframes</button>
+    <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()" style="border-style: revert;">
     <select id="destinatarioInput" onchange="sincronizarSelect()">
         <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
     </select>
+    <button id="buscarFuera">🔎​</button>
     </div>
     <br><br>
     <iframe style="border:none;" src="tuiframe.html" id="miIframe1" width="380" height="850"></iframe>
