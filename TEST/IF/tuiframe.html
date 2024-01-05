@@ -28,32 +28,6 @@
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
 
-  
-  <script>
-        const selectIframe = document.getElementById('destinatarioInput');
-        const optionsIframe = ["Opción 1", "Opción 2", "Opción 3"]; // Ejemplo de opciones
-
-        optionsIframe.forEach(function(option) {
-            const newOption = document.createElement('option');
-            newOption.textContent = option;
-            selectIframe.appendChild(newOption);
-        });
-
-        selectIframe.addEventListener('change', function() {
-            const selectedOption = selectIframe.value;
-            window.parent.postMessage({ tipo: 'actualizarSelectPrincipal', selectedOption: selectedOption }, '*');
-        });
-
-        window.addEventListener('message', function(event) {
-            if (event.data.tipo === 'actualizarOpcionesSelectPrincipal') {
-                const optionsHTML = Array.from(selectIframe.options).map(option => option.outerHTML).join('');
-                window.parent.postMessage({ tipo: 'actualizarSelectPrincipal', optionsHTML: optionsHTML }, '*');
-            }
-        });
-
-        // ... (el resto del código)
-    </script>
-  
 <script>
  window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarFecha') {
@@ -74,6 +48,17 @@
                     destinatarioInput.value = event.data.seleccionado;
                 }
             }
+   if (event.data.tipo === 'actualizarSelect') {
+                // Obtener las opciones y la opción seleccionada
+                const opcionesSelectIframe = event.data.opciones;
+                const opcionSeleccionada = event.data.opcionSeleccionada;
+
+                // Actualizar el select del iframe
+                const selectIframe = document.getElementById('destinatarioInput');
+                selectIframe.innerHTML = opcionesSelectIframe;
+                selectIframe.value = opcionSeleccionada;
+            }
+   
         });
     </script>
   <script>
