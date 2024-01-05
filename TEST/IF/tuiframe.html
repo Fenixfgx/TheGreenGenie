@@ -39,10 +39,8 @@
                 actualizarFormatoFecha();
               actualizarListaDestinatarios();
               enviarSelect()
-            } if (event.data.tipo === 'actualizarSelect') {
+            } if (event.data.tipo === 'sincronizarSelect') {
                 const selectIframe = document.getElementById('destinatarioInput');
-                selectIframe.innerHTML = event.data.options;
-                sincronizarSelect();
                 selectIframe.value = event.data.selectedOption;
             }
         });
