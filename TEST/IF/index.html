@@ -9,8 +9,11 @@
     <select id="destinatarioInput" onchange="sincronizarSelect()" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c;">
         <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
     </select>
-    <button id="buscarFuera" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button></div>
+    <button id="buscarFuera" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="mostrarOcultar()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left: 25px;">MUISCA</button></div>
     <br><br>
+    <div id="miSeccion">
+    <h2>Hola Mundo</h2>
+  </div>
     <iframe style="border:none;" src="tuiframe.html" id="miIframe1" width="380" height="850"></iframe>
     <iframe style="border:none;" src="tuiframe.html" id="miIframe2" width="380" height="850"></iframe>
     <iframe style="border:none;" src="tuiframe.html" id="miIframe3" width="380" height="850"></iframe>
@@ -58,5 +61,15 @@
             }
         });
     </script>
+    <script>
+    function mostrarOcultar() {
+      var seccion = document.getElementById("miSeccion");
+      if (seccion.style.display === "none") {
+        seccion.style.display = "block";
+      } else {
+        seccion.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
