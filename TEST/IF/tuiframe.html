@@ -21,7 +21,7 @@
     }
   </style>
 <button class="imprimir-btn" onclick="imprimirContenido()" style=" position: absolute; z-index: 2; ">Imprimir</button>
-<div class="fechainp"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
+<div class="fechainp" style="display: none;" ><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
 <select id="destinatarioInput" onchange="enviarSelect()">
   <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
 </select>
@@ -318,7 +318,7 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
     max-width: 700px; 
     height: 1000px;
     transform-origin: top left;
-    transform: scale(1);
+    transform: scale(0.5);
 }
 </style>
 <div id="card-container"></div>
