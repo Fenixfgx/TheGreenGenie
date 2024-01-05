@@ -43,13 +43,14 @@
                 const selectIframe = document.getElementById('destinatarioInput');
                 selectIframe.innerHTML = event.data.options;
                 sincronizarSelect();
+                selectIframe.value = event.data.selectedOption;
             }
         });
   
   function enviarSelect() {
             const selectIframe = document.getElementById('destinatarioInput');
             const options = selectIframe.innerHTML;
-
+            const selectedOption = selectIframe.options[selectIframe.selectedIndex].value;
             window.parent.postMessage({ tipo: 'actualizarSelect', options: options }, '*');
         }
   
