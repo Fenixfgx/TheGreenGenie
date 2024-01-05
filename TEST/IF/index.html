@@ -10,10 +10,9 @@
     <br><br>
     <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
-    <select id="destinatarioInput" >
+    <select id="destinatarioInput" onchange="sincronizarSelect()">
         <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
     </select>
-    <br><br>
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
 
@@ -36,6 +35,15 @@
             });
         }
 
+        function sincronizarSelect() {
+            const selectPrincipal = document.getElementById('destinatarioInput');
+            const selectedOption = selectPrincipal.options[selectPrincipal.selectedIndex].value;
+
+            iframes.forEach(function(iframeWindow) {
+                iframeWindow.postMessage({ tipo: 'sincronizarSelect', selectedOption: selectedOption }, '*');
+            });
+        }
+
         window.addEventListener('message', function(event) {
             if (event.data === 'activarBotonBuscar') {
                 iframes.forEach(function(iframeWindow) {
@@ -47,35 +55,6 @@
             if (event.data.tipo === 'actualizarSelect') {
                 const selectPrincipal = document.getElementById('destinatarioInput');
                 selectPrincipal.innerHTML = event.data.options;
-
-                const iframeSelect = event.source.document.getElementById('destinatarioInput');
-                const selectedOption = iframeSelect.options[iframeSelect.selectedIndex].value;
-                selectPrincipal.value = selectedOption;
-            }
-        });
-
-          function enviarSelect() {
-            const selectPrincipal = document.getElementById('destinatarioInput');
-            const options = selectPrincipal.innerHTML;
-            const selectedOption = selectPrincipal.options[selectPrincipal.selectedIndex].value;
-
-            iframes.forEach(function(iframeWindow) {
-                iframeWindow.postMessage({ tipo: 'actualizarSelect', options: options, selectedOption: selectedOption }, '*');
-            });
-        }
-
-         window.addEventListener('message', function(event) {
-            if (event.data === 'activarBotonBuscar') {
-                iframes.forEach(function(iframeWindow) {
-                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
-                    botonDentroIframe.click();
-                });
-            }
-
-            if (event.data.tipo === 'actualizarSelect') {
-                const selectPrincipal = document.getElementById('destinatarioInput');
-                selectPrincipal.innerHTML = event.data.options;
-                selectPrincipal.value = event.data.selectedOption;
             }
         });
     </script>
