@@ -22,7 +22,7 @@
   </style>
 <button class="imprimir-btn" onclick="imprimirContenido()" style=" position: absolute; z-index: 2; ">Imprimir</button>
 <div class="fechainp"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
-<select id="destinatarioInput">
+<select id="destinatarioInput" onchange="sincronizarSelect()">
   <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
 </select>
 <button onclick="actualizarListaDestinatarios()">Act</button>
@@ -38,17 +38,24 @@
                 // Ejecutar la función actualizarFormatoFecha() al recibir el mensaje
                 actualizarFormatoFecha();
               actualizarListaDestinatarios()
-            } else if (event.data.tipo === 'actualizarDestinatario') {
-                // Actualizar las opciones del select con los datos recibidos del mensaje
-                const destinatarioInput = document.getElementById('destinatarioInput');
-                destinatarioInput.innerHTML = event.data.opciones;
-
-                // Seleccionar una opción específica si se recibe un valor seleccionado del mensaje
-                if (event.data.seleccionado) {
-                    destinatarioInput.value = event.data.seleccionado;
-                }
+            } if (event.data.tipo === 'actualizarSelect') {
+                const selectIframe = document.getElementById('destinatarioInput');
+                selectIframe.innerHTML = event.data.options;
+                sincronizarSelect();
             }
         });
+  function sincronizarSelect() {
+            const selectIframe = document.getElementById('destinatarioInput');
+            const selectedOption = selectIframe.options[selectIframe.selectedIndex].value;
+
+            const options = selectIframe.innerHTML;
+            window.parent.postMessage({ tipo: 'actualizarSelect', options: options }, '*');
+
+            const selectPrincipal = window.parent.document.getElementById('destinatarioInput');
+            selectPrincipal.innerHTML = options;
+            selectPrincipal.value = selectedOption;
+        }
+  
     </script>
   <script>
         window.addEventListener('message', function(event) {
