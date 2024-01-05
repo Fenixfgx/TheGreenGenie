@@ -10,6 +10,9 @@
     <br><br>
     <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
+    <select id="destinatarioInput">
+        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+    </select>
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
 
@@ -20,17 +23,13 @@
         ];
 
         document.getElementById('buscarFuera').addEventListener('click', function() {
-            // Enviar un mensaje a cada iframe al hacer clic en el botón fuera de los iframes
             iframes.forEach(function(iframeWindow) {
                 iframeWindow.postMessage('buscarDentro', '*');
             });
         });
 
         function actualizarFormatoFecha() {
-            // Obtener el valor del input fecha
             const fecha = document.getElementById('fechaIn').value;
-
-            // Enviar el valor de fecha a cada iframe
             iframes.forEach(function(iframeWindow) {
                 iframeWindow.postMessage({ tipo: 'actualizarFecha', fecha: fecha }, '*');
             });
@@ -38,11 +37,19 @@
 
         window.addEventListener('message', function(event) {
             if (event.data === 'activarBotonBuscar') {
-                // Activar el botón dentro de ambos iframes cuando se recibe el mensaje del documento principal
                 iframes.forEach(function(iframeWindow) {
                     const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
                     botonDentroIframe.click();
                 });
+            }
+
+            if (event.data.tipo === 'actualizarSelect') {
+                const selectPrincipal = document.getElementById('destinatarioInput');
+                selectPrincipal.innerHTML = event.data.options;
+
+                const iframeSelect = event.source.document.getElementById('destinatarioInput');
+                const selectedOption = iframeSelect.options[iframeSelect.selectedIndex].value;
+                selectPrincipal.value = selectedOption;
             }
         });
     </script>
