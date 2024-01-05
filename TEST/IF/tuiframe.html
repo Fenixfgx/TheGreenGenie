@@ -28,8 +28,6 @@
 <button onclick="actualizarListaDestinatarios()">Act</button>
 <button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
 
-  
-    
 <script>
  window.addEventListener('message', function(event) {
             if (event.data.tipo === 'actualizarFecha') {
@@ -40,17 +38,16 @@
                 // Ejecutar la función actualizarFormatoFecha() al recibir el mensaje
                 actualizarFormatoFecha();
               actualizarListaDestinatarios()
-            } if (event.data.tipo === 'actualizarSelect') {
-                // Obtener las opciones y la opción seleccionada
-                const opcionesSelectIframe = event.data.opciones;
-                const opcionSeleccionada = event.data.opcionSeleccionada;
+            } else if (event.data.tipo === 'actualizarDestinatario') {
+                // Actualizar las opciones del select con los datos recibidos del mensaje
+                const destinatarioInput = document.getElementById('destinatarioInput');
+                destinatarioInput.innerHTML = event.data.opciones;
 
-                // Actualizar el select del iframe
-                const selectIframe = document.getElementById('destinatarioInput');
-                selectIframe.innerHTML = opcionesSelectIframe;
-                selectIframe.value = opcionSeleccionada;
+                // Seleccionar una opción específica si se recibe un valor seleccionado del mensaje
+                if (event.data.seleccionado) {
+                    destinatarioInput.value = event.data.seleccionado;
+                }
             }
-        });
         });
     </script>
   <script>
