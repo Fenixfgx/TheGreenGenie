@@ -6,11 +6,9 @@
 <body>
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()">
     <br><br>
-    <button id="buscarFuera">Buscar en ambos iframes</button>
+    <input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
     <br><br>
-    <select id="destinatarioInput">
-        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
-    </select>
+    <button id="buscarFuera">Buscar en ambos iframes</button>
     <br><br>
     <iframe src="tuiframe.html" id="miIframe1" width="600" height="400"></iframe>
     <iframe src="tuiframe.html" id="miIframe2" width="600" height="400"></iframe>
@@ -39,26 +37,12 @@
         }
 
         window.addEventListener('message', function(event) {
-            if (event.data.tipo === 'actualizarFecha') {
-                // Actualizar el valor del input date dentro del iframe
-                const inputFechaIframe = document.getElementById('fechaIn');
-                inputFechaIframe.value = event.data.fecha;
-
-                // Ejecutar la función actualizarFormatoFecha() al recibir el mensaje
-                actualizarFormatoFecha();
-            }
-
-            if (event.data.tipo === 'actualizarSelect') {
-                // Obtener las opciones del select del iframe
-                const opcionesSelectIframe = event.data.opciones;
-
-                // Actualizar el select del documento principal
-                const selectPrincipal = document.getElementById('destinatarioInput');
-                selectPrincipal.innerHTML = opcionesSelectIframe;
-
-                // Seleccionar la opción actual en el select del documento principal
-                const opcionSeleccionada = event.data.opcionSeleccionada;
-                selectPrincipal.value = opcionSeleccionada;
+            if (event.data === 'activarBotonBuscar') {
+                // Activar el botón dentro de ambos iframes cuando se recibe el mensaje del documento principal
+                iframes.forEach(function(iframeWindow) {
+                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
+                    botonDentroIframe.click();
+                });
             }
         });
     </script>
