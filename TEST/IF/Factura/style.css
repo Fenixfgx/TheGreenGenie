@@ -6,6 +6,7 @@
 
 body {
   color: #2b2c48;
+  font-family: "Jost", sans-serif;
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -531,13 +532,13 @@ table {
 .footer {
   position: absolute;
   left: 4px;
-  top: 878px; 
+  top: 878px;
 }
 
 .muestra {
   position: absolute;
   left: 4px;
-  top: 878px; 
+  top: 878px;
 }
 
 .factura {
