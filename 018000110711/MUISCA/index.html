@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - tabla</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Búsqueda por Fecha</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.1/xlsx.min.js"></script>
+</head>
+<body>
+  <input type="date" id="fechaInput">
+  <button onclick="buscarPorFecha()">Buscar</button>
+  <button onclick="exportToXLS()">Exportar a XLS</button>
+
+ <div id="tablaDatosimp">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+<th>SOLICITUD AUTORIZACIÓN DE EMBARQUE FRACCIONADA CHAMPION AIR CARGO</th>
+      </tr>
+      <tr>
+<th></th>
+      </tr>
+
+<th>tipo_invoice</th>
+<th>numero_invoice</th>
+<th>elaborado_por</th>
+<th>numero_guia</th>
+<th>nombre_importador</th> 
+<th>nombre_exportador</th>
+<th>nit_exportador</th>
+<th>tipo_soporte</th>
+<th>numero_soporte</th>
+<th>numero_global</th>
+<th>variedad</th>
+<th>bultos</th>
+<th>full_box</th>
+<th>unidad</th>
+<th>peso_neto</th>
+<th>piezas</th>
+<th>valor factura</th>
+<th>flete</th>
+<th>seguro</th>
+<th>otros_gastos</th>
+<th>conductor_nombre</th>
+<th>conductor_identificacion</th>
+<th>vehiculo_identificacion</th>
+<th>tipo_vehiculo</th>
+<th>peso_bruto</th>
+      </thead>
+   <tbody id="tablaDatos">
+     <tr style="display:none;"></tr>
+  </tbody>
+</table>
+  </div>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

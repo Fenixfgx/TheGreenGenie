@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página Principal</title>
+</head>
+<body style="background-image: url(https://www.thegreengenie.com.co/images/favicon.png?rand=c5e2); background-repeat: no-repeat; background-position-x: center; background-position-y: 120px;">
+    <div style=" background-color: #ffffffe0; width: 840px; margin: auto; text-align: -webkit-center; height: 31px;  padding-top: 12px; padding-bottom: 12px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; z-index: 2; position: fixed; left: 20%; box-shadow: 0px 4px 9px 0px #409b0757;">
+    <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c;">
+    <select id="destinatarioInput" onchange="sincronizarSelect()" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c;">
+        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+    </select>
+    <button id="buscarFuera" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="mostrarOcultar()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left: 25px;">MUISCA</button></div>
+    <br><br>
+    <div id="miSeccion" style=" display: none; position: absolute; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white; margin-left: 25px; right: 25px; top: 80px; width: 500px; height: 500px; ">
+    <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/MUISCA/index.html" width="500" height="500"></iframe>
+  </div>
+    <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/Factura/index.html" id="miIframe1" width="380" height="850"></iframe>
+    <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/Carta/index.html" id="miIframe2" width="380" height="850"></iframe>
+    <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/Planilla/index.html" id="miIframe3" width="380" height="850"></iframe>
+
+    <script>
+        const iframes = [
+            document.getElementById('miIframe1').contentWindow,
+            document.getElementById('miIframe2').contentWindow,
+            document.getElementById('miIframe3').contentWindow
+        ];
+
+        document.getElementById('buscarFuera').addEventListener('click', function() {
+            iframes.forEach(function(iframeWindow) {
+                iframeWindow.postMessage('buscarDentro', '*');
+            });
+        });
+
+        function actualizarFormatoFecha() {
+            const fecha = document.getElementById('fechaIn').value;
+            iframes.forEach(function(iframeWindow) {
+                iframeWindow.postMessage({ tipo: 'actualizarFecha', fecha: fecha }, '*');
+            });
+        }
+
+        function sincronizarSelect() {
+            const selectPrincipal = document.getElementById('destinatarioInput');
+            const selectedOption = selectPrincipal.options[selectPrincipal.selectedIndex].value;
+
+            iframes.forEach(function(iframeWindow) {
+                iframeWindow.postMessage({ tipo: 'sincronizarSelect', selectedOption: selectedOption }, '*');
+            });
+        }
+
+        window.addEventListener('message', function(event) {
+            if (event.data === 'activarBotonBuscar') {
+                iframes.forEach(function(iframeWindow) {
+                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
+                    botonDentroIframe.click();
+                });
+            }
+
+            if (event.data.tipo === 'actualizarSelect') {
+                const selectPrincipal = document.getElementById('destinatarioInput');
+                selectPrincipal.innerHTML = event.data.options;
+            }
+        });
+    </script>
+    <script>
+    function mostrarOcultar() {
+      var seccion = document.getElementById("miSeccion");
+      if (seccion.style.display === "none") {
+        seccion.style.display = "block";
+      } else {
+        seccion.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
