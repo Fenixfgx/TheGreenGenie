@@ -89,6 +89,14 @@
                 window.parent.postMessage('activarBotonBuscar', '*');
             }
         });
+
+
+    window.addEventListener('message', function(event) {
+            if (event.data === 'ImprimirDentro') {
+                // Enviar un mensaje al documento principal para activar el botón dentro del iframe
+                window.parent.postMessage('activarBotonImprimir', '*');
+            }
+        });
     </script>
 </div>
 <div style="display:none">
