@@ -64,6 +64,16 @@
                 selectPrincipal.innerHTML = event.data.options;
             }
         });
+
+
+        window.addEventListener('message', function(event) {
+            if (event.data === 'activarBotonImprimir') {
+                iframes.forEach(function(iframeWindow) {
+                    const botonDentroIframe = iframeWindow.document.getElementById('ImprimirDentro');
+                    botonDentroIframe.click();
+                });
+            }
+         });
     </script>
     <script>
     function mostrarOcultar() {
