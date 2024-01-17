@@ -18,10 +18,35 @@
    <button onclick="mostrarOcultar2()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left: 5px;">CLOSE</button>
    <iframe style="border:none;" src="https://www.thegreengenie.com.co/018000110711/GEN/" width="100%" height="90%"></iframe>
   </div>
-
-    <div id="load" style=" display: block; position: absolute;  padding: 6px; background-color: white; width: 100%; height: 100%; z-index: 7;">
-   <iframe style="border:none;" src="https://www.thegreengenie.com.co/load/" width="100%" ></iframe>
+<style>
+    #load {
+      display: block;
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      z-index: 7;
+    }
+  </style>
+    <div id="load">
+   <iframe style="border:none;" src="https://www.thegreengenie.com.co/load/" width="100%" height="100%"></iframe>
   </div>
+    <script>
+  // Esperar a que el documento esté completamente cargado
+  document.addEventListener("DOMContentLoaded", function() {
+    // Obtener el elemento con id "load"
+    var loadElement = document.getElementById("load");
+
+    // Mostrar el elemento
+    loadElement.style.display = "block";
+
+    // Esperar 33 segundos (33000 milisegundos)
+    setTimeout(function() {
+      // Ocultar el elemento después de 33 segundos
+      loadElement.style.display = "none";
+    }, 33000);
+  });
+</script>
     <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/Factura/index.html" id="miIframe1" width="380" height="850"></iframe>
     <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/Carta/index.html" id="miIframe2" width="380" height="850"></iframe>
     <iframe style="border:none;" src="https://www.thegreengenie.com.co/TEST/IF/Planilla/index.html" id="miIframe3" width="380" height="850"></iframe>
