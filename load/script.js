@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mostrar la segunda imagen después de 11 segundos
   setTimeout(() => {
     image2.style.opacity = 1;
-  }, 24500);
+  }, 27500);
   
   // Mostrar la tercera imagen después de 9 segundos
   setTimeout(() => {
     image3.style.opacity = 0;
-  }, 20000);
+  }, 18000);
 });
