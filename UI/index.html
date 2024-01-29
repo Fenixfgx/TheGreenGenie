@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - MacBook UI Green</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+</head>
+
+
+<div class="desktop">
+ <div class="taskbar">
+    <div class="logo menu bttn">
+       <i class="fa fa-apple"></i>
+   </div>
+    <div class="menu bold bttn">Finder</div>
+    <div class="menu bttn">File</div>
+    <div class="menu bttn">Edit</div>
+    <div class="menu bttn">View</div>
+    <div class="menu bttn">Go</div>
+    <div class="menu bttn">Window</div>
+    <div class="menu bttn">Help</div>
+  <div class="window-container">
+  </div>
+
+    </div>
+  
+  <style>
+  .icon-container .icon {
+    position: relative;
+    display: inline-block;
+  }
+  .icon-container .icon img {
+    transition: all 0.3s ease-out;
+    transform: scale(1);
+  }
+  .icon-container .icon:hover img {
+    transform: scale(1.2);
+  }
+  .icon-container .icon.clicked img {
+    animation: jump 0.5s ease-in-out;
+  }
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<div class="icon-container">
+  <div class="icon-container-inner">
+    <div class="icon-bar"></div>
+    <div class="code icon">
+      <img src="https://fenixfgx.github.io/directoriocachipay/images/ADMIN.png" alt="logo de código" style="width: 60px;">
+      <div class="reverse-icon">
+        <img src="https://fenixfgx.github.io/directoriocachipay/images/ADMIN.png" alt="logo de código" style="width: 60px;"/>
+      </div>
+    </div>
+    <div class="user icon" style="display:none;">
+      <img src="https://fenixfgx.github.io/directoriocachipay/images/live.png" alt="logo de usuario" style="width: 60px;"/>
+      <div class="reverse-icon">
+        <img src="https://fenixfgx.github.io/directoriocachipay/images/live.png" alt="logo de usuario" style="width: 60px;"/>
+      </div>
+    </div>
+    
+    
+    <div class="check icon">
+      <img src="https://fenixfgx.github.io/directoriocachipay/images/check.png" alt="logo de usuario" style="width: 52px;
+    margin-bottom: 4px"/>
+      <div class="reverse-icon">
+        <img src="https://fenixfgx.github.io/directoriocachipay/images/check.png" alt="logo de usuario" style="width: 54px; margin-bottom: 6px"/>
+      </div>
+    </div>
+    
+    <div class="conf icon">
+      <img src="https://fenixfgx.github.io/directoriocachipay/images/cf.png" alt="logo de usuario" style="width: 62px;
+    margin-bottom: 0px;
+    border-radius: 30px;"/>
+      <div class="reverse-icon">
+        <img src="https://fenixfgx.github.io/directoriocachipay/images/cf.png" alt="logo de usuario" style="width: 62px;
+    margin-bottom: 3px;
+    border-radius: 30px;"/>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.icon-container .icon').forEach(function(icon) {
+    icon.addEventListener('click', function() {
+      icon.classList.add('clicked');
+      setTimeout(function() {
+        icon.classList.remove('clicked');
+      }, 500);
+    });
+  });
+</script>
+
+  // sector one //
+<div class="window code" id="code-window" style="width: 90%; height: 84%; inset: 36.3281px auto auto 59.8125px; resize: both; overflow: auto;">
+  <div class="titlebar" style="font-family: arial;">
+    <div class="title">Admin</div>
+    <div class="buttons">
+      <div class="close" style="height: 12px; background-color: #E91E63; border-radius: 50%; width: 12px; margin-top: -16px; margin-left: 6px;"></div>
+      <div class="minimize"></div>
+      <div class="maximize"></div>
+    </div>
+  </div>
+  <div class="content">
+    <button onclick="reloadIframe()" style="
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 175px;
+    height: 22px;
+    margin-left: 5px;
+">Nueva Publicación/ Reset</button>
+ <script>
+    function reloadIframe() {
+  var iframe = document.getElementById("ADMIN");
+  iframe.src = iframe.src;
+}
+</script>
+ <iframe id="ADMIN" title="ADM" width="100%" height="650px"
+    style="border:none"
+     src="https://www.thegreengenie.com.co/018000110711/">
+    </iframe>
+  </div>
+</div>
+
+  //sector
+  
+  <div class="window code" id="code-window2" style="display: block; transition: all 0.3s ease 0s; width: 300px; inset: 37px auto auto 641px; height: 300px; border-radius: 23px;">
+      
+<div class="container">
+  <div class="notch">
+    <div class="time" id="current-time">--:--</div>
+  </div>
+  <div class="screen" style="padding-top: 0px; padding-left: 10px; padding-right: 10px;">
+    
+    <iframe id="DC" title="DC" width="100%" height="70%" style="border:none;border-radius: 12px;" src="https://fenixfgx.github.io/directoriocachipay/Flappy/"></iframe>
+    <button onclick="window.history.back()"  style="
+    background-color: black;
+    border: none;
+    border-radius: 12px;
+    margin-left: 38%;
+    height: 20px;
+    width: 60px;
+    margin-top: 2px;
+    color: white;
+"> ◀</button>
+      
+    </div>
+  </div>
+</div>
+
+
+  // sector three //
+<div class="window code" id="code-window3" style="width: 96%; height: 84%; max-height: 90% ;inset: 7% auto auto 1.6%; resize: both; overflow: auto;">
+  <div class="titlebar" style="font-family: arial;">
+    <div class="title">Check Base</div>
+    <div class="buttons">
+      <div class="close3" style="height: 12px; background-color: #E91E63; border-radius: 50%; width: 12px; margin-top: -16px; margin-left: 6px;"></div>
+      <div class="minimize"></div>
+      <div class="maximize"></div>
+    </div>
+  </div>
+  <div class="content">
+    <iframe id="CHECK"
+    title="CHECK"
+    width="100%" 
+    style="border:none; height:600px;"
+    src="https://www.thegreengenie.com.co/018000110711/GEN/">
+    </iframe>
+  </div>
+</div>  
+     
+  // sector four //
+<div class="window code" id="code-window4" style="display: block;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    height: 81%;
+    border-radius: 24px;
+    margin-top: 2%;
+    background: TRANSPARENT;
+    box-shadow: NONE;
+    border: none;">
+  <iframe id="CHECK"
+    title="CHECK"
+    width="100%" 
+    style="border:none; height: 100%;"
+    src="https://fenixfgx.github.io/directoriocachipay/Conf.html">
+  </iframe>
+</div>
+
+<script>
+  window.onload = function() {
+    var iframe = document.getElementById('CHECK');
+    var container = document.getElementById('code-window4');
+    iframe.onload = function() {
+      container.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    };
+  };
+</script>
+
+
+  
+<style>
+    
+ .container {
+  display: inline-block;
+  width: 370px;
+  height: 570px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.notch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background-color: #000;
+  border-radius: 0 0 50% 50%;
+}
+
+.time {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: cursive;
+  color: #fff;
+}
+
+.screen {
+  background-color: #fff;
+  height: 724px;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 58px;
+}
+
+.button {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #555;
+}
+  
+
+</style>
+
+<script>
+  // Obtener el elemento "time"
+  const timeEl = document.getElementById('current-time');
+  // Obtener el botón de retroceso
+  const backButton = document.createElement('button');
+  backButton.textContent = 'Volver atrás';
+  backButton.style.display = 'block';
+  backButton.style.margin = 'auto';
+  backButton.style.marginTop = '10px';
+  backButton.style.padding = '10px';
+  backButton.style.borderRadius = '5px';
+  backButton.style.backgroundColor = '#333';
+  backButton.style.color = '#fff';
+
+  // Función para obtener la hora actual en formato de 12 horas
+  function getCurrentTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const formattedTime = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes} ${ampm}`;
+    return formattedTime;
+  }
+
+  // Función para actualizar la hora actual cada segundo
+  function updateTime() {
+    const currentTime = getCurrentTime();
+    timeEl.textContent = currentTime;
+  }
+
+  // Añadir el botón de retroceso a la pantalla del celular
+  const screenEl = document.querySelector('.screen');
+  screenEl.appendChild(backButton);
+
+  // Volver atrás al hacer clic en el botón de retroceso
+  backButton.addEventListener('click', () => {
+    window.history.back();
+  });
+
+  // Actualizar la hora actual cada segundo
+  setInterval(updateTime, 1000);
+</script>
+
+
+</div>
+  
+  <!-- sector -->
+ 
+<style>
+    body{
+  font-family: 'dosis';
+}
+.desktop{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background: url("https://media.idownloadblog.com/wp-content/uploads/2016/06/macOS-Sierra-Wallpaper-Macbook-Wallpaper.jpg") center center no-repeat;
+  overflow: hidden;
+}
+.taskbar{
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	top: 0;
+	background: rgb(239, 243, 248);
+	box-shadow: rgb(128, 146, 162) 0 0 0 .02em;
+}
+.menu.bttn{
+  line-height: 30px; 
+  width: auto;
+  display: inline-block;
+  padding: 0 10px;
+  cursor: pointer;
+  font-family: Lucida Grande, sans-serif;
+  margin-right: -.1em;
+}
+.menu.bttn:hover {
+	background: rgb(68, 151, 251);
+	color: #fff;
+}
+.bold{
+  font-weight: bold;
+}
+.logo.menu.bttn{
+  max-width: 20px;
+}
+.logo.menu.bttn img {
+	width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	top: -2px;
+}
+.icon-container{position: absolute; bottom: 0; width: 100%; text-align: center;z-index: 999;}
+.icon-container-inner {
+	perspective: 1000px;
+	margin-bottom: -6px;
+  color: #151515;
+}
+.icon{display: inline-block;margin: 10px;
+	font-size: 40px;	margin-bottom: 20px;position: relative;cursor: pointer;}
+.icon-bar{
+  height: 80px;
+  background: #eff3f8;
+  width: 65%;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: -1;
+  transform: rotateX(33deg);
+  border-radius: 3px;
+  opacity: .7;
+}
+.reverse-icon {
+	transform: scaleY(-1);
+	position: absolute;
+	top: 70%;
+	left: -10px;
+  margin: 10px;
+  opacity: .7;
+}
+
+.icon i {position: relative;z-index: 1;}
+.icon.active i{
+  animation: bounce 500ms 2 cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.icon:after {
+	content: '';
+	background: rgba(56,56,56,.7);
+	width: 100%;
+	height: 5px;
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	border-radius: 100%;
+	z-index: 0;
+	background: radial-gradient(ellipse at center, rgba(56,56,56,1) 0%, rgba(46,46,46,0) 100%);
+}
+
+.icon.active:before, .icon.minimised:before {
+	content: '';
+	background: rgba(56,56,56,.7);
+	width: 5px;
+	height: 5px;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	border-radius: 100%;
+	z-index: 0;
+	background: radial-gradient(ellipse at center, rgba(56,56,56,1) 0%, rgba(46,46,46,0) 100%);
+	background: radial-gradient(ellipse at center, rgb(6, 116, 210) 9%, rgba(6, 116, 210,1) 10%, rgba(6, 116, 210,1) 17%, rgba(6, 116, 210,1) 18%, rgba(6, 116, 210,0.79) 34%, rgba(6, 116, 210,0.75) 37%, rgba(6, 116, 210,0) 100%);
+	margin: 0 auto;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 9;
+}
+
+.icon.active:after{
+  animation: shadow-bounce 500ms 2 cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.window{
+	background: #eff3f8;
+	display: block;
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	box-shadow: 0 0 10px 0px #000;
+  transition: .3s ease;
+  border: 1px solid #acacac;
+  border-radius: 6px;
+  box-shadow: 0px 0px 20px #000;
+}
+.titlebar {
+	display: block;
+	width: 100%;
+	height: 30px;
+  background: linear-gradient(to top, #ebebeb, #d5d5d5);
+  color: #4d494d;
+  font-size: 11pt;
+  line-height: 20px;
+  text-align: center;
+  width: 100%;
+  height: 20px;
+  border-top: 1px solid #f3f1f3;
+  border-bottom: 1px solid #b1aeb1;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  user-select: none;
+}
+
+.main-content {
+	height: calc(100% - 70px);
+	padding: 20px;
+}
+.window.focus{
+  z-index: 999;
+}
+.slider{
+	z-index: 0;
+	margin: 0 auto;
+}
+input{
+  background: none;
+	border: none;
+	text-align: center;
+	width: 100%;
+	padding: 0;
+}
+
+.window.code {
+  display: none;
+}
+
+
+@keyframes bounce {
+	0% {
+		bottom: 0;
+	}
+	50% {
+		bottom: 10px;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+@keyframes shadow-bounce {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(.7);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+</style>
+  
+<script>
+  // most of this is stock jqueryui some is custom
+
+$('.window').mouseover(function(){
+  $(this).css("transition", "0s").draggable({
+    containment: "parent"
+  });
+})
+$( ".window" ).click(function(){
+  $( ".window" ).removeClass('focus');
+  $(this).addClass('focus');
+})
+$( ".window" ).on( "dragstart", function( event, ui ) {
+  $( ".window" ).removeClass('focus');
+  $(this).addClass('focus');
+} );
+$('.window').mouseout(function(){
+  $(this).draggable( "destroy" );
+   $(this).css("transition", ".3s ease");
+});
+$('.icon').click(function(){
+  if ($(this).hasClass('active')){
+      $(this).addClass('minimised')
+             .removeClass('active');
+      }
+  else {
+      $(this).addClass('active')
+      .removeClass('minimised');}
+});
+  
+$('.code').click(function(){
+  $('.window.code').toggleClass('active');
+});
+$( function() {
+  $( ".slider.css" ).slider({
+    range: "max",
+    min: 1,
+    max: 10,
+    value: 8,
+    slide: function( event, ui ) {
+      $( ".css.amount" ).val( ui.value );
+    }
+  });
+  $( ".css.amount" ).val( $( ".slider.css" ).slider( "value" ) );
+});
+
+$('.icon.code').click(function(){
+  $('#code-window').toggleClass('active');
+});
+
+$('.icon.user').click(function(){
+$('#code-window2').toggleClass('active');
+});
+  
+$('.icon.check').click(function(){
+$('#code-window3').toggleClass('active');
+});  
+  
+  
+  $('.icon.conf').click(function(){
+$('#code-window4').toggleClass('active');
+});  
+  
+// Al cargar la página, esconde la ventana de código
+$(document).ready(function(){
+  $('#code-window').hide();
+});
+
+  $(document).ready(function(){
+  $('#code-window2').hide();
+});
+  
+  $(document).ready(function(){
+  $('#code-window3').hide();
+});
+  
+  $(document).ready(function(){
+  $('#code-window4').hide();
+});
+// Al hacer clic en el icono de código, muestra la ventana de código
+var codeWindowOpen = false;
+
+$('.code.icon').click(function(){
+  if (codeWindowOpen) {
+    $('#code-window').hide();
+    codeWindowOpen = false;
+  } else {
+    $('#code-window').show();
+    codeWindowOpen = true;
+  }
+});
+
+$('.user.icon').click(function(){
+  if (codeWindowOpen) {
+    $('#code-window2').hide();
+    codeWindowOpen = false;
+  } else {
+    $('#code-window2').show();
+    codeWindowOpen = true;
+  }
+});  
+  
+$('.check.icon').click(function(){
+  if (codeWindowOpen) {
+    $('#code-window3').hide();
+    codeWindowOpen = false;
+  } else {
+    $('#code-window3').show();
+    codeWindowOpen = true;
+  }
+});  
+  
+  $('.conf.icon').click(function(){
+  if (codeWindowOpen) {
+    $('#code-window4').hide();
+    codeWindowOpen = false;
+  } else {
+    $('#code-window4').show();
+    codeWindowOpen = true;
+  }
+});  
+  
+// Al hacer clic en el botón de cerrar, esconde la ventana de código
+$('.close').click(function(){
+  $('#code-window').fadeOut();
+});
+  
+$('.close2').click(function(){
+  $('#code-window2').hide();
+});
+  
+ $('.close3').click(function(){
+  $('#code-window3').hide();
+}); 
+  
+  $('.close4').click(function(){
+  $('#code-window4').hide();
+}); 
+// Al hacer clic en el botón de minimizar, minimiza la ventana de código
+$('.minimize').click(function(){
+  $('#code-window').toggleClass('minimized');
+}); 
+  
+  $('.minimize').click(function(){
+  $('#code-window2').toggleClass('minimized');
+}); 
+  
+   $('.minimize').click(function(){
+  $('#code-window3').toggleClass('minimized');
+}); 
+  
+   $('.minimize').click(function(){
+  $('#code-window4').toggleClass('minimized');
+}); 
+</script>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/c242b552f8.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+</body>
+</html>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/c242b552f8.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+</body>
+</html>
