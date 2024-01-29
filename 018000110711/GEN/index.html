@@ -86,21 +86,25 @@ var url = "https://zonepdf.com/es/dividir-pdf";
         });
         
 
-         window.addEventListener('message', function(event) {
-            if (event.data === 'activarBotonImprimir') {
-                iframes.forEach(function(iframeWindow) {
-                    const botonDentroIframe = iframeWindow.document.getElementById('ImprimirDentro');
-                    botonDentroIframe.click();
-                });
-            }
-             if (event.data === 'activarBotonImprimir2') {
-                iframes.forEach(function(iframeWindow) {
-                    
-                    const botonDentroIframe = iframeWindow.document.getElementById('ImprimirDentro');
-                    botonDentroIframe.click();
-                });
-            }
+        window.addEventListener('message', function(event) {
+    if (event.data === 'activarBotonImprimir') {
+        iframes.forEach(function(iframeWindow) {
+            const botonDentroIframe = iframeWindow.document.getElementById('ImprimirDentro');
+            botonDentroIframe.click();
         });
+    }
+    
+    if (event.data === 'activarBotonImprimir2') {
+        // Agregar un delay de 2 segundos antes de ejecutar la acción
+        setTimeout(function() {
+            iframes.forEach(function(iframeWindow) {
+                const botonDentroIframe = iframeWindow.document.getElementById('ImprimirDentro');
+                botonDentroIframe.click();
+            });
+        }, 2000); // 2000 milisegundos = 2 segundos
+    }
+});
+
     </script>
     <script>
     function mostrarOcultar() {
