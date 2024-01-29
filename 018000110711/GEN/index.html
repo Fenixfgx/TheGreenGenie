@@ -93,6 +93,13 @@ var url = "https://zonepdf.com/es/dividir-pdf";
                     botonDentroIframe.click();
                 });
             }
+             if (event.data === 'activarBotonImprimir2') {
+                iframes.forEach(function(iframeWindow) {
+                    
+                    const botonDentroIframe = iframeWindow.document.getElementById('ImprimirDentro');
+                    botonDentroIframe.click();
+                });
+            }
         });
     </script>
     <script>
