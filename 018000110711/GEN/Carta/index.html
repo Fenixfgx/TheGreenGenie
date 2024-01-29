@@ -44,7 +44,7 @@
       transform: scale(0.98); /* Reduce el tamaño del botón al hacer clic */
     }
   </style>
-<button class="imprimir-btn" onclick="imprimirContenido()">Imprimir Cartas</button>
+<button id="ImprimirDentro" class="imprimir-btn" onclick="imprimirContenido()">Imprimir Cartas</button>
 <div class="fechainp" style="display: none;"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
 <select id="destinatarioInput" onchange="enviarSelect()">
   <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
@@ -82,6 +82,12 @@
             if (event.data === 'buscarDentro') {
                 // Enviar un mensaje al documento principal para activar el botón dentro del iframe
                 window.parent.postMessage('activarBotonBuscar', '*');
+            }
+        });
+     window.addEventListener('message', function(event) {
+            if (event.data === 'ImprimirDentro') {
+                // Enviar un mensaje al documento principal para activar el botón dentro del iframe
+                window.parent.postMessage('activarBotonImprimir', '*');
             }
         });
     </script>
