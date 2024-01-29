@@ -84,19 +84,7 @@ var url = "https://zonepdf.com/es/dividir-pdf";
                 selectPrincipal.innerHTML = event.data.options;
             }
         });
-         window.addEventListener('message', function(event) {
-            if (event.data === 'activarBotonBuscar') {
-                iframes.forEach(function(iframeWindow) {
-                    const botonDentroIframe = iframeWindow.document.getElementById('buscarDentro');
-                    botonDentroIframe.click();
-                });
-            }
-
-            if (event.data.tipo === 'actualizarSelect') {
-                const selectPrincipal = document.getElementById('destinatarioInput');
-                selectPrincipal.innerHTML = event.data.options;
-            }
-        });
+        
 
          window.addEventListener('message', function(event) {
             if (event.data === 'activarBotonImprimir') {
