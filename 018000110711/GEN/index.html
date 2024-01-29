@@ -7,7 +7,7 @@
     <div style=" background-color: #ffffffe0; width: 840px; margin: auto; text-align: -webkit-center; height: 31px;  padding-top: 12px; padding-bottom: 12px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; z-index: 2; position: fixed; left: 20%; box-shadow: 0px 4px 9px 0px #409b0757;">
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c;">
     
-    <button id="buscarFuera" style="margin-left:7px; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="mostrarOcultar()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">SPDF</button><button onclick="ejecutarScript()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Compilar</button></div>
+    <button id="buscarFuera" style="margin-left:7px; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="abrirNuevaPestana()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">SPDF</button><button onclick="ejecutarScript()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Compilar</button></div>
     <br><br>
     <div id="miSeccion" style=" display: none; position: absolute; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white; margin-left: 45px; top: 80px; width: 1000px; height: 500px; z-index: 2;">
     <iframe style="border:none;" src="https://www.visualpdf.com/es/extract-pdf-pages" width="998" height="498"></iframe>
@@ -27,7 +27,15 @@
 <iframe style="border:none;margin-top: 23px;position: relative; z-index: 1;background-color: #ffffffc9;" src="https://www.thegreengenie.com.co/018000110711/GEN/Factura/index.html" id="miIframe1" width="320" height="850"></iframe>   
 <iframe style="border:none;margin-top: 23px;position: relative;margin-left: -21px;z-index: 1;background-color: #ffffffc9;"" src="https://www.thegreengenie.com.co/018000110711/GEN/Carta/index.html" id="miIframe2" width="320" height="850"></iframe>
 <iframe style="border:none;margin-top: 23px;position: relative;margin-left: -21px;z-index: 1;background-color: #ffffffc9;" src="https://www.thegreengenie.com.co/018000110711/GEN/Planilla/index.html" id="miIframe3" width="320" height="850"></iframe>
-    
+    <script>
+    function abrirNuevaPestana() {
+        // URL que quieres abrir en la nueva pestaña
+var url = "https://zonepdf.com/es/dividir-pdf";
+
+        // Abrir una nueva pestaña con la URL especificada
+        window.open(url, "_blank");
+    }
+</script>
     <script>
         const iframes = [
             document.getElementById('miIframe1').contentWindow,
