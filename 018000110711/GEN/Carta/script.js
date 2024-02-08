@@ -17,7 +17,7 @@ function imprimirContenido() {
   });
 
   const ventanaImpresion = window.open('', '_blank');
-  ventanaImpresion.document.write('<html><head><title>Imprimir</title></head><body>' + contenido + '</body></html>');
+  ventanaImpresion.document.write('<html><head><title>Carta</title></head><body>' + contenido + '</body></html>');
   ventanaImpresion.print();
   ventanaImpresion.close();
 }
