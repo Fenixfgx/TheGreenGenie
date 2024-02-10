@@ -36,6 +36,21 @@
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
+
+          // Mostrar la primera imagen durante 3 minutos
+        document.getElementById('imagen1').style.display = 'inline-block';
+        setTimeout(function () {
+            // Ocultar la primera imagen después de 3 minutos
+            document.getElementById('imagen1').style.display = 'none';
+
+            // Mostrar la segunda imagen durante 1 minuto
+            document.getElementById('imagen2').style.display = 'inline-block';
+            setTimeout(function () {
+                // Ocultar la segunda imagen después de 1 minuto
+                document.getElementById('imagen2').style.display = 'none';
+            }, 60000); // 1 minuto en milisegundos
+        }, 180000); // 3 minutos en milisegundos
+
     }
   </script>
  
