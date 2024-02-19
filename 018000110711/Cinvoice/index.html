@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - CANADIAN INVOICE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<link rel="stylesheet" href="https://fenixfgx.github.io/Fenix/BOLSADEEMPLEO/stylexy.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script src="https://fenixfgx.github.io/Fenix/JSPDF/html2pdf/html2pdf.bundle.min.js"></script>
+<!-- Asegúrate de tener conexión a internet para cargar SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<style>
+    /* Estilos para ocultar el botón de imprimir al imprimir la página */
+    @media print {
+      .imprimir-btn {
+        display: none !important;
+      }
+    }
+  </style>
+<button class="imprimir-btn" onclick="imprimirContenido()" style="position:absolute;z-index: 2;top: 535px;left: 171px;border-radius: 50%;border:none;padding: 9px;width: 50px;height: 50px;"><svg width="30px" height="30px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" id="Stock_cut" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <desc></desc> <g> <path d="M26,23h1 c1.105,0,2-0.895,2-2V9c0-1.105-0.895-2-2-2H5C3.895,7,3,7.895,3,9v12c0,1.105,0.895,2,2,2h1" fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="6" x2="26" y1="19" y2="19"></line> <rect fill="none" height="12" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" width="14" x="9" y="19"></rect> <rect fill="none" height="6" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" width="14" x="9" y="1"></rect> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="26" x2="24" y1="11" y2="11"></line> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="12" x2="20" y1="23" y2="23"></line> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="12" x2="20" y1="27" y2="27"></line> </g> </g></svg></button>
+
+<div class="fechainp" style="display: block;"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
+<select id="destinatarioInput" onchange="enviarSelect()">
+  <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+</select>
+<button onclick="actualizarListaDestinatarios()">Act</button>
+<button id="buscarDentro" onclick="buscarPorFechaYDestinatario()">Buscar</button>
+  <button id="btnCrearPdf">Click aquí</button>
+<script>
+
+</script>
+<script>
+ window.addEventListener('message', function(event) {
+            if (event.data.tipo === 'actualizarFecha') {
+                // Actualizar el valor del input date dentro del iframe
+                const inputFechaIframe = document.getElementById('fechaIn');
+                inputFechaIframe.value = event.data.fecha;
+
+                // Ejecutar la función actualizarFormatoFecha() al recibir el mensaje
+                actualizarFormatoFecha();
+              actualizarListaDestinatarios();
+              enviarSelect()
+            } if (event.data.tipo === 'sincronizarSelect') {
+                const selectIframe = document.getElementById('destinatarioInput');
+                selectIframe.value = event.data.selectedOption;
+            }
+        });
+  
+  function enviarSelect() {
+            const selectIframe = document.getElementById('destinatarioInput');
+            const options = selectIframe.innerHTML;
+            const selectedOption = selectIframe.options[selectIframe.selectedIndex].value;
+            window.parent.postMessage({ tipo: 'actualizarSelect', options: options }, '*');
+        }
+  
+    </script>
+  <script>
+        window.addEventListener('message', function(event) {
+            if (event.data === 'buscarDentro') {
+                // Enviar un mensaje al documento principal para activar el botón dentro del iframe
+                window.parent.postMessage('activarBotonBuscar', '*');
+            }
+        });
+    </script>
+</div>
+<div style="display:none">
+<div class="cardas" data-state="#aboutas">
+<div class="cardas-header">
+<div class="titulof" style="display: flex; margin-top: 40px; margin-left: 35px; font-family: sans-serif;width: 620px;">
+<table style="width:100%; border-collapse: collapse; font-size: 12px;">
+  <tr style="border: solid;border-top: none; border-left: none; border-right: none;">
+<th colspan=2 style=" text-align: center; border-top: none; border-left: none; border-right: none;"><p class="toper" style="margin-top: 2px; margin-left: 4px; padding-bottom:5px;">CANADA CUSTOMS INVOICE</p></th>
+  </tr>
+  <tr style="border: solid;">
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">1. Vendor (Name and Address)</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">THE GREEN GENIE SAS</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">Finca san Antonia via Ferrea Tolu</p><p  class="toper" style="margin-top: -8px; margin-bottom: 2px; margin-left: 4px;">Cachipay-Cundinamarca</p></th>
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">2. Date od Direct Shipment to Canada</p><p class="toper" style="margin-top: -8px; margin-left: 4px;" id="fecha"></p><p class="toper" style="margin-top: -8px; margin-left: 4px;">AWB: <spawn id="AWBMF"></spawn></p><p class="toper" style="margin-top: -8px; margin-left: 4px; margin-bottom: 2px;">HAWB: <spawn id="HAWB"></spawn></p></th>
+  </tr>
+  <tr style="border: solid;">
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">4. Consignee (Name and Address) / Destination</p><p class="toper"style="margin-top: -8px; margin-left: 4px;" id="destinatario"></p><p class="toper"style="margin-top: -8px; margin-left: 4px;" id="direccionf"></p><p  class="toper" style="margin-top: -8px; margin-bottom: 2px; margin-left: 4px;">TEL: <spawn id="telf"></spawn></p></th>
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">5. Purchase's Name and Address</p><p class="toper"style="margin-top: -8px; margin-left: 4px;" id="destinatario2"></p><p class="toper"style="margin-top: -8px; margin-left: 4px;" id="direccion2"></p><p  class="toper" style="margin-top: -8px; margin-bottom: 2px; margin-left: 4px;">TEL: <spawn id="tel2"></spawn></p></th>
+  </tr>
+  <tr style="border: solid;">
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">6. Country of Transshipment</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">USA</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">CANADA</p></th>
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">7. Country of Origin of Goods</p><p class="toper" style="margin-top: -8px; margin-left: 4px;">COLOMBIA</p></th>
+  </tr>
+  <tr style="border: solid;">
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">8. Transportation: Give mode and Place of Direct Shipment to Canada</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">THE GREEN GENIE SAS</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">BY AIR: COLOMBIA / MIAMI</p></th>
+<th style="border: solid; text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">9. Condition of Sale and Terms of Payment</p><p class="toper" style="margin-top: -8px; margin-left: 4px;">30</p><p class="toper" style="margin-top: -8px; margin-left: 4px;">FCA</p></th>
+  </tr>
+<tr style="border: solid;">
+<th style="text-align: left;"><p class="toper" style="margin-top: 2px; margin-left: 4px;">10. Currency of Statement</p><p class="toper"style="margin-top: -8px; margin-left: 4px;">US$ DOLLARS</p></th>
+</tr>
+</table>
+</div>
+
+<div class="muestra" style="margin-left:35px; margin-top:5px;border:none; width: 650px; font-size: 12px; font-family: serif-sans; text-align: center; font-family: sans-serif; font-weight: bold; color: black; font-size: 13px;">
+  <p id="MUESTRA"></p>
+</div>  
+
+<div class="factura" style="margin-left:35px; margin-top: 12px;border-style: solid;border-width: thin;border-color: black; width: 620px; font-size: 12px; font-family: serif-sans; z-index: 12;">
+  
+<table id="miTabla" style="border-spacing: 0; width: 620px;">
+  <tr>
+      <th  style="border: 0.5px solid black; width: 12%; font-size: 12px; font-family: sans-serif;">11. No. Of Packages</th>
+      <th style="border: 1px solid black; width: 40%;font-size: 12px; font-family: sans-serif;">12. Specificacion of commodities </th>
+      <th colspan=2 style="border: 0.5px solid black; width: 25%; font-size: 11px; font-family: sans-serif;">13. Quantity (State Unit)</th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 10%; font-family: sans-serif;">14. Unit Price</th>
+      <th style="border: 0.5px solid black; width: 28%;font-size: 12px; font-family: sans-serif;">15. Total</th>
+    </tr>  
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t1"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t2"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t3"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t4"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t5"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t6"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t7"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t8"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t9"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t10"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t11"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t12"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t13"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t14"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t15"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t16"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t17"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t18"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t19"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t20"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t21"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t22"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t23"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t24"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t25"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t26"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t27"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t28"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t29"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t30"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t31"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t32"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t33"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t34"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t35"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t36"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t37"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t38"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t39"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t40"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t41"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t42"></th>
+    </tr> 
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t43"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t44"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t45"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t46"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t47"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t48"></th>
+    </tr>
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t49"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t50"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t51"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t52"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t53"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t54"></th>
+    </tr>
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t55"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t56"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t57"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t58"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t59"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t60"></th>
+    </tr>
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t61"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t62"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t63"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t64"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t65"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t66"></th>
+    </tr>
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif;"><spawn id="t67"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif;"><spawn id="t68"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t69"></spawn></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;"><spawn id="t70"></th>
+      <th style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id="t71"></th>
+      <th style="border: 0.5px solid black; width: 60px;font-size: 12px; font-family: sans-serif;"><spawn id="t72"></th>
+    </tr>
+  <tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; background-color: #a8bfd3;"><spawn id="t73"></spawn></th>
+      <th style="border: 1px solid black; width: 50px;font-size: 12px; font-family: sans-serif; background-color: #a8bfd3;     text-align: left; font-weight: bold;">&nbsp;&nbsp;BOXES</th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; background-color: #a8bfd3;font-weight: bold;">Total Steams</th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; background-color: #a8bfd3;"><spawn id="t74"></th>
+      <th colspan=2 style="border: 0.5px solid black;font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id=""></th>
+    </tr>
+  <tr>
+      <th style="height: 18px; font-size: 11px; width: 75px; font-family: sans-serif;"><spawn id=""></th>
+    </tr>
+  <tr>
+      <th colspan=3 rowspan=2 style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; padding-left: 4px; text-align: left; border-bottom: none;">18. If any of fields 1 to 17 are included on an attached commercial invoice, check <br>This box</th>
+      <th colspan=2 rowspan=2 style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; font-weight: bold;">Total Weight.</th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-bottom: none;">17. Invoice Total</th>
+    </tr>
+   <tr>
+      <th  rowspan=2 style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; padding-left: 4px; border-top: none; border-bottom: none; background-color: #a8bfd3;">US$</th>
+    </tr>
+  
+<tr>
+      <th style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; padding-left: 4px; text-align: left;">X</th>
+      <th colspan=2 style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; font-weight: bold; border-bottom: none; border-top: none;"></th>
+      <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-bottom: none;">Net</th>
+  <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-bottom: none;">Gross</th>
+    </tr>
+  <tr>
+      <th colspan=2 style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; padding-left: 4px; text-align: left; border-top: none; border-right: none; background-color: #a8bfd3;">Commercial Invoice No</th>
+<th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-top: none; border-left: none; background-color: #a8bfd3;"><spawn id="t77"></th>
+<th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-top: none;"><spawn id="t75"></spawn></th>
+  <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-top: none;"><spawn id="t76"></spawn></th>
+  <th style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif; border-top: none; background-color: #a8bfd3;"><spawn id="USDT"></spawn></th>
+    </tr>
+  
+  <tr>
+<th colspan=3 style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; padding-left: 4px; text-align: left; height: 65px;">19.Exporter's Name and Address (if other than vendor)</th>
+<th colspan=3 style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;">20. Originator (Name and Address)
+</th>
+    </tr>
+  <tr>
+<th colspan=3 style="border: 0.5px solid black; height: 18px; width: 80px; font-size: 12px; font-family: sans-serif; padding-left: 4px; text-align: left; height: 65px;">21. Departmental Ruting ( Applicable)</th>
+<th colspan=3 style="border: 0.5px solid black; width: 227px; font-size: 11px; font-family: sans-serif;">22. If fields 23 to 25 are not applicable check this box</th>
+    </tr>
+  
+  </table>
+</div>
+  
+<p id="destinatario" style="display:none"></p>
+ 
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+
+
+<img src="https://www.thegreengenie.com.co/logonit.png" class="nit" style=" display:none; margin-top: 172px; margin-left: 487px;width: 130px;">
+
+
+  </div>
+
+  <div class="cardas-main">
+    <div class="cardas-section is-active" >
+      <div class="cardas-content">
+        <p class="cardas-desc" id="acercaas">
+        </p>
+
+      </div>
+
+    </div>
+    
+    <div style="display:none;"class="cardas-section" id="experienceas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">EXPERIENCIA LABORAL</div>
+        <div class="cardas-timeline">
+          <div class="cardas-item" >
+            <div class="cardas-item-title" id="expas"></div>
+          </div>
+          <div class="cardas-item" style="display:none" >
+           
+          </div>
+          <div class="cardas-item" style="display:none">
+            <div class="cardas-item-title"></div>
+            <div class="cardas-item-desc"></div>
+          </div>
+          <div class="cardas-item" style="display:none">
+            <div class="cardas-item-title"></div>
+            <div class="cardas-item-desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:none;"class="cardas-section" id="contactas">
+      <div class="cardas-content">
+        <div class="cardas-subtitle">CONTACTO</div>
+        <div class="cardas-contact-wrapper">
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+           <p id="ubicacionas">  </p>
+          </div>
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+            </svg><p id="telas">  </p>
+          </div>
+          <div class="cardas-contact">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <path d="M22 6l-10 7L2 6" />
+            </svg>
+            <p id="emailas">  </p>
+          </div>
+          </div>
+      </div>
+    </div>
+     </div>
+</div>
+</div>
+<style>
+.cardas {
+    margin-bottom: 25px;
+    width: 700px;
+    max-width: 700px; 
+    height: 1000px;
+    transform-origin: top left;
+    transform: scale(1);
+}
+</style>
+<div id="card-container"></div>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+ 
+  const buttons = document.querySelectorAll(".cardas-buttons button");
+const sections = document.querySelectorAll(".cardas-section");
+const card = document.querySelector(".cardas");
+
+const handleButtonClick = (e) => {
+  const targetSection = e.target.getAttribute("data-section");
+  const section = document.querySelector(targetSection);
+  targetSection !== "#aboutas"
+    ? card.classList.add("is-active")
+    : card.classList.remove("is-active");
+  card.setAttribute("data-state", targetSection);
+  sections.forEach((s) => s.classList.remove("is-active"));
+  buttons.forEach((b) => b.classList.remove("is-active"));
+  e.target.classList.add("is-active");
+  section.classList.add("is-active");
+};
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", handleButtonClick);
+});
+  
+  const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+  const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+  const SHEET_NAME = 'Cinvoice';
+
+  gapi.load('client:auth2', initClient);
+
+  function initClient() {
+    gapi.client.init({
+      apiKey: API_KEY,
+      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    }).then(() => {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: SHEET_NAME,
+      }).then((response) => {
+        const data = response.result.values;
+
+        const cardContainer = document.getElementById("card-container");
+
+        for (let i = 1; i < data.length; i++) {
+          const cardClone = document.querySelector(".cardas").cloneNode(true);
+          cardClone.setAttribute("data-state", "#" + i);
+
+          const fecha = cardClone.querySelector("#fecha");
+          const destinatario = cardClone.querySelector("#destinatario");
+          const destinatario2 = cardClone.querySelector("#destinatario2");
+const direccionf = cardClone.querySelector("#direccionf");
+const direccion2 = cardClone.querySelector("#direccion2");
+          const telf = cardClone.querySelector("#telf");
+          const tel2 = cardClone.querySelector("#tel2");
+          const paisf = cardClone.querySelector("#paisf");
+          const estadof = cardClone.querySelector("#estadof");
+          const AWBMF = cardClone.querySelector("#AWBMF");
+          const HAWB = cardClone.querySelector("#HAWB");
+          
+          const t1 = cardClone.querySelector("#t1");
+          const t2 = cardClone.querySelector("#t2");
+          const t3 = cardClone.querySelector("#t3");
+          const t4 = cardClone.querySelector("#t4");
+          const AT1 = cardClone.querySelector("#AT1");
+          const t5 = cardClone.querySelector("#t5");
+          const t6 = cardClone.querySelector("#t6");
+          const t7 = cardClone.querySelector("#t7");
+          const t8 = cardClone.querySelector("#t8");
+          const t9 = cardClone.querySelector("#t9");
+          const t10 = cardClone.querySelector("#t10");
+          const t11 = cardClone.querySelector("#t11");
+          const t12 = cardClone.querySelector("#t12");
+          const t13 = cardClone.querySelector("#t13");
+          const t14 = cardClone.querySelector("#t14");
+          const t15 = cardClone.querySelector("#t15");
+          const t16 = cardClone.querySelector("#t16");
+          const t17 = cardClone.querySelector("#t17");
+          const t18 = cardClone.querySelector("#t18");
+          const t19 = cardClone.querySelector("#t19");
+          const t20 = cardClone.querySelector("#t20");
+          const t21 = cardClone.querySelector("#t21");
+          const t22 = cardClone.querySelector("#t22");
+          const t23 = cardClone.querySelector("#t23");
+          const t24 = cardClone.querySelector("#t24");
+          const t25 = cardClone.querySelector("#t25");
+          const t26 = cardClone.querySelector("#t26");
+          const t27 = cardClone.querySelector("#t27");
+          const t28 = cardClone.querySelector("#t28");
+          const t29 = cardClone.querySelector("#t29");
+          const t30 = cardClone.querySelector("#t30");
+          const t31 = cardClone.querySelector("#t31");
+          const t32 = cardClone.querySelector("#t32");
+          const t33 = cardClone.querySelector("#t33");
+          const t34 = cardClone.querySelector("#t34");
+          const t35 = cardClone.querySelector("#t35");
+          const t36 = cardClone.querySelector("#t36");
+          const t37 = cardClone.querySelector("#t37");
+          const t38 = cardClone.querySelector("#t38");
+          const t39 = cardClone.querySelector("#t39");
+          const t40 = cardClone.querySelector("#t40");
+          const t41 = cardClone.querySelector("#t41");
+          const t42 = cardClone.querySelector("#t42");
+          const t43 = cardClone.querySelector("#t43");
+          const t44 = cardClone.querySelector("#t44");
+          const t45 = cardClone.querySelector("#t45");
+          const t46 = cardClone.querySelector("#t46");
+          const t47 = cardClone.querySelector("#t47");
+          const t48 = cardClone.querySelector("#t48");
+          const t49 = cardClone.querySelector("#t49");
+          const t50 = cardClone.querySelector("#t50");
+          const t51 = cardClone.querySelector("#t51");
+          const t52 = cardClone.querySelector("#t52");
+          const t53 = cardClone.querySelector("#t53");
+          const t54 = cardClone.querySelector("#t54");
+          const t55 = cardClone.querySelector("#t55");
+          const t56 = cardClone.querySelector("#t56");
+          const t57 = cardClone.querySelector("#t57");
+          const t58 = cardClone.querySelector("#t58");
+          const t59 = cardClone.querySelector("#t59");
+          const t60 = cardClone.querySelector("#t60");
+          const t61 = cardClone.querySelector("#t61");
+          const t62 = cardClone.querySelector("#t62");
+          const t63 = cardClone.querySelector("#t63");
+          const t64 = cardClone.querySelector("#t64");
+          const t65 = cardClone.querySelector("#t65");
+          const t66 = cardClone.querySelector("#t66");
+          const t67 = cardClone.querySelector("#t67");
+          const t68 = cardClone.querySelector("#t68");
+          const t69 = cardClone.querySelector("#t69");
+          const t70 = cardClone.querySelector("#t70");
+          const t71 = cardClone.querySelector("#t71");
+          const t72 = cardClone.querySelector("#t72");
+          const t73 = cardClone.querySelector("#t73");
+          const t74 = cardClone.querySelector("#t74");
+          const t75 = cardClone.querySelector("#t75");
+          const t76 = cardClone.querySelector("#t76");
+          const t77 = cardClone.querySelector("#t77");
+          const t78 = cardClone.querySelector("#t78");
+          const t79 = cardClone.querySelector("#t79");
+          const t80 = cardClone.querySelector("#t80");
+          const t81 = cardClone.querySelector("#t81");
+          const t82 = cardClone.querySelector("#t82");
+          const t83 = cardClone.querySelector("#t83");
+          const t84 = cardClone.querySelector("#t84");
+          const t85 = cardClone.querySelector("#t85");
+          const t86 = cardClone.querySelector("#t86");
+          const t87 = cardClone.querySelector("#t87");
+          const t88 = cardClone.querySelector("#t88");
+          const t89 = cardClone.querySelector("#t89");
+          const t90 = cardClone.querySelector("#t90");
+          const t91 = cardClone.querySelector("#t91");
+          const t92 = cardClone.querySelector("#t92");
+          const t93 = cardClone.querySelector("#t93");
+          const t94 = cardClone.querySelector("#t94");
+          const t95 = cardClone.querySelector("#t95");
+          const t96 = cardClone.querySelector("#t96");
+          const t97 = cardClone.querySelector("#t97");
+          const t98 = cardClone.querySelector("#t98");
+          const t99 = cardClone.querySelector("#t99");
+          const t100 = cardClone.querySelector("#t100");
+          const t101 = cardClone.querySelector("#t101");
+          const t102 = cardClone.querySelector("#t102");
+          const t103 = cardClone.querySelector("#t103");
+          const t104 = cardClone.querySelector("#t104");
+          const t105 = cardClone.querySelector("#t105");
+          const t106 = cardClone.querySelector("#t106");
+          const t107 = cardClone.querySelector("#t107");
+          const t108 = cardClone.querySelector("#t108");
+          const t109 = cardClone.querySelector("#t109");
+          const t110 = cardClone.querySelector("#t110");
+          const t111 = cardClone.querySelector("#t111");
+          const t112 = cardClone.querySelector("#t112");
+          const t113 = cardClone.querySelector("#t113");
+          const t114 = cardClone.querySelector("#t114");
+          const t115 = cardClone.querySelector("#t115");
+          const t116 = cardClone.querySelector("#t116");
+          const t117 = cardClone.querySelector("#t117");
+          const t118 = cardClone.querySelector("#t118");
+          const t119 = cardClone.querySelector("#t119");
+          const t120 = cardClone.querySelector("#t120");
+          const t121 = cardClone.querySelector("#t121");
+          const t122 = cardClone.querySelector("#t122");
+          const t123 = cardClone.querySelector("#t123");
+          const t124 = cardClone.querySelector("#t124");
+          const t125 = cardClone.querySelector("#t125");
+          const t126 = cardClone.querySelector("#t126");
+          const t127 = cardClone.querySelector("#t127");
+          const t128 = cardClone.querySelector("#t128");
+          const t129 = cardClone.querySelector("#t129");
+          const t130 = cardClone.querySelector("#t130");
+          const t131 = cardClone.querySelector("#t131");
+          const t132 = cardClone.querySelector("#t132");
+          const t133 = cardClone.querySelector("#t133");
+          const t134 = cardClone.querySelector("#t134");
+          const t135 = cardClone.querySelector("#t135");
+          const t136 = cardClone.querySelector("#t136");
+          const t137 = cardClone.querySelector("#t137");
+          const t138 = cardClone.querySelector("#t138");
+          const t139 = cardClone.querySelector("#t139");
+          const t140 = cardClone.querySelector("#t140");
+          const t141 = cardClone.querySelector("#t141");
+          const t142 = cardClone.querySelector("#t142");
+          const t143 = cardClone.querySelector("#t143");
+          const t144 = cardClone.querySelector("#t144");
+          const t145 = cardClone.querySelector("#t145");
+          const t146 = cardClone.querySelector("#t146");
+          const t147 = cardClone.querySelector("#t147");
+          const t148 = cardClone.querySelector("#t148");
+          const t149 = cardClone.querySelector("#t149");
+          const t150 = cardClone.querySelector("#t150");
+          const t151 = cardClone.querySelector("#t151");
+          const t152 = cardClone.querySelector("#t152");
+          const t153 = cardClone.querySelector("#t153");
+          const t154 = cardClone.querySelector("#t154");
+          const t155 = cardClone.querySelector("#t155");
+          const t156 = cardClone.querySelector("#t156");
+          const t157 = cardClone.querySelector("#t157");
+          const t158 = cardClone.querySelector("#t158");
+          const t159 = cardClone.querySelector("#t159");
+          const t160 = cardClone.querySelector("#t160");
+          const t161 = cardClone.querySelector("#t161");
+          const t162 = cardClone.querySelector("#t162");
+          const t163 = cardClone.querySelector("#t163");
+          const t164 = cardClone.querySelector("#t164");
+          const t165 = cardClone.querySelector("#t165");
+          const t166 = cardClone.querySelector("#t166");
+          const t167 = cardClone.querySelector("#t167");
+          const t168 = cardClone.querySelector("#t168");
+          const t169 = cardClone.querySelector("#t169");
+          const TSF = cardClone.querySelector("#TSF");
+          const VF = cardClone.querySelector("#VF");
+          const FFF = cardClone.querySelector("#FFF");
+          const mk1 = cardClone.querySelector("#mk1");
+          const mk2 = cardClone.querySelector("#mk2");
+          const mk3 = cardClone.querySelector("#mk3");
+          const mk4 = cardClone.querySelector("#mk4");
+          const mk5 = cardClone.querySelector("#mk5");
+          const mk6 = cardClone.querySelector("#mk6");
+          const mk7 = cardClone.querySelector("#mk7");
+          const mk8 = cardClone.querySelector("#mk8");
+          const mk9 = cardClone.querySelector("#mk9");
+          const mk10 = cardClone.querySelector("#mk10");
+          const mk11 = cardClone.querySelector("#mk11");
+          const mk12 = cardClone.querySelector("#mk12");
+          const mk13 = cardClone.querySelector("#mk13");
+          const mk14 = cardClone.querySelector("#mk14");
+          const mk15 = cardClone.querySelector("#mk15");
+          const mk16 = cardClone.querySelector("#mk16");
+          const mk17 = cardClone.querySelector("#mk17");
+          const MUESTRA = cardClone.querySelector("#MUESTRA");
+          const USDT = cardClone.querySelector("#USDT");
+          
+
+          fecha.innerHTML = data[i][1];
+          destinatario.innerHTML = data[i][2];
+          destinatario2.innerHTML = data[i][2];
+          direccionf.innerHTML = data[i][3];
+          direccion2.innerHTML = data[i][3];
+          telf.innerHTML = data[i][6];
+          tel2.innerHTML = data[i][6];
+          AWBMF.innerHTML = data[i][7];
+          HAWB.innerHTML = data[i][8];
+          t1.innerHTML = data[i][14];
+          t2.innerHTML = data[i][13];
+          t3.innerHTML = data[i][17];
+          t4.innerHTML = data[i][18];
+          t5.innerHTML = data[i][19];
+          t6.innerHTML = data[i][20];
+          t7.innerHTML = data[i][25];
+          t8.innerHTML = data[i][24];
+          t9.innerHTML = data[i][28];
+          t10.innerHTML = data[i][29];
+          t11.innerHTML = data[i][30];
+          t12.innerHTML = data[i][31];
+          t13.innerHTML = data[i][36];
+          t14.innerHTML = data[i][35];
+          t15.innerHTML = data[i][39];
+          t16.innerHTML = data[i][40];
+          t17.innerHTML = data[i][41];
+          t18.innerHTML = data[i][42];
+          t19.innerHTML = data[i][47];
+          t20.innerHTML = data[i][46];
+          t21.innerHTML = data[i][50];
+          t22.innerHTML = data[i][51];
+          t23.innerHTML = data[i][52];
+          t24.innerHTML = data[i][53];
+          t25.innerHTML = data[i][58];
+          t26.innerHTML = data[i][57];
+          t27.innerHTML = data[i][61];
+          t28.innerHTML = data[i][62];
+          t29.innerHTML = data[i][63];
+          t30.innerHTML = data[i][64];
+          t31.innerHTML = data[i][69];
+          t32.innerHTML = data[i][68];
+          t33.innerHTML = data[i][72];
+          t34.innerHTML = data[i][73];
+          t35.innerHTML = data[i][74];
+          t36.innerHTML = data[i][75];
+          t37.innerHTML = data[i][80];
+          t38.innerHTML = data[i][79];
+          t39.innerHTML = data[i][83];
+          t40.innerHTML = data[i][84];
+          t41.innerHTML = data[i][85];
+          t42.innerHTML = data[i][86];
+          t43.innerHTML = data[i][91];
+          t44.innerHTML = data[i][90];
+          t45.innerHTML = data[i][94];
+          t46.innerHTML = data[i][95];
+          t47.innerHTML = data[i][96];
+          t48.innerHTML = data[i][97];
+          t49.innerHTML = data[i][102];
+          t50.innerHTML = data[i][101];
+          t51.innerHTML = data[i][105];
+          t52.innerHTML = data[i][106];
+          t53.innerHTML = data[i][107];
+          t54.innerHTML = data[i][108];
+          t55.innerHTML = data[i][113];
+          t56.innerHTML = data[i][112];
+          t57.innerHTML = data[i][116];
+          t58.innerHTML = data[i][117];
+          t59.innerHTML = data[i][118];
+          t60.innerHTML = data[i][119];
+          t61.innerHTML = data[i][124];
+          t62.innerHTML = data[i][123];
+          t63.innerHTML = data[i][127];
+          t64.innerHTML = data[i][128];
+          t65.innerHTML = data[i][129];
+          t66.innerHTML = data[i][130];
+          t67.innerHTML = data[i][135];
+          t68.innerHTML = data[i][134];
+          t69.innerHTML = data[i][138];
+          t70.innerHTML = data[i][139];
+          t71.innerHTML = data[i][140];
+          t72.innerHTML = data[i][141];
+          t75.innerHTML = data[i][2108];
+          t76.innerHTML = data[i][2109];
+          t77.innerHTML = data[i][11];
+          
+          
+// Función para obtener el valor numérico o 0 si es un valor en blanco o no es numérico
+function obtenerValorNumerico(elemento) {
+    var valor = parseFloat(elemento.innerHTML.replace(',', '.'));
+    return isNaN(valor) ? 0 : valor;
+}
+
+// Obtén los valores numéricos o 0 si los valores son blancos o no son numéricos
+var valor_t1 = obtenerValorNumerico(t1);
+var valor_t7 = obtenerValorNumerico(t7);
+var valor_t13 = obtenerValorNumerico(t13);
+var valor_t19 = obtenerValorNumerico(t19);
+var valor_t25 = obtenerValorNumerico(t25);
+var valor_t31 = obtenerValorNumerico(t31);
+var valor_t37 = obtenerValorNumerico(t37);
+var valor_t43 = obtenerValorNumerico(t43);
+var valor_t49 = obtenerValorNumerico(t49);
+var valor_t55 = obtenerValorNumerico(t55);
+var valor_t61 = obtenerValorNumerico(t61);
+var valor_t67 = obtenerValorNumerico(t67);
+
+// Suma
+var suma = valor_t1 + valor_t7 + valor_t13 + valor_t19 + valor_t25 + valor_t31 + valor_t37 + valor_t43 + valor_t49 + valor_t55 + valor_t61 + valor_t67;
+
+// Muestra el resultado en t73
+t73.innerHTML = suma;
+
+          
+          // Obtén los valores numéricos de t5 y t6
+var valor_t4 = obtenerValorNumerico(t4);
+var valor_t10 = obtenerValorNumerico(t10);
+var valor_t16 = obtenerValorNumerico(t16);
+var valor_t22 = obtenerValorNumerico(t22);
+var valor_t28 = obtenerValorNumerico(t28);
+var valor_t34 = obtenerValorNumerico(t34);
+var valor_t40 = obtenerValorNumerico(t40);
+var valor_t46 = obtenerValorNumerico(t46);
+var valor_t52 = obtenerValorNumerico(t52);
+var valor_t58 = obtenerValorNumerico(t58);
+var valor_t64 = obtenerValorNumerico(t64);
+var valor_t70 = obtenerValorNumerico(t70);
+
+// Suma los valores considerando los valores en blanco como 0
+var suma2 = valor_t4 + valor_t10 + valor_t16 + valor_t22 + valor_t28 + valor_t34 + valor_t40 + valor_t46 + valor_t52 + valor_t58 + valor_t64 + valor_t70;
+
+// Muestra el resultado en t73
+t74.innerHTML = suma2;
+
+
+          // Obtén los valores numéricos de t5 y t6
+var valor_t6 = obtenerValorNumerico(t6);
+var valor_t12 = obtenerValorNumerico(t12);
+var valor_t18 = obtenerValorNumerico(t18);
+var valor_t24 = obtenerValorNumerico(t24);
+var valor_t30 = obtenerValorNumerico(t30);
+var valor_t36 = obtenerValorNumerico(t36);
+var valor_t42 = obtenerValorNumerico(t42);
+var valor_t48 = obtenerValorNumerico(t48);
+var valor_t54 = obtenerValorNumerico(t54);
+var valor_t60 = obtenerValorNumerico(t60);
+var valor_t66 = obtenerValorNumerico(t66);
+var valor_t72 = obtenerValorNumerico(t72);
+
+// Suma los valores considerando los valores en blanco como 0
+var suma3 = valor_t6 + valor_t12 + valor_t18 + valor_t24 + valor_t30 + valor_t36 + valor_t42 + valor_t48 + valor_t54 + valor_t60 + valor_t66 + valor_t72;
+
+          
+// Muestra el resultado en t73
+USDT.innerHTML = suma3;
+          
+          MUESTRA.innerHTML = data[i][2144];
+  
+          cardContainer.appendChild(cardClone);
+          setupCardButtons(cardClone);
+        }
+      });
+    });
+  }
+  
+  // Agrega esta línea al final de tu script actual
+document.getElementById('reloadButton').addEventListener('click', fetchData);
+
+// La función fetchData para recargar los datos
+function fetchData() {
+  const cardContainer = document.getElementById("card-container");
+  // Limpia el contenedor antes de cargar los nuevos datos
+  cardContainer.innerHTML = '';
+  // Vuelve a llamar a la función initClient para obtener los datos actualizados
+ // Asegúrate de incluir SweetAlert JS antes de este código
+
+function mostrarConfirmacion() {
+  const mensaje = "Espere 30 segundos";
+
+  // Muestra el mensaje de confirmación usando SweetAlert
+  Swal.fire({
+    title: mensaje,
+    html: "I will close in <b></b> milliseconds.",
+    icon: 'info',
+    timer: 30000, // 30 segundos en milisegundos
+    timerProgressBar: true,
+    showConfirmButton: false,
+    didOpen: () => {
+    Swal.showLoading();
+    const timer = Swal.getPopup().querySelector("b");
+    timerInterval = setInterval(() => {
+      timer.textContent = `${Swal.getTimerLeft()}`;
+    }, 100);
+  },
+    willClose: () => {
+      // Acciones a realizar después de que se cierre SweetAlert
+      Swal.fire({
+        title: 'Tiempo cumplido',
+        icon: 'success',
+      });
+    },
+  });
+}
+
+// Llama a la función para mostrar la confirmación
+mostrarConfirmacion();
+
+  initClient();
+}
+
+
+function setupCardButtons(card) {
+    const buttons = card.querySelectorAll(".cardas-buttons button");
+    const sections = card.querySelectorAll(".cardas-section");
+
+    const handleButtonClick = (e) => {
+        const targetSection = e.target.getAttribute("data-section");
+        const section = card.querySelector(targetSection);
+        targetSection !== "#aboutas"
+            ? card.classList.add("is-active")
+            : card.classList.remove("is-active");
+        card.setAttribute("data-state", targetSection);
+        sections.forEach((s) => s.classList.remove("is-active"));
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        e.target.classList.add("is-active");
+        section.classList.add("is-active");
+    };
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", handleButtonClick);
+    });
+
+    const telasButton = card.querySelector("#telas");
+    telasButton.addEventListener("click", () => {
+        const phoneNumber = telasButton.textContent.trim();
+        if (phoneNumber !== "") {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+    });
+
+    const emailasButton = card.querySelector("#emailas");
+    emailasButton.addEventListener("click", () => {
+        const emailAddress = emailasButton.textContent.trim();
+        if (emailAddress !== "") {
+            window.location.href = `mailto:${emailAddress}`;
+        }
+    });
+}
+</script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
