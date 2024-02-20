@@ -552,3 +552,8 @@ table {
   left: 4px;
   top: 958px;
 }
+
+#card-container {
+    width: 120px;
+    height: 120px;
+}
