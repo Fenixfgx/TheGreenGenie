@@ -424,3 +424,8 @@ p {
 .nit {
   padding-top: 100px;
 }
+
+#card-container {
+    width: 120px;
+    height: 120px;
+}
