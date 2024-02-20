@@ -556,3 +556,8 @@ table {
 .toper {
   margin-top: 3px !important;
 }
+
+#card-container {
+    width: 120px;
+    height: 120px;
+}
