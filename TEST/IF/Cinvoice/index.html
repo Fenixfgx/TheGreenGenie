@@ -45,7 +45,8 @@
 
                 // Ejecutar la función actualizarFormatoFecha() al recibir el mensaje
                 actualizarFormatoFecha();
-              enviarSelect()
+               enviarSelect();
+              actualizarListaDestinatarios()
             } if (event.data.tipo === 'sincronizarSelect') {
                 const selectIframe = document.getElementById('destinatarioInput');
                 selectIframe.value = event.data.selectedOption;
