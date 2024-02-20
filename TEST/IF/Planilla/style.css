@@ -474,3 +474,8 @@ p {
 .line {
   top: 748px;
 }
+
+#card-container {
+    width: 120px;
+    height: 120px;
+}
