@@ -1,0 +1,56 @@
+/* Estilo glassmorphic para la tabla */
+#datos {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#datos th,
+#datos td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Estilo para las filas impares */
+#datos tbody tr:nth-child(odd) {
+  background-color: rgb(88 177 40 / 20%);
+}
+
+/* Estilo para las filas pares */
+#datos tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo glassmorphic para los botones */
+button {
+  background-color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-family: sans-serif;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  color: #002eb7;
+}
+
+button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(0);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}

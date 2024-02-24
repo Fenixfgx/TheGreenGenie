@@ -1,82 +1,39 @@
-$(document).ready(function() {
-  $('#boton-listar').click(function() {
-    ejecutarFuncion('listar');
-  });
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
 
-  $('#boton-enviar-correos').click(function() {
-    ejecutarFuncion('enviarcorreos');
-  });
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
-  $('#boton-enturnador').click(function() {
-    ejecutarFuncion('enviarCorreosAdjuntosEnturnador');
-  });
+      // Llamar a la función de verificación
+      verifyLogin(username, password);
+    });
 
-  $('#boton-cliente').click(function() {
-    ejecutarFuncion('enviarCorreosAdjuntosCliente');
-  });
+    async function verifyLogin(username, password) {
+      // Obtener el spreadsheetId de la hoja "IDAPI"
+      const spreadsheetIdResponse = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/1neDLIsgyhW7YUYvfVPp6ef990j1tsZOhRC7WYQESlDE/values/IDAPI!A1?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8`);
+      const spreadsheetIdData = await spreadsheetIdResponse.json();
+      const spreadsheetId = spreadsheetIdData.values[0][0];
 
-  $('#boton-agencias').click(function() {
-    ejecutarFuncion('enviarCorreosAdjuntosAgencias');
-  });
+      // Llamar a la API de Google Sheets con el spreadsheetId obtenido
+      const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/PW!A2:C2?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8`);
+      const data = await response.json();
 
-  function ejecutarFuncion(funcion) {
-    $.ajax({
-      url: 'https://script.google.com/macros/s/AKfycbzvnTNSMjO4rXh_eng9PGoTt-7aVxVn6MCXTzZXoGEOyHC76wGm0b_F34QsL7D6-M-0/exec', // Reemplaza 'URL_DE_TU_APP_SCRIPT' con la URL de ejecución de tu Google Apps Script
-      type: 'GET',
-    data: { func: funcion },
-    success: function(response) {
-      alert('La función ' + funcion + ' se ejecutó correctamente');
-      obtenerDatos(); // Actualizar la tabla automáticamente
-        $('#boton-enviar-correos').show();
-        $('#boton-enturnador').show();
-        $('#boton-cliente').show();
-        $('#boton-agencias').show();
-    },
-    error: function(xhr, status, error) {
-      alert('Hubo un error al ejecutar la función ' + funcion + ': ' + error);
+      // Obtener los valores de usuario, contraseña y URL de la hoja de cálculo
+      const storedUsername = data.values[0][0];
+      const storedPassword = data.values[0][1];
+      const redirectURL = data.values[0][2];
+
+      // Verificar si el usuario y la contraseña coinciden
+      if (username === storedUsername && password === storedPassword) {
+        // Redirigir a la URL obtenida de la hoja de cálculo
+        window.location.href = redirectURL;
+      } else {
+        // Mostrar un mensaje de error utilizando SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Contraseña Incorrecta',
+          confirmButtonText: 'OK'
+        });
       }
-    });
-  }
-});
-
-
-// Carga la librería de Google Sheets
-gapi.load('client', init);
-
-function init() {
-  gapi.client.init({
-    apiKey: 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8', // Reemplaza 'TU_API_KEY' con tu propia clave API
-    discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-  }).then(function() {
-    // Llama a la función que obtiene los datos de la hoja de cálculo
-    obtenerDatos();
-  });
-}
-
-function obtenerDatos() {
-  gapi.client.sheets.spreadsheets.values.batchGet({
-    spreadsheetId: '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w', // Reemplaza 'ID_DE_TU_HOJA_DE_CÁLCULO' con el ID de tu hoja de cálculo
-    ranges: ['mailFGX!A2:A', 'mailFGXClient!B2:B', 'mailFGXClient!O2:O', 'mailFGXAgenciasin!P2:P', 'mailFGXAgenciasin!Q2:Q'] // Ajusta los rangos para las cinco columnas
-  }).then(function(response) {
-    var datos = response.result.valueRanges.map(function(valueRange) {
-      return valueRange.values.map(function(row) {
-        return row[0];
-      });
-    });
-    mostrarDatosEnTabla(datos);
-  });
-}
-
-function mostrarDatosEnTabla(datos) {
-  var tablaBody = document.querySelector('#datos tbody');
-  var maxFilas = Math.max.apply(null, datos.map(function(columna) { return columna.length; }));
-  tablaBody.innerHTML = ''; // Limpiar la tabla antes de actualizarla
-  for (var i = 0; i < maxFilas; i++) {
-    var filaHTML = '<tr>';
-    datos.forEach(function(columna) {
-      filaHTML += '<td>' + (columna[i] ? columna[i] : '') + '</td>';
-    });
-    filaHTML += '</tr>';
-    tablaBody.innerHTML += filaHTML;
-  }
-}
+    }

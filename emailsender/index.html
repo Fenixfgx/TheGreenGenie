@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>EMAIL SENDER</title>
+  <title>Login</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -13,38 +13,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Botones para llamar a Google Apps Script</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://apis.google.com/js/api.js"></script>
-  <link href="https://fenixfgx.github.io/Fenix/noty/lib/noty.css" rel="stylesheet">
-<script src="https://fenixfgx.github.io/Fenix/noty/lib/noty.js" type="text/javascript"></script>
+  <title>Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-  <div style="display: flex;"><img style="width:200px; margin-left: 15%;" src="https://www.thegreengenie.com.co/images/favicon.png?rand=c5e2"><h2 style="font-style: italic; font-size: 5vh; margin-left: 10%;">Email Sender</h2></div>
-  <div>
-  <button id="boton-listar">Listar archivos</button>
-  <button id="boton-enturnador" style="display: none;">Enviar Correos Adjuntos Enturnador</button>
-  <button id="boton-cliente" style="display: none;">Enviar Correos Adjuntos Cliente</button>
-  <button id="boton-agencias" style="display: none;">Enviar Correos Adjuntos Agencias</button>
-  <button id="boton-enviar-correos" style="display: none;">Enviar Todo</button>
- </div>
-<table id="datos">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Cliente</th>
-        <th>Correo Cliente</th>
-        <th>Agencia</th>
-        <th>Correo Agencia</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
   
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="script.js"></script>
+  <div class="login-container">
+    <div class="logo-container">
+      <div class="logo"><img style="width: 102px;" src="https://www.thegreengenie.com.co/images/logos21.png"></div>
+    </div>
+    <form class="login-form" id="loginForm">
+      <div class="placeholder-animate">
+        <input type="text" id="username" name="username" placeholder="Usuario">
+      </div>
+      <div class="placeholder-animate">
+        <input type="password" id="password" name="password" placeholder="Contraseña">
+      </div>
+      <input type="submit" value="Iniciar Sesión">
+    </form>
+  </div>
+  <script>
+    document.querySelectorAll('.placeholder-animate input[type="text"], .placeholder-animate input[type="password"]').forEach(function(input) {
+      input.addEventListener('focus', function() {
+        input.parentNode.classList.add('placeholder-animate');
+      });
+      input.addEventListener('blur', function() {
+        if (!input.value) {
+          input.parentNode.classList.remove('placeholder-animate');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 </body>
 </html>

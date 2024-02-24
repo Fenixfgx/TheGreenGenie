@@ -1,56 +1,101 @@
-/* Estilo glassmorphic para la tabla */
-#datos {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.1);
-}
+body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
 
-#datos th,
-#datos td {
-  padding: 10px;
-  text-align: left;
-}
+    .login-container {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      background: #f0f0f0;
+      border-radius: 20px;
+      box-shadow: 10px 10px 20px #b7b7b7, -10px -10px 20px #ffffff;
+    }
 
-/* Estilo para las filas impares */
-#datos tbody tr:nth-child(odd) {
-  background-color: rgb(88 177 40 / 20%);
-}
+    .login-form {
+      text-align: center;
+    }
 
-/* Estilo para las filas pares */
-#datos tbody tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.1);
-}
+    .login-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
 
-/* Estilo glassmorphic para los botones */
-button {
-  background-color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: black;
-    border-radius: 20px;
-    cursor: pointer;
-    outline: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    font-family: sans-serif;
-    font-style: italic;
-    margin-bottom: 10px;
-}
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 94%;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #f0f0f0;
+      box-shadow: inset -1px 3px 12px #b7b7b7, inset -6px -6px 12px #ffffff;
+      font-size: 16px;
+      transition: box-shadow 0.3s ease;
+    }
 
-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
-  color: #002eb7;
-}
+    .login-form input[type="text"]:focus,
+    .login-form input[type="password"]:focus {
+      outline: none;
+      box-shadow: inset 4px 4px 8px #b7b7b7, inset -4px -4px 8px #ffffff;
+    }
 
-button:active {
-  background-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(0);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-}
+    .login-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #4CAF50; /* Verde */
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      animation: color-change 2s infinite alternate; /* Animación */
+    }
+
+    @keyframes color-change {
+      0% {
+        background-color: #1290ab; /* Verde claro */
+      }
+      100% {
+        background-color: green; /* Verde oscuro */
+      }
+    }
+
+    .login-form input[type="submit"]:hover {
+      animation-play-state: paused;
+      background-color: #005cb2;
+    }
+
+    .placeholder-animate input[type="text"]::placeholder,
+    .placeholder-animate input[type="password"]::placeholder {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .placeholder-animate input[type="text"]:focus::placeholder,
+    .placeholder-animate input[type="password"]:focus::placeholder {
+      opacity: 0;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      border-radius: 50%;
+      background: #f0f0f0;
+      box-shadow: 8px 8px 16px #b7b7b7, -8px -8px 16px #ffffff;
+    }
