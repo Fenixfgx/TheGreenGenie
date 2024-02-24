@@ -25,8 +25,12 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
       // Verificar si el usuario y la contraseña coinciden
       if (username === storedUsername && password === storedPassword) {
-        // Redirigir a la URL obtenida de la hoja de cálculo
-        window.location.href = redirectURL;
+        // Mostrar el iframe con el contenido de la URL obtenida
+        document.getElementById('contentFrame').src = redirectURL;
+        document.getElementById('iframeContainer').classList.remove('hidden');
+
+        // Ocultar el formulario de login
+        document.getElementById('loginContainer').classList.add('hidden');
       } else {
         // Mostrar un mensaje de error utilizando SweetAlert2
         Swal.fire({

@@ -2,7 +2,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 97vh;
       background-color: #f0f0f0;
       font-family: Arial, sans-serif;
     }
@@ -98,4 +98,14 @@ body {
       border-radius: 50%;
       background: #f0f0f0;
       box-shadow: 8px 8px 16px #b7b7b7, -8px -8px 16px #ffffff;
+    }
+
+    .iframe-container {
+      width: 100%;
+      height: 100%;
+      overflow-y: hidden;
+    }
+
+    .hidden {
+      display: none;
     }
