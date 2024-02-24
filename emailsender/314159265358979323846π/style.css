@@ -1,3 +1,7 @@
+body {
+  background-color: white;
+}
+
 /* Estilo glassmorphic para la tabla */
 #datos {
   border-collapse: collapse;
