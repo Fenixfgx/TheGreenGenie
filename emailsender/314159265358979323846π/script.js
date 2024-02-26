@@ -26,7 +26,7 @@ $(document).ready(function() {
 
   function ejecutarFuncion(funcion) {
     $.ajax({
-      url: 'https://script.google.com/macros/s/AKfycbzvnTNSMjO4rXh_eng9PGoTt-7aVxVn6MCXTzZXoGEOyHC76wGm0b_F34QsL7D6-M-0/exec', // Reemplaza 'URL_DE_TU_APP_SCRIPT' con la URL de ejecución de tu Google Apps Script
+      url: 'https://script.google.com/macros/s/AKfycbzQEcd43nQ_ETyQCk3n2LZgexlfUtwT9X56YjWqLWM3meEWQX0jJzDKyMLT5AQafmTM/exec', // Reemplaza 'URL_DE_TU_APP_SCRIPT' con la URL de ejecución de tu Google Apps Script
       type: 'GET',
     data: { func: funcion },
     success: function(response) {
