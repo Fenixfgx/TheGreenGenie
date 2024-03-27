@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - GENERADOR DE CARTAS 2</title>
+  <title>GENERADOR DE CARTAS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -20,8 +20,32 @@
       }
     }
   </style>
-<button class="imprimir-btn" onclick="imprimirContenido()" style="position:absolute;z-index: 2;top: 430px;left: 140px;border-radius: 50%;border:none;padding: 9px;width: 50px;height: 50px;"><svg width="30px" height="30px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" id="Stock_cut" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <desc></desc> <g> <path d="M26,23h1 c1.105,0,2-0.895,2-2V9c0-1.105-0.895-2-2-2H5C3.895,7,3,7.895,3,9v12c0,1.105,0.895,2,2,2h1" fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="6" x2="26" y1="19" y2="19"></line> <rect fill="none" height="12" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" width="14" x="9" y="19"></rect> <rect fill="none" height="6" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" width="14" x="9" y="1"></rect> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="26" x2="24" y1="11" y2="11"></line> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="12" x2="20" y1="23" y2="23"></line> <line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="12" x2="20" y1="27" y2="27"></line> </g> </g></svg></button>
-<div class="fechainp" style="display: none;"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
+<style>
+.imprimir-btn {
+    position: absolute;
+    z-index: 2;
+    top: 25px;
+    left: 99px;
+    border-radius: 12px;
+    border: none;
+    padding: 9px;
+    height: 40px;
+    background-color: green;
+    color: white;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s;
+}
+    .imprimir-btn:hover {
+      background-color: white; /* Cambia el color de fondo al pasar el cursor */
+      color: green; /* Cambia el color del texto al pasar el cursor */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añade una sombra al pasar el cursor */
+    }
+
+    .imprimir-btn:active {
+      transform: scale(0.98); /* Reduce el tamaño del botón al hacer clic */
+    }
+  </style>
+<button id="ImprimirDentro" class="imprimir-btn" onclick="imprimirContenido()">Imprimir Cartas</button>
+<div class="fechainp" style="display: block;"><input class="text" type="date" id="fechaIn" placeholder="Fecha"  onchange="actualizarFormatoFecha()"><input class="text" type="text" style="display: block;" id="fechaInput" placeholder="Fecha">
 <select id="destinatarioInput" onchange="enviarSelect()">
   <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
 </select>
@@ -58,6 +82,12 @@
             if (event.data === 'buscarDentro') {
                 // Enviar un mensaje al documento principal para activar el botón dentro del iframe
                 window.parent.postMessage('activarBotonBuscar', '*');
+            }
+        });
+     window.addEventListener('message', function(event) {
+            if (event.data === 'ImprimirDentro') {
+                // Enviar un mensaje al documento principal para activar el botón dentro del iframe
+                window.parent.postMessage('activarBotonImprimir2', '*');
             }
         });
     </script>
@@ -120,28 +150,28 @@ a lo declarado en la en la guía aérea&nbsp;<spawn style="font-weight: bold;" i
   <div class="pp" style="display: flex;position: absolute;margin-top: 315px; margin-left: 230px; margin-right: 62px;"> 
   <p id="cajas" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
     </div><div class="divi">
-  <div class="pp" style="display: flex;position: absolute;margin-top: 330px; margin-left: 60px; margin-right: 62px;"> 
+  <div id="axen" class="pp" id="axen" style="display: flex;position: absolute;margin-top: 330px; margin-left: 60px; margin-right: 62px;"> 
 <p id="D1" style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
   <div class="pp" style="display: flex;position: absolute;margin-top: 330px; margin-left: 230px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="IT1"></p>&nbsp;<p style="font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT1"></p>
     </div></div>
 <div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 345px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" id="axen" style="display: flex;position: absolute;margin-top: 345px; margin-left: 60px; margin-right: 62px;"> 
 <p id="D2" style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 345px; margin-left: 230px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="IT2">Half Boxes</p>&nbsp;<p style="font-weight: bold; font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT2"></p>
 </div></div>
 <div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 360px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" id="axen" style="display: flex;position: absolute;margin-top: 360px; margin-left: 60px; margin-right: 62px;"> 
 <p id="D3" style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 360px; margin-left: 230px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="IT3"></p>&nbsp;<p style="font-weight: bold; font-family: sans-serif; font-weight: bold; font-size: 12px; margin: 0px;" id="ITT3"></p>
 </div></div>
 <div class="pp" style="display: flex; position: absolute; margin-top: 375px; margin-left: 60px; margin-right: 62px;">
-  <p id="D4" style="font-weight: bold; margin: 0px; font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
+  <p id="D4" id="axen" style="font-weight: bold; margin: 0px; font-family: sans-serif; font-size: 12px;">DETALLE:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex; position: absolute; margin-top: 375px; margin-left: 230px; margin-right: 62px;">
   <p id="IT4" style="font-family: sans-serif; font-size: 12px; margin: 0px;"></p>&nbsp;
@@ -149,113 +179,81 @@ a lo declarado en la en la guía aérea&nbsp;<spawn style="font-weight: bold;" i
 </div>
 
 <div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" id="axen" style="display: flex;position: absolute;margin-top: 390px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">TOTAL PIEZAS:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 390px; margin-left: 230px; margin-right: 62px;"> 
   <p id="totalpiezas"style="font-weight: bold; font-family: sans-serif; font-size: 12px; margin: 0px;"></p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 405px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" id="axen" style="display: flex;position: absolute;margin-top: 405px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">SELLO DE SEGURIDAD:&nbsp;</p>
 </div>
 <div class="pp" style="display: flex;position: absolute;margin-top: 405px; margin-left: 230px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="ALEATORIOCARTA">654789 consecutivo?&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 420px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE CONDUCTOR 1:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 420px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">RICARDO SILVA SILVA / CC 79516174 / CEL 320 201 0408&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 435px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE CONDUCTOR 2:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 435px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">EFRAIN RODRIGUEZ ORTIZ/ CC 1069584942/ CEL 320 9769753&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 450px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE CONDUCTOR 3:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 450px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">CARLOS RODRIGUEZ / CC 1069584727 / CEL 312 463 0102&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-  <div class="pp" style="display: flex;position: absolute;margin-top: 465px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE CONDUCTOR 4:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 465px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">HAIDER SANTIAGO GARNICA / CC 1003505124 / CEL 311 370 6210&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 480px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE AYUDANTE 1:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 480px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">YACDIMIR VARGAS/ CC 80117265 / CEL319 4762594&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 495px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE AYUDANTE 2:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 495px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">FABER LÓPEZ / CC 93481791 / CEL 3143416319&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 510px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE AYUDANTE 3:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 510px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">JUAN PEDRAZA REYES / CC 80537981 / CEL 312 463 0102
-&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 525px; margin-left: 60px; margin-right: 62px;"> 
-<p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">NOMBRE AYUDANTE 4:&nbsp;</p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 525px; margin-left: 230px; margin-right: 62px;"> 
-  <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">ANDRES CABRERA / CC 1000620275
-&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
-</div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 540px; margin-left: 60px; margin-right: 62px;"> 
+
+  <table id="tabla-datos" style="margin-top: 418px; font-size: 11.5px; width: 100%; position: absolute; left: 65px; font-family: sans-serif; margin-right: 62px;">
+        <thead>
+            <tr>
+                <th class="nm" style="width: 165px; font-weight: bold;"></th>
+                <th style="width: 590px;"></th>
+                <th style="width: 45px; font-weight: bold;"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+         <td style="font-weight: bold;"></td>
+          <td style="font-weight: bold;"></td>
+          <td style="font-weight: bold;"></td>
+          <td style="font-weight: bold;"></td>
+        </tbody>
+    </table>  
+  
+<div class="pp" id="axen" style="display: flex;position: absolute;margin-top: 570px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">PLACAS:&nbsp;</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 540px; margin-left: 230px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 570px; margin-left: 230px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">KSO395/GQQ498/JOU655&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 555px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" id="axen" style="display: flex;position: absolute;margin-top: 585px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">OBSERVACIONES:&nbsp;</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 555px; margin-left: 230px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 585px; margin-left: 230px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">FLORES FRESCAS CORTADAS&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
 </div>
-<p class="pp" style="position: absolute;margin-top: 570px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 11px; line-height: 11px;">Nos hacemos responsables por el contenido de esta carga ante las autoridades colombianas, extranjeras y ante el transportador aéreo en caso que se encuentren sustancias o elementos explosivos, narcóticos, ilícitos o prohibidos (estipulados en las normas internacionales, a excepción de aquellos que expresamente se han de aclarado como tal), armas o partes de ellas, municiones, material de guerra o sus partes u otros elementos que no cumplan con las obligaciones legales establecidas para este tipo de carga, siempre que se conserve sus empaques, 
+<p class="pp" style="position: absolute;margin-top: 600px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 11px; line-height: 11px;">Nos hacemos responsables por el contenido de esta carga ante las autoridades colombianas, extranjeras y ante el transportador aéreo en caso que se encuentren sustancias o elementos explosivos, narcóticos, ilícitos o prohibidos (estipulados en las normas internacionales, a excepción de aquellos que expresamente se han de aclarado como tal), armas o partes de ellas, municiones, material de guerra o sus partes u otros elementos que no cumplan con las obligaciones legales establecidas para este tipo de carga, siempre que se conserve sus empaques, 
 características y sellos originales con las que sea entregada al transportador Aéreo.
 </p>
-<p class="pp" style="position: absolute;margin-top: 640px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 11px; line-height: 11px;">
+<p class="pp" style="position: absolute;margin-top: 665px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 11px; line-height: 11px;">
 El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y ha sido protegido de toda intervención ilícita durante su preparación, embalaje, almacenamiento y transporte hacia las instalaciones de la aerolínea y cumple con todos los requisitos exigidos por la ley
  y las normas fitosanitarias.
 </p>
-<p class="pp" style="position: absolute; margin-top: 680px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 12px;">Atentamente:</p>
-<div class="pp" style="display: flex;position: absolute;margin-top: 745px; margin-left: 60px; margin-right: 62px;"> 
+<p class="pp" style="position: absolute; margin-top: 700px;margin-left: 60px;margin-right: 62px;font-family: sans-serif; font-size: 12px;">Atentamente:</p>
+<div class="pp" style="display: flex;position: absolute;margin-top: 760px; margin-left: 60px; margin-right: 62px;"> 
 <p style="font-weight: bold; margin: 0px;font-family: sans-serif; font-size: 12px;">___________________</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 760px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 775px; margin-left: 60px; margin-right: 62px;"> 
 <p style=" margin: 0px;font-family: sans-serif; font-size: 12px;">Cristian Rodriguez</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 760px; margin-left: 400px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 775px; margin-left: 400px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">NOMBRE SIA&nbsp;&nbsp;<spawn style="font-weight: bold;" id=""></spawn></p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 775px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 790px; margin-left: 60px; margin-right: 62px;"> 
 <p style=" margin: 0px;font-family: sans-serif; font-size: 12px;">Cargo: Despachos / Logística</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 775px; margin-left: 400px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 790px; margin-left: 400px; margin-right: 62px;"> 
   <p style="font-family: sans-serif; font-size: 12px; margin: 0px;" id="AC"></p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 790px; margin-left: 60px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 805px; margin-left: 60px; margin-right: 62px;"> 
 <p style=" margin: 0px;font-family: sans-serif; font-size: 12px;">CC: 1003505466</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 790px; margin-left: 400px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 805px; margin-left: 400px; margin-right: 62px;"> 
 <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">CARGO:</p>
 </div>
-<div class="pp" style="display: flex;position: absolute;margin-top: 805px; margin-left: 400px; margin-right: 62px;"> 
+<div class="pp" style="display: flex;position: absolute;margin-top: 820px; margin-left: 400px; margin-right: 62px;"> 
 <p style="font-family: sans-serif; font-size: 12px; margin: 0px;">CC:</p>
 </div>
-<img src="https://www.thegreengenie.com.co/logonit.png" class="nit" style=" margin-top: 672px; margin-left: 487px;width: 130px;">
+<img src="https://www.thegreengenie.com.co/logonit.png" class="nit" style=" margin-top: 700px; margin-left: 487px;width: 130px;">
 </div>
   </div>
   <div class="cardas-main">
@@ -324,7 +322,7 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
     max-width: 700px; 
     height: 1000px;
     transform-origin: top left;
-    transform: scale(0.4);
+    transform: scale(1);
 }
   
   .containerup {
@@ -422,6 +420,57 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
 </script>
 <!-- partial -->
   <script  src="./script.js"></script>
+  
+  
+  <script>
+// Función para cargar los datos desde Google Sheets
+function cargarDatos() {
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w',
+        range: 'PERSONAL!N2:O10'
+    }).then(function(response) {
+        var range = response.result;
+        if (range.values.length > 0) {
+            var tabla = document.getElementById('tabla-datos');
+            var tbody = tabla.getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+            range.values.forEach(function(row) {
+                var newRow = document.createElement('tr');
+                row.forEach(function(cell, index) {
+                    var newCell = document.createElement('td');
+                    newCell.textContent = cell;
+                    // Aplicar negrita a la primera y tercera columna
+                    if (index === 0 || index === 2) {
+                        newCell.style.fontWeight = 'bold';
+                    }
+                    newRow.appendChild(newCell);
+                });
+                tbody.appendChild(newRow);
+            });
+        } else {
+            console.log('No se encontraron datos.');
+        }
+    }, function(response) {
+        console.log('Error al cargar los datos: ' + response.result.error.message);
+    });
+}
+
+
+        // Función de inicialización
+        function init() {
+            gapi.client.init({
+                apiKey: 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8',
+                discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
+            }).then(function() {
+                cargarDatos();
+            }, function(error) {
+                console.log('Error al inicializar la API: ' + error);
+            });
+        }
+
+        // Inicializar la API
+        gapi.load('client', init);
+    </script> 
 
 </body>
 </html>
