@@ -425,7 +425,13 @@ p {
   padding-top: 100px;
 }
 
-#card-container {
-    width: 120px;
-    height: 120px;
+#tabla-datos {
+    margin-top: 532px !important;
+    font-size: 11.5px !important;
+    width: 104% !important;
+    position: absolute !important;
+    left: 57px !important;
 }
+
+.nm {width: 157px !important; font-weight: bolder;}
+#axen {left: 0px;}
