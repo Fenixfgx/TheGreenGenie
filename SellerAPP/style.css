@@ -752,6 +752,15 @@ main {
   .main-menu h1 {
     display: none;
   }
+  
+  @media (max-width: 4500px) {
+  main {
+    grid-template-columns: 6% 94%;
+  }
+
+  .main-menu h1 {
+    display: none;
+  }
 
   .logo {
     display: block;
