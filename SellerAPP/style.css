@@ -1504,12 +1504,13 @@ background-image: linear-gradient(240deg, rgb(151 164 231) 0%, rgb(252 195 195 /
 }
 
 .ventas{
-  position: fixed;
+    position: fixed;
     background-color: #f6f7fb;
     z-index: 2;
     padding: 5px;
     box-shadow: 2px 2px 7px 0 #8080806b;
     border-radius: 4px;
     height: 28px;
-    align-content: center;
+    align-items: center;
+    display: flex;
 }
