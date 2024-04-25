@@ -209,3 +209,19 @@ function adminClients() {
         console.error('Elemento "left-content" no encontrado');
     }
 }
+
+// Obtener la ruta actual del navegador
+        const currentUrl = window.location.pathname;
+
+        // Buscar el último segmento de la ruta como token
+        const segments = currentUrl.split('/');
+        const lastSegment = segments[segments.length - 1];
+
+        // Verificar si se encontró un valor en el último segmento de la ruta
+        if (lastSegment) {
+            // Obtener referencia al campo de entrada
+            const tokenInput = document.getElementById('token');
+
+            // Establecer el valor del campo de entrada con el valor del último segmento de la ruta
+            tokenInput.value = lastSegment;
+        }
