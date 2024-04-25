@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - LOGTOK</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELLER</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="containeringr">
+<h2>LOGIN SELLER</h2><br>
+<img id="token-image" src="https://www.thegreengenie.com.co/images/logos21.png"><img id="token-back" src="https://www.thegreengenie.com.co/images/circle.png"><br><br>
+<form id="loginForm"><br>
+<div style="display: flex;"><input class="inputoken" type="text" id="token" placeholder="Token" required><button class="ingreso" type="submit"> > </button></div>
+        </form>
+    </div>
+  
+<section id="primero" style="display: none;">
+  <body>
+    <main>
+      <nav class="main-menu">
+        <h1>Fitness App</h1>
+        <img class="logo" src="https://www.thegreengenie.com.co/images/LOGOBLANCO.png" alt="" />
+        <ul>
+          
+<li class="nav-item active rel">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="mostrarDuo()">
+    <svg width="34px" height="34px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M12 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20H12M12 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H12M12 4V20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </g>
+    </svg>
+    <span class="tooltip">DUO HOME</span>
+  </a>
+</li>
+          
+  <li class="nav-item">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="ocultarDiv()">
+    <svg width="35px" height="35px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)" class="svg-icon">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.288"></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H10M13 3L19 9M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19M19 9V10M9 17H11.5M9 13H14M9 9H10M14 21L16.025 20.595C16.2015 20.5597 16.2898 20.542 16.3721 20.5097C16.4452 20.4811 16.5147 20.4439 16.579 20.399C16.6516 20.3484 16.7152 20.2848 16.8426 20.1574L21 16C21.5523 15.4477 21.5523 14.5523 21 14C20.4477 13.4477 19.5523 13.4477 19 14L14.8426 18.1574C14.7152 18.2848 14.6516 18.3484 14.601 18.421C14.5561 18.4853 14.5189 18.5548 14.4903 18.6279C14.458 18.7102 14.4403 18.7985 14.405 18.975L14 21Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </g>
+    </svg>
+    <span class="tooltip">Registro de Ventas</span>
+  </a>
+</li>
+
+
+          <li class="nav-item">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="listaDiv()">
+    <svg width="32px" height="32px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="svg-icon">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <defs>
+          <style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style>
+        </defs>
+        <line class="cls-1" x1="17.73" y1="11.05" x2="10.09" y2="11.05"></line>
+        <line class="cls-1" x1="17.73" y1="14.86" x2="10.09" y2="14.86"></line>
+        <line class="cls-1" x1="17.73" y1="18.68" x2="10.09" y2="18.68"></line>
+        <polygon class="cls-1" points="20.59 6.27 20.59 22.5 3.41 22.5 3.41 1.5 15.82 1.5 20.59 6.27"></polygon>
+        <polygon class="cls-1" points="20.59 6.27 20.59 7.23 14.86 7.23 14.86 1.5 15.82 1.5 20.59 6.27"></polygon>
+        <line class="cls-1" x1="6.27" y1="11.05" x2="8.18" y2="11.05"></line>
+        <line class="cls-1" x1="6.27" y1="14.86" x2="8.18" y2="14.86"></line>
+        <line class="cls-1" x1="6.27" y1="18.68" x2="8.18" y2="18.68"></line>
+      </g>
+    </svg>
+    <span class="tooltip">Lista de Ventas</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="addClient()">
+    <svg width="34px" height="34px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g id="Iconly/Curved/Plus">
+          <g id="Plus">
+            <path id="Stroke 1" d="M12.0368 8.46265V15.6111" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path id="Stroke 2" d="M15.6148 12.0368H8.45898" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M2.30005 12.0369C2.30005 4.73479 4.73479 2.30005 12.0369 2.30005C19.339 2.30005 21.7737 4.73479 21.7737 12.0369C21.7737 19.339 19.339 21.7737 12.0369 21.7737C4.73479 21.7737 2.30005 19.339 2.30005 12.0369Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </g>
+      </g>
+    </svg>
+<span class="tooltip">Agregar Cliente</span>
+  </a>
+</li>
+
+
+          <li class="nav-item">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="adminClients()">
+    <svg width="34px" height="34px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M19 15C21.2091 15 23 16.7909 23 19V21H21M16 10.874C17.7252 10.4299 19 8.86384 19 7C19 5.13617 17.7252 3.57007 16 3.12602M5 15C2.79086 15 1 16.7909 1 19V21H17V19C17 16.7909 15.2091 15 13 15H9M9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11C11.2091 11 13 9.20914 13 7C13 6.27143 12.8052 5.58835 12.4649 5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </g>
+    </svg>
+    <span class="tooltip">Administrar Clientes</span>
+  </a>
+</li>
+
+
+        </ul>
+      </nav>
+
+      <section class="content">
+<div class="left-content" id="left-content">
+<h1 class="ventas">Ventas<button onclick="search()" type="button" class="rech"><svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 489.711 489.711" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M112.156,97.111c72.3-65.4,180.5-66.4,253.8-6.7l-58.1,2.2c-7.5,0.3-13.3,6.5-13,14c0.3,7.3,6.3,13,13.5,13 c0.2,0,0.3,0,0.5,0l89.2-3.3c7.3-0.3,13-6.2,13-13.5v-1c0-0.2,0-0.3,0-0.5v-0.1l0,0l-3.3-88.2c-0.3-7.5-6.6-13.3-14-13 c-7.5,0.3-13.3,6.5-13,14l2.1,55.3c-36.3-29.7-81-46.9-128.8-49.3c-59.2-3-116.1,17.3-160,57.1c-60.4,54.7-86,137.9-66.8,217.1 c1.5,6.2,7,10.3,13.1,10.3c1.1,0,2.1-0.1,3.2-0.4c7.2-1.8,11.7-9.1,9.9-16.3C36.656,218.211,59.056,145.111,112.156,97.111z"></path> <path d="M462.456,195.511c-1.8-7.2-9.1-11.7-16.3-9.9c-7.2,1.8-11.7,9.1-9.9,16.3c16.9,69.6-5.6,142.7-58.7,190.7 c-37.3,33.7-84.1,50.3-130.7,50.3c-44.5,0-88.9-15.1-124.7-44.9l58.8-5.3c7.4-0.7,12.9-7.2,12.2-14.7s-7.2-12.9-14.7-12.2l-88.9,8 c-7.4,0.7-12.9,7.2-12.2,14.7l8,88.9c0.6,7,6.5,12.3,13.4,12.3c0.4,0,0.8,0,1.2-0.1c7.4-0.7,12.9-7.2,12.2-14.7l-4.8-54.1 c36.3,29.4,80.8,46.5,128.3,48.9c3.8,0.2,7.6,0.3,11.3,0.3c55.1,0,107.5-20.2,148.7-57.4 C456.056,357.911,481.656,274.811,462.456,195.511z"></path> </g> </g> </g></svg></button></h1>
+          <div class="activities">
+<input type="hidden" id="searchInput" placeholder="Buscar por título">
+<div class="containers2" id="cardsContainer"></div>
+
+<script>
+    async function fetchData() {
+        const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Sellers!A:AL?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8');
+        const data = await response.json();
+        return data.values.slice(1); // Remove header row
+    }
+
+    function createCardadd(fecha, Orden, Cliente, Producto, Agencia, Pais, FechaD, rowId) {
+        const cardadd = document.createElement('div');
+        cardadd.classList.add('cardadd');
+        cardadd.dataset.rowId = rowId;
+        cardadd.innerHTML = `
+            <table style="width:90%;text-align: center; font-size: 0.8em;">
+                <tr>
+                 <td style="width:10%; min-width: 78px;">${fecha}</td>
+                 <td style="width:5%; ">${Orden}</td>
+                    <td style="width:20%">${Cliente}</td>
+                    <td style="width:20%">${Producto}</td>
+                    <td style="width:15%">${Agencia}</td>
+                    <td style="width:15%">${Pais}</td>
+                    <td style="width:10%">${FechaD}</td>
+                </tr>
+            </table>
+            <button class="deleteButton" onclick="deleteCard(${rowId})">Eliminar</button>
+        `;
+        return cardadd;
+    }
+
+    async function deleteRow(rowId) {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyqtencHCB5Ex0Av8yFh188BpWlCg-HwxUbia0iWWLfArSzIecwWQqqFyZU1W1n2r5T9A/exec', {
+            method: 'POST',
+            body: JSON.stringify({ row: rowId })
+        });
+        if (response.ok) {
+            console.log('Row deleted successfully');
+        } else {
+            console.error('Error deleting row');
+        }
+    }
+
+    async function search() {
+        const searchInput = document.getElementById('searchInput');
+        const cardsContainer = document.getElementById('cardsContainer');
+        const searchTerm = searchInput.value.toLowerCase();
+        cardsContainer.innerHTML = '';
+
+        const data = await fetchData();
+
+        data.forEach((row, index) => {
+            const fecha = row[1]; // Column E
+            const Orden = row[2]; // Column D
+            const Cliente = row[5];
+            const Producto = row[9];
+            const Agencia = row[6];
+            const Pais = row[3];
+            const FechaD = row[7];
+            const searchKeyword = row[34]; // Column H
+
+            if (searchKeyword && searchKeyword.toLowerCase().includes(searchTerm)) {
+                const cardadd = createCardadd(fecha, Orden, Cliente, Producto, Agencia, Pais, FechaD, index + 2); // Adding 2 because sheet rows start from 2
+                cardsContainer.appendChild(cardadd);
+            }
+        });
+    }
+
+    async function deleteCard(rowId) {
+        const shouldDelete = await confirmDelete();
+        if (shouldDelete) {
+            await deleteRow(rowId);
+            const cardToDelete = document.querySelector(`.cardadd[data-row-id="${rowId}"]`);
+            if (cardToDelete) {
+                cardToDelete.style.display = 'none';
+            }
+        }
+    }
+
+    async function confirmDelete() {
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¿Deseas eliminar la publicación?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No'
+        });
+        return result.isConfirmed;
+    }
+
+    async function editCard(rowId) {
+        const rowData = await fetchRowData(rowId);
+        const formInputs = await showEditForm(rowData);
+        if (formInputs) {
+            // Aquí puedes enviar los datos actualizados al servidor para realizar la actualización en la hoja de cálculo
+            console.log('Datos actualizados:', formInputs);
+        }
+    }
+
+    async function fetchData() {
+        const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Sellers!A:AL?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8');
+        const data = await response.json();
+        return data.values.slice(1); // Remove header row
+    }
+
+    function createCardadd(fecha, Orden, Cliente, Producto, Agencia, Pais, FechaD, rowId, valorColumna24) {
+        const cardadd = document.createElement('div');
+        cardadd.classList.add('cardadd');
+        cardadd.dataset.rowId = rowId;
+
+        // Color de fondo condicional
+        if (valorColumna24 !== undefined && valorColumna24.trim() !== '') {
+            cardadd.style.backgroundColor = '#00800030';
+            cardadd.style.backgroundImage = 'linear-gradient(240deg, #97e7d1 0%, #ecfcc3 100%)';
+        } else {
+            cardadd.style.backgroundColor = '#e6a7c3b5;';
+            cardadd.style.backgroundImage = 'linear-gradient(240deg, #fc8ebe 0%, #fce5c3 100%)';
+        }
+
+        cardadd.innerHTML = `
+            <table style="width:99%;text-align: center; font-size: 0.8em;">
+                <tr>
+                    <td style="width:10%; min-width: 78px;">${fecha}</td>
+                    <td style="width:5%; ">${Orden}</td>
+                    <td style="width:20%">${Cliente}</td>
+                    <td style="width:20%">${Producto}</td>
+                    <td style="width:15%">${Agencia}</td>
+                    <td style="width:15%">${Pais}</td>
+                    <td style="width:10%">${FechaD}</td>
+                </tr>
+            </table>
+            <button class="deleteButton" onclick="deleteCard(${rowId})">Eliminar</button>
+        `;
+        return cardadd;
+    }
+
+    async function search() {
+        const searchInput = document.getElementById('searchInput');
+        const cardsContainer = document.getElementById('cardsContainer');
+        const searchTerm = searchInput.value.toLowerCase();
+        cardsContainer.innerHTML = '';
+
+        const data = await fetchData();
+
+        data.forEach((row, index) => {
+            const fecha = row[1]; // Column E
+            const Orden = row[2]; // Column D
+            const Cliente = row[5];
+            const Producto = row[9];
+            const Agencia = row[6];
+            const Pais = row[3];
+            const FechaD = row[7];
+            const valorColumna24 = row[24]; // Columna X (JavaScript es de base 0)
+            const searchKeyword = row[34]; // Column H
+
+            if (searchKeyword && searchKeyword.toLowerCase().includes(searchTerm)) {
+                const cardadd = createCardadd(fecha, Orden, Cliente, Producto, Agencia, Pais, FechaD, index + 2, valorColumna24); // Adding 2 because sheet rows start from 2
+                cardsContainer.appendChild(cardadd);
+            }
+        });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', search);
+</script>
+          </div>
+
+        </div>
+
+        <div class="right-content" id="right-content">
+          <div class="user-info">
+            <div class="icon-container">
+              <i class="fa fa-bell nav-icon"></i>
+              <i class="fa fa-message nav-icon"></i>
+            </div>
+            <h3 id="welcomeMessage"></h3>
+            <img id="userImage" src="" alt="User Image">
+          </div>
+
+              <form id="corporateForm" >
+ <div class="form-group">
+  <label for="fechapr">Fecha de Generación:</label>
+  <input type="date" id="fechapr" name="fechapr" required>
+</div>
+<div class="form-group" style="display:none;">
+  <label for="fechap">Fecha de Generación (Text)</label>
+  <input type="text" id="fechap" name="fechap">
+</div>
+
+ <div class="form-group">
+    <label for="fechades">Fecha Despacho</label>
+    <input type="date" id="fechades" name="fechades" required>
+</div>               
+ 
+<script>
+  // Obtener referencia a los campos de fecha y texto
+  var inputDate = document.getElementById('fechapr');
+  var inputText = document.getElementById('fechap');
+
+  // Escuchar el evento de cambio en el campo de fecha
+  inputDate.addEventListener('change', function() {
+    // Obtener el valor seleccionado en el campo de fecha
+    var selectedDate = inputDate.value;
+
+    // Dividir la fecha en partes (día, mes y año)
+    var parts = selectedDate.split('-');
+    var day = parts[2];
+    var month = parts[1];
+    var year = parts[0];
+
+    // Formatear la fecha en el formato "dd/mm/aaaa"
+    var formattedDate = day + '/' + month + '/' + year;
+
+    // Asignar el valor formateado al campo de texto
+    inputText.value = formattedDate;
+  });
+</script>
+
+     <div class="form-group">
+  <label for="tiporden">Tipo Orden</label>
+  <select id="tiporden" name="tiporden">
+    <option value="P.V">MERCADO ABIERTO - P.V</option>
+    <option value="M.S">MUESTRAS - M.S</option>
+  </select>
+</div>
+      
+      <div class="form-group" style="display:none;">
+        <label for="paisseller">Pais</label>
+        <input type="text" id="paisseller" name="paisseller" value='=VLOOKUP(INDIRECT("F"&ROW());Clientes!B:M; 12; FALSE)'>
+      </div>
+      
+      <div class="form-group" style="display:none;">
+        <label for="cod">COD</label>
+        <input type="text" id="cod" name="cod" value='=VLOOKUP(INDIRECT("F"&ROW());Clientes!B:M; 2; FALSE)'>
+      </div>
+
+      <div class="form-group">
+        <label for="clientel">Cliente</label>
+        <select class="cliente1" id="clientel" name="clientel"></select>
+      </div>
+      
+      <div class="form-group" style="display:none;">
+        <label for="agenciaseller">Agencia</label>
+        <input type="text" id="agenciaseller" name="agenciaseller" value='=VLOOKUP(INDIRECT("F"&ROW());Clientes!B:M; 5; FALSE)'>
+      </div>
+
+      
+<div class="form-group" style="display:none;">
+    <label for="fechadesp">Fecha Despacho Formateada</label>
+    <input type="text" id="fechadesp" name="fechadesp" readonly>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const inputFecha = document.getElementById('fechades');
+    const inputFechaDespacho = document.getElementById('fechadesp');
+
+    inputFecha.addEventListener('change', function() {
+        const fechaSeleccionada = new Date(inputFecha.value);
+        // Sumar un día a la fecha seleccionada
+        fechaSeleccionada.setDate(fechaSeleccionada.getDate() + 1);
+        const opcionesFecha = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        const fechaFormateada = fechaSeleccionada.toLocaleDateString('es-ES', opcionesFecha);
+        inputFechaDespacho.value = fechaFormateada;
+    });
+});
+</script>
+
+      <div class="form-group">
+        <label for="productlist">Producto</label>
+        <select id="productlist" name="productlist"></select>
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" id="cantidad" name="cantidad">
+      </div>
+
+      <div class="form-group">
+  <label for="empaquelist">Empaque</label>
+  <select id="empaquelist" name="empaquelist">
+    <option value="QB">QB</option>
+    <option value="HB">HB</option>
+    <option value="EB">EB</option>
+    <option value="FLL">FLL</option>
+  </select>
+</div>
+
+      <div class="form-group" style="display:none;">
+        <label for="pieces">pieces</label>
+        <input type="text" id="pieces" name="pieces" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:B5; 2; FALSE)*INDIRECT("K"&ROW())'>
+      </div>
+
+      <div class="form-group">
+        <label for="talloscaja">Tallos X Caja</label>
+        <input type="number" id="talloscaja" name="talloscaja">
+      </div>
+
+      <div class="form-group" style="display:none;">
+        <label for="totaltallos">Total Tallos</label>
+        <input type="text" id="totaltallos" name="totaltallos" value='=INDIRECT("N"&ROW())*INDIRECT("K"&ROW())'>
+      </div>
+
+      <div class="form-group">
+        <label for="tallosramo">Tallos X Ramo</label>
+        <input type="number" id="tallosramo" name="tallosramo">
+      </div>
+
+      <div class="form-group">
+        <label for="ramospieza">Ramos X Pieza</label>
+        <input type="number" id="ramospieza" name="ramospieza">
+      </div>
+
+      <div class="form-group" style="display:none;">
+        <label for="totalramos">Total Ramos</label>
+        <input type="text" id="totalramos" name="totalramos" value='=INDIRECT("N"&ROW())/INDIRECT("P"&ROW())*INDIRECT("K"&ROW())'>
+      </div>
+
+     <div class="form-group">
+  <label for="precio">Precio</label>
+  <input type="text" id="precio" name="precio" placeholder='Los decimales se deben representar como "," comas' pattern="[0-9,]*" title="Solo se permiten números y comas" oninput="this.value = this.value.replace(/\./g, ',');">
+</div>
+
+
+
+      <div class="form-group" style="display:none;"> 
+        <label for="tprecio">Total Precio</label>
+        <input type="text" id="tprecio" name="tprecio" value='=INDIRECT("S"&ROW())*INDIRECT("O"&ROW())'>
+      </div>
+
+      <div class="form-group">
+  <label for="gradolist">Grado</label>
+  <select id="gradolist" name="gradolist">
+    <option value="30 CMS">30 CMS</option>
+    <option value="35 CMS">35 CMS</option>
+    <option value="40 CMS">40 CMS</option>
+    <option value="45 CMS">45 CMS</option>
+    <option value="50 CMS">50 CMS</option>
+    <option value="55 CMS">55 CMS</option>
+    <option value="60 CMS">60 CMS</option>
+    <option value="65 CMS">65 CMS</option>
+    <option value="70 CMS">70 CMS</option>
+    <option value="75 CMS">75 CMS</option>
+  </select>
+</div>
+
+      <div class="form-group" style="display:none;">
+        <label for="globalh">globalh</label>
+        <input type="text" id="globalh" name="globalh" value='=VLOOKUP(INDIRECT("F"&ROW());Clientes!B:M; 3; FALSE)'>
+      </div>
+
+      <div class="form-group" style="display:none;">
+        <label for="pesoneto">pesoneto</label>
+        <input type="text" id="pesoneto" name="pesoneto" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 3; FALSE)*INDIRECT("K"&ROW())'>
+      </div>
+
+      <div class="form-group" style="display:none;">
+        <label for="pesobruto">pesobruto</label>
+        <input type="text" id="pesobruto" name="pesobruto" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
+      </div>
+
+<div class="form-group" style="display:none;">
+        <label for="vendedorh">VendedorH</label>
+        <input type="text" id="vendedorh" name="vendedorh">
+      </div>
+
+<button id="fetchButton" type="button" style="display:none;">Actualizar Lista de Clientes</button>
+   
+                
+      <div class="form-group">
+        <label for="observaciones">Observaciones</label>
+        <input type="textarea" id="observaciones" name="observaciones">
+      </div>
+      
+      <div class="form-group">
+        <label for="mark">Marking</label>
+        <input type="text" id="mark" name="mark">
+      </div>
+      
+      <div class="form-group">
+        <label for="po">PO#</label>
+        <input type="text" id="po" name="po">
+      </div>
+
+      <button type="submit" style="width: 200px; place-self: center;">Enviar</button>
+    </form>
+  </div>
+  <script src="https://apis.google.com/js/api.js">    
+  </script>
+        
+<section id="addClient" style="display: none;">
+  <div class="container2">
+    <h2 class="titulo2">Agregar Cliente Nuevo</h2>
+    <form id="corporateForm2" >
+      <div class="form-group">
+        <label for="codigo">Cód.</label>
+        <input type="text" id="codigo" name="codigo">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="global">Global</label>
+        <input type="text" id="global" name="global">
+      </div>
+
+<div class="form-group" style="display: none;">
+        <label for="vendedor">Vendedor</label>
+        <input type="text" id="vendedor" name="vendedor">
+      </div>
+
+      <div class="form-group">
+        <label for="agencia">Agencia</label>
+        <input type="text" id="agencia" name="agencia">
+      </div>
+
+      <div class="form-group">
+        <label for="etiq">ETIQ</label>
+        <input type="text" id="etiq" name="etiq" placeholder="K.S">
+      </div>
+
+      <div class="form-group">
+        <label for="notas">NOTAS</label>
+        <textarea id="notas" name="notas" style="width: 100%; height: 28px;"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="consolidado1">CONSOLIDADO</label>
+        <input type="text" id="consolidado1" name="consolidado1">
+      </div>
+
+      <div class="form-group">
+        <label for="segundaAgencia">2da Agencia</label>
+        <input type="text" id="segundaAgencia" name="segundaAgencia">
+      </div>
+
+      <div class="form-group">
+        <label for="consolidado2">CONSOLIDADO</label>
+        <input type="text" id="consolidado2" name="consolidado2">
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" id="state" name="state">
+      </div>
+
+      <div class="form-group">
+        <label for="pais">Pais</label>
+        <input type="text" id="pais" name="pais">
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone">
+      </div>
+
+      <div class="form-group">
+        <label for="billTo">Bill to</label>
+        <input type="text" id="billTo" name="billTo">
+      </div>
+
+      <div class="form-group">
+        <label for="tax">Tax</label>
+        <input type="text" id="tax" name="tax">
+      </div>
+
+      <div class="form-group">
+        <label for="zipCode">Zip code</label>
+        <input type="text" id="zipCode" name="zipCode">
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country">
+      </div>
+
+      <div class="form-group">
+        <label for="principalOwner">Principal Owner</label>
+        <input type="text" id="principalOwner" name="principalOwner">
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email">
+      </div>
+
+      <div class="form-group">
+        <label for="buyerContact">Buyer contact</label>
+        <input type="text" id="buyerContact" name="buyerContact">
+      </div>
+
+      <div class="form-group">
+        <label for="email2">E-mail2</label>
+        <input type="email" id="email2" name="email2">
+      </div>
+
+      <div class="form-group">
+        <label for="skype">Skype</label>
+        <input type="text" id="skype" name="skype">
+      </div>
+
+      <div class="form-group">
+        <label for="payableContact">Payable contact</label>
+        <input type="text" id="payableContact" name="payableContact">
+      </div>
+
+      <div class="form-group">
+        <label for="email3">E-mail</label>
+        <input type="email" id="email3" name="email3">
+      </div>
+
+      <div class="form-group">
+        <label for="skype2">Skype</label>
+        <input type="text" id="skype2" name="skype2">
+      </div>
+
+      <div class="form-group">
+        <label for="qualityContact">Quality contact</label>
+        <input type="text" id="qualityContact" name="qualityContact">
+      </div>
+
+      <div class="form-group">
+        <label for="email4">E-mail</label>
+        <input type="email" id="email4" name="email4">
+      </div>
+
+      <div class="form-group">
+        <label for="skype3">Skype</label>
+        <input type="text" id="skype3" name="skype3">
+      </div>
+
+      <button id="addclient" style="width: 200px; align-self: center;" type="submit">Enviar</button>
+    </form>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('corporateForm2').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+
+      // Enviar el formulario de manera asíncrona
+      var formData = new FormData(this);
+      fetch('https://script.google.com/macros/s/AKfycby-TsSPFYr7xqQaZTnA1OKn8TS4Vl15tqevTwlMXMYpE5hKRR0fjmJhuiaO4URcEkbhuA/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error('Error al enviar el formulario');
+      })
+      .then(data => {
+        // Mostrar el mensaje de confirmación utilizando SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: '¡Éxito!',
+          text: data // El mensaje de confirmación devuelto desde el script de Google Apps Script
+        });
+      })
+      .catch(error => {
+        // En caso de error, mostrar un mensaje de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.message
+        });
+      });
+    });
+  });
+</script>
+</section>
+
+<section id="adminClients" style="display: none;">
+ <h1 class="toptitle">Clientes</h1>
+<input type="hidden" id="searchInputx" placeholder="Buscar por título">
+<div class="containers2" id="cardsContainerx"></div>
+
+<script>
+    async function fetchDatax() {
+        const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!A:AL?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8');
+        const data = await response.json();
+        return data.values.slice(1); // Remove header row
+    }
+
+    function createCardaddx(CDC, Ncliente, AgenciaC, Pais, rowId ) {
+        const cardaddx = document.createElement('div');
+        cardaddx.classList.add('cardadd');
+        cardaddx.dataset.rowId = rowId;
+
+        cardaddx.innerHTML = `
+            <table style="width:90%;text-align: center; font-size: 0.8em;">
+                <tr>
+                    <td style="width:5%; min-width: 16px;">${CDC}</td>
+                    <td style="width:33%;">${Ncliente}</td>
+                    <td style="width:33%; ">${AgenciaC}</td>
+                    <td style="width:33%">${Pais}</td>
+                </tr>
+            </table>
+            <button class="deleteButtonx" onclick="deleteCardx(${rowId})">Eliminar</button>
+        `;
+        return cardaddx;
+    }
+
+    async function deleteRow2(rowId) {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwLEOqd5aWcnjYIFX2LlkYKWHFsInlBEuBU-dL-5qE4E3R_rJeA1vMsviZfOvqH9JliPg/exec', {
+            method: 'POST',
+            body: JSON.stringify({ row: rowId })
+        });
+        if (response.ok) {
+            console.log('Row deleted successfully');
+        } else {
+            console.error('Error deleting row');
+        }
+    }
+
+    async function searchx() {
+        const searchInput = document.getElementById('searchInputx');
+        const cardsContainer = document.getElementById('cardsContainerx');
+        const searchTerm = searchInput.value.toLowerCase();
+        cardsContainer.innerHTML = '';
+
+        const data = await fetchDatax();
+
+        data.forEach((row, index) => {
+            const CDC = row[0];
+            const Ncliente = row[1];
+            const AgenciaC = row[5];
+            const Pais = row[12];
+            const searchKeyword = row[4]; // Column H
+
+            if (searchKeyword && searchKeyword.toLowerCase().includes(searchTerm)) {
+                const cardadd = createCardaddx(CDC, Ncliente, AgenciaC, Pais, index + 2 ); // Adding 2 because sheet rows start from 2
+                cardsContainer.appendChild(cardadd);
+            }
+        });
+    }
+
+  async function deleteCardx(rowId) {
+        const shouldDelete = await confirmDelete();
+        if (shouldDelete) {
+            await deleteRow2(rowId);
+            const cardToDelete = document.querySelector(`.cardadd[data-row-id="${rowId}"]`);
+            if (cardToDelete) {
+                cardToDelete.style.display = 'none';
+            }
+        }
+    }
+
+    async function confirmDelete() {
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: '¿Deseas eliminar la publicación?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No'
+        });
+        return result.isConfirmed;
+    }
+  
+    document.getElementById('searchInputx').addEventListener('input', searchx);
+</script> 
+</section>  
+        
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('corporateForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+      
+      // Enviar el formulario de manera asíncrona
+      var formData = new FormData(this);
+      fetch('https://script.google.com/macros/s/AKfycbzGnwqJsxivsvbdBVBORMaqO6vAQWJxuQiKQTNkAxh7E9nm2PGWVrCXWdsbGMKb7ov2xQ/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error('Error al enviar el formulario');
+      })
+      .then(data => {
+        // Mostrar el mensaje de confirmación utilizando SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: '¡Éxito!',
+          text: data // El mensaje de confirmación devuelto desde el script de Google Apps Script
+        });
+        setTimeout(function() {
+    search();
+}, 2000); // 2000 milisegundos equivalen a 2 segundos
+
+      })
+      .catch(error => {
+        // En caso de error, mostrar un mensaje de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.message
+        });
+      });
+    });
+  });
+  
+  
+  /////
+  
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Llamar a fetchClientes() al cargar la página
+    fetchClientes();
+
+    // Agregar event listener al botón fetchButton
+    document.getElementById('fetchButton').addEventListener('click', function() {
+        var vendedor = document.getElementById('vendedorh').value;
+        fetchClientes(vendedor);
+    });
+
+    // Función para obtener y mostrar la lista de clientes
+    function fetchClientes(vendedor) {
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
+            .then(response => response.json())
+            .then(data => {
+                var clientes = data.values.map(row => row[0]); // Obtener todos los clientes
+                var select = document.getElementById('clientel');
+                select.innerHTML = ''; // Limpiar la lista desplegable
+
+                // Agregar todas las opciones de clientes al select
+                clientes.forEach(cliente => {
+                    var option = document.createElement('option');
+                    option.value = cliente;
+                    option.textContent = cliente;
+                    select.appendChild(option);
+                });
+
+                // Si se proporciona un vendedor, filtrar la lista de clientes
+                if (vendedor) {
+                    clientes = data.values.filter(row => row[3] === vendedor).map(row => row[0]);
+                    select.innerHTML = ''; // Limpiar la lista desplegable
+
+                    // Agregar solo los clientes correspondientes al vendedor al select
+                    clientes.forEach(cliente => {
+                        var option = document.createElement('option');
+                        option.value = cliente;
+                        option.textContent = cliente;
+                        select.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener la lista de clientes:', error);
+            });
+    }
+});
+
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar la lista de productos al cargar la página
+      fetchProductos();
+
+      // Función para obtener y mostrar la lista de productos
+      function fetchProductos() {
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/size!A7:A29?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
+          .then(response => response.json())
+          .then(data => {
+            var productos = data.values.map(row => row[0]); // Obtener todos los productos
+            var select = document.getElementById('productlist');
+            select.innerHTML = ''; // Limpiar el select
+
+            // Agregar todas las opciones de productos al select
+            productos.forEach(producto => {
+              var option = document.createElement('option');
+              option.value = producto;
+              option.textContent = producto;
+              select.appendChild(option);
+            });
+          })
+          .catch(error => {
+            console.error('Error al obtener la lista de productos:', error);
+          });
+      }
+    });
+</script>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</section>
+  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
