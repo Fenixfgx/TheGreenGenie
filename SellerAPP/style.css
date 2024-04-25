@@ -1070,7 +1070,7 @@ main {
 
 @media (max-width: 700px) {
   .tooltip {
-    left: 180%;
+    display: none;
   }
 }
 
@@ -1094,7 +1094,7 @@ main {
 
 @media (max-width: 700px) {
   .logo {
-  margin-left: 12px;
+  margin-left: 7px;
   }
 }
 
@@ -1236,7 +1236,8 @@ textarea {
   
   @media only screen and (max-width: 600px) {
         .cardadd table tr td:nth-child(1),
-        .cardadd table tr td:nth-child(2){
+        .cardadd table tr td:nth-child(2),
+        .cardadd table tr td:nth-child(5){
             display: none;
         }
     }
@@ -1426,6 +1427,7 @@ background-image: linear-gradient(240deg, rgb(151 164 231) 0%, rgb(252 195 195 /
     background-color: #493971;
     color: white;
     border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
     font-family: system-ui;
     padding-bottom: 5px;
     margin-left: -8px;
