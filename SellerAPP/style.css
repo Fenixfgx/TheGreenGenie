@@ -744,7 +744,7 @@ main {
   padding: 0 5px 5px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 4500px) {
   main {
     grid-template-columns: 6% 94%;
   }
