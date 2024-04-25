@@ -1514,3 +1514,8 @@ background-image: linear-gradient(240deg, rgb(151 164 231) 0%, rgb(252 195 195 /
     align-items: center;
     display: flex;
 }
+
+@media (max-width: 767px) {
+.butenv {
+  margin-bottom: 320px
+} }
