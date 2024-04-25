@@ -213,15 +213,24 @@ function adminClients() {
 // Obtener la ruta actual del navegador
         const currentUrl = window.location.pathname;
 
-        // Buscar el último segmento de la ruta como token
-        const segments = currentUrl.split('/');
-        const lastSegment = segments[segments.length - 1];
+        // Prefijo para excluir de la búsqueda del token
+        const prefixToExclude = '/app/';
 
-        // Verificar si se encontró un valor en el último segmento de la ruta
-        if (lastSegment) {
-            // Obtener referencia al campo de entrada
-            const tokenInput = document.getElementById('token');
+        // Verificar si la URL contiene el prefijo que se debe excluir
+        if (currentUrl.startsWith(prefixToExclude)) {
+            // Obtener la parte de la URL después del prefijo
+            const remainingUrl = currentUrl.substring(prefixToExclude.length);
 
-            // Establecer el valor del campo de entrada con el valor del último segmento de la ruta
-            tokenInput.value = lastSegment;
+            // Buscar el último segmento de la ruta después del prefijo como token
+            const segments = remainingUrl.split('/');
+            const lastSegment = segments[segments.length - 1];
+
+            // Verificar si se encontró un valor en el último segmento después del prefijo
+            if (lastSegment) {
+                // Obtener referencia al campo de entrada
+                const tokenInput = document.getElementById('token');
+
+                // Establecer el valor del campo de entrada con el valor del último segmento
+                tokenInput.value = lastSegment;
+            }
         }
