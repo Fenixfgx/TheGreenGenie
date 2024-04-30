@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Green Genie Sellers</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SELLER</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="containeringr">
@@ -362,6 +362,11 @@
         <input type="text" id="cod" name="cod" value='=VLOOKUP(INDIRECT("F"&ROW());Clientes!B:M; 2; FALSE)'>
       </div>
 
+ <div class="form-group">
+        <label for="clientel">Browse</label>
+<input type="text" id="clientelsearch" name="clientelsearch" placeholder="Buscar Cliente .."></input>
+      </div>
+                
       <div class="form-group">
         <label for="clientel">Cliente</label>
         <select class="cliente1" id="clientel" name="clientel"></select>
@@ -849,7 +854,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Llamar a fetchClientes() al cargar la página
     fetchClientes();
 
@@ -879,23 +884,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Si se proporciona un vendedor, filtrar la lista de clientes
                 if (vendedor) {
                     clientes = data.values.filter(row => row[3] === vendedor).map(row => row[0]);
-                    select.innerHTML = ''; // Limpiar la lista desplegable
-
-                    // Agregar solo los clientes correspondientes al vendedor al select
-                    clientes.forEach(cliente => {
-                        var option = document.createElement('option');
-                        option.value = cliente;
-                        option.textContent = cliente;
-                        select.appendChild(option);
-                    });
                 }
+
+                // Obtener el término de búsqueda del input
+                var searchTerm = document.getElementById('clientelsearch').value.trim().toLowerCase();
+
+                // Filtrar la lista de clientes según el término de búsqueda
+                var filteredClientes = clientes.filter(cliente => cliente.toLowerCase().includes(searchTerm));
+
+                // Limpiar la lista desplegable
+                select.innerHTML = '';
+
+                // Agregar las opciones filtradas al select
+                filteredClientes.forEach(cliente => {
+                    var option = document.createElement('option');
+                    option.value = cliente;
+                    option.textContent = cliente;
+                    select.appendChild(option);
+                });
             })
             .catch(error => {
                 console.error('Error al obtener la lista de clientes:', error);
             });
     }
-});
 
+    // Escuchar el evento de entrada en el campo de búsqueda
+    document.getElementById('clientelsearch').addEventListener('input', function() {
+        fetchClientes(document.getElementById('vendedorh').value);
+    });
+});
   </script>
 
   <script>
@@ -937,9 +954,6 @@ document.addEventListener("DOMContentLoaded", function() {
   
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="script.js"></script>
-</body>
-</html>
-
-
+    <style src="style.css"></style>
 </body>
 </html>
