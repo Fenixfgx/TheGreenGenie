@@ -856,6 +856,7 @@ main {
     grid-template-columns: 60% 40%;
   }
 
+  
   .left-content {
     grid-template-rows: 50% 50%;
     margin: 15px;
@@ -1211,26 +1212,7 @@ textarea {
     position: relative;
     margin-bottom: 5px;
     }
-    .deleteButton {
-        position: absolute;
-        display: contents;
-    padding: 8px 24px;
-    margin: 10px auto;
-    font-size: 1.1rem;
-    font-weight: 500;
-    outline: none;
-    text-decoration: none;
-    color: #484b57;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px;
-    cursor: pointer;
-    }
-  
-  .deleteButton:hover {
-  background-color: #cc0000; /* Slightly darker red on hover */
-}
+    
     .editButton {
         position: absolute;
         bottom: 5px;
@@ -1245,8 +1227,9 @@ textarea {
   
   @media only screen and (max-width: 600px) {
         .cardadd table tr td:nth-child(1),
-        .cardadd table tr td:nth-child(3),
-        .cardadd table tr td:nth-child(5){
+        .cardadd table tr td:nth-child(4),
+        .cardadd table tr td:nth-child(5),
+        .cardadd table tr td:nth-child(6){
             display: none;
         }
     }
@@ -1519,3 +1502,151 @@ background-image: linear-gradient(240deg, rgb(151 164 231) 0%, rgb(252 195 195 /
 .butenv {
   margin-bottom: 320px
 } }
+
+/* Estilos de la tabla */
+  #tabla-resultados {
+    border-collapse: collapse;
+    width: 2013px; 
+    font-size: small;
+  }
+
+  #tabla-resultados th, #tabla-resultados td {
+    border: 1px solid #ddd; /* Borde claro */
+    padding: 4px; /* Espacio entre celdas */
+    text-align: left; /* Alinear texto a la izquierda */
+  }
+
+  #tabla-resultados th {
+    background-color: #c6efce; /* Fondo verde claro para los encabezados */
+    color: #333; /* Texto oscuro para los encabezados */
+  }
+
+  #tabla-resultados tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fondo claro para las filas pares */
+  }
+
+  /* Estilos de los inputs y botón */
+.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal {
+    width: 98% !important;;
+}
+
+.swal2-content {
+padding: 0px !important; 
+}
+
+#swal2-title {
+    font-family: sans-serif;
+    font-size: 1.4em;
+    margin-top: 17px;
+}
+
+.swal2-popup {
+    padding: 0px !important;;
+}
+
+div:where(.swal2-container) .swal2-html-container {
+    margin: 5px !important;;
+}
+  button {
+    background-color: #8bc34a; /* Fondo verde claro para el botón */
+    color: #fff; /* Texto blanco para el botón */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+.deleteButton {
+    position: absolute;
+    display: contents;
+    padding: 8px 24px;
+    margin: 10px auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: none;
+    text-decoration: none;
+    color: #484b57;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    }
+  
+  .deleteButton:hover {
+  background-color: #cc0000; /* Slightly darker red on hover */
+}
+  
+  .detailsButton {
+        position: absolute;
+        display: contents;
+    padding: 8px 24px;
+    margin: 10px auto;
+    margin-left: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: none;
+    text-decoration: none;
+    color: #484b57;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    }
+
+
+#searchInput12 {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#clientesTable {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    box-shadow: 6px 4px 6px 1px gray;
+    font-size: 2vh;
+}
+
+#clientesTable th, #clientesTable td {
+    border: 1px solid #288721;
+    padding: 8px;
+    text-align: left;
+}
+
+#clientesTable th {
+    background-color: #4CAF50;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#clientesTable tr:nth-child(even) {
+    background-color: #20bf2329;
+}
+
+#clientesTable tr:hover {
+    background-color: #e2e2e2;
+}
+
+
+@media (min-width: 766px) {
+#preciosxClients {
+  margin-left: 15px;
+  width: 800px;
+} }
+
+@media (max-width: 766px) {
+#preciosxClients {
+  margin-left: 18px;
+  margin-right: -45px;
+} }
+
+#clientePriceForm {
+  margin-bottom: 12px;
+}
