@@ -167,6 +167,15 @@
     <span class="tooltip">Programar Ordenes</span>
   </a>
 </li>
+          
+<li class="nav-item">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="programordg()" style="font-size: 35px;">
+  <svg width="32px" height="32px" class="svg-iconus"  viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --> <title>ic_fluent_extension_24_filled</title> <desc>Created with Sketch.</desc> <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="ic_fluent_extension_24_filled" fill="#212121" fill-rule="nonzero"> <path d="M13,2.00000002 C14.3639761,2.00000002 15.4696971,3.1057211 15.4696971,4.46969718 L15.469,5.00000002 L19,5.00000002 C19.5522847,5.00000002 20,5.44771527 20,6.00000002 L19.999,9.49900002 L18.4696972,9.50000002 C17.1602801,9.50000002 16.0888709,10.5190325 16.0052532,11.8073139 L16,11.9696972 L16,12.0303028 C16,13.3397199 17.0190325,14.4111291 18.3073139,14.4947468 L18.4696972,14.5 L19.999,14.499 L20,18.0029302 C20,18.5552149 19.5522847,19.0029302 19,19.0029302 L15.469,19.002 L15.4696971,19.5303028 C15.4696971,20.8942789 14.3639761,22 13,22 C11.6360239,22 10.5303028,20.8942789 10.5303028,19.5303028 L10.53,19.002 L6.99999998,19.0029302 C6.44771523,19.0029302 5.99999998,18.5552149 5.99999998,18.0029302 L5.99899998,14.471 L5.46969714,14.4711623 C4.10572107,14.4711623 2.99999998,13.3654412 2.99999998,12.0014651 C2.99999998,10.637489 4.10572107,9.53176794 5.46969714,9.53176794 L5.99899998,9.53100002 L5.99999998,6.00000002 C5.99999998,5.44771527 6.44771523,5.00000002 6.99999998,5.00000002 L10.53,5.00000002 L10.5303028,4.46969718 C10.5303028,3.1057211 11.6360239,2.00000002 13,2.00000002 Z" id="🎨-Color"> </path> </g> </g> </g></svg>
+    <span class="tooltip">Gestor de Ordenes Programadas</span>
+  </a>
+</li>
         </ul>
       </nav>
 
@@ -430,7 +439,39 @@ document.getElementById('searchInputColumnA').addEventListener('input', search);
 <div class="form-group">
 <input type="hidden" id="con" name="con" value='=CONCAT(INDIRECT("H"&ROW());INDIRECT("F"&ROW()))' required>
 </div>
- <div class="form-group">
+<div style="display:none;" class="form-group">
+<input type="hidden" id="con2" name="con2" value='=CONCAT(INDIRECT("AT"&ROW());INDIRECT("F"&ROW()))' required>
+</div>
+                
+ <div class="form-group" id="diaprog" style="display:none">
+  <label for="day">DIA A PROGRAMAR</label>
+  <select id="day" name="day">
+    <option value="LUNES">LUNES</option>
+    <option value="MARTES">MARTES</option>
+    <option value="MIÉRCOLES">MIÉRCOLES</option>
+    <option value="JUEVES">JUEVES</option>
+    <option value="VIERNES">VIERNES</option>
+    <option value="SABADO">SABADO</option>
+    <option value="DOMINGO">DOMINGO</option>
+  </select>
+</div>               
+ <div style="display:none;" class="form-group" id="status">
+  <input type="text" id="status" name="status" value="ACTIVO">
+</div> 
+                
+ <div style="display:none;" class="form-group" id="existe">
+  <input type="text" id="existe" name="existe" value='=CONCATENATE(INDIRECT("AS" & ROW()); " "; INDIRECT("A" & ROW()))'>
+</div> 
+
+<div style="display:none;" class="form-group" id="chain">
+  <input type="text" id="chain" name="chain" value='=CONCATENATE(INDIRECT("AS" & ROW()); " ";1)'>
+</div> 
+                
+<div style="display:none;" class="form-group" id="del">
+  <input type="text" id="del" name="del" value='=IF(ISNUMBER(MATCH(INDIRECT("AW" & ROW()); AV:AV; 0)); TRUE; FALSE)'>
+</div> 
+                
+ <div class="form-group" id="fg">
   <label for="fechapr">Fecha de Generación:</label>
   <input type="date" id="fechapr" name="fechapr" required>
 </div>
@@ -439,7 +480,12 @@ document.getElementById('searchInputColumnA').addEventListener('input', search);
   <input type="text" id="fechap" name="fechap">
 </div>
 
- <div class="form-group">
+<div class="form-group" style="display:none;">
+  <label for="fechapord">Fecha de Generación (Text)</label>
+  <input type="text" id="fechapord" name="fechapord" value="ORDEN PROGRAMADA">
+</div>
+                
+ <div class="form-group" id="fd">
     <label for="fechades">Fecha Despacho</label>
     <input type="date" id="fechades" name="fechades" required>
 </div>               
@@ -646,7 +692,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <input type="text" id="po" name="po">
       </div>
 
-      <button type="submit" class="butenv" style="width: 200px; place-self: center;">Enviar</button>
+      <button type="submit" id="sub1" class="butenv" style="width: 200px; place-self: center;">Enviar</button>
+          
+          <button type="button" id="sub2" class="butenv" style="width: 200px; place-self: center; display:none">Programar Orden</button>
     </form>
   </div>
   <script src="https://apis.google.com/js/api.js">    
@@ -959,7 +1007,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="form-group">
     <label for="cliente2">Cliente</label>
     <select class="cliente2" id="cliente2" name="cliente2">
-    </select>
+    </select><button style="background-color: #04097d; height: 25px; padding: 5px; margin: 5px;" id="fetchClientesBtn">Recargar Clientes</button>
 </div>
 
 <div class="form-group" id="productlistexe" style="display:none;">
@@ -988,7 +1036,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
 </form>
   
-  
+
     <input type="hidden" id="searchInput12" placeholder="Buscar por cliente..." value=" ">
     
     <table id="clientesTable" style="display:none;">
@@ -996,6 +1044,51 @@ document.addEventListener("DOMContentLoaded", function() {
     </table>
 
     <script src="https://apis.google.com/js/api.js"></script>
+   <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                // Agregar el evento de clic al botón
+                document.getElementById('fetchClientesBtn').addEventListener('click', fetchClientes);
+
+                // Función para hacer clic automáticamente en el botón
+                function clickButtonAutomatically() {
+                    document.getElementById('fetchClientesBtn').click();
+                }
+
+                // Llamar a la función para hacer clic automáticamente
+                clickButtonAutomatically();
+            }, 10200); // 1000 milisegundos = 1 segundo
+
+            // Función para obtener y mostrar la lista de clientes
+            function fetchClientes() {
+                fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
+                    .then(response => response.json())
+                    .then(data => {
+                        var clientes = data.values; // Obtener todos los clientes
+
+                        var select = document.getElementById('cliente2');
+                        select.innerHTML = ''; // Limpiar la lista desplegable
+
+                        // Si se proporciona un vendedor, filtrar la lista de clientes
+                        var vendedor = document.getElementById('vendedorh2').value;
+                        if (vendedor) {
+                            clientes = clientes.filter(row => row[3] === vendedor).map(row => row[0]);
+                        }
+
+                        // Agregar las opciones de clientes al select
+                        clientes.forEach(cliente => {
+                            var option = document.createElement('option');
+                            option.value = cliente;
+                            option.textContent = cliente;
+                            select.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener la lista de clientes:', error);
+                    });
+            }
+        });
+    </script>
     <script>
   // JavaScript
 function initClient() {
@@ -1094,10 +1187,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 initClient();
               setTimeout(function() {
     loadTable();
+                sit();
 }, 800);
                 setTimeout(function() {
     sit();
-}, 1300);
+}, 1500);
             } else {
                 alert.error('Error al Registrar Datos.');
             }
@@ -1230,147 +1324,294 @@ function fetchPrecio(concatenatedValues) {
   
 </section>      
       
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('corporateForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
-      
-      // Enviar el formulario de manera asíncrona
-      var formData = new FormData(this);
-      fetch('https://script.google.com/macros/s/AKfycbxOjNUr5bEsw8TJ8dNE1uUj22Myg8QDXol6wJNGxOFT3NcndkiDynfnHsVLngTeVRJDBA/exec', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.text();
+<section id="programordg" style="display: none;">
+  <h2 class="toptitle">Gestor de Ordenes Programadas</h2>
+  
+  <body>
+  <div style="display: none;">
+    <label for="search-input">Buscar por Columna AI:</label>
+    <input type="text" id="search-input" oninput="filterRowsxd()">
+  </div>
+  <div id="sheet-container"></div>
+</body>
+  <script>
+// ID de la hoja de cálculo y API Key
+const SHEET_IDxd = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+const API_KEYxd = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+
+// Columnas que queremos mostrar en la tabla principal
+const COLUMNS_TO_DISPLAY_MAINxd = [5, 3, 6, 45, 46, 34];
+const COLUMNS_TO_DISPLAY_MODALxd = [2, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const SEARCH_COLUMN_INDEXxd = 34; // Índice de la columna "AI"
+
+const SHEET_URLxd = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_IDxd}/values/PROGRAMORD?key=${API_KEYxd}`;
+const SCRIPT_URLxd = 'https://script.google.com/macros/s/AKfycbwpIeQch_inRSyP-ZRXWbh1XQ8dogioUrZzvdGEQDOzEvtnDwl8Djv3Xai6_iQjdFKS/exec';
+
+let sheetDataxd = []; // Variable para almacenar los datos de la hoja
+
+// Función para cargar y mostrar los datos de la hoja de cálculo
+async function loadSheetxd() {
+    try {
+        const response = await fetch(SHEET_URLxd);
+        const data = await response.json();
+        sheetDataxd = data.values;
+
+        if (sheetDataxd.length > 0) {
+            displaySheetDataxd(sheetDataxd);
+        } else {
+            console.error('No se encontraron datos en la Base.');
         }
-        throw new Error('Error al enviar el formulario');
-      })
-      .then(data => {
-        // Mostrar el mensaje de confirmación utilizando SweetAlert2
-        Swal.fire({
-          icon: 'success',
-          title: '¡Éxito!',
-          text: data // El mensaje de confirmación devuelto desde el script de Google Apps Script
-        });
-        setTimeout(function() {
-    search();
-}, 2000); // 2000 milisegundos equivalen a 2 segundos
-
-      })
-      .catch(error => {
-        // En caso de error, mostrar un mensaje de error
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: error.message
-        });
-      });
-    });
-  });
-  
-  
-  /////
-  
-  </script>
-
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Llamar a fetchClientes() al cargar la página
-    fetchClientes();
-
-    // Agregar event listener al botón fetchButton
-    document.getElementById('fetchButton').addEventListener('click', function() {
-        var vendedor = document.getElementById('vendedorh').value;
-        fetchClientes(vendedor);
-    });
-
-    // Función para obtener y mostrar la lista de clientes
-    function fetchClientes(vendedor) {
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-            .then(response => response.json())
-            .then(data => {
-                var clientes = data.values.map(row => row[0]); // Obtener todos los clientes
-                var select = document.getElementById('clientel');
-                select.innerHTML = ''; // Limpiar la lista desplegable
-
-                // Agregar todas las opciones de clientes al select
-                clientes.forEach(cliente => {
-                    var option = document.createElement('option');
-                    option.value = cliente;
-                    option.textContent = cliente;
-                    select.appendChild(option);
-                });
-
-                // Si se proporciona un vendedor, filtrar la lista de clientes
-                if (vendedor) {
-                    clientes = data.values.filter(row => row[3] === vendedor).map(row => row[0]);
-                }
-
-                // Obtener el término de búsqueda del input
-                var searchTerm = document.getElementById('clientelsearch').value.trim().toLowerCase();
-
-                // Filtrar la lista de clientes según el término de búsqueda
-                var filteredClientes = clientes.filter(cliente => cliente.toLowerCase().includes(searchTerm));
-
-                // Limpiar la lista desplegable
-                select.innerHTML = '';
-
-                // Agregar las opciones filtradas al select
-                filteredClientes.forEach(cliente => {
-                    var option = document.createElement('option');
-                    option.value = cliente;
-                    option.textContent = cliente;
-                    select.appendChild(option);
-                });
-            })
-            .catch(error => {
-                console.error('Error al obtener la lista de clientes:', error);
-            });
+    } catch (error) {
+        console.error('Error al cargar Base:', error);
     }
+  filterRowsxd();
+}
 
-    // Escuchar el evento de entrada en el campo de búsqueda
-    document.getElementById('clientelsearch').addEventListener('input', function() {
-        fetchClientes(document.getElementById('vendedorh').value);
+// Función para mostrar los datos de la hoja de cálculo en la tabla principal
+function displaySheetDataxd(data) {
+    const sheetContainer = document.getElementById('sheet-container');
+    sheetContainer.innerHTML = ''; // Limpiar contenido anterior
+
+    const table = document.createElement('table');
+
+    // Agregar encabezados de tabla
+    const headerRow = document.createElement('tr');
+    COLUMNS_TO_DISPLAY_MAINxd.forEach(index => {
+        const headerCell = document.createElement('th');
+        headerCell.textContent = data[0][index];
+        headerRow.appendChild(headerCell);
     });
-});
-  </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Cargar la lista de productos al cargar la página
-      fetchProductos();
+    const detailsHeaderCell = document.createElement('th');
+    detailsHeaderCell.textContent = 'Acciones';
+    headerRow.appendChild(detailsHeaderCell);
 
-      // Función para obtener y mostrar la lista de productos
-      function fetchProductos() {
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/size!A7:A29?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-          .then(response => response.json())
-          .then(data => {
-            var productos = data.values.map(row => row[0]); // Obtener todos los productos
-            var select = document.getElementById('productlist');
-            select.innerHTML = ''; // Limpiar el select
+    table.appendChild(headerRow);
 
-            // Agregar todas las opciones de productos al select
-            productos.forEach(producto => {
-              var option = document.createElement('option');
-              option.value = producto;
-              option.textContent = producto;
-              select.appendChild(option);
+    // Agregar filas de datos
+    data.slice(1).forEach((rowData, rowIndex) => {
+        if (rowData[0] === '1') { // Verificar si la columna A tiene el valor "1"
+            const row = document.createElement('tr');
+            row.id = `row-${rowIndex}`; // Agregar un ID único a cada fila
+            COLUMNS_TO_DISPLAY_MAINxd.forEach(index => {
+                const cell = document.createElement('td');
+                cell.textContent = rowData[index];
+                row.appendChild(cell);
             });
-          })
-          .catch(error => {
-            console.error('Error al obtener la lista de productos:', error);
-          });
-      }
+
+            // Agregar la celda del botón de detalles
+            const actionsCell = document.createElement('td');
+            const detailsButton = document.createElement('button');
+            detailsButton.textContent = 'Detalle';
+            detailsButton.onclick = () => showDetailsxd(rowData[4], rowData[44], rowData[5], rowData[45], rowData[48], rowData[46]);
+            actionsCell.appendChild(detailsButton);
+                     
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.className = 'deleteButton';
+            deleteButton.onclick = () => confirmDeletexd(rowIndex + 2); // Pasar el índice de la fila
+            actionsCell.appendChild(deleteButton);
+
+            row.appendChild(actionsCell);
+            table.appendChild(row);
+        } else {
+            const row = document.createElement('tr');
+            row.id = `row-${rowIndex}`; // Agregar un ID único a cada fila
+            row.style.display = 'none'; // Ocultar las filas que no coincidan con el filtro
+            COLUMNS_TO_DISPLAY_MAINxd.forEach(() => {
+                const cell = document.createElement('td');
+                cell.textContent = ''; // Dejar las celdas vacías para mantener el formato
+                row.appendChild(cell);
+            });
+            table.appendChild(row);
+        }
     });
+
+    sheetContainer.appendChild(table);
+}
+
+// Función para confirmar y eliminar la fila
+function confirmDeletexd(rowId) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deleteRowxd(rowId);
+        }
+    });
+}
+
+// Función para cambiar el estado de la columna "AU"
+async function toggleStatusxd(rowIndex, currentStatus) {
+    console.log('Datos enviados:', { rowIndex, currentStatus });
+
+    const newStatus = currentStatus === 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+    const response = await fetch(SCRIPT_URLxd, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ rowIndex, newStatus })
+    });
+
+    if (response.ok) {
+        console.log('Estado cambiado correctamente');
+        loadSheetxd();
+    } else {
+        console.error('Error al cambiar el estado');
+    }
+}
+
+// Función para filtrar las filas basadas en el valor de la columna "AI"
+function filterRowsxd() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const rows = document.querySelectorAll('tr[id^="row-"]'); // Seleccionar todas las filas con ID que comienza con "row-"
+
+    rows.forEach(row => {
+        const aiColumnValue = row.querySelector('td:nth-child(6)').textContent.toLowerCase(); // Obtener el valor de la columna AI (quinta columna)
+        if (aiColumnValue.includes(searchTerm)) {
+            row.style.display = ''; // Mostrar la fila si el término de búsqueda está contenido en la columna AI
+        } else {
+            row.style.display = 'none'; // Ocultar la fila si el término de búsqueda no coincide
+        }
+    });
+}
+
+// Función para mostrar los detalles en un SweetAlert con filtro
+function showDetailsxd(col5Value, col45Value, cliente, dia, chainn, statusx) {
+    // HTML para el formulario dentro del SweetAlert
+    const formHtml = `
+        <form id="delete-formxd" style="display:none;">
+            <label for="filter-col5">Filtrar por Columna 5:</label>
+            <input type="text" id="filter-col5xd" value="${col5Value}" /><br>
+            <label for="filter-col45">Filtrar por Columna 45:</label>
+            <input type="text" id="filter-col45xd" value="${col45Value}" /><br>
+            <button type="button" id="apply-filterxd">Aplicar Filtro</button>
+            <button type="button" id="delete-rowsxd">Eliminar Filas</button>
+        </form>
+        <div id="filtered-tablexd"></div>
+        <form id="activoinactivoxd" >
+    <div style="display: none;">
+        <label for="chain">Chain</label>
+        <input type="text" id="chainxd" name="chain" value="${chainn}">
+    </div>
+    <h4 style="margin: 0px;">Estado Actual: ${statusx}</h4>
+    <div class="form-group">
+        <label for="activador"></label>
+        <select type="text" id="activadorxd" name="activador" style="text-align: center;" required>
+          <option value="ACTIVO">ACTIVAR</option>
+          <option value="INACTIVO">DESACTIVAR</option>
+         </select> 
+    </div>
+
+    <button class="Actstate" type="submit">Actualizar Estado</button> 
+</form>
+    `;
+
+    Swal.fire({
+        title: `${cliente} / ${dia}`,
+        html: formHtml,
+        width: '98%',
+        didOpen: () => {
+          document.getElementById('activoinactivoxd').addEventListener('submit', function(event) {
+event.preventDefault(); // Evitar el envío por defecto del formulario
+// Obtener los valores de los campos de entrada
+var chain = document.getElementById('chainxd').value;
+var activador = document.getElementById('activadorxd').value;
+// Llamar a la función para guardar en la hoja de cálculo
+guardarEnHojaDeCalculo(chain, activador);});
+document.getElementById('apply-filterxd').addEventListener('click', applyModalFilterxd);
+            document.getElementById('delete-rowsxd').addEventListener('click', () => {
+                const filterCol5 = document.getElementById('filter-col5xd').value;
+                const filterCol45 = document.getElementById('filter-col45xd').value;
+                eliminarFilasxd(filterCol45);
+                Swal.close();
+            });
+          applyModalFilterxd();
+        },
+        confirmButtonText: 'Cerrar'
+    });
+}
+
+// Función para aplicar el filtro dentro del SweetAlert
+function applyModalFilterxd() {
+    const filterCol5 = document.getElementById('filter-col5xd').value.toLowerCase();
+    const filterCol45 = document.getElementById('filter-col45xd').value.toLowerCase();
+
+    let filteredData = sheetDataxd.filter((rowData, rowIndex) => {
+        if (rowIndex === 0) return true; // Incluir siempre la fila de encabezados
+        const col5Matches = rowData[4] && rowData[4].toLowerCase().includes(filterCol5);
+        const col45Matches = rowData[44] && rowData[44].toLowerCase().includes(filterCol45);
+        return col5Matches && col45Matches;
+    });
+
+    // Crear una tabla HTML con los datos filtrados
+    let filteredTableHtml = '<table border="1" style="width: 1300px; font-size:13px; text-align: left;">';
+    filteredTableHtml += '<tr>';
+    COLUMNS_TO_DISPLAY_MODALxd.forEach(index => {
+        filteredTableHtml += `<th>${sheetDataxd[0][index]}</th>`;
+    });
+    filteredTableHtml += '</tr>';
+
+    filteredData.slice(1).forEach(rowData => {
+        filteredTableHtml += '<tr>';
+        COLUMNS_TO_DISPLAY_MODALxd.forEach(index => {
+            filteredTableHtml += `<td>${rowData[index]}</td>`;
+        });
+        filteredTableHtml += '</tr>';
+    });
+
+    filteredTableHtml += '</table>';
+
+    // Actualizar el contenido del SweetAlert con los datos filtrados
+    document.getElementById('filtered-tablexd').innerHTML = filteredTableHtml;
+  }
+
+// Función para eliminar filas específicas
+async function eliminarFilasxd(filterCol5, filterCol45) {
+    const response = await fetch(SCRIPT_URLxd, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ filterCol5, filterCol45 })
+    });
+
+    if (response.ok) {
+        console.log('Filas eliminadas correctamente');
+        loadSheetxd();
+    } else {
+        console.error('Error al eliminar las filas');
+    }
+}
+
+
+
+async function deleteRowxd(rowId) {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbwT15ZBDqUZdMWTdwzQ9i_kjsnSBEEMrYeErqfoXO6kneH7GxjRwDgMTxbw9-KccAur/exec', {
+        method: 'POST',
+        body: JSON.stringify({ row: rowId })
+    });
+    if (response.ok) {
+        console.log('Row deleted successfully');
+        alert ('Eliminado')
+        loadSheetxd();
+    } else {
+        console.error('Error deleting row');
+    }
+}
+
+// Cargar la hoja de cálculo al cargar la página
+window.onload = loadSheetxd;
+
 </script>
 
-            </div>
-          </div>
-        </div>
-      </section>
+</section>
   
   
     </main>
@@ -1378,7 +1619,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
   
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="script.js"></script>
 </body>
 </html>
 <!-- partial -->
