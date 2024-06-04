@@ -89,7 +89,20 @@ vendedorh2.value = username;
 
 ///////////
 
-
+// Obtener los parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Obtener el valor del parámetro 'token' si está presente
+        const token = urlParams.get('token');
+        
+        // Verificar si se encontró un valor para el token
+        if (token) {
+            // Obtener referencia al campo de entrada
+            const tokenInput = document.getElementById('token');
+            
+            // Establecer el valor del campo de entrada con el valor del token
+            tokenInput.value = token;
+        }
 
 ////////////////////////////////////////////////
 
