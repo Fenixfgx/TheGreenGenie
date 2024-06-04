@@ -18,7 +18,7 @@
 
 button {
     padding: 10px 20px;
-    background-color: #04097d;
+    background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -152,7 +152,7 @@ main {
   justify-content: center;
   color: #fff;
   font-size: 1rem;
-  padding: 13px 0;
+  padding: 15px 0;
   margin-left: 10px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -1040,14 +1040,6 @@ main {
   stroke: #fff;
 }
 
-  .svg-iconus path {
-  stroke: #fff;
-  fill: white;
-}
-  .nav-item.active .svg-iconus path {
-  stroke: #000;
-  fill: black;
-}
 /* Cuando el elemento está "active", el color del stroke cambia a negro */
 .nav-item.active .svg-icon path {
   stroke: #000;
@@ -1556,7 +1548,7 @@ div:where(.swal2-container) .swal2-html-container {
     margin: 5px !important;;
 }
   button {
-    background-color: #04097d; /* Fondo verde claro para el botón */
+    background-color: #8bc34a; /* Fondo verde claro para el botón */
     color: #fff; /* Texto blanco para el botón */
     padding: 10px 20px;
     border: none;
@@ -1657,138 +1649,4 @@ div:where(.swal2-container) .swal2-html-container {
 
 #clientePriceForm {
   margin-bottom: 12px;
-}
-.inputoken {
-  text-transform: uppercase;
-}
-
-
-
-
-
-/* styles.css */
-#programordg table {
-  border-collapse: collapse;
-}
-
-#programordg table,
-#programordg th,
-#programordg td {
-  border: 1px solid black;
-  padding: 8px;
-}
-
-#programordg td input {
-  width: 100%;
-}
-
-#programordg div:where(.swal2-container).swal2-center > .swal2-popup {
-  width: 100%;
-}
-
-#programordg [class^="swal2"] {
-  -webkit-tap-highlight-color: transparent;
-  overflow: auto;
-}
-
-#programordg .swal2-content {
-  padding: 0px 0.6em;
-}
-
-#programordg .hidden-row {
-  display: none;
-}
-
-#sheet-container {
-  text-align: center;
-  width: 100%;
-  margin-left: 8px;
-  font-size: 10px;
-}
-
-#sheet-container button {
-  background-color: #04097d;
-    padding: 4px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 25px;
-    font-size: 12px;
-}
-
-#sheet-container .deleteButton {
-  background-color: #04097d;
-    padding: 4px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 25px;
-    font-size: 12px;
-}
-
-#filtered-tablexd {
-            margin: 20px;
-            overflow-x: auto;
-        }
-
-        #filtered-tablexd table {
-            width: 100%;
-            font-size: 13px;
-            text-align: left;
-            border-collapse: collapse;
-            table-layout: auto; /* Esto permite que las celdas se ajusten dinámicamente */
-        }
-
-        #filtered-tablexd th, #filtered-tablexd td {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-        }
-
-        #filtered-tablexd th {
-            background-color: #4CAF50;
-            color: white;
-            white-space: nowrap; /* Esto previene que el texto en th se divida en varias líneas */
-        }
-
-        #filtered-tablexd tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        #filtered-tablexd tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        #filtered-tablexd th, #filtered-tablexd td {
-            text-align: center;
-        }
-
-        #filtered-tablexd table {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-#activoinactivoxd {
-  text-align: -webkit-center;
-}
-
-#activadorxd {
-  text-align: center;
-  width: 120px;
-  font-size: 12px;
-}
-
-.Actstate {
- height: 31px;
- font-size: 14px;
- padding: 3px 12px;
-}
-
-/* Estilos específicos para modo teléfono */
-@media (max-width: 600px) {
-    #sheet-container th:nth-child(2), #sheet-container td:nth-child(2), /* Columna 2 */
-    #sheet-container th:nth-child(3), #sheet-container td:nth-child(3), /* Columna 3 */
-    #sheet-container th:nth-child(6), #sheet-container td:nth-child(6)  /* Columna 6 */ {
-        display: none;
-    }
 }
