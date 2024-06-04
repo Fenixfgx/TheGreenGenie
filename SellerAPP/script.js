@@ -36,12 +36,7 @@ searchx();
 const vendedor2 = document.getElementById('vendedor');
 
 // Asignar el valor por defecto al input
-vendedor2.value = username;     
-              
-const vendedor3 = document.getElementById('search-input');
-
-// Asignar el valor por defecto al input
-vendedor3.value = username;  
+vendedor2.value = username;            
          
               
 const vendedor = document.getElementById('vendedorh');
@@ -89,20 +84,7 @@ vendedorh2.value = username;
 
 ///////////
 
-// Obtener los parámetros de la URL
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // Obtener el valor del parámetro 'token' si está presente
-        const token = urlParams.get('token');
-        
-        // Verificar si se encontró un valor para el token
-        if (token) {
-            // Obtener referencia al campo de entrada
-            const tokenInput = document.getElementById('token');
-            
-            // Establecer el valor del campo de entrada con el valor del token
-            tokenInput.value = token;
-        }
+
 
 ////////////////////////////////////////////////
 
@@ -131,14 +113,6 @@ function mostrarDuo() {
     var det = document.querySelectorAll('.detailsButton');
     var searchi = document.getElementById('searchInputColumnA');
     var preciosxClients = document.getElementById('preciosxClients');
-    var programord = document.getElementById('programord');
-    var sub1 = document.getElementById('sub1');
-    var sub2 = document.getElementById('sub2');
-    var fg = document.getElementById('fg');
-    var fd = document.getElementById('fd');
-    var diap = document.getElementById('diaprog');
-    var programordg = document.getElementById('programordg');
-
   
     if (leftContent) {
         rightContent.style.display = 'block';
@@ -149,13 +123,6 @@ function mostrarDuo() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        sub1.style.display = 'block';
-        sub2.style.display = 'none';
-        fg.style.display = 'block';
-        fd.style.display = 'block';
-        diap.style.display = 'none';
-        programordg.style.display = 'none';
         searchi.value = '1';
         
       
@@ -181,14 +148,6 @@ function ocultarDiv() {
     var corporateForm = document.getElementById('corporateForm');
     var relItem = document.querySelector('.rel'); 
     var preciosxClients = document.getElementById('preciosxClients');
-    var programord = document.getElementById('programord');
-    var sub1 = document.getElementById('sub1');
-    var sub2 = document.getElementById('sub2');
-    var fg = document.getElementById('fg');
-    var fd = document.getElementById('fd');
-    var diap = document.getElementById('diaprog');
-    var programordg = document.getElementById('programordg');
-
 
     if (leftContent) {
         rightContent.style.maxWidth = '1000px';
@@ -200,13 +159,6 @@ function ocultarDiv() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
-        sub1.style.display = 'block';
-        sub2.style.display = 'none';
-        fg.style.display = 'block';
-        fd.style.display = 'block';
-        diap.style.display = 'none';
 
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
@@ -228,9 +180,6 @@ function listaDiv() {
     var formItem = document.querySelector('.form-group');
     var searchi = document.getElementById('searchInputColumnA');  
     var preciosxClients = document.getElementById('preciosxClients');
-    var programord = document.getElementById('programord');
-    var programordg = document.getElementById('programordg');
-    
   
     if (leftContent) {
         leftContent.style.width = '165%';
@@ -240,9 +189,6 @@ function listaDiv() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
-        
         searchi.value = '1';
         
       
@@ -277,9 +223,6 @@ function listaOrd() {
     var formItem = document.querySelector('.form-group');
     var searchi = document.getElementById('searchInputColumnA');
     var preciosxClients = document.getElementById('preciosxClients');
-    var programord = document.getElementById('programord');
-    var programordg = document.getElementById('programordg');
-
       
     if (leftContent) {
         leftContent.style.width = '165%';
@@ -289,8 +232,6 @@ function listaOrd() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
         searchi.value = ''; 
 
 
@@ -342,9 +283,6 @@ function addClient() {
     var relItem = document.querySelector('.rel'); 
     var preciosxClients = document.getElementById('preciosxClients');
     var formItem = document.querySelector('.form-group');
-    var programord = document.getElementById('programord');
-    var programordg = document.getElementById('programordg');
-
   
     if (leftContent) {
         rightContent.style.display = 'none';
@@ -352,8 +290,6 @@ function addClient() {
         addclient.style.display = 'block';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
             relItem.style.display = 'none'; // Oculta el elemento con la clase "rel"
@@ -372,9 +308,6 @@ function adminClients() {
     var relItem = document.querySelector('.rel'); 
     var preciosxClients = document.getElementById('preciosxClients');
     var formItem = document.querySelector('.form-group');
-    var programord = document.getElementById('programord');
-    var programordg = document.getElementById('programordg');
-
   
     if (leftContent) {
         rightContent.style.display = 'none';
@@ -382,8 +315,6 @@ function adminClients() {
         addclient.style.display = 'none';
         adminclients.style.display = 'block';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
 
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
@@ -403,55 +334,6 @@ function programord() {
     var relItem = document.querySelector('.rel'); 
     var preciosxClients = document.getElementById('preciosxClients');
     var programord = document.getElementById('programord');
-    var programordg = document.getElementById('programordg');
-    var sub1 = document.getElementById('sub1');
-    var sub2 = document.getElementById('sub2');
-    var fg = document.getElementById('fg');
-    var fd = document.getElementById('fd');
-    var diap = document.getElementById('diaprog');
-    var formItem = document.querySelector('.form-group');
-  
-    if (leftContent) {
-        rightContent.style.display = 'block';
-        leftContent.style.display = 'none';
-        addclient.style.display = 'none';
-        adminclients.style.display = 'none';
-        preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
-        sub1.style.display = 'none';
-        sub2.style.display = 'block';
-        fg.style.display = 'none';
-        fd.style.display = 'none';
-        diap.style.display = 'block';
-        rightContent.style.maxWidth = '1000px';
-        rightContent.style.width = '165%';
-        rightContent.style.marginLeft = '12px';
-        corporateForm.style.display = 'grid';
-
-        // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
-        if (window.innerWidth <= 767) {
-            relItem.style.display = 'none'; // Oculta el elemento con la clase "rel"
-        }
-    } else {
-        console.error('Elemento "left-content" no encontrado');
-    }
-}
-
-function programordg() {
-    var leftContent = document.getElementById('left-content');
-    var rightContent = document.getElementById('right-content');
-    var addclient = document.getElementById('addClient');
-    var adminclients = document.getElementById('adminClients');
-    var relItem = document.querySelector('.rel'); 
-    var preciosxClients = document.getElementById('preciosxClients');
-    var programord = document.getElementById('programord');
-    var programordg = document.getElementById('programordg');
-    var sub1 = document.getElementById('sub1');
-    var sub2 = document.getElementById('sub2');
-    var fg = document.getElementById('fg');
-    var fd = document.getElementById('fd');
-    var diap = document.getElementById('diaprog');
     var formItem = document.querySelector('.form-group');
   
     if (leftContent) {
@@ -460,18 +342,7 @@ function programordg() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
-        programord.style.display = 'none';
-        programordg.style.display = 'block';
-        sub1.style.display = 'none';
-        sub2.style.display = 'none';
-        fg.style.display = 'none';
-        fd.style.display = 'none';
-        diap.style.display = 'block';
-        rightContent.style.maxWidth = '1000px';
-        rightContent.style.width = '165%';
-        rightContent.style.marginLeft = '12px';
-        corporateForm.style.display = 'grid';
-        loadSheetxd();
+        programord.style.display = 'block';
 
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
@@ -481,6 +352,7 @@ function programordg() {
         console.error('Elemento "left-content" no encontrado');
     }
 }
+
 
 function preciosxClients() {
     var leftContent = document.getElementById('left-content');
@@ -488,10 +360,8 @@ function preciosxClients() {
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var preciosxClients = document.getElementById('preciosxClients');
-    var programord = document.getElementById('programord');
     var relItem = document.querySelector('.rel'); // Selecciona el elemento con la clase "rel"
     var formItem = document.querySelector('.form-group');
-    var programordg = document.getElementById('programordg');
   
     if (leftContent) {
         rightContent.style.display = 'none';
@@ -499,9 +369,6 @@ function preciosxClients() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'block';
-        programord.style.display = 'none';
-        programordg.style.display = 'none';
-        fetchClientes();
 
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
@@ -665,30 +532,3 @@ var productlist2 = document.getElementById('productlistexe');
         });
 }
 });
-
-document.getElementById('token').addEventListener('input', function() {
-            this.value = this.value.toUpperCase();
-        });
-
-
-// Función para guardar los datos en la hoja de cálculo
-function guardarEnHojaDeCalculo(chain, activador) {
-    fetch('https://script.google.com/macros/s/AKfycbyh-_zQKpG7iQmVgfVti_hj6Kc5ROtmwvX66ROM7MYwbRd8boeNF0BcjbyW-HYVJ-GjwQ/exec', {
-        method: 'POST',
-        body: JSON.stringify({
-            chain: chain,
-            activador: activador
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            Swal.fire('Estado Actualizado Satisfactoriamente', '', 'success');
-            loadSheetxd();
-        } else {
-            Swal.fire('Error al Registrar Datos.', '', 'error');
-        }
-    })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-    });
-}
