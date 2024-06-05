@@ -542,7 +542,22 @@ document.getElementById('searchInputColumnA').addEventListener('input', search);
         <select class="cliente1" id="clientel" name="clientel"></select>
       </div>
           
-       
+<script>
+        document.getElementById('clientelsearch').addEventListener('input', function() {
+            var searchValue = this.value.toLowerCase();
+            var select = document.getElementById('clientel');
+            var options = select.getElementsByTagName('option');
+
+            for (var i = 0; i < options.length; i++) {
+                var optionText = options[i].textContent.toLowerCase();
+                if (optionText.includes(searchValue)) {
+                    options[i].style.display = '';
+                } else {
+                    options[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
           
       <div class="form-group" style="display:none;">
         <label for="agenciaseller">Agencia</label>
