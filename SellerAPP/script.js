@@ -4,11 +4,11 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     // Obtenemos el token ingresado por el usuario
     const token = document.getElementById('token').value;
 
-    // Realizamos la petición a la hoja de cálculo de Google Sheets
+ // Realizamos la petición a la hoja de cálculo de Google Sheets
     fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/CD!A:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
         .then(response => response.json())
         .then(data => {
-            // Verificamos si el token coincide con algún valor de la columna C
+ // Verificamos si el token coincide con algún valor de la columna C
             const row = data.values.find(row => row[2] === token);
 
             if (row) {
@@ -62,21 +62,21 @@ vendedorh2.value = username;
         updateConcatenatedValue();
     }, 1500);  
 
-              // Actualizar la imagen dinámicamente
-                document.getElementById('userImage').src = imageLink;
+   // Actualizar la imagen dinámicamente
+document.getElementById('userImage').src = imageLink;
 
-                document.getElementById('welcomeMessage').innerText = `${username}`;
+document.getElementById('welcomeMessage').innerText = `${username}`;
                 document.getElementById('welcomeMessage').style.display = 'block';
-                document.getElementById('primero').style.display = 'block';
-                Swal.fire(`¡${welcome}, ${username}!`, ``, 'success');
+ document.getElementById('primero').style.display = 'block';
+ Swal.fire(`¡${welcome}, ${username}!`, ``, 'success');
 
-                // Ocultar elementos del formulario
-                document.getElementById('token').style.display = 'none';
+ // Ocultar elementos del formulario
+ document.getElementById('token').style.display = 'none';
                 document.querySelector('button[type="submit"]').style.display = 'none';
-                document.getElementById('token-image').style.display = 'none';
-                document.getElementById('token-back').style.display = 'none';
-                document.querySelector('h2').style.display = 'none';
-                document.querySelector('searchb').style.display = 'block'; 
+ document.getElementById('token-image').style.display = 'none';
+ document.getElementById('token-back').style.display = 'none';
+ document.querySelector('h2').style.display = 'none';
+ document.querySelector('searchb').style.display = 'block'; 
                
             } else {
                 // Si no hay coincidencia, mostramos un mensaje de error
@@ -304,7 +304,7 @@ function listaOrd() {
   
   setTimeout(function() {
   listaOrd1();
-  }, 400);
+  }, 700);
 }
 
 function listaOrd1() {

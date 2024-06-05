@@ -854,6 +854,95 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('corporateForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+      
+      // Enviar el formulario de manera asíncrona
+      var formData = new FormData(this);
+      fetch('https://script.google.com/macros/s/AKfycbxOjNUr5bEsw8TJ8dNE1uUj22Myg8QDXol6wJNGxOFT3NcndkiDynfnHsVLngTeVRJDBA/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error('Error al enviar el formulario');
+      })
+      .then(data => {
+        // Mostrar el mensaje de confirmación utilizando SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: '¡Éxito!',
+          text: data // El mensaje de confirmación devuelto desde el script de Google Apps Script
+        });
+        setTimeout(function() {
+    search();
+}, 2000); // 2000 milisegundos equivalen a 2 segundos
+
+      })
+      .catch(error => {
+        // En caso de error, mostrar un mensaje de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.message
+        });
+      });
+    });
+  });
+  
+  
+  /////
+  
+  </script>
+  
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('sub2').addEventListener('click', function() {
+                var form = document.getElementById('corporateForm');
+                
+                // Evita que el formulario se envíe de manera convencional
+                event.preventDefault();
+
+                // Enviar el formulario de manera asíncrona
+                var formData = new FormData(form);
+                fetch('https://script.google.com/macros/s/AKfycbygq3Gzk5lHIs7dfB02-aze7W18nQuLsliV7mBmYVNdIcrCw-gFF20PYyojEfyFgY4/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw new Error('Error al enviar el formulario');
+                })
+                .then(data => {
+                    // Mostrar el mensaje de confirmación utilizando SweetAlert2
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: data // El mensaje de confirmación devuelto desde el script de Google Apps Script
+                    });
+                    setTimeout(function() {
+                        search();
+                    }, 2000); // 2000 milisegundos equivalen a 2 segundos
+
+                })
+                .catch(error => {
+                    // En caso de error, mostrar un mensaje de error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: error.message
+                    });
+                });
+            });
+        });
+    </script>
+  
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('corporateForm2').addEventListener('submit', function(event) {
@@ -1214,6 +1303,59 @@ document.addEventListener('DOMContentLoaded', function() {
             searchInput.value = clienteSelect.value;
         });
     </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Llamar a fetchClientes() al cargar la página
+    fetchClientes();
+
+    // Agregar event listener al botón fetchButton
+    document.getElementById('fetchButton').addEventListener('click', function() {
+        var vendedor = document.getElementById('vendedorh').value;
+        fetchClientes(vendedor);
+    });
+
+    // Función para obtener y mostrar la lista de clientes
+    function fetchClientes(vendedor) {
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
+            .then(response => response.json())
+            .then(data => {
+                var clientes = data.values.map(row => row[0]); // Obtener todos los clientes
+                var select = document.getElementById('clientel');
+                select.innerHTML = ''; // Limpiar la lista desplegable
+
+                // Agregar todas las opciones de clientes al select
+                clientes.forEach(cliente => {
+                    var option = document.createElement('option');
+                    option.value = cliente;
+                    option.textContent = cliente;
+                    select.appendChild(option);
+                });
+
+                // Si se proporciona un vendedor, filtrar la lista de clientes
+                if (vendedor) {
+                    clientes = data.values.filter(row => row[3] === vendedor).map(row => row[0]);
+                    select.innerHTML = ''; // Limpiar la lista desplegable
+
+                    // Agregar solo los clientes correspondientes al vendedor al select
+                    clientes.forEach(cliente => {
+                        var option = document.createElement('option');
+                        option.value = cliente;
+                        option.textContent = cliente;
+                        select.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener la lista de clientes:', error);
+            });
+    }
+});
+
+  </script>
+
+
+  
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
@@ -1291,7 +1433,34 @@ function fetchPrecio(concatenatedValues) {
 });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar la lista de productos al cargar la página
+      fetchProductos();
 
+      // Función para obtener y mostrar la lista de productos
+      function fetchProductos() {
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/size!A7:A29?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
+          .then(response => response.json())
+          .then(data => {
+            var productos = data.values.map(row => row[0]); // Obtener todos los productos
+            var select = document.getElementById('productlist');
+            select.innerHTML = ''; // Limpiar el select
+
+            // Agregar todas las opciones de productos al select
+            productos.forEach(producto => {
+              var option = document.createElement('option');
+              option.value = producto;
+              option.textContent = producto;
+              select.appendChild(option);
+            });
+          })
+          .catch(error => {
+            console.error('Error al obtener la lista de productos:', error);
+          });
+      }
+    });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
