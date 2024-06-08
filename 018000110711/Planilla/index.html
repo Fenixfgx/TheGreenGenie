@@ -409,6 +409,7 @@
 
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
+ <script>
   
   const buttons = document.querySelectorAll(".cardas-buttons button");
 const sections = document.querySelectorAll(".cardas-section");
@@ -451,6 +452,7 @@ buttons.forEach((btn) => {
         const cardContainer = document.getElementById("card-container");
 
         for (let i = 1; i < data.length; i++) {
+          setTimeout(() => {
           const cardClone = document.querySelector(".cardas").cloneNode(true);
           cardClone.setAttribute("data-state", "#" + i);
 
@@ -522,13 +524,12 @@ buttons.forEach((btn) => {
           
  
           cardContainer.appendChild(cardClone);
-          
-        }
-      });
+         }, i * 1000); // Multiplicar el índice por 1000 para obtener un segundo de delay
+      }
     });
-  }
-
-
+  });
+}
+</script>
 </script>
 <!-- partial -->
   <script  src="./script.js"></script>
