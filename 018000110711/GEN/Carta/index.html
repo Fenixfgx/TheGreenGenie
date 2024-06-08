@@ -334,8 +334,6 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
 
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
-  
-  
   const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
   const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
   const SHEET_NAME = 'BaseFiltro';
@@ -356,67 +354,66 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
         const cardContainer = document.getElementById("card-container");
 
         for (let i = 1; i < data.length; i++) {
-          const cardClone = document.querySelector(".cardas").cloneNode(true);
-          cardClone.setAttribute("data-state", "#" + i);
+          setTimeout(() => { // Agregar un delay de 1 segundo
+            const cardClone = document.querySelector(".cardas").cloneNode(true);
+            cardClone.setAttribute("data-state", "#" + i);
 
-          const fecha = cardClone.querySelector("#fecha");
-          const aerolinea = cardClone.querySelector("#aerolinea");
-          const guia = cardClone.querySelector("#guia");
-          const hija = cardClone.querySelector("#hija");
-          const AERO = cardClone.querySelector("#AERO");
-          const destino = cardClone.querySelector("#destino");
-          const agencia = cardClone.querySelector("#agencia");
-          const destinatario = cardClone.querySelector("#destinatario");
-          const cajas = cardClone.querySelector("#cajas");
-          const IT1 = cardClone.querySelector("#IT1");
-          const ITT1 = cardClone.querySelector("#ITT1");
-          const IT2 = cardClone.querySelector("#IT2");
-          const ITT2 = cardClone.querySelector("#ITT2");
-          const IT3 = cardClone.querySelector("#IT3");
-          const ITT3 = cardClone.querySelector("#ITT3");
-          const IT4 = cardClone.querySelector("#IT4");
-          const ITT4 = cardClone.querySelector("#ITT4");
-          const D1 = cardClone.querySelector("#D1");
-          const D2 = cardClone.querySelector("#D2");
-          const D3 = cardClone.querySelector("#D3");
-          const D4 = cardClone.querySelector("#D4");
-          const ALEATORIOCARTA = cardClone.querySelector("#ALEATORIOCARTA");
-          const totalpiezas = cardClone.querySelector("#totalpiezas");
-          const AC = cardClone.querySelector("#AC");
+            const fecha = cardClone.querySelector("#fecha");
+            const aerolinea = cardClone.querySelector("#aerolinea");
+            const guia = cardClone.querySelector("#guia");
+            const hija = cardClone.querySelector("#hija");
+            const AERO = cardClone.querySelector("#AERO");
+            const destino = cardClone.querySelector("#destino");
+            const agencia = cardClone.querySelector("#agencia");
+            const destinatario = cardClone.querySelector("#destinatario");
+            const cajas = cardClone.querySelector("#cajas");
+            const IT1 = cardClone.querySelector("#IT1");
+            const ITT1 = cardClone.querySelector("#ITT1");
+            const IT2 = cardClone.querySelector("#IT2");
+            const ITT2 = cardClone.querySelector("#ITT2");
+            const IT3 = cardClone.querySelector("#IT3");
+            const ITT3 = cardClone.querySelector("#ITT3");
+            const IT4 = cardClone.querySelector("#IT4");
+            const ITT4 = cardClone.querySelector("#ITT4");
+            const D1 = cardClone.querySelector("#D1");
+            const D2 = cardClone.querySelector("#D2");
+            const D3 = cardClone.querySelector("#D3");
+            const D4 = cardClone.querySelector("#D4");
+            const ALEATORIOCARTA = cardClone.querySelector("#ALEATORIOCARTA");
+            const totalpiezas = cardClone.querySelector("#totalpiezas");
+            const AC = cardClone.querySelector("#AC");
 
-          fecha.innerHTML = data[i][7];
-          aerolinea.innerHTML = data[i][74];
-          guia.innerHTML = data[i][75];
-          hija.innerHTML = data[i][76];
-          AERO.innerHTML = data[i][74];
-          destino.innerHTML = data[i][77];
-          agencia.innerHTML = data[i][107]; 
-          destinatario.innerHTML = data[i][5];
-          cajas.innerHTML = data[i][78];
-          IT1.innerHTML = data[i][57];
-          ITT1.innerHTML = data[i][58];
-          IT2.innerHTML = data[i][59];
-          ITT2.innerHTML = data[i][60];
-          IT3.innerHTML = data[i][61];
-          ITT3.innerHTML = data[i][62];
-          IT4.innerHTML = data[i][63];
-          ITT4.innerHTML = data[i][64];
-          totalpiezas.innerHTML = data[i][73];
-          AC.innerHTML = data[i][6];
-          D1.innerHTML = data[i][65];
-          D2.innerHTML = data[i][66];
-          D3.innerHTML = data[i][67];
-          D4.innerHTML = data[i][68];
-          ALEATORIOCARTA.innerHTML = data[i][104];
-          
+            fecha.innerHTML = data[i][7];
+            aerolinea.innerHTML = data[i][74];
+            guia.innerHTML = data[i][75];
+            hija.innerHTML = data[i][76];
+            AERO.innerHTML = data[i][74];
+            destino.innerHTML = data[i][77];
+            agencia.innerHTML = data[i][107]; 
+            destinatario.innerHTML = data[i][5];
+            cajas.innerHTML = data[i][78];
+            IT1.innerHTML = data[i][57];
+            ITT1.innerHTML = data[i][58];
+            IT2.innerHTML = data[i][59];
+            ITT2.innerHTML = data[i][60];
+            IT3.innerHTML = data[i][61];
+            ITT3.innerHTML = data[i][62];
+            IT4.innerHTML = data[i][63];
+            ITT4.innerHTML = data[i][64];
+            totalpiezas.innerHTML = data[i][73];
+            AC.innerHTML = data[i][6];
+            D1.innerHTML = data[i][65];
+            D2.innerHTML = data[i][66];
+            D3.innerHTML = data[i][67];
+            D4.innerHTML = data[i][68];
+            ALEATORIOCARTA.innerHTML = data[i][104];
 
-          cardContainer.appendChild(cardClone);
+            cardContainer.appendChild(cardClone);
+          }, i * 1000); // Multiplicar el índice por 1000 para obtener un segundo de delay
         }
       });
     });
   }
- 
-
 </script>
 <!-- partial -->
   <script  src="./script.js"></script>
