@@ -358,6 +358,7 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
         const cardContainer = document.getElementById("card-container");
 
         for (let i = 1; i < data.length; i++) {
+          setTimeout(() => {
           const cardClone = document.querySelector(".cardas").cloneNode(true);
           cardClone.setAttribute("data-state", "#" + i);
 
@@ -413,12 +414,11 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
           
 
           cardContainer.appendChild(cardClone);
-        }
-      });
+        }, i * 1000); // Multiplicar el índice por 1000 para obtener un segundo de delay
+      }
     });
-  }
- 
-
+  });
+}
 </script>
 <!-- partial -->
   <script  src="./script.js"></script>
