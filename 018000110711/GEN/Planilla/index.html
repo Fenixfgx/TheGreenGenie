@@ -339,8 +339,7 @@
 
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
-  
-  const buttons = document.querySelectorAll(".cardas-buttons button");
+const buttons = document.querySelectorAll(".cardas-buttons button");
 const sections = document.querySelectorAll(".cardas-section");
 const card = document.querySelector(".cardas");
 
@@ -362,25 +361,26 @@ buttons.forEach((btn) => {
 });
   
   const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
-  const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
-  const SHEET_NAME = 'BaseFiltro';
+const SPREADSHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+const SHEET_NAME = 'BaseFiltro';
 
-  gapi.load('client:auth2', initClient);
+gapi.load('client:auth2', initClient);
 
-  function initClient() {
-    gapi.client.init({
-      apiKey: API_KEY,
-      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-    }).then(() => {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: SHEET_NAME,
-      }).then((response) => {
-        const data = response.result.values;
+function initClient() {
+  gapi.client.init({
+    apiKey: API_KEY,
+    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+  }).then(() => {
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: SHEET_NAME,
+    }).then((response) => {
+      const data = response.result.values;
 
-        const cardContainer = document.getElementById("card-container");
+      const cardContainer = document.getElementById("card-container");
 
-        for (let i = 1; i < data.length; i++) {
+      for (let i = 1; i < data.length; i++) {
+        setTimeout(() => { // Agregar un delay de 1 segundo
           const cardClone = document.querySelector(".cardas").cloneNode(true);
           cardClone.setAttribute("data-state", "#" + i);
 
@@ -449,16 +449,13 @@ buttons.forEach((btn) => {
           TTP.innerHTML = data[i][103];
           FBE.innerHTML = data[i][78];
           Precintos.innerHTML = data[i][104];
-          
- 
+
           cardContainer.appendChild(cardClone);
-          
-        }
-      });
+        }, i * 1000); // Multiplicar el índice por 1000 para obtener un segundo de delay
+      }
     });
-  }
-
-
+  });
+}
 </script>
 <!-- partial -->
   <script  src="./script.js"></script>
