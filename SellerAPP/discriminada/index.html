@@ -15,7 +15,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Pedido</title>
   <style>
-/* Estilos para el formulario */
+
+#add1 {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: -6px;
+}
+
+#add2, #add3, #add4, #add5, #add6, #add7, #add8, #add9, #add10 {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
 .form-table {
   display: table;
   width: 100%;
@@ -237,12 +258,24 @@ textarea {
       <div class="form-cell" colspan="9">
         <input type="text" id="markzzz" name="markzzz" >
       </div>
+      <div class="form-cell" colspan="9">
+       <button type="button" class="btadd" id="add1">Agregar Fila</button>
+      </div>
+      <script>
+document.getElementById('add1').addEventListener('click', function() {
+  var formRow = document.getElementById('fila1');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
+
       <div style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz" name="atpazzz">
       </div>
     </div>
     
-    <div class="form-row" id="nexo1">
+    <div class="form-row" id="nexo1" >
      
 <div style="display: none;" class="form-cell" colspan="3">
 <input id="productlistzzz1" name="productlistzzz1"></input>
@@ -299,8 +332,7 @@ textarea {
         <input type="text" id="pesobrutozzz" name="pesobrutozzz" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
       </div>
     
-  <div class="form-row">
-      
+  <div id="fila1" class="form-row" style="display:none;">
         <div class="form-cell" colspan="3">
             <select id="productlistzzz3" name="productlistzzz3" onclick="actualizarProductoSeleccionado2()"></select>
         </div>
@@ -351,7 +383,15 @@ textarea {
     <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz3" name="atpazzz3">
       </div>
-      
+      <button id="add2" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add2').addEventListener('click', function() {
+  var formRow = document.getElementById('fila2');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
     </div>
     
     <div class="form-row" id="nexo13">
@@ -390,6 +430,7 @@ textarea {
         <div style="display: none;" class="form-cell" colspan="9">
             <input type="text" id="markzzz13" name="markzzz13">
         </div>
+  
      <div style="display: none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz13" name="atpazzz13">
       </div>
@@ -413,7 +454,7 @@ textarea {
         <input type="text" id="pesobrutozzz3" name="pesobrutozzz3" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
     </div>
   
-  <div class="form-row">
+  <div id="fila2" class="form-row" style="display:none;">
       
         <div class="form-cell" colspan="3">
             <select id="productlistzzz4" name="productlistzzz4" onclick="actualizarProductoSeleccionado2()"></select>
@@ -465,9 +506,18 @@ textarea {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz4" name="atpazzz4">
       </div>
+    <button id="add3" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add3').addEventListener('click', function() {
+  var formRow = document.getElementById('fila3');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
     </div>
     
-    <div class="form-row" id="nexo14">
+    <div class="form-row" >
       
         <div style="display: none;" class="form-cell" colspan="3">
             <input id="productlistzzz14" name="productlistzzz14"></input>
@@ -522,7 +572,7 @@ textarea {
     </div>
   
   
-  <div class="form-row">
+  <div class="form-row" id="fila3" style="display:none;">
       
         <div class="form-cell" colspan="3">
             <select id="productlistzzz5" name="productlistzzz5" onclick="actualizarProductoSeleccionado2()"></select>
@@ -574,6 +624,15 @@ textarea {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz5" name="atpazzz5">
       </div>
+        <button id="add4" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add4').addEventListener('click', function() {
+  var formRow = document.getElementById('fila4');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
     </div>
     
     <div class="form-row" id="nexo15">
@@ -634,7 +693,7 @@ textarea {
         <input type="text" id="pesobrutozzz5" name="pesobrutozzz5" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
     </div>
   
-  <div class="form-row">
+  <div class="form-row" style="display:none;" id="fila4">
       
         <div class="form-cell" colspan="3">
             <select id="productlistzzz6" name="productlistzzz6" onclick="actualizarProductoSeleccionado2()"></select>
@@ -686,6 +745,15 @@ textarea {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz6" name="atpazzz6">
       </div>
+    <button id="add5" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add5').addEventListener('click', function() {
+  var formRow = document.getElementById('fila5');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
     </div>
     
     <div class="form-row" id="nexo13">
@@ -747,7 +815,7 @@ textarea {
         <input type="text" id="pesobrutozzz6" name="pesobrutozzz6" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
     </div>
 
-<div class="form-row">
+<div class="form-row" id="fila5" style="display:none;">
       
         <div class="form-cell" colspan="7">
             <select id="productlistzzz7" name="productlistzzz7" onclick="actualizarProductoSeleccionado2()"></select>
@@ -799,6 +867,15 @@ textarea {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz7" name="atpazzz7">
       </div>
+      <button id="add6" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add6').addEventListener('click', function() {
+  var formRow = document.getElementById('fila6');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
     </div>
     
     <div class="form-row" id="nexo13">
@@ -859,7 +936,7 @@ textarea {
         <input type="text" id="pesobrutozzz7" name="pesobrutozzz7" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
     </div>
   
-<div class="form-row">
+<div class="form-row" id="fila6" style="display:none;">
       
     <div class="form-cell" colspan="8">
         <select id="productlistzzz8" name="productlistzzz8" onclick="actualizarProductoSeleccionado2()"></select>
@@ -911,6 +988,15 @@ textarea {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz8" name="atpazzz8">
       </div>
+      <button id="add7" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add7').addEventListener('click', function() {
+  var formRow = document.getElementById('fila7');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
 </div>
 
 <div class="form-row" id="nexo18">
@@ -971,7 +1057,7 @@ textarea {
     <input type="text" id="pesobrutozzz8" name="pesobrutozzz8" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
 </div>
 
-<div class="form-row">
+<div class="form-row" style="display:none;" id="fila7">
     <div class="form-cell" colspan="9">
         <select id="productlistzzz9" name="productlistzzz9" onclick="actualizarProductoSeleccionado2()"></select>
     </div>
@@ -1022,6 +1108,15 @@ textarea {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz9" name="atpazzz9">
       </div>
+  <button id="add8" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add8').addEventListener('click', function() {
+  var formRow = document.getElementById('fila8');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+ </script>
 </div>
 
 <div class="form-row" id="nexo19">
@@ -1063,7 +1158,7 @@ textarea {
         <input type="text" id="atpazzz19" name="atpazzz19">
       </div>
 </div>
-<div class="form-row">
+<div class="form-row" style="display:none;" id="fila8">
     <div class="form-cell" colspan="9">
         <select id="productlistzzz10" name="productlistzzz10" onclick="actualizarProductoSeleccionado2()"></select>
     </div>
@@ -1114,6 +1209,15 @@ textarea {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz10" name="atpazzz10">
       </div>
+  <button id="add9" type="button">Agregar Fila</button>
+  <script>
+document.getElementById('add9').addEventListener('click', function() {
+  var formRow = document.getElementById('fila9');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
 </div>
 
 <div class="form-row" id="nexo20">
@@ -1156,7 +1260,7 @@ textarea {
       </div>
 </div>
 
-<div class="form-row">
+<div class="form-row" style="display:none;" id="fila9">
     <div class="form-cell" colspan="9">
         <select id="productlistzzz11" name="productlistzzz11" onclick="actualizarProductoSeleccionado2()"></select>
     </div>
@@ -1207,6 +1311,15 @@ textarea {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz11" name="atpazzz11">
       </div>
+  <button id="add10" type="button">Fin de Fila</button>
+  <script>
+document.getElementById('add10').addEventListener('click', function() {
+  var formRow = document.getElementById('fila10');
+  if (formRow) {
+    formRow.style.display = 'table-row';
+  }
+});
+</script>
 </div>
 
 <div class="form-row" id="nexo21">
