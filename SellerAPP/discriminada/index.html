@@ -4676,7 +4676,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('markzzz11').addEventListener('input', actualizarMark11);
 });
 </script>
-<!-- partial -->
+<script>
+  // Event listener para recibir mensajes del padre
+  window.addEventListener('message', function(event) {
+    var data = event.data;
+    if (data.type && data.value) {
+      // Actualizar el contenido del iframe según el mensaje recibido
+      switch (data.type) {
+        case 'vendedorh':
+          document.getElementById('vendedorzzz').innerText = data.value;
+          break;
+        case 'fechap':
+          document.getElementById('fechaprzzz').innerText = data.value;
+          break;
+        case 'fechadesp':
+          document.getElementById('fechadeszzz').innerText = data.value;
+          break;
+        case 'clientel':
+          document.getElementById('clientelzzz').innerText = data.value;
+          break;
+        default:
+          break;
+      }
+    }
+  });
+</script>
   
 </body>
 </html>
