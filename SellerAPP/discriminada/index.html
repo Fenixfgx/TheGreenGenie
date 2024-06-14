@@ -15,52 +15,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Pedido</title>
   <style>
-    /* Estilos para el formulario */
-    .form-table {
-      display: table;
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .form-row {
-      display: table-row;
-    }
-    .form-header,
-    .form-cell {
-      display: table-cell;
-      border: 1px solid #ccc;
-      font-weight: bold;
-      text-align: center;
-    }
-    .form-cell input,
-    .form-cell select {
-      width: calc(100% - 1rem); /* Restar el padding para evitar desbordamiento horizontal */
-    }
-    .form-group select {
-      width: calc(100% - 1rem); /* Restar el padding para evitar desbordamiento horizontal */
-    }
-    .form-group textarea {
-      width: calc(100% - 1rem); /* Restar el padding para evitar desbordamiento horizontal */
-      resize: vertical;
-    }
-    .butenv {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
-    .butenv:hover {
-      background-color: #0056b3;
-    }
-   
-    textarea {
-    width: 100px;
-    height: 16px;
-    margin-bottom: -5px;
-    }
+/* Estilos para el formulario */
+.form-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem; font-family: serif-sanz;
+}
+
+.form-row {
+  display: table-row;
+}
+
+.form-header,
+.form-cell {
+  display: table-cell;
+  padding: 2px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.form-header {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size:13px;
+}
+
+.form-cell input,
+.form-cell select,
+.form-cell textarea {
+  width: 90%;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form-cell textarea {
+  resize: vertical;
+}
+
+.butenv {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.butenv:hover {
+  background-color: #0056b3;
+}
+
+textarea {
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: -5px;
+}
+
   </style>
 </head>
 <body>
