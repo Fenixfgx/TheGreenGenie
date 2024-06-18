@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html style="overflow: hidden;">
 <head>
-    <title>Página Principal</title>
+    <title>The Green Genie</title>
 </head>
 <body style="background-image: url(https://www.thegreengenie.com.co/images/favicon.png?rand=c5e2); background-repeat: no-repeat; background-position-x: center; background-position-y: 120px;">
     <div style=" background-color: #ffffffe0; width: 840px; margin: auto; text-align: -webkit-center; height: 31px;  padding-top: 12px; padding-bottom: 12px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; z-index: 2; position: fixed; left: 20%; box-shadow: 0px 4px 9px 0px #409b0757;">
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c;">
     
-    <button id="buscarFuera" style="margin-left:7px; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="abrirNuevaPestana()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">SPDF</button><button onclick="ejecutarScript();" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Compilar</button><button onclick="abriremail()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Email Sender</button><img id="imagen1" class="imagen" src="https://www.thegreengenie.com.co/images/o6m.gif"><img id="imagen2" class="imagen" src="https://www.thegreengenie.com.co/images/XOsX.gif"><button style="display:none" id="ImprimirFuera" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Imprimir</button></div>
+    <button id="buscarFuera" style="margin-left:7px; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="abrirNuevaPestana()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">SPDF</button><button onclick="ejecutarScript();" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Compilar</button><button onclick="ejecutarScript2();" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Compilar 2</button><button onclick="abriremail()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Email Sender</button><img id="imagen1" class="imagen" src="https://www.thegreengenie.com.co/images/o6m.gif"><img id="imagen2" class="imagen" src="https://www.thegreengenie.com.co/images/XOsX.gif"><button style="display:none" id="ImprimirFuera" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Imprimir</button></div>
     <br><br>
     <div id="miSeccion" style=" display: none; position: absolute; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white; margin-left: 45px; top: 80px; width: 1000px; height: 500px; z-index: 2;">
     <iframe style="border:none;" src="https://products.aspose.app/words/es/splitter/pdf" width="998" height="498"></iframe>
@@ -53,7 +53,35 @@
 
     }
   </script>
- 
+
+<script>
+    function ejecutarScript2() {
+      // Reemplaza 'URL_DEL_SCRIPT' con la URL que obtuviste al implementar tu script de Google Apps Script.
+      var urlScript = 'https://script.google.com/macros/s/AKfycbxP04QBh3ZqdFVI3Ziw1jLzwit2RDMXNikMYkj-X8EkBxPUe666XWwkI4cIFf_QGFg0/exec';
+
+      // Hacer una solicitud a la aplicación web de Google Apps Script para ejecutar la función.
+      fetch(urlScript, { method: 'GET' })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
+          // Mostrar la primera imagen durante 3 minutos
+        document.getElementById('imagen1').style.display = 'inline-block';
+        setTimeout(function () {
+            // Ocultar la primera imagen después de 3 minutos
+            document.getElementById('imagen1').style.display = 'none';
+
+            // Mostrar la segunda imagen durante 1 minuto
+            document.getElementById('imagen2').style.display = 'inline-block';
+            setTimeout(function () {
+                // Ocultar la segunda imagen después de 1 minuto
+                document.getElementById('imagen2').style.display = 'none';
+            }, 60000); // 1 minuto en milisegundos
+        }, 180000); // 3 minutos en milisegundos
+
+    }
+  </script>
+    
 <iframe style="border:none;margin-top: 23px;position: relative; z-index: 1;background-color: #ffffffc9;" src="https://www.thegreengenie.com.co/018000110711/GEN/Factura/index.html" id="miIframe1" width="320" height="850"></iframe>   
 <iframe style="border:none;margin-top: 23px;position: relative;margin-left: -21px;z-index: 1;background-color: #ffffffc9;"" src="https://www.thegreengenie.com.co/018000110711/GEN/Carta/index.html" id="miIframe2" width="320" height="850"></iframe>
 <iframe style="border:none;margin-top: 23px;position: relative;margin-left: -21px;z-index: 1;background-color: #ffffffc9;" src="https://www.thegreengenie.com.co/018000110711/GEN/Planilla/index.html" id="miIframe3" width="320" height="850"></iframe>
