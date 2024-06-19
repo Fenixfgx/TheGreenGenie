@@ -42,8 +42,7 @@ const vendedor3 = document.getElementById('search-input');
 
 // Asignar el valor por defecto al input
 vendedor3.value = username;  
-         
-              
+                       
 const vendedor = document.getElementById('vendedorh');
 
 // Asignar el valor por defecto al input
@@ -679,3 +678,5 @@ function guardarEnHojaDeCalculo(chain, activador) {
         console.error('Error en la solicitud:', error);
     });
 }
+
+////// iframe discriminada
