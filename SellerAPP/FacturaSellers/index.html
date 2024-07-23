@@ -129,23 +129,19 @@
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
 <label for="fechades">Cliente</label>
         <input class="cliente1" type="text" id="clientelzzz" name="clientelzzz">
-      </div><button type="button" onclick="updateClientFields()" id="fechact">CLICK</button>
-      <script>
-        // Función que se llama cuando el botón es clicado
+      </div><button type="button" onclick="updateClientFields()" id="fechact" disabled>Click me</button>
+<script>
+        // Esta función se ejecutará cuando la página haya terminado de cargar
+        window.onload = function() {
+            // Selecciona el botón por su ID
+            var button = document.getElementById('fechact');
+            // Activa el botón
+            button.disabled = false;
+        };
+
         function updateClientFields() {
-            alert("Botón clicado y campos actualizados");
+            console.log("Button clicked!");
         }
-
-        // Función que se ejecuta cuando la página ha cargado
-        function activateButton() {
-            var button = document.getElementById("fechact");
-            if (button) {
-                button.click(); // Simula un clic en el botón
-            }
-        }
-
-        // Añade un evento de carga de la página
-        window.onload = activateButton;
     </script>
       <div class="form-cell" colspan="2" style="display:none;">
         <select id="tipordenzzz" name="tipordenzzz">
