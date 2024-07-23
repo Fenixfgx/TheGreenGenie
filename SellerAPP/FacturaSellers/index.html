@@ -120,15 +120,15 @@
       </div>
 <div style="max-width: 200px;text-align-last: center;" class="form-cell" colspan="2">
         <label for="fechagen">Fecha de Generación</label>
-        <input type="text" id="fechagen" name="fechaprzzz" required Readonly>
+        <input type="date" id="fechagen" name="fechaprzzz" required>
       </div>
 <div style="max-width: 200px;text-align-last: center;" class="form-cell" colspan="2">
  <label for="fechades">Fecha Despacho</label>
-        <input type="text" id="fechades" name="fechadeszzz" required Readonly>
+        <input type="date" id="fechades" name="fechadeszzz" required>
       </div>
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
-<label for="fechades">Cliente</label>
-        <input class="cliente1" type="text" id="clientelzzz" name="clientelzzz">
+        <label for="fechades">Cliente</label>
+        <select class="cliente1" id="clientelzzz" name="clientelzzz"></select>
       </div><button type="button" onclick="updateClientFields(); setFechagenValue(); setFechadesValue();" id="fechact">Click me</button>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
