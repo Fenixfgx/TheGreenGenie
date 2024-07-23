@@ -136,11 +136,13 @@
             var button = document.getElementById('fechact');
             // Activa el botón
             button.disabled = false;
+
+            // Autoclickea el botón después de un segundo
+            setTimeout(function() {
+                button.click();
+            }, 1000);
         });
 
-        function updateClientFields() {
-            console.log("Button clicked!");
-        }
     </script>
       <div class="form-cell" colspan="2" style="display:none;">
         <select id="tipordenzzz" name="tipordenzzz">
