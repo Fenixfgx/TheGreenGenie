@@ -1976,32 +1976,31 @@
 </html>
 
 <script>
-    // Función para actualizar los valores de los campos objetivo
-    function updateClientFields() {
-        var clientName = document.getElementById('clientelzzz').value || '';
-
-        document.getElementById('client-selector').value = clientName;
-        document.getElementById('clientezzz').value = clientName;
-        document.getElementById('clientezzz3').value = clientName;
-        document.getElementById('clientezzz4').value = clientName;
-        document.getElementById('clientezzz5').value = clientName;
-        document.getElementById('clientezzz6').value = clientName;
-        document.getElementById('clientezzz7').value = clientName;
-        document.getElementById('clientezzz8').value = clientName;
-        document.getElementById('clientezzz9').value = clientName;
-        document.getElementById('clientezzz10').value = clientName;
-        document.getElementById('clientezzz11').value = clientName;
-    }
-
-    // Esperar a que el DOM se cargue completamente
     document.addEventListener('DOMContentLoaded', function() {
-        // Retrasar la ejecución medio segundo
         setTimeout(function() {
+            // Función para actualizar los valores de los campos objetivo
+            function updateClientFields() {
+                var clientName = document.getElementById('clientelzzz').value || '';
+
+                document.getElementById('client-selector').value = clientName;
+                document.getElementById('clientezzz').value = clientName;
+                document.getElementById('clientezzz3').value = clientName;
+                document.getElementById('clientezzz4').value = clientName;
+                document.getElementById('clientezzz5').value = clientName;
+                document.getElementById('clientezzz6').value = clientName;
+                document.getElementById('clientezzz7').value = clientName;
+                document.getElementById('clientezzz8').value = clientName;
+                document.getElementById('clientezzz9').value = clientName;
+                document.getElementById('clientezzz10').value = clientName;
+                document.getElementById('clientezzz11').value = clientName;
+            }
+
             // Asignar el evento de input al campo clientelzzz
             document.getElementById('clientelzzz').addEventListener('input', updateClientFields);
-        }, 500);
+        }, 500); // 500 milisegundos = 0.5 segundos
     });
 </script>
+
 
 <script>
 function sumarInputs() {
