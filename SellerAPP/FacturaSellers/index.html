@@ -1992,9 +1992,15 @@
         document.getElementById('clientezzz10').value = clientName;
         document.getElementById('clientezzz11').value = clientName;
     }
- 
-    // Asignar el evento de input al campo clientelzzz
-    document.getElementById('clientelzzz').addEventListener('input', updateClientFields);
+
+    // Esperar a que el DOM se cargue completamente
+    document.addEventListener('DOMContentLoaded', function() {
+        // Retrasar la ejecución medio segundo
+        setTimeout(function() {
+            // Asignar el evento de input al campo clientelzzz
+            document.getElementById('clientelzzz').addEventListener('input', updateClientFields);
+        }, 500);
+    });
 </script>
 
 <script>
