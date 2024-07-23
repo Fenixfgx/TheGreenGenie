@@ -162,3 +162,29 @@ function updateInputs(inputIds, values) {
                 console.error('Error al pegar:', err);
             });
         }
+
+// Función para obtener parámetros de la URL
+  function obtenerParametrosURL() {
+    var parametros = {};
+    var queryString = window.location.search.substring(1);
+    var pares = queryString.split('&');
+    for (var i = 0; i < pares.length; i++) {
+      var par = pares[i].split('=');
+      parametros[decodeURIComponent(par[0])] = decodeURIComponent(par[1]);
+    }
+    return parametros;
+  }
+
+  // Función para prellenar los inputs con los parámetros de la URL
+  function prellenarInputs() {
+    var parametros = obtenerParametrosURL();
+    document.getElementById('vendedorh').value = parametros['vendedorh'] || '';
+    document.getElementById('fechagen').value = parametros['fechagen'] || '';
+    document.getElementById('fechades').value = parametros['fechades'] || '';
+    document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
+  }
+
+  // Llamar a la función para prellenar los inputs al cargar la página
+  window.addEventListener('DOMContentLoaded', function() {
+    prellenarInputs();
+  });
