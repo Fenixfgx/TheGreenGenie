@@ -181,6 +181,7 @@ function updateInputs(inputIds, values) {
     document.getElementById('vendedorh').value = parametros['vendedorh'] || '';
     document.getElementById('fechagen').value = parametros['fechagen'] || '';
     document.getElementById('fechades').value = parametros['fechades'] || '';
+    document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
   }
 
   // Llamar a la función para prellenar los inputs al cargar la página
