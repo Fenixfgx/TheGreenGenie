@@ -130,6 +130,23 @@
 <label for="fechades">Cliente</label>
         <input class="cliente1" type="text" id="clientelzzz" name="clientelzzz">
       </div><button type="button" onclick="updateClientFields()" id="fechact">CLICK</button>
+      <script>
+        // Función que se llama cuando el botón es clicado
+        function updateClientFields() {
+            alert("Botón clicado y campos actualizados");
+        }
+
+        // Función que se ejecuta cuando la página ha cargado
+        function activateButton() {
+            var button = document.getElementById("fechact");
+            if (button) {
+                button.click(); // Simula un clic en el botón
+            }
+        }
+
+        // Añade un evento de carga de la página
+        window.onload = activateButton;
+    </script>
       <div class="form-cell" colspan="2" style="display:none;">
         <select id="tipordenzzz" name="tipordenzzz">
           <option value="P.V">P.V</option>
@@ -1976,10 +1993,6 @@
 </html>
 
 <script>
-
-  window.onload = function() {
-            document.getElementById("fechact").click();
-        };
   
         // Función para actualizar los valores de los campos objetivo
         function updateClientFields() {
