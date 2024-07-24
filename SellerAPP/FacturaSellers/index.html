@@ -180,6 +180,21 @@
 <label for="date-selector">Fecha:</label>
 <input type="date" id="date-selector">
 <button id="search-button" type="button">Buscar</button>
+<button id="clear-button">Limpiar</button>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchButton = document.getElementById('search-button');
+    const clearButton = document.getElementById('clear-button');
+    const dateSelector = document.getElementById('date-selector');
+
+    clearButton.addEventListener('click', () => {
+        // Establecer la fecha en 00/00/0000 (en HTML no se puede usar 00/00/0000, así que dejaremos el campo vacío)
+        dateSelector.value = ''; // Esto limpia el campo de fecha
+        // Simular clic en el botón Buscar
+        searchButton.click();
+    });
+});
+</script>
         </div>
         <div class="results-container" style="display:none;">
             <table id="results-table">
