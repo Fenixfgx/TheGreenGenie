@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Sellers</title>
+  <title>CodePen - LOGTOK</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -513,7 +513,7 @@ document.getElementById('searchInputColumnA').addEventListener('input', search);
   });
 </script>
 
-     <div class="form-group">
+     <div class="form-group" style="display:none;">
   <label for="tiporden">Tipo Orden</label>
   <select id="tiporden" name="tiporden">
     <option value="P.V">MERCADO ABIERTO - P.V</option>
@@ -585,10 +585,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-      <div class="form-group">
-        <label for="productlist">Producto</label>
-        <select id="productlist" name="productlist"></select>
-      </div>
+<div class="form-group">
+<label for="productlist">Tipo de Orden</label>
+<button onclick="orden()">ORDEN NORMAL</button>
+<button onclick="follaje()">FOLLAJE</button>
+</div>
           
       <div class="form-group" style="display:none;">
     <label for="selectedProduct">Producto seleccionado:</label>
@@ -641,7 +642,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Event listener para detectar cambios en el select y mostrar el SweetAlert si es FOLLAJE
-  document.getElementById('productlist').addEventListener('change', function() {
+  document.getElementById('productlisten').addEventListener('change', function() {
     var selectedOption = this.options[this.selectedIndex].text;
     document.getElementById('selectedProduct').value = selectedOption;
 
@@ -654,6 +655,13 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(obtenerValoresYMostrarModal, 100);
     }
   });
+  
+  function follaje() {
+    obtenerValoresYMostrarModal();
+
+      // Simular la carga del modal dos veces con un retraso de un segundo entre cada carga
+      setTimeout(obtenerValoresYMostrarModal, 100);
+  }
 
   // Llamar a la función para cargar el contenido del modal al cargar la página
   window.onload = function() {
@@ -661,18 +669,95 @@ document.addEventListener("DOMContentLoaded", function() {
     obtenerValoresYMostrarModal();
   };
 </script>
+          
 
-      <div class="form-group">
-      <label for="concatenatedValues">Selección</label>
+<script>
+  // Función para cargar el contenido del modal y mostrar el SweetAlert
+  function mostrarModalOrden(parametrosURL) {
+    // Obtener el contenido del modal
+    var content = document.getElementById('Follajemodal').innerHTML;
+
+    // Mostrar SweetAlert con el contenido del modal y ejecutar acciones adicionales
+    Swal.fire({
+      html: content,
+      didOpen: () => {
+        // Actualizar la URL del iframe al abrir el modal
+        document.getElementById('dynamicIframe').src = parametrosURL;
+      }
+    });
+  }
+
+  // Función para obtener los valores y construir la URL del iframe
+  function obtenerValoresYMostrarModalO() {
+    // Obtener valores de los inputs
+    var vendedor = document.getElementById('vendedorh').value;
+    var fechaGeneracion = document.getElementById('fechap').value;
+    var fechaDespacho = document.getElementById('fechadesp').value;
+    var cliente = document.getElementById('clientel').value;
+
+    // Construir la URL del iframe con los parámetros
+    var urlBase = 'https://www.thegreengenie.com.co/SellerAPP/FacturaSellers/index.html';
+    var parametros = {
+      vendedorh: vendedor,
+      fechagen: fechaGeneracion,
+      fechades: fechaDespacho,
+      clientelzzz: cliente,
+    };
+
+    // Filtrar y codificar los valores de los parámetros
+    var queryString = Object.keys(parametros)
+      .filter(function(key) { return parametros[key].trim() !== ''; })
+      .map(function(key) { return key + '=' + encodeURIComponent(parametros[key]); })
+      .join('&');
+
+    var urlCompleta = urlBase + '?' + queryString;
+
+    // Mostrar el modal después de obtener los valores y antes de mostrar el SweetAlert
+    mostrarModalFollaje(urlCompleta);
+  }
+
+  // Event listener para detectar cambios en el select y mostrar el SweetAlert si es FOLLAJE
+  document.getElementById('productlisten').addEventListener('change', function() {
+    var selectedOption = this.options[this.selectedIndex].text;
+    document.getElementById('selectedProduct').value = selectedOption;
+
+    // Verifica si el producto seleccionado es "FOLLAJE"
+    if (selectedOption === "FOLLAJE") {
+      // Llamar a la función para obtener los valores y mostrar el modal
+      obtenerValoresYMostrarModal();
+
+      // Simular la carga del modal dos veces con un retraso de un segundo entre cada carga
+      setTimeout(obtenerValoresYMostrarModal, 100);
+    }
+  });
+  
+  function orden() {
+    obtenerValoresYMostrarModalO();
+
+      // Simular la carga del modal dos veces con un retraso de un segundo entre cada carga
+      setTimeout(obtenerValoresYMostrarModalO, 100);
+  }
+
+  // Llamar a la función para cargar el contenido del modal al cargar la página
+  window.onload = function() {
+    // Simular la carga del modal al cargar la página
+    obtenerValoresYMostrarModalO();
+  };
+</script>        
+          
+          
+
+      <div class="form-group" style="display:none;">
+      <label for="concatenatedValues" >Selección</label>
       <input type="text" id="concatenatedValues" readonly>
        </div>
           
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="cantidad">Cantidad</label>
         <input type="number" id="cantidad" name="cantidad" required>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
   <label for="empaquelist">Empaque</label>
   <select id="empaquelist" name="empaquelist">
     <option value="QB">QB</option>
@@ -687,7 +772,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <input type="text" id="pieces" name="pieces" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:B5; 2; FALSE)*INDIRECT("K"&ROW())'>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="talloscaja">Tallos X Caja</label>
         <input type="number" id="talloscaja" name="talloscaja" required>
       </div>
@@ -697,12 +782,12 @@ document.addEventListener("DOMContentLoaded", function() {
         <input type="text" id="totaltallos" name="totaltallos" value='=INDIRECT("N"&ROW())*INDIRECT("K"&ROW())'>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="tallosramo">Tallos X Ramo</label>
         <input type="number" id="tallosramo" name="tallosramo" required>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="ramospieza">Ramos X Pieza</label>
         <input type="number" id="ramospieza" name="ramospieza" required>
       </div>
@@ -712,7 +797,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <input type="text" id="totalramos" name="totalramos" value='=INDIRECT("N"&ROW())/INDIRECT("P"&ROW())*INDIRECT("K"&ROW())'>
       </div>
 
-     <div class="form-group">
+     <div class="form-group" style="display:none;">
   <label for="precio">Precio</label>
   <input type="text" id="precio" name="precio" placeholder='Precio Acordado' pattern="[0-9,]*" title="Solo se permiten números y comas" oninput="this.value = this.value.replace(/\./g, ',');" required>
 </div>
@@ -724,7 +809,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <input type="text" id="tprecio" name="tprecio" value='=INDIRECT("S"&ROW())*INDIRECT("O"&ROW())'>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
   <label for="gradolist">Grado</label>
   <select id="gradolist" name="gradolist">
     <option value="30 CMS">30 CMS</option>
@@ -763,22 +848,22 @@ document.addEventListener("DOMContentLoaded", function() {
 <button id="fetchButton" type="button" style="display:none;">Actualizar Lista de Clientes</button>
    
                 
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="observaciones">Observaciones</label>
         <input type="textarea" id="observaciones" name="observaciones">
       </div>
       
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="mark">Marking</label>
         <input type="text" id="mark" name="mark">
       </div>
       
-      <div class="form-group">
+      <div class="form-group" style="display:none;">
         <label for="po">PO#</label>
         <input type="text" id="po" name="po">
       </div>
 
-      <button type="submit" id="sub1" class="butenv" style="width: 200px; place-self: center;">Enviar</button>
+<div style="display:none;"><button type="submit" id="sub1" class="butenv" style="width: 200px; place-self: center; display:none;">Enviar</button></div>
 
           <button type="button" id="sub2" class="butenv" style="width: 200px; place-self: center; display:none">Programar Orden</button>
     </form>

@@ -1125,9 +1125,10 @@ main {
 .form-group {
   width: 86%;
   margin-left: 12px;
+  text-align-last: center;
 }
 .cliente1 {
-  max-width: 250px;
+  max-width: 100%;
 }
 #corporateForm{
   margin-top: 7px;
@@ -1535,7 +1536,8 @@ background-image: linear-gradient(240deg, rgb(151 164 231) 0%, rgb(252 195 195 /
 
   /* Estilos de los inputs y botón */
 .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal {
-    width: 98% !important;;
+    width: 98% !important;
+    height: 98%;
 }
 
 .swal2-content {
@@ -1791,4 +1793,8 @@ div:where(.swal2-container) .swal2-html-container {
     #sheet-container th:nth-child(6), #sheet-container td:nth-child(6)  /* Columna 6 */ {
         display: none;
     }
+}
+
+iframe {
+  height: 550px;
 }
