@@ -2,8 +2,20 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <title>CodePen - dsc</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
   <title>Discriminada</title>
   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -15,28 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Pedido</title>
   <style>
-
-#add1 {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.2rem 1rem;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-left: -6px;
-}
-
-#add2, #add3, #add4, #add5, #add6, #add7, #add8, #add9, #add10 {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.2rem 1rem;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
+/* Estilos para el formulario */
 .form-table {
   display: table;
   width: 100%;
@@ -155,20 +146,20 @@ textarea {
         <input type="text" id="pesobrutozzz" name="pesobrutozzz" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
       </div>
 
-<div style="display:none;" class="form-group" >
-        <div style="display:none;" class="form-cell" colspan="2">
-        <input type="text" id="vendedorzzz" name="vendedorzzz">
-          </div>
+<div class="form-cell" >
+        <label for="vendedorzzz">Vendedor</label>
+<input style="text-align: -webkit-center;" type="text" id="vendedorzzz" name="vendedorzzz" oninput="fetchClientes()" >
       </div>
       <div class="form-cell" colspan="2">
-        <input type="text" id="fechaprzzz" name="fechaprzzz" required readonly>
+        <input type="date" id="fechaprzzz" name="fechaprzzz" required >
       </div>
       <div class="form-cell" colspan="2">
-        <input type="text" id="fechadeszzz" name="fechadeszzz" required readonly>
+<input type="date" id="fechadeszzz" name="fechadeszzz" required>
       </div>
       
-      <div class="form-cell" colspan="1">
-        <input class="cliente1" id="clientelzzz" name="clientelzzz" readonly>
+<div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
+<label for="fechades">Cliente</label>
+        <select class="cliente1" id="clientelzzz" name="clientelzzz"></select>
       </div>
       <div class="form-cell" colspan="2">
         <select id="tipordenzzz" name="tipordenzzz">
@@ -199,7 +190,31 @@ textarea {
       </div>
     </div>
     <br>
-    <div class="form-row">
+<script>
+        document.getElementById('cantidadzzz').addEventListener('input', function() {
+            var fx1 = document.getElementById('fx1');
+            if (this.value) {
+                fx1.style.display = 'table-row';
+            } else {
+                fx1.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <button onclick="clearFields()" style="background-color: #007bff;color: #fff; border: none; border-radius: 4px; padding: 0.5rem 1rem;cursor: pointer;font-size: 1rem;margin-top: 1rem;width: 153px;" type="button">Limpiar Campos</button>
+
+    
+    <script>
+        document.getElementById('cantidadzzz').addEventListener('input', function() {
+            var fx1 = document.getElementById('fx2');
+            if (this.value) {
+                fx1.style.display = 'table-row';
+            } else {
+                fx1.style.display = 'none';
+            }
+        });
+    </script>
+    <div class="form-row" id="fx1" style="display:none;">
       <div class="form-header" colspan="3">Producto:</div>
       <div class="form-header" style="display:none;" colspan="2">Selección:</div>
       <div class="form-header" colspan="1">Tallos X Caja</div>
@@ -208,8 +223,8 @@ textarea {
       <div class="form-header" colspan="3">Precio:</div>
       <div class="form-header" colspan="2">Grado:</div>
       <div class="form-header" colspan="9">Marking:</div>
-    </div>
-    <div class="form-row">
+    </div> 
+    <div class="form-row" id="fx2" style="display:none;">
       
 <div class="form-cell" colspan="3">
 <select id="productlistzzz" name="productlistzzz"></select>
@@ -231,6 +246,138 @@ textarea {
       <div class="form-cell" colspan="1">
         <input type="text" id="ramospiezazzz" name="ramospiezazzz">
       </div>
+      <script>
+        function calculateRamos() {
+            // Obtener los valores de talloscajazzz y tallosramozzz
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz').value);
+            
+            // Verificar si ambos valores son números y no son cero
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                // Calcular ramospiezazzz
+                var ramosPieza = tallosCaja / tallosRamo;
+                // Asignar el resultado al input de ramospiezazzz
+                document.getElementById('ramospiezazzz').value = ramosPieza.toFixed(2);
+            } else {
+                // Si no son válidos, limpiar el campo de resultado
+                document.getElementById('ramospiezazzz').value = '';
+            }
+        }
+
+        // Añadir un evento listener a los inputs para recalcular cuando cambien
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('talloscajazzz').addEventListener('input', calculateRamos);
+            document.getElementById('tallosramozzz').addEventListener('input', calculateRamos);
+        });
+    </script>
+    <script>
+        function calculateRamos3() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz3').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz3').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz3').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz3').value = '';
+            }
+        }
+
+        function calculateRamos4() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz4').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz4').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz4').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz4').value = '';
+            }
+        }
+
+        function calculateRamos5() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz5').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz5').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz5').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz5').value = '';
+            }
+        }
+
+        function calculateRamos6() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz6').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz6').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz6').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz6').value = '';
+            }
+        }
+
+        function calculateRamos7() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz7').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz7').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz7').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz7').value = '';
+            }
+        }
+
+        function calculateRamos8() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz8').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz8').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz8').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz8').value = '';
+            }
+        }
+
+        function calculateRamos9() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz9').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz9').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz9').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz9').value = '';
+            }
+        }
+
+        function calculateRamos10() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz10').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz10').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz10').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz10').value = '';
+            }
+        }
+
+        function calculateRamos11() {
+            var tallosCaja = parseFloat(document.getElementById('talloscajazzz11').value);
+            var tallosRamo = parseFloat(document.getElementById('tallosramozzz11').value);
+            if (!isNaN(tallosCaja) && !isNaN(tallosRamo) && tallosRamo !== 0) {
+                var ramosPieza = tallosCaja / tallosRamo;
+                document.getElementById('ramospiezazzz11').value = ramosPieza.toFixed(2);
+            } else {
+                document.getElementById('ramospiezazzz11').value = '';
+            }
+        }
+
+        // Añadir un evento listener a los inputs para recalcular cuando cambien
+        document.addEventListener('DOMContentLoaded', function() {
+            for (var i = 3; i <= 11; i++) {
+                document.getElementById('talloscajazzz' + i).addEventListener('input', window['calculateRamos' + i]);
+                document.getElementById('tallosramozzz' + i).addEventListener('input', window['calculateRamos' + i]);
+            }
+        });
+    </script>
       <div style="display:none;" class="form-cell" colspan="1">
         <input type="text" id="totalramoszzz" name="totalramoszzz">
       </div>
@@ -275,7 +422,7 @@ document.getElementById('add1').addEventListener('click', function() {
       </div>
     </div>
     
-    <div class="form-row" id="nexo1" >
+    <div class="form-row" id="nexo1"  >
      
 <div style="display: none;" class="form-cell" colspan="3">
 <input id="productlistzzz1" name="productlistzzz1"></input>
@@ -1369,7 +1516,7 @@ document.getElementById('add10').addEventListener('click', function() {
 </div>
 </div>
 </div>
-<div style="display:none;">
+<div style="display:none;"> 
 <input type="text" id="productout" name="productout">
 <input type="text" id="tcajaout" name="tcajaout">
 <input type="text" id="ttallosout" name="ttallosout">
@@ -1388,7 +1535,7 @@ document.getElementById('add10').addEventListener('click', function() {
 <input type="text" id="totaltallosEB" name="totaltallosEB" placeholder="totaltallosEB">
 <input type="text" id="totaltallosFLL" name="totaltallosFLL" placeholder="totaltallosFLL">
 </div>
-  <button type="submit" id="sub1zzz" class="butenv">Enviar</button>
+  <button type="submit" id="sub1zzz" class="butenv">Subir Linea de Orden Discriminada</button>
 </form>
 
 </body>
@@ -1541,52 +1688,148 @@ pairs.forEach((pair) => {
   });
 });
 </script>
-    
-    
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
-      
-      // Enviar el formulario de manera asíncrona
-      var formData = new FormData(this);
-      fetch('https://script.google.com/macros/s/AKfycbzCSrHtBMBHphcgeekJGdN3hk-YMgqfOqZfUjag_u4oDHOtE76TVwbKu2o3JYboOGxYLg/exec', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.text();
-        }
-        throw new Error('Error al enviar el formulario');
-      })
-      .then(data => {
-        // Mostrar el mensaje de confirmación utilizando SweetAlert2
-        Swal.fire({
-          icon: 'success',
-          title: '¡Éxito!',
-          text: data // El mensaje de confirmación devuelto desde el script de Google Apps Script
-        });
-        setTimeout(function() {
-    search();
-}, 2000); // 2000 milisegundos equivalen a 2 segundos
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-      })
-      .catch(error => {
-        // En caso de error, mostrar un mensaje de error
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: error.message
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+        
+        // Enviar el formulario de manera asíncrona
+        var formData = new FormData(this);
+        fetch('https://script.google.com/macros/s/AKfycbwHQpu5hDClqaWLpVZyifEhf-1DwnoGfuxSjwwV1Ll9qASHvZ-0jxhtlav7kXREC4OH6g/exec', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          throw new Error('Error al enviar el formulario');
+        })
+        .then(data => {
+          // Mostrar el mensaje de confirmación utilizando Toastify
+          Toastify({
+            text: data,
+            duration: 3000, // Duración del mensaje en milisegundos
+            close: true,
+            gravity: "top", // Posición del mensaje: top, bottom
+            position: "right", // left, right, center
+            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+          }).showToast();
+
+          setTimeout(function() {
+            search(); // Reemplaza 'search()' con la función que deseas ejecutar después del tiempo de espera
+          }, 2000); // 2000 milisegundos equivalen a 2 segundos
+        })
+        .catch(error => {
+          // En caso de error, mostrar un mensaje de error
+          Toastify({
+            text: error.message,
+            duration: 3000, // Duración del mensaje en milisegundos
+            close: true,
+            gravity: "top", // Posición del mensaje: top, bottom
+            position: "right", // left, right, center
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          }).showToast();
         });
       });
     });
-  });
-  
-  
-  /////
-  
   </script>
+
+
+<script>
+        // Función para actualizar el valor de tallosramozzz en base a productlistzzz
+        function updateStemCount(productId, stemCountId) {
+            var productName = document.getElementById(productId).value || '';
+            
+            // Añadir un retraso de 1 segundo antes de llamar a fetchStemCount
+            setTimeout(function() {
+                fetchStemCount(productName, stemCountId);
+            }, 400);
+        }
+
+        // Función para obtener el valor de tallosramozzz desde la hoja de cálculo de Google Sheets
+        function fetchStemCount(productName, stemCountId) {
+            var url = 'https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/ClientesPrice!A:D?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    var stemCount = '';
+                    var rows = data.values;
+                    for (var i = 0; i < rows.length; i++) {
+                        if (rows[i][2] === productName) { // Columna C corresponde al índice 2
+                            stemCount = rows[i][3]; // Columna D corresponde al índice 3
+                            break;
+                        }
+                    }
+                    document.getElementById(stemCountId).value = stemCount || '';
+                })
+                .catch(error => console.error('Error al obtener los datos:', error));
+        }
+
+        // Asignar los eventos de input y change a los campos correspondientes para cada variación
+
+        // Variación original
+        document.getElementById('productlistzzz').addEventListener('change', function() {
+            updateStemCount('productlistzzz', 'tallosramozzz');
+        });
+
+        // Variación 3
+        document.getElementById('productlistzzz3').addEventListener('change', function() {
+            updateStemCount('productlistzzz3', 'tallosramozzz3');
+        });
+
+        // Variación 4
+        document.getElementById('productlistzzz4').addEventListener('change', function() {
+            updateStemCount('productlistzzz4', 'tallosramozzz4');
+        });
+
+        // Variación 5
+        document.getElementById('productlistzzz5').addEventListener('change', function() {
+            updateStemCount('productlistzzz5', 'tallosramozzz5');
+        });
+
+        // Variación 6
+        document.getElementById('productlistzzz6').addEventListener('change', function() {
+            updateStemCount('productlistzzz6', 'tallosramozzz6');
+        });
+
+        // Variación 7
+        document.getElementById('productlistzzz7').addEventListener('change', function() {
+            updateStemCount('productlistzzz7', 'tallosramozzz7');
+        });
+
+        // Variación 8
+        document.getElementById('productlistzzz8').addEventListener('change', function() {
+            updateStemCount('productlistzzz8', 'tallosramozzz8');
+        });
+      
+        // Variación 9
+        document.getElementById('productlistzzz9').addEventListener('change', function() {
+            updateStemCount('productlistzzz9', 'tallosramozzz9');
+        });
+
+        // Variación 10
+        document.getElementById('productlistzzz10').addEventListener('change', function() {
+            updateStemCount('productlistzzz10', 'tallosramozzz10');
+        });
+
+        // Variación 11
+        document.getElementById('productlistzzz11').addEventListener('change', function() {
+            updateStemCount('productlistzzz11', 'tallosramozzz11');
+        });
+
+    </script>
+
 
 <script>
         function actualizarProductOut() {
@@ -4834,5 +5077,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     prellenarInputs();
   });
 </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
 </body>
 </html>
