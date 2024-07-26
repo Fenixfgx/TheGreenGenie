@@ -145,10 +145,24 @@ textarea {
         <label for="pesobrutozzz">pesobruto</label>
         <input type="text" id="pesobrutozzz" name="pesobrutozzz" value='=VLOOKUP(INDIRECT("L"&ROW());size!A2:D5; 4; FALSE)*INDIRECT("K"&ROW())'>
       </div>
+<button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Selecciona el botón por su ID
+            var button = document.getElementById('fechact');
+            // Activa el botón
+            button.disabled = false;
 
-<div class="form-cell" >
+            // Autoclickea el botón después de un segundo
+            setTimeout(function() {
+                button.click();
+            }, 500);
+        });
+
+    </script>
+<div class="form-cell" style="display:none;">
         <label for="vendedorzzz">Vendedor</label>
-<input style="text-align: -webkit-center;" type="text" id="vendedorzzz" name="vendedorzzz" oninput="fetchClientes()" >
+<input style="text-align: -webkit-center;" type="text" id="vendedorzzz" name="vendedorzzz" value="Cristian"> 
       </div>
       <div class="form-cell" colspan="2">
         <input type="date" id="fechaprzzz" name="fechaprzzz" required >
@@ -158,7 +172,6 @@ textarea {
       </div>
       
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
-<label for="fechades">Cliente</label>
         <select class="cliente1" id="clientelzzz" name="clientelzzz"></select>
       </div>
       <div class="form-cell" colspan="2">
