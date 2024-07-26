@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function clearFields() {
     var fields = [
-        'cantidadzzz', 'productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz',
+        'cantidadzzz', 'observacioneszzz','pozzz', 'productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz',
         'productlistzzz3', 'talloscajazzz3', 'tallosramozzz3', 'ramospiezazzz3', 'preciozzz3', 'gradolistzzz3', 'markzzz3',
         'productlistzzz4', 'talloscajazzz4', 'tallosramozzz4', 'ramospiezazzz4', 'preciozzz4', 'gradolistzzz4', 'markzzz4',
         'productlistzzz5', 'talloscajazzz5', 'tallosramozzz5', 'ramospiezazzz5', 'preciozzz5', 'gradolistzzz5', 'markzzz5',

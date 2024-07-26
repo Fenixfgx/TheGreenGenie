@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" >
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Discriminada</title>
+  <title>CodePen - dsc</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -1704,52 +1704,63 @@ pairs.forEach((pair) => {
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  
+  <img id="loadingImage" src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" alt="Cargando...">
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita que el formulario se envíe de manera convencional
-        
-        // Enviar el formulario de manera asíncrona
-        var formData = new FormData(this);
-        fetch('https://script.google.com/macros/s/AKfycbwHQpu5hDClqaWLpVZyifEhf-1DwnoGfuxSjwwV1Ll9qASHvZ-0jxhtlav7kXREC4OH6g/exec', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => {
-          if (response.ok) {
-            return response.text();
-          }
-          throw new Error('Error al enviar el formulario');
-        })
-        .then(data => {
-          // Mostrar el mensaje de confirmación utilizando Toastify
-          Toastify({
-            text: data,
-            duration: 3000, // Duración del mensaje en milisegundos
-            close: true,
-            gravity: "top", // Posición del mensaje: top, bottom
-            position: "right", // left, right, center
-            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-          }).showToast();
+document.addEventListener('DOMContentLoaded', function() {
+            var loadingImage = document.getElementById('loadingImage');
 
-          setTimeout(function() {
-            search(); // Reemplaza 'search()' con la función que deseas ejecutar después del tiempo de espera
-          }, 2000); // 2000 milisegundos equivalen a 2 segundos
-        })
-        .catch(error => {
-          // En caso de error, mostrar un mensaje de error
-          Toastify({
-            text: error.message,
-            duration: 3000, // Duración del mensaje en milisegundos
-            close: true,
-            gravity: "top", // Posición del mensaje: top, bottom
-            position: "right", // left, right, center
-            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
-          }).showToast();
+            document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+                
+                // Mostrar la imagen de carga
+                loadingImage.style.display = 'block';
+
+                // Enviar el formulario de manera asíncrona
+                var formData = new FormData(this);
+                fetch('https://script.google.com/macros/s/AKfycbwHQpu5hDClqaWLpVZyifEhf-1DwnoGfuxSjwwV1Ll9qASHvZ-0jxhtlav7kXREC4OH6g/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw new Error('Error al enviar el formulario');
+                })
+                .then(data => {
+                    // Ocultar la imagen de carga
+                    loadingImage.style.display = 'none';
+
+                    // Mostrar el mensaje de confirmación utilizando Toastify
+                    Toastify({
+                        text: data,
+                        duration: 3000, // Duración del mensaje en milisegundos
+                        close: true,
+                        gravity: "top", // Posición del mensaje: top, bottom
+                        position: "right", // left, right, center
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                    }).showToast();
+
+                    setTimeout(function() {
+                        search(); // Reemplaza 'search()' con la función que deseas ejecutar después del tiempo de espera
+                    }, 2000); // 2000 milisegundos equivalen a 2 segundos
+                })
+                .catch(error => {
+                    // Ocultar la imagen de carga
+                    loadingImage.style.display = 'none';
+
+                    // En caso de error, mostrar un mensaje de error
+                    Toastify({
+                        text: error.message,
+                        duration: 3000, // Duración del mensaje en milisegundos
+                        close: true,
+                        gravity: "top", // Posición del mensaje: top, bottom
+                        position: "right", // left, right, center
+                        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                    }).showToast();
+                });
+            });
         });
-      });
-    });
   </script>
 
 

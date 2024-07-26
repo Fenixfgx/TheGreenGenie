@@ -19,10 +19,11 @@
     font-size: 1rem;
 }
 
-
-
-
-
-
-
-'productlistzzz3', 'talloscajazzz3', 'tallosramozzz3', 'ramospiezazzz3', 'preciozzz3', 'gradolistzzz3', 'markzzz3'
+#loadingImage {
+    display: none;
+    position: fixed;
+    top: 115px;
+    right: -5px;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    }
