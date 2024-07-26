@@ -162,7 +162,7 @@ textarea {
     </script>
 <div class="form-cell" style="display:none;">
         <label for="vendedorzzz">Vendedor</label>
-<input style="text-align: -webkit-center;" type="text" id="vendedorzzz" name="vendedorzzz" value="Cristian"> 
+<input style="text-align: -webkit-center;" type="text" id="vendedorzzz" name="vendedorzzz"> 
       </div>
       <div class="form-cell" colspan="2">
         <input type="date" id="fechaprzzz" name="fechaprzzz" required >
@@ -248,7 +248,7 @@ textarea {
       </div>
       
       <div class="form-cell" colspan="1">
-        <input type="text" id="talloscajazzz" name="talloscajazzz">
+        <input type="text" id="talloscajazzz" name="talloscajazzz" oninput="ejecutarCalculos()">
       </div>
       <div  style="display:none;" class="form-cell" colspan="1">
         <input type="text" id="totaltalloszzz" name="totaltalloszzz" >
@@ -502,7 +502,7 @@ document.getElementById('add1').addEventListener('click', function() {
         </div>
       
         <div class="form-cell" colspan="1">
-            <input type="text" id="talloscajazzz3" name="talloscajazzz3">
+            <input type="text" id="talloscajazzz3" name="talloscajazzz3" oninput="ejecutarCalculos()">
         </div>
         <div  style="display:none;" class="form-cell" colspan="1">
             <input type="text" id="totaltalloszzz3" name="totaltalloszzz3" >
@@ -625,7 +625,7 @@ document.getElementById('add2').addEventListener('click', function() {
         </div>
       
         <div class="form-cell" colspan="1">
-            <input type="text" id="talloscajazzz4" name="talloscajazzz4">
+            <input type="text" id="talloscajazzz4" name="talloscajazzz4" oninput="ejecutarCalculos()">
         </div>
         <div  style="display:none;" class="form-cell" colspan="1">
             <input type="text" id="totaltalloszzz4" name="totaltalloszzz4" >
@@ -743,7 +743,7 @@ document.getElementById('add3').addEventListener('click', function() {
         </div>
       
         <div class="form-cell" colspan="1">
-            <input type="text" id="talloscajazzz5" name="talloscajazzz5">
+            <input type="text" id="talloscajazzz5" name="talloscajazzz5" oninput="ejecutarCalculos()">
         </div>
         <div  style="display:none;" class="form-cell" colspan="1">
             <input type="text" id="totaltalloszzz5" name="totaltalloszzz5" >
@@ -864,7 +864,7 @@ document.getElementById('add4').addEventListener('click', function() {
         </div>
       
         <div class="form-cell" colspan="1">
-            <input type="text" id="talloscajazzz6" name="talloscajazzz6">
+            <input type="text" id="talloscajazzz6" name="talloscajazzz6" oninput="ejecutarCalculos()">
         </div>
         <div style="display:none;" class="form-cell" colspan="1">
             <input type="text" id="totaltalloszzz6" name="totaltalloszzz6" >
@@ -986,7 +986,7 @@ document.getElementById('add5').addEventListener('click', function() {
         </div>
       
         <div class="form-cell" colspan="1">
-            <input type="text" id="talloscajazzz7" name="talloscajazzz7">
+            <input type="text" id="talloscajazzz7" name="talloscajazzz7" oninput="ejecutarCalculos()">
         </div>
         <div  style="display:none;" class="form-cell" colspan="1">
             <input type="text" id="totaltalloszzz7" name="totaltalloszzz7" >
@@ -1107,7 +1107,7 @@ document.getElementById('add6').addEventListener('click', function() {
     </div>
   
     <div class="form-cell" colspan="1">
-        <input type="text" id="talloscajazzz8" name="talloscajazzz8">
+        <input type="text" id="talloscajazzz8" name="talloscajazzz8" oninput="ejecutarCalculos()">
     </div>
     <div  style="display:none;" class="form-cell" colspan="1">
         <input type="text" id="totaltalloszzz8" name="totaltalloszzz8" >
@@ -1227,7 +1227,7 @@ document.getElementById('add7').addEventListener('click', function() {
     </div>
 
     <div class="form-cell" colspan="1">
-        <input type="text" id="talloscajazzz9" name="talloscajazzz9">
+        <input type="text" id="talloscajazzz9" name="talloscajazzz9" oninput="ejecutarCalculos()">
     </div>
     <div  style="display:none;" class="form-cell" colspan="1">
         <input type="text" id="totaltalloszzz9" name="totaltalloszzz9" >
@@ -1328,7 +1328,7 @@ document.getElementById('add8').addEventListener('click', function() {
     </div>
 
     <div class="form-cell" colspan="1">
-        <input type="text" id="talloscajazzz10" name="talloscajazzz10">
+        <input type="text" id="talloscajazzz10" name="talloscajazzz10" oninput="ejecutarCalculos()">
     </div>
     <div  style="display:none;" class="form-cell" colspan="1">
         <input type="text" id="totaltalloszzz10" name="totaltalloszzz10" >
@@ -1430,7 +1430,7 @@ document.getElementById('add9').addEventListener('click', function() {
     </div>
 
     <div class="form-cell" colspan="1">
-        <input type="text" id="talloscajazzz11" name="talloscajazzz11">
+        <input type="text" id="talloscajazzz11" name="talloscajazzz11" oninput="ejecutarCalculos()">
     </div>
     <div  style="display:none;" class="form-cell" colspan="1">
         <input type="text" id="totaltalloszzz11" name="totaltalloszzz11" >
@@ -1529,7 +1529,7 @@ document.getElementById('add10').addEventListener('click', function() {
 </div>
 </div>
 </div>
-<div style="display:none;"> 
+<div style="display:block;"> 
 <input type="text" id="productout" name="productout">
 <input type="text" id="tcajaout" name="tcajaout">
 <input type="text" id="ttallosout" name="ttallosout">
@@ -1714,6 +1714,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Mostrar la imagen de carga
                 loadingImage.style.display = 'block';
+              
 
                 // Enviar el formulario de manera asíncrona
                 var formData = new FormData(this);
@@ -2827,6 +2828,7 @@ document.getElementById('talloscajazzz').addEventListener('input', () => {
                 calcularTotalRamos();
                 actualizarTallosCaja();
                 actualizarProductoSeleccionado();
+  actualizarRamosPieza();
                 actualizarPrecio();
                 actualizarMark();
                 tcajaOut();
@@ -2857,6 +2859,7 @@ markOut();
                        tcajaOut();
                        actualizaratpa1();
                        actualizarProductOut();
+                        actualizarRamosPieza3();
 atpaOut();
 ttallosOut();
 tramosOut();
@@ -2879,6 +2882,7 @@ document.getElementById('talloscajazzz4').addEventListener('input', () => {
                 actualizarProductoSeleccionado4();
                 actualizarPrecio4();
                 actualizarMark4();
+   actualizarRamosPieza4();
   actualizarProductOut();
   actualizaratpa4();
 atpaOut();
@@ -2904,6 +2908,7 @@ document.getElementById('talloscajazzz5').addEventListener('input', () => {
                 actualizarProductoSeleccionado5();
                 actualizarPrecio5();
                 actualizarMark5();
+   actualizarRamosPieza5();
   actualizarProductOut();
   actualizaratpa5();
 atpaOut();
@@ -2929,6 +2934,7 @@ document.getElementById('talloscajazzz6').addEventListener('input', () => {
                 actualizarProductoSeleccionado6();
                 actualizarPrecio6();
                 actualizarMark6();
+   actualizarRamosPieza6();
   actualizarProductOut();
   actualizaratpa6();
 atpaOut();
@@ -2954,6 +2960,7 @@ document.getElementById('talloscajazzz7').addEventListener('input', () => {
                 actualizarProductoSeleccionado7();
                 actualizarPrecio7();
                 actualizarMark7();
+   actualizarRamosPieza7();
   actualizarProductOut();
   actualizaratpa7();
 atpaOut();
@@ -2979,6 +2986,7 @@ document.getElementById('talloscajazzz8').addEventListener('input', () => {
                 actualizarProductoSeleccionado8();
                 actualizarPrecio8();
                 actualizarMark8();
+   actualizarRamosPieza8();
   actualizarProductOut();
   actualizaratpa8();
 atpaOut();
@@ -3004,6 +3012,7 @@ document.getElementById('talloscajazzz9').addEventListener('input', () => {
                 actualizarProductoSeleccionado9();
                 actualizarPrecio9();
                 actualizarMark9();
+   actualizarRamosPieza9();
   actualizarProductOut();
   actualizaratpa9();
 atpaOut();
@@ -3029,6 +3038,7 @@ document.getElementById('talloscajazzz10').addEventListener('input', () => {
                 actualizarProductoSeleccionado10();
                 actualizarPrecio10();
                 actualizarMark10();
+   actualizarRamosPieza10();
   actualizarProductOut();
   actualizaratpa10();
 atpaOut();
@@ -3053,6 +3063,7 @@ document.getElementById('talloscajazzz11').addEventListener('input', () => {
                 actualizarProductoSeleccionado11();
                 actualizarPrecio11();
                 actualizarMark11();
+   actualizarRamosPieza11();
   actualizarProductOut();
   actualizaratpa11();
 atpaOut();
@@ -3069,6 +3080,23 @@ markOut();
     sumPrecios();
   sumarInputs()
             }); 
+ 
+  document.getElementById('ramospiezazzz').addEventListener('input', () => {
+                calcularTotalRamos();
+                actualizarTallosRamo();
+                actualizarRamosPieza();
+                actualizarPrecio();
+            tcajaOut();
+            actualizarProductOut();
+ttallosOut();
+tramosOut();
+rppOut();
+trOut();
+tpOut();
+pOut();
+grOut();
+markOut();
+            });
           
           document.getElementById('ramospiezazzz3').addEventListener('input', () => {
                 calcularTotalRamos3();
@@ -3390,6 +3418,23 @@ pOut();
 grOut();
 markOut();
             }); 
+          
+document.getElementById('gradolistzzz').addEventListener('input', () => {
+calcularTotalRamos();
+actualizarTallosRamo();
+calcularTotalPrecio();
+actualizarPrecio();
+actualizarGrado()
+tcajaOut();
+ttallosOut();
+tramosOut();
+rppOut();
+trOut();
+tpOut();
+pOut();
+grOut();
+markOut();
+            });
           
           
 document.getElementById('gradolistzzz3').addEventListener('input', () => {
