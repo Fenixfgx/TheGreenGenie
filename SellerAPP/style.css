@@ -123,6 +123,7 @@ main {
   font-family: "Roboto", sans-serif;
   z-index: 2;
   max-width: 80px;
+  min-height: 680px;
 }
 
 .main-menu h1 {
@@ -1187,6 +1188,11 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+button[type="button"] {
+  margin: 10px;
+}
+
+  
 /* Estilos adicionales */
 textarea {
   width: 100%;
