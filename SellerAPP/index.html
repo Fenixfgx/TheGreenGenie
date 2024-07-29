@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>SELLER</title>
+  <title>Sellers</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -221,7 +221,6 @@
                  <td style="width:10%; min-width: 78px;">${fecha}</td>
                  <td style="width:5%; ">${Orden}</td>
                     <td style="width:20%">${Cliente}</td>
-                    <td style="width:20%">${Producto}</td>
                     <td style="width:15%">${Agencia}</td>
                     <td style="width:15%">${Pais}</td>
                     <td style="width:10%">${FechaD}</td>
@@ -308,7 +307,6 @@
                 <td style="width:10%; min-width: 78px;">${fecha}</td>
                 <td style="width:5%; ">${Orden}</td>
                 <td style="width:20%">${Cliente}</td>
-                <td style="width:20%">${Producto}</td>
                 <td style="width:15%">${Agencia}</td>
                 <td style="width:15%">${Pais}</td>
                 <td style="width:10%">${FechaD}</td>
@@ -398,35 +396,36 @@ function buscarCoincidencias() {
   
 /////
   
-    async function search() {
-    const searchInput = document.getElementById('searchInput');
-    const searchInputColumnA = document.getElementById('searchInputColumnA'); // Nuevo input
-    const cardsContainer = document.getElementById('cardsContainer');
-    const searchTerm = searchInput.value.toLowerCase();
-    const searchTermColumnA = searchInputColumnA.value.toLowerCase(); // Nuevo término de búsqueda
-    cardsContainer.innerHTML = '';
+ async function search() {
+        const searchInput = document.getElementById('searchInput');
+        const searchInputColumnA = document.getElementById('searchInputColumnA');
+        const cardsContainer = document.getElementById('cardsContainer');
+        const searchTerm = searchInput.value.toLowerCase();
+        const searchTermColumnA = searchInputColumnA.value.toLowerCase() || '1'; // Valor por defecto
+        cardsContainer.innerHTML = '';
 
-    const data = await fetchData();
+        const data = await fetchData();
 
-    data.forEach((row, index) => {
-        const fecha = row[1]; // Column E
-        const Orden = row[2]; // Column D
-        const Cliente = row[5];
-        const Producto = row[9];
-        const Agencia = row[6];
-        const Pais = row[3];
-        const FechaD = row[7];
-        const valorColumna24 = row[24]; // Columna X (JavaScript es de base 0)
-        const valorColumnaA = row[0]; // Nueva columna "A" (JavaScript es de base 0)
-        const searchKeyword = row[34]; // Column H
+        data.forEach((row, index) => {
+            const fecha = row[1]; // Column E
+            const Orden = row[2]; // Column D
+            const Cliente = row[5];
+            const Producto = row[9];
+            const Agencia = row[6];
+            const Pais = row[3];
+            const FechaD = row[7];
+            const valorColumna24 = row[24]; // Columna X (JavaScript es de base 0)
+            const valorColumnaA = row[0]; // Nueva columna "A" (JavaScript es de base 0)
+            const searchKeyword = row[34]; // Column H
 
-        // Verifica si los términos de búsqueda coinciden con los valores de las columnas "H" y "A"
-        if ((searchKeyword && searchKeyword.toLowerCase().includes(searchTerm)) && (valorColumnaA && valorColumnaA.toLowerCase().includes(searchTermColumnA))) {
-            const cardadd = createCardadd(fecha, Orden, Cliente, Producto, Agencia, Pais, FechaD, index + 2, valorColumna24);
-            cardsContainer.appendChild(cardadd);
-        }
-    });
-}
+            // Verifica si los términos de búsqueda coinciden con los valores de las columnas "H" y "A"
+            const searchColumnAMatch = new RegExp(`^${searchTermColumnA}$`).test(valorColumnaA);
+            if ((searchKeyword && searchKeyword.toLowerCase().includes(searchTerm)) && searchColumnAMatch) {
+                const cardadd = createCardadd(fecha, Orden, Cliente, Producto, Agencia, Pais, FechaD, index + 2, valorColumna24);
+                cardsContainer.appendChild(cardadd);
+            }
+        });
+    }
 
 document.getElementById('searchInput').addEventListener('input', search);
 document.getElementById('searchInputColumnA').addEventListener('input', search); // Agrega listener para el nuevo input
