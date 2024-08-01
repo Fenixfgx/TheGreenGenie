@@ -25,7 +25,7 @@ searchInput.value = username;
 
 // Llamar a la función de búsqueda
 search();
-        
+filtrarDatos();        
 const searchInputx = document.getElementById('searchInputx');
 
 // Asignar el valor por defecto al input
@@ -123,6 +123,7 @@ function mostrarDuo() {
     var fg = document.getElementById('fg');
     var fd = document.getElementById('fd');
     var diap = document.getElementById('diaprog');
+    var clock = document.getElementById('clock');
     var programordg = document.getElementById('programordg');
 
   
@@ -142,6 +143,7 @@ function mostrarDuo() {
         fd.style.display = 'block';
         diap.style.display = 'none';
         programordg.style.display = 'none';
+        clock.style.display = 'none';
         searchi.value = '1';
         
       
@@ -223,6 +225,7 @@ function listaDiv() {
         leftContent.style.marginLeft = '-7px';
         rightContent.style.display = 'none';
         leftContent.style.display = 'block';
+        clock.style.display = 'flex';
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';
@@ -680,3 +683,59 @@ function guardarEnHojaDeCalculo(chain, activador) {
 }
 
 ////// iframe discriminada
+
+
+
+
+
+
+
+
+// Just noticed accessing localStorage is banned from codepen, so disabling saving theme to localStorage
+
+const deg = 6;
+const hour = document.querySelector(".hour");
+const min = document.querySelector(".min");
+const sec = document.querySelector(".sec");
+
+const setClock = () => {
+	let day = new Date();
+	let hh = day.getHours() * 30;
+	let mm = day.getMinutes() * deg;
+	let ss = day.getSeconds() * deg;
+
+	hour.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+	min.style.transform = `rotateZ(${mm}deg)`;
+	sec.style.transform = `rotateZ(${ss}deg)`;
+};
+
+// first time
+setClock();
+// Update every 1000 ms
+setInterval(setClock, 1000);
+
+const switchTheme = (evt) => {
+	const switchBtn = evt.target;
+	if (switchBtn.textContent.toLowerCase() === "light") {
+		switchBtn.textContent = "dark";
+		// localStorage.setItem("theme", "dark");
+		document.documentElement.setAttribute("data-theme", "dark");
+	} else {
+		switchBtn.textContent = "light";
+		// localStorage.setItem("theme", "light"); //add this
+		document.documentElement.setAttribute("data-theme", "light");
+	}
+};
+
+const switchModeBtn = document.querySelector(".switch-btn");
+switchModeBtn.addEventListener("click", switchTheme, false);
+
+let currentTheme = "light";
+// currentTheme = localStorage.getItem("theme")
+// 	? localStorage.getItem("theme")
+// 	: null;
+
+if (currentTheme) {
+	document.documentElement.setAttribute("data-theme", currentTheme);
+	switchModeBtn.textContent = currentTheme;
+}

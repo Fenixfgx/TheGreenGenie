@@ -33,7 +33,7 @@
         <img class="logo" src="https://www.thegreengenie.com.co/images/LOGOBLANCO.png" alt="" />
         <ul>
           
-<li class="nav-item active rel" style="display:none;">
+<li class="nav-item active rel" >
   <b></b>
   <b></b>
   <a href="#" onclick="mostrarDuo()">
@@ -88,7 +88,7 @@
   </a>
 </li>          
 
-          <li class="nav-item">
+<li class="nav-item" style="display:none;">
   <b></b>
   <b></b>
   <a href="#" onclick="listaOrd()">
@@ -181,9 +181,340 @@
 
       <section class="content">
 <div class="left-content" id="left-content">
-  <div class="ventas">
+  <div style="display:none;" class="ventas">
 <h1>Ventas</h1><button onclick="search()" type="button" class="rech"><svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 489.711 489.711" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M112.156,97.111c72.3-65.4,180.5-66.4,253.8-6.7l-58.1,2.2c-7.5,0.3-13.3,6.5-13,14c0.3,7.3,6.3,13,13.5,13 c0.2,0,0.3,0,0.5,0l89.2-3.3c7.3-0.3,13-6.2,13-13.5v-1c0-0.2,0-0.3,0-0.5v-0.1l0,0l-3.3-88.2c-0.3-7.5-6.6-13.3-14-13 c-7.5,0.3-13.3,6.5-13,14l2.1,55.3c-36.3-29.7-81-46.9-128.8-49.3c-59.2-3-116.1,17.3-160,57.1c-60.4,54.7-86,137.9-66.8,217.1 c1.5,6.2,7,10.3,13.1,10.3c1.1,0,2.1-0.1,3.2-0.4c7.2-1.8,11.7-9.1,9.9-16.3C36.656,218.211,59.056,145.111,112.156,97.111z"></path> <path d="M462.456,195.511c-1.8-7.2-9.1-11.7-16.3-9.9c-7.2,1.8-11.7,9.1-9.9,16.3c16.9,69.6-5.6,142.7-58.7,190.7 c-37.3,33.7-84.1,50.3-130.7,50.3c-44.5,0-88.9-15.1-124.7-44.9l58.8-5.3c7.4-0.7,12.9-7.2,12.2-14.7s-7.2-12.9-14.7-12.2l-88.9,8 c-7.4,0.7-12.9,7.2-12.2,14.7l8,88.9c0.6,7,6.5,12.3,13.4,12.3c0.4,0,0.8,0,1.2-0.1c7.4-0.7,12.9-7.2,12.2-14.7l-4.8-54.1 c36.3,29.4,80.8,46.5,128.3,48.9c3.8,0.2,7.6,0.3,11.3,0.3c55.1,0,107.5-20.2,148.7-57.4 C456.056,357.911,481.656,274.811,462.456,195.511z"></path> </g> </g> </g></svg></button></div>
-          <div class="activities">
+  
+  
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despachos</title>
+    <style>
+        
+        .container {
+            max-width: 100%;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        #resultados label {
+            display: block;
+            margin-bottom: 5px;
+            width: 152px;
+            margin-top: 12px;
+        }
+        #resultados input {
+            width: 148px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        
+        #resultados select {
+            width: 148px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+      
+        #resultados button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin left: 5px;
+        }
+        #resultados {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: -35px;
+        }
+        #resultados td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+       #resultados th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+        #resultados th {
+            background-color: #f4f4f4;
+        }
+        .total-row {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .total-general-row {
+            background-color: #d0e7ff; /* Azul claro */
+            font-weight: bold;
+        }
+        .zero {
+            font-size: 12px !important;
+            margin-top: 0px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+ <h1 style="margin-top: -13px;margin-bottom: 10px;">Despachos</h1>
+
+        <div style="display:none;" class="form-group">
+            <label for="vendedor">Vendedor</label>
+            <input type="text" id="vendedor">
+        </div>
+      <style>
+       .dvv {
+                background-color: transparent;
+    padding: 20px;
+    text-align: center;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    position: relative;
+    z-index: 2;
+    top: -165px;
+    right: -379px;
+    width: 586px;
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+    </style>
+       <script>
+const dvv = document.getElementById('dvv');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                dvv.classList.add('hidden');
+            } else {
+                dvv.classList.remove('hidden');
+            }
+        });
+});
+
+    </script>
+
+      <div style="display: ruby;">
+        <div class="form-group" style="margin-left: -23px;"> 
+<label for="fecha-despacho" style="margin-bottom: 5px; width: 152px; margin-top: 12px;">Fecha de Despacho</label>
+<input type="date" id="fecha-despacho" style="width: 135px;">
+        </div></div>
+<button style="margin-left: 5px; height: 35px;" onclick="filtrarDatos()">Buscar</button>
+      
+<div class="dvv" id="dvv">
+<div class="clock" id="clock" style="display: none;">
+	<div class="hour"></div>
+	<div class="min"></div>
+	<div class="sec"></div>
+</div>
+<div style="text-align:center;padding:1em 0; position: absolute; top:30px; right: 400px;"> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FBogota" width="100%" height="115" Style="height:115px !important;" frameborder="0" seamless></iframe> </div></div>
+      
+        <table id="resultados">
+            <thead>
+                <tr>
+                    <th style="width: 250px;">Cliente</th>
+                    <th style="width: 70px;">Grado</th> 
+                    <th>Línea</th>
+                    <th>Observaciones</th>
+                    <th>Producto</th>
+                    <th>Empaque</th>
+                    <th>Cantidad Cajas</th>
+                    <th>Tallos x Ramo</th>
+                    <th>Ramos x Pieza</th>
+                    <th>Total Ramos</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        const SHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+        const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+
+        function extractNumericValue(html) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            const textContent = tempDiv.textContent || tempDiv.innerText || '';
+            const numbers = textContent.match(/[\d\.,]+/g) || [];
+            return numbers.reduce((sum, num) => sum + parseFloat(num.replace(',', '.')), 0);
+        }
+
+        function filtrarDatos() {
+            const vendedor = document.getElementById('vendedor').value.toLowerCase();
+            const fechaDespacho = document.getElementById('fecha-despacho').value;
+            const sheetRange = 'Sellers!A:AL';
+
+            gapi.client.init({
+                apiKey: API_KEY
+            }).then(() => {
+                return gapi.client.request({
+                    path: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetRange}`
+                });
+            }).then((response) => {
+                const rows = response.result.values;
+                const filteredRows = rows.filter(row => {
+                    const vendedorMatch = vendedor ? row[34] && row[34].toLowerCase().includes(vendedor) : true;
+                    const fechaMatch = fechaDespacho ? row[7] === fechaDespacho : true;
+                    return vendedorMatch && fechaMatch;
+                });
+
+                const resultadosTable = document.getElementById('resultados').getElementsByTagName('tbody')[0];
+                resultadosTable.innerHTML = '';
+
+                let currentCliente = '';
+                let sumCantidadCajas = 0;
+                let sumTallosRamo = 0;
+                let sumRamosPieza = 0;
+                let sumTotalRamos = 0;
+                let totalGeneralCantidadCajas = 0;
+                let totalGeneralTallosRamo = 0;
+                let totalGeneralRamosPieza = 0;
+                let totalGeneralTotalRamos = 0;
+                let hasTotalRow = false;
+                let firstTotalSkipped = false;
+
+                filteredRows.forEach((row, index) => {
+                    const cliente = row[0] === '1' ? row[5] || '' : '';
+                    const cantidadCajas = parseFloat(row[10]) || 0;
+                    const tallosRamoHTML = row[15] || '';
+                    const ramosPiezaHTML = row[16] || '';
+                    const totalRamosHTML = row[17] || '';
+
+                    const tallosRamo = extractNumericValue(tallosRamoHTML);
+                    const ramosPieza = extractNumericValue(ramosPiezaHTML);
+                    const totalRamos = extractNumericValue(totalRamosHTML);
+
+                    if (cliente !== currentCliente && currentCliente !== '') {
+                        if (!hasTotalRow && firstTotalSkipped) {
+                            const totalRow = resultadosTable.insertRow();
+                            totalRow.className = 'total-row';
+                            totalRow.insertCell().innerHTML = 'TOTAL';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = sumCantidadCajas.toFixed(2);
+                            totalRow.insertCell().innerHTML = sumTallosRamo.toFixed(2);
+                            totalRow.insertCell().innerHTML = sumRamosPieza.toFixed(2);
+                            totalRow.insertCell().innerHTML = sumTotalRamos.toFixed(2);
+
+                            totalGeneralCantidadCajas += sumCantidadCajas;
+                            totalGeneralTallosRamo += sumTallosRamo;
+                            totalGeneralRamosPieza += sumRamosPieza;
+                            totalGeneralTotalRamos += sumTotalRamos;
+
+                            sumCantidadCajas = 0;
+                            sumTallosRamo = 0;
+                            sumRamosPieza = 0;
+                            sumTotalRamos = 0;
+                            hasTotalRow = false;
+                        } else if (!hasTotalRow) {
+                            firstTotalSkipped = true;
+                        }
+                    }
+
+                    const newRow = resultadosTable.insertRow();
+                    newRow.insertCell().innerHTML = cliente;
+                    newRow.insertCell().innerHTML = row[20] || '';
+                    newRow.insertCell().innerHTML = row[0] || '';
+                    newRow.insertCell().innerHTML = row[37] || '';
+                    newRow.insertCell().innerHTML = row[9] || '';
+                    newRow.insertCell().innerHTML = row[11] || '';
+                    newRow.insertCell().innerHTML = cantidadCajas.toFixed(2);
+                    newRow.insertCell().innerHTML = tallosRamoHTML;
+                    newRow.insertCell().innerHTML = ramosPiezaHTML;
+                    newRow.insertCell().innerHTML = totalRamosHTML;
+
+                    sumCantidadCajas += cantidadCajas;
+                    sumTallosRamo += tallosRamo;
+                    sumRamosPieza += ramosPieza;
+                    sumTotalRamos += totalRamos;
+
+                    if (index === filteredRows.length - 1 || (filteredRows[index + 1][5] !== cliente && filteredRows[index + 1][0] === '1')) {
+                        if (firstTotalSkipped) {
+                            const totalRow = resultadosTable.insertRow();
+                            totalRow.className = 'total-row';
+                            totalRow.insertCell().innerHTML = 'TOTAL';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = '';
+                            totalRow.insertCell().innerHTML = sumCantidadCajas.toFixed(2);
+                            totalRow.insertCell().innerHTML = sumTallosRamo.toFixed(2);
+                            totalRow.insertCell().innerHTML = sumRamosPieza.toFixed(2);
+                            totalRow.insertCell().innerHTML = sumTotalRamos.toFixed(2);
+
+                            totalGeneralCantidadCajas += sumCantidadCajas;
+                            totalGeneralTallosRamo += sumTallosRamo;
+                            totalGeneralRamosPieza += sumRamosPieza;
+                            totalGeneralTotalRamos += sumTotalRamos;
+
+                            sumCantidadCajas = 0;
+                            sumTallosRamo = 0;
+                            sumRamosPieza = 0;
+                            sumTotalRamos = 0;
+                            hasTotalRow = true;
+                        } else {
+                            firstTotalSkipped = true;
+                        }
+                    }
+
+                    currentCliente = cliente;
+                });
+
+                if (filteredRows.length > 0) {
+                    const totalGeneralRow = resultadosTable.insertRow();
+                    totalGeneralRow.className = 'total-general-row';
+                    totalGeneralRow.insertCell().innerHTML = 'TOTAL GENERAL';
+                    totalGeneralRow.insertCell().innerHTML = '';
+                    totalGeneralRow.insertCell().innerHTML = '';
+                    totalGeneralRow.insertCell().innerHTML = '';
+                    totalGeneralRow.insertCell().innerHTML = '';
+                    totalGeneralRow.insertCell().innerHTML = '';
+                    totalGeneralRow.insertCell().innerHTML = totalGeneralCantidadCajas.toFixed(2);
+                    totalGeneralRow.insertCell().innerHTML = totalGeneralTallosRamo.toFixed(2);
+                    totalGeneralRow.insertCell().innerHTML = totalGeneralRamosPieza.toFixed(2);
+                    totalGeneralRow.insertCell().innerHTML = totalGeneralTotalRamos.toFixed(2);
+                }
+            }).catch((error) => {
+                console.error('Error al cargar datos:', error);
+            });
+        }
+
+        function handleClientLoad() {
+            gapi.load('client', filtrarDatos);
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}`;
+            document.getElementById('fecha-despacho').value = formattedDate;
+        });
+
+        handleClientLoad();
+      filtrarDatos();
+    </script>
+</body>
+</html>
+
+  
+  
+  
+  
+          <div style="display:none" class="activities">
 <input type="hidden" id="searchInput" placeholder="Buscar por título">
 <input type="hidden" id="searchInputColumnA" placeholder="Filtrar por columna A..." value="1">
 <div class="containers2" id="cardsContainer"></div>
