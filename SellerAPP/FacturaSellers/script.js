@@ -138,7 +138,20 @@ function updateInputs(inputIds, values) {
     });
 }
 
+document.getElementById('filtroCliente').addEventListener('input', function() {
+        var filtro = this.value.toLowerCase();
+        var select = document.getElementById('clientelzzz');
+        var opciones = select.options;
 
+        for (var i = 1; i < opciones.length; i++) { // Empezar en 1 para omitir "Seleccione un Cliente"
+            var texto = opciones[i].textContent.toLowerCase();
+            if (texto.includes(filtro)) {
+                opciones[i].style.display = '';
+            } else {
+                opciones[i].style.display = 'none';
+            }
+        }
+    });
 /////
 
         function copyToClipboard(...ids) {
