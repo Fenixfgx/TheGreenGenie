@@ -29,6 +29,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ////////////
 
+document.getElementById('filtroCliente').addEventListener('input', function() {
+        var filtro = this.value.toLowerCase();
+        var select = document.getElementById('clientelzzz');
+        var opciones = select.options;
+
+        for (var i = 1; i < opciones.length; i++) { // Empezar en 1 para omitir "Seleccione un Cliente"
+            var texto = opciones[i].textContent.toLowerCase();
+            if (texto.includes(filtro)) {
+                opciones[i].style.display = '';
+            } else {
+                opciones[i].style.display = 'none';
+            }
+        }
+    });
+
+///////////
+
 function clearFields() {
     var fields = [
         'cantidadzzz', 'observacioneszzz','pozzz', 'productout', 'tcajaout','ttallosout', 'tallosramoout', 'rapiout','traout', 'tpout', 'pout','gradout', 'markout', 'atpaout', 'totalsteamout','tpreciooutz', 'totaltallosQB', 'totaltallosHB', 'totaltallosEB','totaltallosFLL', 'productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz',
