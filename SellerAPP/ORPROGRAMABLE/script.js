@@ -28,6 +28,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.getElementById('filtroCliente').addEventListener('input', function() {
+        var filtro = this.value.toLowerCase();
+        var select = document.getElementById('clientelzzz');
+        var opciones = select.options;
+
+        for (var i = 1; i < opciones.length; i++) { // Empezar en 1 para omitir "Seleccione un Cliente"
+            var texto = opciones[i].textContent.toLowerCase();
+            if (texto.includes(filtro)) {
+                opciones[i].style.display = '';
+            } else {
+                opciones[i].style.display = 'none';
+            }
+        }
+    });
+
  // Function to set the value of fechagen to other inputs
   function setFechagenValue() {
     // Get the value from the fechagen input
