@@ -159,6 +159,15 @@
   </a>
 </li>
           
+<li class="nav-item">
+  <b></b>
+  <b></b>
+  <a href="#" onclick="TallosxRamo()" style="font-size: 35px;">
+  T
+    <span class="tooltip">Tallos x Ramo</span>
+  </a>
+</li>
+          
 <li class="nav-item" style="display:none;">
   <b></b>
   <b></b>
@@ -934,7 +943,7 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
           
 <button type="button" onclick="orden()" >ORDEN NORMAL</button>
-<button type="button" onclick="follaje()">FOLLAJE</button>
+<button type="button" onclick="follaje()">FOLLAJE/ORDEN DETALLADA</button>
 <button type="button" onclick="ordenp()">PROGRAMAR ORDEN</button>
           
       <div class="form-group" style="display:none;">
@@ -1677,410 +1686,356 @@ document.addEventListener("DOMContentLoaded", function() {
       
       
 <section id="preciosxClients" style="display: none;">  
+<h1 class="pc">Precios x Cliente</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.js"></script>
 
-  <h1 class="toptitle">Precios X Cliente</h1>
-      
-  <script src="https://apis.google.com/js/api.js"></script>
-
-<div class="form-group">
-    <label for="cliente2">Cliente</label>
-    <select class="cliente2" id="cliente2" name="cliente2">
-    </select><button style="background-color: #04097d; height: 25px; padding: 5px; margin: 5px;" id="fetchClientesBtn">Recargar Clientes</button>
-</div>
-
-<div class="form-group" id="productlistexe" style="display:none;">
-    <label for="productlist2">Producto</label>
-    <select id="productlist2" name="productlist2">
-    </select>
-</div>
-
-<div class="form-group" style="display: none;">
-    <label for="vendedorh2">Vendedor</label>
-<input type="text" id="vendedorh2" placeholder="Ingrese el vendedor...">
-</div>
-<!-- Input donde se mostrará el concatenado de los valores seleccionados -->
-<form id="clientePriceForm" action="https://script.google.com/macros/s/AKfycbziPKl5XAThG7uC6UoBG3qLZbszzQKYmZbH27oYBxn06kzrkd9lrCc-MdbuADfsrbw/exec" method="POST">
-    <div class="form-group" style="display: none;">
-        <label for="concatenatedValues2">Cliente y Producto</label>
-        <input type="text" id="concatenatedValues2" name="concatenatedValues2">
-    </div>
-
-    <div class="form-group">
-        <label for="precio2">Precio</label>
-        <input type="text" id="precio2" name="precio2" placeholder='Precio' pattern="[0-9,]*" title="Solo se permiten números y comas" oninput="this.value = this.value.replace(/\./g, ',');" required>
-    </div>
-
-    <button type="submit">Asignar / Actualizar Precio</button>
-  
-</form>
-  
-
-    <input type="hidden" id="searchInput12" placeholder="Buscar por cliente..." value=" ">
-    
-    <table id="clientesTable" style="display:none;">
-        <!-- Aquí se generará la tabla -->
-    </table>
-
-    <script src="https://apis.google.com/js/api.js"></script>
-   <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                // Agregar el evento de clic al botón
-                document.getElementById('fetchClientesBtn').addEventListener('click', fetchClientes);
-
-                // Función para hacer clic automáticamente en el botón
-                function clickButtonAutomatically() {
-                    document.getElementById('fetchClientesBtn').click();
-                }
-
-                // Llamar a la función para hacer clic automáticamente
-                clickButtonAutomatically();
-            }, 10250); // 1000 milisegundos = 1 segundo
-
-            // Función para obtener y mostrar la lista de clientes
-            function fetchClientes() {
-                fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-                    .then(response => response.json())
-                    .then(data => {
-                        var clientes = data.values; // Obtener todos los clientes
-
-                        var select = document.getElementById('cliente2');
-                        select.innerHTML = ''; // Limpiar la lista desplegable
-
-                        // Si se proporciona un vendedor, filtrar la lista de clientes
-                        var vendedor = document.getElementById('vendedorh2').value;
-                        if (vendedor) {
-                            clientes = clientes.filter(row => row[3] === vendedor).map(row => row[0]);
-                        }
-
-                        // Agregar las opciones de clientes al select
-                        clientes.forEach(cliente => {
-                            var option = document.createElement('option');
-                            option.value = cliente;
-                            option.textContent = cliente;
-                            select.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error al obtener la lista de clientes:', error);
-                    });
-            }
-        });
-    </script>
-    <script>
-  // JavaScript
-function initClient() {
-    gapi.client.init({
-        apiKey: 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8',
-        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-    }).then(function () {
-    loadTable();
-    });
-}
-
-
-function loadTable() {
-    gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w',
-        range: 'ClientesPrice!A:B',
-    }).then(function(response) {
-        var values = response.result.values;
-        var table = document.getElementById('clientesTable');
-        table.innerHTML = ''; // Limpiar tabla antes de cargar datos
-
-        // Agregar filas a la tabla
-        if (values.length > 0) {
-            values.forEach(function(row, index) {
-                var tr = document.createElement('tr');
-                var td1 = document.createElement('td');
-                var td2 = document.createElement('td');
-                td1.textContent = row[0]; // Columna A
-                td2.textContent = row[1]; // Columna B
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                table.appendChild(tr);
-            });
-        }
-    });
-  }
-
-document.getElementById('searchInput12').addEventListener('input', function() {
-    sit(); // Llama a la función sit cada vez que haya un cambio en el input
-});
-
-function sit() {
-   var clientesTable = document.getElementById('clientesTable');
-  
-    clientesTable.style.display = 'inline-table';
-    var searchTerm = document.getElementById('searchInput12').value.toLowerCase();
-    var rows = document.getElementById('clientesTable').getElementsByTagName('tr');
-    Array.from(rows).forEach(function(row, index) {
-        var cells = row.getElementsByTagName('td');
-        var found = false;
-        Array.from(cells).forEach(function(cell) {
-            var cellText = cell.textContent.toLowerCase();
-            if (cellText.includes(searchTerm)) {
-                found = true;
-            }
-        });
-        if (found || index === 0) { // Mostrar el encabezado siempre
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
-
-// Llamar a la función de inicialización cuando la API de Google se cargue
-gapi.load('client', initClient);
-
-  </script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Agregar event listener al formulario
-    document.getElementById('clientePriceForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evitar el envío por defecto del formulario
-
-        // Obtener los valores de los campos de entrada
-        var concatenatedValues = document.getElementById('concatenatedValues2').value;
-        var precio = document.getElementById('precio2').value;
-
-        // Llamar a la función para guardar en la hoja de cálculo
-        guardarEnHojaDeCalculo(concatenatedValues, precio);
-    });
-
-    // Función para guardar los datos en la hoja de cálculo
-    function guardarEnHojaDeCalculo(concatenatedValues, precio) {
-        fetch('https://script.google.com/macros/s/AKfycbziPKl5XAThG7uC6UoBG3qLZbszzQKYmZbH27oYBxn06kzrkd9lrCc-MdbuADfsrbw/exec', {
-            method: 'POST',
-            body: JSON.stringify({
-                concatenatedValues: concatenatedValues,
-                precio: precio
-            })
-        })
-        .then(response => {
-            if (response.ok) {
-                alert ('Precio Registrado Satisfactoriamente');
-                initClient();
-              setTimeout(function() {
-    loadTable();
-                sit();
-}, 800);
-                setTimeout(function() {
-    sit();
-}, 1500);
-            } else {
-                alert.error('Error al Registrar Datos.');
-            }
-        })
-        .catch(error => {
-            console.error('Error en la solicitud:', error);
-        });
-    }
-});
-</script>
-
-<script>
-        // Obtener elementos
-        const clienteSelect = document.getElementById('cliente2');
-        const searchInput = document.getElementById('searchInput12');
+</head>
+<body>
+    <div class="container">
+         
         
-        // Agregar evento change al select
-        clienteSelect.addEventListener('change', function() {
-            // Actualizar valor del input
-            searchInput.value = clienteSelect.value;
-        });
-    </script>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Llamar a fetchClientes() al cargar la página
+        <label style="display:none" for="vendedorh2">Vendedor:</label>
+        <input style="display:none; border: 1px solid #ccc; padding: 10px;" type="text" id="vendedorh2" placeholder="Ingrese el nombre del vendedor" oninput="fetchClientes()"> 
+        
+        <label for="clienteselect">Cliente:</label>
+<select style="border: 1px solid #ccc;padding: 10px;width: 65%;" id="clienteselect" onchange="fetchProductos()">
+            <option value="">Seleccione un cliente</option>
+        </select>
+        
+        <table id="productos-table">
+            <thead>
+                <tr>
+      <th style="padding: 10px;">Productos</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table> 
+     
+        <form  id="mirror-form" onsubmit="handleSubmit(event)">
+            <table style="display:none">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="mirror-table-body">
+                    <!-- Content will be populated by JavaScript -->
+                </tbody>
+            </table>
+            <button class="butsend" type="submit">Actualizar Precios</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+  <div id="loading" style="display: none; position: fixed;top: 10px;right: 12px;"><a style="top: 20px; position: absolute; right: 72px; font-size: 16px; font-weight: bold;">Cargando...</a><img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" style="width: 65px;"></div>
+</body>
+</html>
+
+<script>
+const apiKey = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+const sheetId = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchProductos();
     fetchClientes();
-
-    // Agregar event listener al botón fetchButton
-    document.getElementById('fetchButton').addEventListener('click', function() {
-        var vendedor = document.getElementById('vendedorh').value;
-        fetchClientes(vendedor);
-    });
-
-    // Función para obtener y mostrar la lista de clientes
-    function fetchClientes(vendedor) {
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-            .then(response => response.json())
-            .then(data => {
-                var clientes = data.values.map(row => row[0]); // Obtener todos los clientes
-                var select = document.getElementById('clientel');
-                select.innerHTML = ''; // Limpiar la lista desplegable
-
-                // Agregar todas las opciones de clientes al select
-                clientes.forEach(cliente => {
-                    var option = document.createElement('option');
-                    option.value = cliente;
-                    option.textContent = cliente;
-                    select.appendChild(option);
-                });
-
-                // Si se proporciona un vendedor, filtrar la lista de clientes
-                if (vendedor) {
-                    clientes = data.values.filter(row => row[3] === vendedor).map(row => row[0]);
-                    select.innerHTML = ''; // Limpiar la lista desplegable
-
-                    // Agregar solo los clientes correspondientes al vendedor al select
-                    clientes.forEach(cliente => {
-                        var option = document.createElement('option');
-                        option.value = cliente;
-                        option.textContent = cliente;
-                        select.appendChild(option);
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error al obtener la lista de clientes:', error);
-            });
-    }
 });
 
-  </script>
+function fetchClientes() {
+    const vendedor = document.getElementById('vendedorh2').value;
 
-
-  
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        // Llamar a fetchClientes() después de un segundo
-        fetchClientes();
-
-        // Función para obtener y mostrar la lista de clientes
-        function fetchClientes() {
-            fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/Clientes!B:E?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-                .then(response => response.json())
-                .then(data => {
-                    var clientes = data.values; // Obtener todos los clientes
-
-                    var select = document.getElementById('cliente2');
-                    select.innerHTML = ''; // Limpiar la lista desplegable
-
-                    // Si se proporciona un vendedor, filtrar la lista de clientes
-                    var vendedor = document.getElementById('vendedorh2').value;
-                    if (vendedor) {
-                        clientes = clientes.filter(row => row[3] === vendedor).map(row => row[0]);
-                    }
-
-                    // Agregar las opciones de clientes al select
-                    clientes.forEach(cliente => {
-                        var option = document.createElement('option');
-                        option.value = cliente;
-                        option.textContent = cliente;
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error al obtener la lista de clientes:', error);
-                });
-        }
-    }, 10200); // 1000 milisegundos = 1 segundo
-
-    // Agregar event listener al cambio en los select de cliente y producto
-    document.getElementById('cliente2').addEventListener('change', updateConcatenatedValues);
-    document.getElementById('productlist2').addEventListener('change', updateConcatenatedValues);
-
-    // Función para concatenar los valores de cliente y producto
-    function updateConcatenatedValues() {
-        var cliente = document.getElementById('cliente2').value;
-        var producto = document.getElementById('productlist2').value;
-        var concatenatedValues = cliente + ' ' + producto;
-        document.getElementById('concatenatedValues2').value = concatenatedValues;
-
-        // Llamar a la función para buscar el precio
-        fetchPrecio(concatenatedValues);
-    }
-
-// Función para buscar el precio correspondiente en la hoja de cálculo "ClientesPrice"
-function fetchPrecio(concatenatedValues) {
-    fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/ClientesPrice!A:B?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Clientes!B:E?key=${apiKey}`)
         .then(response => response.json())
         .then(data => {
-            var precios = data.values; // Obtener todos los precios
+            let clientes = data.values;
+            let select = document.getElementById('clienteselect');
+            select.innerHTML = '<option value="">Seleccione un cliente</option>'; // Reset options
 
-            // Buscar coincidencia en la hoja de cálculo "ClientesPrice"
-            var precio = precios.find(row => row[0] === concatenatedValues);
-
-            // Si se encontró el precio, asignarlo al campo de entrada correspondiente
-            if (precio && precio[1] !== undefined) {
-                document.getElementById('precio2').value = precio[1];
-              sit();
+            if (vendedor) {
+                clientes = clientes.filter(row => row[3] === vendedor).map(row => row[0]);
             } else {
-                // Si no se encontró el precio, asignar un valor por defecto o dejar vacío el campo de entrada
-                document.getElementById('precio2').value = '';
+                clientes = clientes.map(row => row[0]);
             }
+
+            clientes.forEach(cliente => {
+                let option = document.createElement('option');
+                option.value = cliente;
+                option.textContent = cliente;
+                select.appendChild(option);
+            });
         })
         .catch(error => {
-            console.error('Error al obtener el precio:', error);
+            console.error('Error al obtener la lista de clientes:', error);
         });
 }
-});
-</script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Cargar la lista de productos al cargar la página
-      fetchProductos();
+function fetchProductos() {
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/ClientesPrice!C2:C?key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            let productos = data.values;
+            let tbody = document.getElementById('productos-table').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Clear table
 
-      // Función para obtener y mostrar la lista de productos
-      function fetchProductos() {
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/size!A7:A29?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-          .then(response => response.json())
-          .then(data => {
-            var productos = data.values.map(row => row[0]); // Obtener todos los productos
-            var select = document.getElementById('productlist');
-            select.innerHTML = ''; // Limpiar el select
-
-            // Agregar todas las opciones de productos al select
-            productos.forEach(producto => {
-              var option = document.createElement('option');
-              option.value = producto;
-              option.textContent = producto;
-              select.appendChild(option);
+            productos.forEach((row, index) => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row[0]}</td> <!-- Producto: Columna C -->
+                    <td style="display:none;"><input type="text" id="fusion${index}" name="fusion${index}" value="" /></td> <!-- Fusión -->
+                    <td><input type="text" id="precio${index}" name="precio${index}" value="" /></td> <!-- Precio -->
+                    <td style="display:none;"><input type="text" id="cliente${index}" name="cliente${index}" value="" /></td> <!-- Cliente -->
+                `;
+                tbody.appendChild(tr);
             });
-          })
-          .catch(error => {
-            console.error('Error al obtener la lista de productos:', error);
-          });
-      }
-    });
-</script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Cargar la lista de productos al cargar la página
-      fetchProductos();
+            // Call to fetch filtered products after loading all products
+            fetchProductosFiltrados();
+        })
+        .catch(error => {
+            console.error('Error al obtener todos los productos:', error);
+        });
+}
 
-      // Función para obtener y mostrar la lista de productos
-      function fetchProductos() {
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w/values/size!A7:A29?key=AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8')
-          .then(response => response.json())
-          .then(data => {
-            var productos = data.values.map(row => row[0]); // Obtener todos los productos
-            var select = document.getElementById('productlist2');
-            select.innerHTML = ''; // Limpiar el select
+function fetchProductosFiltrados() {
+    const clienteSeleccionado = document.getElementById('clienteselect').value;
 
-            // Agregar todas las opciones de productos al select
-            productos.forEach(producto => {
-              var option = document.createElement('option');
-              option.value = producto;
-              option.textContent = producto;
-              select.appendChild(option);
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/ClientesPrice!A:B?key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            let productos = data.values;
+            let tbody = document.getElementById('productos-table').getElementsByTagName('tbody')[0];
+            let fusionPrecioMap = new Map();
+
+            // Build a map of fusion to precio for quick lookups
+            productos.forEach(row => {
+                let fusion = row[0]; // Columna A: Fusion
+                let precio = row[1]; // Columna B: Precio
+                fusionPrecioMap.set(fusion, precio); // Map fusion to precio
             });
-          })
-          .catch(error => {
-            console.error('Error al obtener la lista de productos:', error);
-          });
-      }
+
+            // Update rows with appropriate values
+            Array.from(tbody.rows).forEach((row, index) => {
+                let producto = row.cells[0].innerText;
+                let cliente = document.getElementById('clienteselect').value;
+                let fusion = `${cliente} ${producto}`; // Fusión: Cliente + Producto (con espacio)
+                
+                // Set Fusión value
+                document.getElementById(`fusion${index}`).value = fusion;
+
+                // Find and set Precio value based on Fusión
+                document.getElementById(`precio${index}`).value = fusionPrecioMap.get(fusion) || '';
+
+                // Set Cliente value
+                document.getElementById(`cliente${index}`).value = cliente;
+            });
+
+            // Attach event listeners for Precio inputs
+            attachPrecioInputEvents();
+
+            // Update the mirror table
+            updateMirrorTable();
+        })
+        .catch(error => {
+            console.error('Error al obtener los productos filtrados:', error);
+        });
+}
+
+function attachPrecioInputEvents() {
+    const precioInputs = document.querySelectorAll('#productos-table tbody td:nth-child(3) input');
+
+    precioInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/\./g, ',');
+
+            // Reflect changes in the mirror table
+            updateMirrorTable();
+        });
     });
+}
+
+function updateMirrorTable() {
+    const originalTableRows = document.querySelectorAll('#productos-table tbody tr');
+    const mirrorTableBody = document.getElementById('mirror-table-body');
+    mirrorTableBody.innerHTML = '';
+
+    originalTableRows.forEach(row => {
+        let clone = row.cloneNode(true);
+        mirrorTableBody.appendChild(clone);
+    });
+}
+
+document.getElementById('clienteselect').addEventListener('change', fetchProductosFiltrados);
+document.getElementById('vendedorh2').addEventListener('input', fetchClientes);
+
+async function handleSubmit(event) {
+    event.preventDefault();
+    document.getElementById('loading').style.display = 'block';
+    
+    const rows = document.querySelectorAll('#mirror-table-body tr');
+    let formData = new FormData();
+   
+    rows.forEach((row, index) => {
+        formData.append(`fusion${index}`, row.cells[1].firstChild.value);
+        formData.append(`precio${index}`, row.cells[2].firstChild.value);
+        formData.append(`cliente${index}`, row.cells[3].firstChild.value);
+    });
+
+    try {
+        let response = await fetch('https://script.google.com/macros/s/AKfycby8rPUcZsF5USroHQiyQciONf_wSBVj1vPgNomkib6UtKGnMDDnOQKwowmbSFYlbAmH/exec', {
+            method: 'POST',
+            body: formData
+        });
+        let text = await response.text();
+        document.getElementById('loading').style.display = 'none';
+        Toastify({
+            text: text,
+            duration: 3000, // Duración del toast en milisegundos
+            close: true,
+            gravity: "top", // Puede ser "top" o "bottom"
+            position: "right", // Puede ser "left", "center" o "right"
+            backgroundColor: "#4CAF50", // Color de fondo del toast
+        }).showToast();
+    } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        Toastify({
+            text: 'Error: ' + error.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#f44336", // Color de fondo para errores
+        }).showToast();
+    }
+}
+
+document.getElementById('formulario').addEventListener('submit', handleSubmit);
 </script>
   
 </section>      
+     
+      
+<section id="TallosxRamo" style="display: none;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Productos</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <h1 class="pc">Tallos X Ramo</h1>
+    <form id="formulariox" style="margin-left: 10px; margin-top: 10px;">
+        <table id="productos-table2">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Tallos x Ramo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas de productos se cargarán aquí -->
+            </tbody>
+        </table>
+        <button type="submit">Actualizar Tallos x Ramo</button>
+    </form>
+
+    <div id="loading2" style="display: none; top: 20px; position: absolute; right: 72px; font-size: 16px; font-weight: bold;&quot;">
+        <a>Cargando..</a>
+        <img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" alt="Cargando" style="
+    width: 80px;
+">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+  const apiKeyx = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
+const sheetIdx = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchProductosx();
+});
+
+function fetchProductosx() {
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetIdx}/values/ClientesPrice!C2:D?key=${apiKeyx}`)
+        .then(response => response.json())
+        .then(data => {
+            let productos = data.values;
+            let tbody = document.getElementById('productos-table2').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Clear table
+
+            productos.forEach((row, index) => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row[0]}</td> <!-- Producto: Columna C -->
+                    <td><input type="text" id="tallos${index}" name="tallos${index}" value="${row[1]}" /></td> <!-- Tallos x Ramo: Columna D -->
+                `;
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener los productos:', error);
+        });
+}
+
+async function handleSubmit2(event) {
+    event.preventDefault();
+    document.getElementById('loading2').style.display = 'block';
+
+    const rows = document.querySelectorAll('#productos-table2 tbody tr');
+    let formData = new FormData();
+
+    rows.forEach((row, index) => {
+        formData.append(`producto${index}`, row.cells[0].innerText);
+        formData.append(`tallos${index}`, row.cells[1].firstChild.value);
+    });
+
+    try {
+        let response = await fetch('https://script.google.com/macros/s/AKfycbzkKznjLGDTp3BxDcCHryQXKz_chBAwoxhF_VfVB_8sMP3iDPBU7o2LoCvyYQqU9uaS/exec', {
+            method: 'POST',
+            body: formData
+        });
+        let text = await response.text();
+        document.getElementById('loading2').style.display = 'none';
+        Toastify({
+            text: text,
+            duration: 3000, // Duración del toast en milisegundos
+            close: true,
+            gravity: "top", // Puede ser "top" o "bottom"
+            position: "right", // Puede ser "left", "center" o "right"
+            backgroundColor: "#4CAF50", // Color de fondo del toast
+        }).showToast();
+    } catch (error) {
+        document.getElementById('loading2').style.display = 'none';
+        Toastify({
+            text: 'Error: ' + error.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#f44336", // Color de fondo para errores
+        }).showToast();
+    }
+}
+
+document.getElementById('formulariox').addEventListener('submit', handleSubmit2);
+
+  </script>
+</body>
+</html>
+</section>      
+      
+      
       
 <section id="programordg" style="display: none;">
   <h2 class="toptitle">Gestor de Ordenes Programadas</h2>

@@ -110,6 +110,7 @@ navItems.forEach((navItem, i) => {
 function mostrarDuo() {
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
+   var TallosxRamo = document.getElementById('TallosxRamo');
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var corporateForm = document.getElementById('corporateForm');
@@ -142,6 +143,7 @@ function mostrarDuo() {
         fg.style.display = 'block';
         fd.style.display = 'block';
         diap.style.display = 'none';
+        TallosxRamo.style.display = 'none';
         programordg.style.display = 'none';
         clock.style.display = 'none';
         searchi.value = '1';
@@ -164,6 +166,7 @@ function mostrarDuo() {
 function ocultarDiv() {
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
+   var TallosxRamo = document.getElementById('TallosxRamo');
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var corporateForm = document.getElementById('corporateForm');
@@ -194,6 +197,7 @@ function ocultarDiv() {
         sub2.style.display = 'none';
         fg.style.display = 'block';
         fd.style.display = 'block';
+        TallosxRamo.style.display = 'none';
         diap.style.display = 'none';
 
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
@@ -208,6 +212,7 @@ function ocultarDiv() {
 function listaDiv() {
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
+   var TallosxRamo = document.getElementById('TallosxRamo');
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var relItem = document.querySelector('.rel');
@@ -231,6 +236,7 @@ function listaDiv() {
         preciosxClients.style.display = 'none';
         programord.style.display = 'none';
         programordg.style.display = 'none';
+        TallosxRamo.style.display = 'none';
         
         searchi.value = '1';
         
@@ -258,6 +264,7 @@ function listaDiv() {
 function listaOrd() {  
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
+  var TallosxRamo = document.getElementById('TallosxRamo');
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var relItem = document.querySelector('.rel'); 
@@ -280,6 +287,7 @@ function listaOrd() {
         preciosxClients.style.display = 'none';
         programord.style.display = 'none';
         programordg.style.display = 'none';
+        TallosxRamo.style.display = 'none';
         searchi.value = ''; 
 
 
@@ -331,6 +339,7 @@ function addClient() {
     var relItem = document.querySelector('.rel'); 
     var preciosxClients = document.getElementById('preciosxClients');
     var formItem = document.querySelector('.form-group');
+  var TallosxRamo = document.getElementById('TallosxRamo');
     var programord = document.getElementById('programord');
     var programordg = document.getElementById('programordg');
 
@@ -343,6 +352,7 @@ function addClient() {
         preciosxClients.style.display = 'none';
         programord.style.display = 'none';
         programordg.style.display = 'none';
+        TallosxRamo.style.display = 'none';
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
             relItem.style.display = 'none'; // Oculta el elemento con la clase "rel"
@@ -357,6 +367,7 @@ function adminClients() {
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
     var addclient = document.getElementById('addClient');
+  var TallosxRamo = document.getElementById('TallosxRamo');
     var adminclients = document.getElementById('adminClients');
     var relItem = document.querySelector('.rel'); 
     var preciosxClients = document.getElementById('preciosxClients');
@@ -373,6 +384,7 @@ function adminClients() {
         preciosxClients.style.display = 'none';
         programord.style.display = 'none';
         programordg.style.display = 'none';
+       TallosxRamo.style.display = 'none';
 
         // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
         if (window.innerWidth <= 767) {
@@ -387,6 +399,7 @@ function adminClients() {
 function programord() {
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
+  var TallosxRamo = document.getElementById('TallosxRamo');
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var relItem = document.querySelector('.rel'); 
@@ -413,6 +426,7 @@ function programord() {
         fg.style.display = 'none';
         fd.style.display = 'none';
         diap.style.display = 'block';
+        TallosxRamo.style.display = 'none';
         rightContent.style.maxWidth = '1000px';
         rightContent.style.width = '165%';
         rightContent.style.marginLeft = '12px';
@@ -428,6 +442,7 @@ function programord() {
 }
 
 function programordg() {
+  var TallosxRamo = document.getElementById('TallosxRamo');
     var leftContent = document.getElementById('left-content');
     var rightContent = document.getElementById('right-content');
     var addclient = document.getElementById('addClient');
@@ -456,6 +471,7 @@ function programordg() {
         fg.style.display = 'none';
         fd.style.display = 'none';
         diap.style.display = 'block';
+        TallosxRamo.style.display = 'none';
         rightContent.style.maxWidth = '1000px';
         rightContent.style.width = '165%';
         rightContent.style.marginLeft = '12px';
@@ -477,6 +493,7 @@ function preciosxClients() {
     var addclient = document.getElementById('addClient');
     var adminclients = document.getElementById('adminClients');
     var preciosxClients = document.getElementById('preciosxClients');
+  var TallosxRamo = document.getElementById('TallosxRamo');
     var programord = document.getElementById('programord');
     var relItem = document.querySelector('.rel'); // Selecciona el elemento con la clase "rel"
     var formItem = document.querySelector('.form-group');
@@ -488,6 +505,39 @@ function preciosxClients() {
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'block';
+        programord.style.display = 'none';
+        programordg.style.display = 'none';
+        TallosxRamo.style.display = 'none';
+        fetchClientes();
+
+        // Verifica si es una versión móvil (ancho de ventana menor o igual a 767px)
+        if (window.innerWidth <= 767) {
+            relItem.style.display = 'none'; // Oculta el elemento con la clase "rel"
+        }
+    } else {
+        console.error('Elemento "left-content" no encontrado');
+    }
+}
+
+function TallosxRamo() {
+    var leftContent = document.getElementById('left-content');
+    var rightContent = document.getElementById('right-content');
+    var addclient = document.getElementById('addClient');
+  var TallosxRamo = document.getElementById('TallosxRamo');
+    var adminclients = document.getElementById('adminClients');
+    var preciosxClients = document.getElementById('preciosxClients');
+    var programord = document.getElementById('programord');
+    var relItem = document.querySelector('.rel'); // Selecciona el elemento con la clase "rel"
+    var formItem = document.querySelector('.form-group');
+    var programordg = document.getElementById('programordg');
+  
+    if (leftContent) {
+        rightContent.style.display = 'none';
+        leftContent.style.display = 'none';
+        addclient.style.display = 'none';
+        adminclients.style.display = 'none';
+        preciosxClients.style.display = 'none';
+        TallosxRamo.style.display = 'block';
         programord.style.display = 'none';
         programordg.style.display = 'none';
         fetchClientes();

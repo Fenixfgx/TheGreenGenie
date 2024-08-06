@@ -1347,6 +1347,7 @@ textarea {
     border-bottom-right-radius: 12px;
     font-family: system-ui;
     padding-bottom: 5px;
+    border-bottom-left-radius: 12px;
 }
 
 #cardsContainerx {
@@ -1924,4 +1925,159 @@ iframe {
 	border-radius: 0.25rem;
 	cursor: pointer;
 	transition: all ease 0.3s;
+}
+
+.butsend {
+    border: none !important;
+    background-color: #1c7b3c !important;
+    color: white !important;
+    padding: 0px !important;
+    border-radius: 12px !important;
+    padding-left: 33px !important;
+    padding-right: 33px !important;
+    margin-top: 3px !important;
+    position: relative !important;
+    width: 54% !important;
+}
+
+#productos-table {
+  
+  width: 100%;
+  margin-top: 17px;
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    border: transparent;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding-left: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+  
+}
+
+#productos-table2 {
+  
+  width: 100%;
+  margin-top: 17px;
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    border: transparent;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding-left: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+  
+}
+
+.pc {
+    background-color: #493971;
+    color: white;
+    padding: 4px;
+    border-radius: 12px;
+    text-align-last: center;
 }
