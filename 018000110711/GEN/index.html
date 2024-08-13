@@ -10,7 +10,7 @@
     <input class="text" type="date" id="fechaIn" placeholder="Fecha" onchange="actualizarFormatoFecha()" style="border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c;">
     
     <button id="buscarFuera" style="margin-left:7px; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white;">Buscar</button><button onclick="abrirNuevaPestana()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">SPDF</button><form id="functionForm">
-      <button type="button" onclick="executeAllFunctions()">Compilar</button>
+      <button type="button" class="comp" onclick="executeAllFunctions()">Compilar</button>
     </form><button onclick="ejecutarScript2();" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Compilar 2</button><button onclick="abriremail()" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Email Sender</button><img id="imagen1" class="imagen" src="https://www.thegreengenie.com.co/images/o6m.gif"><img id="imagen2" class="imagen" src="https://www.thegreengenie.com.co/images/XOsX.gif"><button style="display:none" id="ImprimirFuera" style="border-radius: 12px;padding: 6px;border-color: #00000000;box-shadow: 2px 2px 9px 0 #8080808c;background-color: white;margin-left:7px;">Imprimir</button></div>
     <br><br>
     <div id="miSeccion" style=" display: none; position: absolute; border-radius: 12px; padding: 6px; border-color: #00000000; box-shadow: 2px 2px 9px 0 #8080808c; background-color: white; margin-left: 45px; top: 80px; width: 1000px; height: 500px; z-index: 2;">
@@ -29,6 +29,14 @@
     width: 74px;
     position: absolute;
 }
+        .comp {
+    border-radius: 12px;
+    padding: 6px;
+    border-color: #00000000;
+    box-shadow: 2px 2px 9px 0 #8080808c;
+    background-color: white;
+    margin-left: 7px;
+        }
         #loading-image {
     display: none;
     position: fixed;
