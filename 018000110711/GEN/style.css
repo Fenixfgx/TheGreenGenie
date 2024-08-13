@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+button {
+cursor: pointer;
+}
+
 body {
   color: #2b2c48;
   font-family: "Jost", sans-serif;
