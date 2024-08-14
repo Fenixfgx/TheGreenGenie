@@ -48,7 +48,7 @@ document.getElementById('filtroCliente').addEventListener('input', function() {
 
 function clearFields() {
     var fields = [
-        'cantidadzzz', 'observacioneszzz','pozzz', 'productout', 'tcajaout','ttallosout', 'tallosramoout', 'rapiout','traout', 'tpout', 'pout','gradout', 'markout', 'atpaout', 'totalsteamout','tpreciooutz', 'totaltallosQB', 'totaltallosHB', 'totaltallosEB','totaltallosFLL', 'productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz',
+        'cantidadzzz', 'observacioneszzz','pozzz', 'productout', 'tcajaout','ttallosout', 'tallosramoout', 'rapiout','traout', 'tpout', 'pout','gradout', 'markout', 'atpaout', 'totalsteamout','tpreciooutz', 'totaltallosQB', 'totaltallosHB', 'atpazzz3','atpazzz4','atpazzz5','atpazzz6','atpazzz7','atpazzz8','atpazzz9','atpazzz10','atpazzz11', 'atpazzz','totaltallosEB','totaltallosFLL', 'productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz',
         'productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz', 'totaltalloszzz', 'totalramoszzz', 'tpreciozzz',
         'productlistzzz1', 'talloscajazzz1', 'tallosramozzz1', 'ramospiezazzz1', 'preciozzz1', 'gradolistzzz1', 'markzzz1', 'totaltalloszzz1', 'totalramoszzz1', 'tpreciozzz1',
         'productlistzzz2', 'talloscajazzz2', 'tallosramozzz2', 'ramospiezazzz2', 'preciozzz2', 'gradolistzzz2', 'markzzz2', 'totaltalloszzz2', 'totalramoszzz2', 'tpreciozzz2',
