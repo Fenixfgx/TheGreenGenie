@@ -2026,7 +2026,152 @@
 </div>
   <button type="submit" id="sub1zzz" class="butenv">Programar Orden</button>
 </form>
-
+<script> 
+  function check() {
+    actualizarGrado10();
+    actualizarGrado11();
+    actualizarGrado3();
+    actualizarGrado4();
+    actualizarGrado5();
+    actualizarGrado6();
+    actualizarGrado7();
+    actualizarGrado8();
+    actualizarGrado9();
+    actualizarMark();
+    actualizarMark10();
+    actualizarMark11();
+    actualizarMark3();
+    actualizarMark4();
+    actualizarMark5();
+    actualizarMark6();
+    actualizarMark7();
+    actualizarMark8();
+    actualizarMark9();
+    actualizarPrecio();
+    actualizarPrecio10();
+    actualizarPrecio11();
+    actualizarPrecio3();
+    actualizarPrecio4();
+    actualizarPrecio5();
+    actualizarPrecio6();
+    actualizarPrecio7();
+    actualizarPrecio8();
+    actualizarPrecio9();
+    actualizarProductOut();
+    actualizarProductoSeleccionado();
+    actualizarProductoSeleccionado10();
+    actualizarProductoSeleccionado11();
+    actualizarProductoSeleccionado3();
+    actualizarProductoSeleccionado4();
+    actualizarProductoSeleccionado5();
+    actualizarProductoSeleccionado6();
+    actualizarProductoSeleccionado7();
+    actualizarProductoSeleccionado8();
+    actualizarProductoSeleccionado9();
+    actualizarRamosPieza10();
+    actualizarRamosPieza11();
+    actualizarRamosPieza3();
+    actualizarRamosPieza4();
+    actualizarRamosPieza5();
+    actualizarRamosPieza6();
+    actualizarRamosPieza7();
+    actualizarRamosPieza8();
+    actualizarRamosPieza9();
+    actualizarTallosCaja();
+    actualizarTallosCaja10();
+    actualizarTallosCaja11();
+    actualizarTallosCaja3();
+    actualizarTallosCaja4();
+    actualizarTallosCaja5();
+    actualizarTallosCaja6();
+    actualizarTallosCaja7();
+    actualizarTallosCaja8();
+    actualizarTallosCaja9();
+    actualizarTallosRamo();
+    actualizarTallosRamo10();
+    actualizarTallosRamo11();
+    actualizarTallosRamo3();
+    actualizarTallosRamo4();
+    actualizarTallosRamo5();
+    actualizarTallosRamo6();
+    actualizarTallosRamo7();
+    actualizarTallosRamo8();
+    actualizarTallosRamo9();
+    actualizarTotalTallos();
+    actualizarTotalTallos10();
+    actualizarTotalTallos11();
+    actualizarTotalTallos3();
+    actualizarTotalTallos4();
+    actualizarTotalTallos5();
+    actualizarTotalTallos6();
+    actualizarTotalTallos7();
+    actualizarTotalTallos8();
+    actualizarTotalTallos9();
+    actualizaratpa();
+    actualizaratpa1();
+    actualizaratpa10();
+    actualizaratpa11();
+    actualizaratpa4();
+    actualizaratpa5();
+    actualizaratpa6();
+    actualizaratpa7();
+    actualizaratpa8();
+    actualizaratpa9();
+    atpaOut();
+    calcularRamoxPieza();
+    calcularRamoxPieza10();
+    calcularRamoxPieza11();
+    calcularRamoxPieza3();
+    calcularRamoxPieza4();
+    calcularRamoxPieza5();
+    calcularRamoxPieza6();
+    calcularRamoxPieza7();
+    calcularRamoxPieza8();
+    calcularRamoxPieza9();
+    calcularTotalPrecio();
+    calcularTotalPrecio10();
+    calcularTotalPrecio11();
+    calcularTotalPrecio3();
+    calcularTotalPrecio4();
+    calcularTotalPrecio5();
+    calcularTotalPrecio6();
+    calcularTotalPrecio7();
+    calcularTotalPrecio8();
+    calcularTotalPrecio9();
+    calcularTotalRamos();
+    calcularTotalRamos10();
+    calcularTotalRamos11();
+    calcularTotalRamos3();
+    calcularTotalRamos4();
+    calcularTotalRamos5();
+    calcularTotalRamos6();
+    calcularTotalRamos7();
+    calcularTotalRamos8();
+    calcularTotalRamos9();
+    calcularTotalTallos();
+    calcularTotalTallos10();
+    calcularTotalTallos11();
+    calcularTotalTallos3();
+    calcularTotalTallos4();
+    calcularTotalTallos5();
+    calcularTotalTallos6();
+    calcularTotalTallos7();
+    calcularTotalTallos8();
+    calcularTotalTallos9();
+    grOut();
+    markOut();
+    pOut();
+    rppOut();
+    sumPrecios();
+    sumTallos();
+    sumarInputs();
+    tcajaOut();
+    tpOut();
+    trOut();
+    tramosOut();
+    ttallosOut();
+}
+</script>
 </body>
 </html>
 
@@ -2214,10 +2359,10 @@ pairs.forEach((pair) => {
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
       event.preventDefault(); // Evita que el formulario se envíe de manera convencional
-
+       
       // Mostrar el símbolo de carga
       document.getElementById('loading').style.display = 'block';
-
+      check();
       // Enviar el formulario de manera asíncrona
       var formData = new FormData(this);
       fetch('https://script.google.com/macros/s/AKfycbxinRF5g1wol5lfv_AL-fQIael19ZOtafYjM5-t104eoUnde1A8CvZ5cwKbxOAPaYLw/exec', {
