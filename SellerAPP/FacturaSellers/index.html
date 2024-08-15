@@ -2336,60 +2336,72 @@ pairs.forEach((pair) => {
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
-
-      // Mostrar el símbolo de carga
-      document.getElementById('loading').style.display = 'block';
-      check();
-      // Enviar el formulario de manera asíncrona
-      var formData = new FormData(this);
-      fetch('https://script.google.com/macros/s/AKfycby-D9mmt033DxinF8MTa6fNw8FyqGaRAMLrHrZrw9vfWJzajggt-wbiqTywu7KceST_/exec', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.text();
+document.addEventListener('DOMContentLoaded', function() {
+    // Prevenir el envío del formulario al presionar Enter
+    document.getElementById('corporateFormzzz').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Previene el envío del formulario
         }
-        throw new Error('Error al enviar el formulario');
-      })
-      .then(data => {
-        // Ocultar el símbolo de carga
-        document.getElementById('loading').style.display = 'none';
+    });
 
-         // Mostrar el mensaje de confirmación utilizando Toastify
-                    Toastify({
-                        text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
-                        duration: 3000, // Duración del mensaje en milisegundos
-                        close: true,
-                        gravity: "top", // `top` or `bottom`
-                        position: "right", // `left`, `center` or `right`
-                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-                    }).showToast();
+    // Activar el envío solo al hacer clic en el botón
+    document.getElementById('sub1zzz').addEventListener('click', function() {
+        document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de manera convencional
 
-                    setTimeout(function() {
-                        search();
-                    }, 2000); // 2000 milisegundos equivalen a 2 segundos
-                })
-                .catch(error => {
-        // Ocultar el símbolo de carga en caso de error
-        document.getElementById('loading').style.display = 'none';
+            // Mostrar el símbolo de carga
+            document.getElementById('loading').style.display = 'block';
+            check();
 
-        // En caso de error, mostrar un mensaje de error utilizando un alert
-        Toastify({
-                        text: 'Error: ' + error.message,
-                        duration: 3000,
-                        close: true,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
-                    }).showToast();
-                });
+            // Enviar el formulario de manera asíncrona
+            var formData = new FormData(this);
+            fetch('https://script.google.com/macros/s/AKfycby-D9mmt033DxinF8MTa6fNw8FyqGaRAMLrHrZrw9vfWJzajggt-wbiqTywu7KceST_/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('Error al enviar el formulario');
+            })
+            .then(data => {
+                // Ocultar el símbolo de carga
+                document.getElementById('loading').style.display = 'none';
+
+                // Mostrar el mensaje de confirmación utilizando Toastify
+                Toastify({
+                    text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
+                    duration: 3000, // Duración del mensaje en milisegundos
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
+                }).showToast();
+
+                setTimeout(function() {
+                    search();
+                }, 2000); // 2000 milisegundos equivalen a 2 segundos
+            })
+            .catch(error => {
+                // Ocultar el símbolo de carga en caso de error
+                document.getElementById('loading').style.display = 'none';
+
+                // En caso de error, mostrar un mensaje de error utilizando Toastify
+                Toastify({
+                    text: 'Error: ' + error.message,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+                }).showToast();
             });
         });
+    });
+});
 </script>
+
 <script>
         function actualizarProductOut() {
             const valorSeleccionado1 = document.getElementById('productlistzzz1').value;
