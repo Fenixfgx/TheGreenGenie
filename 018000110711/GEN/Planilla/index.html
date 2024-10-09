@@ -465,7 +465,7 @@ function initClient() {
 function cargarDatos() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w',
-        range: 'PERSONAL!G2:J10'
+        range: 'PERSONAL!G2:J15'
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
