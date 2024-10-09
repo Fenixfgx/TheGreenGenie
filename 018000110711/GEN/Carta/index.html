@@ -424,7 +424,7 @@ El embarque ha sido preparado en lugares con óptimas condiciones de seguridad y
 function cargarDatos() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w',
-        range: 'PERSONAL!N2:O10'
+        range: 'PERSONAL!N2:O15'
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
