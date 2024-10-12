@@ -86,11 +86,17 @@ const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
 const SHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
 const SHEET_NAME = 'Sellers';
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Cuando el DOM se ha cargado completamente, disparar el evento 'click' en el botón
+    document.getElementById('search-button').click();
+});
+
 document.getElementById('search-button').addEventListener('click', function() {
     const client = document.getElementById('client-selector').value;
     const date = document.getElementById('date-selector').value;
-    fetchData(client, date);
+    fetchData(client, date); // Llamar a la función fetchData con los valores seleccionados
 });
+
 
 async function fetchData(client, date) {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}!F:U?key=${API_KEY}`;
