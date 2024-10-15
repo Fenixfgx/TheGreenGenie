@@ -87,9 +87,12 @@ const SHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
 const SHEET_NAME = 'Sellers';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Cuando el DOM se ha cargado completamente, disparar el evento 'click' en el botón
-    document.getElementById('search-button').click();
+    // Añadir un retraso de 1 segundo antes de disparar el evento 'click'
+    setTimeout(function() {
+        document.getElementById('search-button').click();
+    }, 1000); // 1000 milisegundos = 1 segundo
 });
+
 
 document.getElementById('search-button').addEventListener('click', function() {
     const client = document.getElementById('client-selector').value;
