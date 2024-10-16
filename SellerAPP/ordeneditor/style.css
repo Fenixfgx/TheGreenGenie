@@ -40,6 +40,10 @@ header {
     border-color: #80808057;
 }
 
+datalist {
+    display: block;
+}
+
 /* Botón */
 .butenv {
     background-color: #0288d1;

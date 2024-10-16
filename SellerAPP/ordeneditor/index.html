@@ -14,6 +14,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Pedido</title>
+  <script>
+
+</script> 
+   
   <style>
     /* Estilos para el formulario */
     .form-table {
@@ -128,7 +132,7 @@
       </div>
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
 <label for="fechades">Cliente</label>
-        <input class="cliente1" id="clientelzzz" name="clientelzzz"></input>
+        <input class="cliente1" id="clientelzzz" name="clientelzzz">
       </div>
       <div class="form-cell" colspan="2" style="display:none;">
         <select id="tipordenzzz" name="tipordenzzz">
@@ -166,6 +170,7 @@
 <label for="date-selector">Fecha:</label>
 <input type="text" id="date-selector">
 <button id="search-button" type="button">Buscar</button>
+  <button onclick="convertAllSelectsToInputs()" type="button">Cinput</button>
         </div>
         <div class="results-container" style="display:none;">
             <table id="results-table">
@@ -2158,7 +2163,7 @@ pairs.forEach((pair) => {
 
       // Enviar el formulario de manera asíncrona
       var formData = new FormData(this);
-      fetch('https://script.google.com/macros/s/AKfycbyNgaU_8gd-8iIIOmeS1fiYKMph1oxJd7qgFixHl-nf4e7pSaBm4Q6ypmHbgVf9LYmV/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbzZywN3c0hCBbf0VWltph5tReZHIe_AOiK9dAqQxzctH74dmOeZnMQyjDhRvSM9lWPG/exec', {
         method: 'POST',
         body: formData
       })

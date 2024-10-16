@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Añadir un retraso de 1 segundo antes de disparar el evento 'click'
     setTimeout(function() {
         document.getElementById('search-button').click();
-    }, 600); // 1000 milisegundos = 1 segundo
+    }, 1200); // 1000 milisegundos = 1 segundo
 });
 
 
@@ -198,3 +198,71 @@ function updateInputs(inputIds, values) {
   window.addEventListener('DOMContentLoaded', function() {
     prellenarInputs();
   });
+
+// Obtener todos los elementos select en la página
+const allSelects = document.querySelectorAll('select');
+
+// Agregar la lógica a cada select
+allSelects.forEach(selectElement => {
+    // Crear un campo de input para ingresar valores personalizados
+    const inputElement = document.createElement('input');
+    inputElement.type = 'text';
+    inputElement.style.display = 'none'; // Ocultamos el input inicialmente
+    inputElement.className = 'custom-input'; // Asignamos una clase para el estilo
+    selectElement.parentNode.insertBefore(inputElement, selectElement.nextSibling); // Insertamos el input después del select
+
+    // Detectar cuando cambia el select
+    selectElement.addEventListener('change', function() {
+        const selectedValue = selectElement.value;
+
+        // Si el valor no está en las opciones, mostrar el input
+        const optionExists = Array.from(selectElement.options).some(option => option.value === selectedValue);
+
+        if (!optionExists && selectedValue !== "") {
+            selectElement.style.display = 'none'; // Ocultamos el select
+            inputElement.style.display = 'inline-block'; // Mostramos el input
+            inputElement.value = selectedValue; // Llenamos el input con el valor seleccionado
+        }
+    });
+
+    // Cuando se edite el input, actualizar el valor del select
+    inputElement.addEventListener('input', function() {
+        selectElement.value = inputElement.value; // Actualizar el select con el valor del input
+    });
+
+    // Cuando el input pierda el foco, volver a mostrar el select
+    inputElement.addEventListener('blur', function() {
+        if (inputElement.value.trim() === '') {
+            inputElement.style.display = 'none'; // Ocultamos el input
+            selectElement.style.display = 'inline-block'; // Volvemos a mostrar el select
+        }
+    });
+});
+
+function convertAllSelectsToInputs() {
+            // Obtener todos los elementos <select> en la página
+            const allSelects = document.querySelectorAll('select');
+
+            // Recorrer cada <select> y reemplazarlo por un <input>
+            allSelects.forEach(select => {
+                // Obtener el valor seleccionado actualmente (o vacío si no hay seleccionado)
+                const selectedValue = select.value || '';
+
+                // Crear un nuevo elemento <input> con el valor seleccionado
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = selectedValue; // Asignar el valor seleccionado o vacío
+                input.name = select.name || select.id;  // Mantener el nombre o id del select para el input
+                input.id = select.id; // Asignar el mismo id del select al input
+
+                // Insertar el nuevo <input> antes del <select>
+                select.parentNode.insertBefore(input, select);
+                // Eliminar el <select>
+                select.parentNode.removeChild(select);
+            });
+        }
+
+ // Convertir todos los selects a inputs cuando se carga el contenido del DOM, con un retraso de 1 segundo
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(convertAllSelectsToInputs, 400); // Retraso de 1 segundo (1000 ms)
+        });
