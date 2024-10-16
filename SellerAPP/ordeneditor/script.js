@@ -173,31 +173,51 @@ function updateInputs(inputIds, values) {
         }
 
 
-  // Función para obtener parámetros de la URL
-  function obtenerParametrosURL() {
-    var parametros = {};
-    var queryString = window.location.search.substring(1);
-    var pares = queryString.split('&');
-    for (var i = 0; i < pares.length; i++) {
-      var par = pares[i].split('=');
-      parametros[decodeURIComponent(par[0])] = decodeURIComponent(par[1]);
-    }
-    return parametros;
+ // Función para obtener parámetros de la URL
+function obtenerParametrosURL() {
+  var parametros = {};
+  var queryString = window.location.search.substring(1);
+  var pares = queryString.split('&');
+  for (var i = 0; i < pares.length; i++) {
+    var par = pares[i].split('=');
+    parametros[decodeURIComponent(par[0])] = decodeURIComponent(par[1]);
+  }
+  return parametros;
+}
+
+// Función para prellenar los inputs con los parámetros de la URL
+function prellenarInputs() {
+  var parametros = obtenerParametrosURL();
+
+  // Poner valores y disparar eventos de cambio para que el formulario los registre
+  var clientSelector = document.getElementById('client-selector');
+  var dateSelector = document.getElementById('date-selector');
+  var fechades = document.getElementById('fechades');
+  var clientelzzz = document.getElementById('clientelzzz');
+
+  if (clientSelector) {
+    clientSelector.value = parametros['client-selector'] || '';
+    clientSelector.dispatchEvent(new Event('input')); // Forzar que se reconozca el cambio
   }
 
-  // Función para prellenar los inputs con los parámetros de la URL
-  function prellenarInputs() {
-    var parametros = obtenerParametrosURL();
-    document.getElementById('client-selector').value = parametros['client-selector'] || '';
-    document.getElementById('date-selector').value = parametros['date-selector'] || '';
-    document.getElementById('fechades').value = parametros['fechades'] || '';
-    document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
+  if (dateSelector) {
+    dateSelector.value = parametros['date-selector'] || '';
+    dateSelector.dispatchEvent(new Event('input'));
   }
 
-  // Llamar a la función para prellenar los inputs al cargar la página
-  window.addEventListener('DOMContentLoaded', function() {
-    prellenarInputs();
-  });
+  if (fechades) {
+    fechades.value = parametros['fechades'] || '';
+    fechades.dispatchEvent(new Event('input'));
+  }
+
+  if (clientelzzz) {
+    clientelzzz.value = parametros['clientelzzz'] || '';
+    clientelzzz.dispatchEvent(new Event('input'));
+  }
+}
+
+// Llamar la función para prellenar inputs cuando se cargue el DOM
+document.addEventListener('DOMContentLoaded', prellenarInputs);
 
 // Obtener todos los elementos select en la página
 const allSelects = document.querySelectorAll('select');
