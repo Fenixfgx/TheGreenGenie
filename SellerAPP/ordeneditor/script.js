@@ -98,6 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000); // 1000 milisegundos = 1 segundo
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Añadir un retraso de 1 segundo antes de disparar el evento 'click'
+    setTimeout(function() {
+        document.getElementById('search-button').click();
+    }, 1300); // 1000 milisegundos = 1 segundo
+});
 
 document.getElementById('search-button').addEventListener('click', function() {
     const client = document.getElementById('client-selector').value;
