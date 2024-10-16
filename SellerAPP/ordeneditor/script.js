@@ -86,11 +86,16 @@ const API_KEY = 'AIzaSyC7trVxLML3qsNu1jYg7Qmmgc-RuWsMZg8';
 const SHEET_ID = '1BMbB6UQLeGXIKAYJZoE67oiSXbqx-7qsDHaozbYPa1w';
 const SHEET_NAME = 'Sellers';
 
+ // Convertir todos los selects a inputs cuando se carga el contenido del DOM, con un retraso de 1 segundo
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(convertAllSelectsToInputs, 300); // Retraso de 1 segundo (1000 ms)
+        });
+
 document.addEventListener('DOMContentLoaded', function() {
     // Añadir un retraso de 1 segundo antes de disparar el evento 'click'
     setTimeout(function() {
         document.getElementById('search-button').click();
-    }, 1400); // 1000 milisegundos = 1 segundo
+    }, 1000); // 1000 milisegundos = 1 segundo
 });
 
 
@@ -282,7 +287,4 @@ function convertAllSelectsToInputs() {
             });
         }
 
- // Convertir todos los selects a inputs cuando se carga el contenido del DOM, con un retraso de 1 segundo
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(convertAllSelectsToInputs, 350); // Retraso de 1 segundo (1000 ms)
-        });
+
