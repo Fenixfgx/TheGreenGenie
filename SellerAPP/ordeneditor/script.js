@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Añadir un retraso de 1 segundo antes de disparar el evento 'click'
     setTimeout(function() {
         document.getElementById('search-button').click();
-    }, 1320); // 1000 milisegundos = 1 segundo
+    }, 1400); // 1000 milisegundos = 1 segundo
 });
 
 
@@ -284,5 +284,5 @@ function convertAllSelectsToInputs() {
 
  // Convertir todos los selects a inputs cuando se carga el contenido del DOM, con un retraso de 1 segundo
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(convertAllSelectsToInputs, 400); // Retraso de 1 segundo (1000 ms)
+            setTimeout(convertAllSelectsToInputs, 350); // Retraso de 1 segundo (1000 ms)
         });
