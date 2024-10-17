@@ -2344,12 +2344,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Manejador de envío del formulario
+    // Manejador de envío del formulario (se agrega solo una vez)
     document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario se envíe de manera convencional
 
         // Mostrar el símbolo de carga
         document.getElementById('loading').style.display = 'block';
+
+        // Bloquear el botón de envío para prevenir múltiples clics
+        document.getElementById('sub1zzz').disabled = true;
 
         // Enviar el formulario de manera asíncrona
         var formData = new FormData(this);
@@ -2367,6 +2370,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ocultar el símbolo de carga
             document.getElementById('loading').style.display = 'none';
 
+            // Habilitar nuevamente el botón de envío
+            document.getElementById('sub1zzz').disabled = false;
+
             // Mostrar el mensaje de confirmación utilizando Toastify
             Toastify({
                 text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
@@ -2378,12 +2384,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }).showToast();
 
             setTimeout(function() {
-                search();
+                search(); // Ejecutar la función de búsqueda después de 2 segundos
             }, 2000); // 2000 milisegundos equivalen a 2 segundos
         })
         .catch(error => {
             // Ocultar el símbolo de carga en caso de error
             document.getElementById('loading').style.display = 'none';
+
+            // Habilitar nuevamente el botón de envío
+            document.getElementById('sub1zzz').disabled = false;
 
             // En caso de error, mostrar un mensaje de error utilizando Toastify
             Toastify({
@@ -2399,7 +2408,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Activar el envío solo al hacer clic en el botón
     document.getElementById('sub1zzz').addEventListener('click', function() {
-        document.getElementById('corporateFormzzz').submit();
+        // Evitar clics múltiples
+        if (!document.getElementById('sub1zzz').disabled) {
+            document.getElementById('corporateFormzzz').submit();
+        }
     });
 });
 </script>
