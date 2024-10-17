@@ -2,9 +2,13 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - FACTURA ADV</title>
+  <title>FACTURA ADV</title>
   <link rel="stylesheet" href="./style.css">
-
+ <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -2153,44 +2157,56 @@ pairs.forEach((pair) => {
   
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de manera convencional
 
-      // Mostrar el símbolo de carga
-      document.getElementById('loading').style.display = 'block';
+    // Mostrar el símbolo de carga
+    document.getElementById('loading').style.display = 'block';
 
-      // Enviar el formulario de manera asíncrona
-      var formData = new FormData(this);
-      fetch('https://script.google.com/macros/s/AKfycbxj39jzQxx83NwniHJaFi54-pL-8JtYMhMZkJZGxcawFxxpiZ3ExmkuIMVIXLQW31hv/exec', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.text();
-        }
-        throw new Error('Error al enviar el formulario');
-      })
-      .then(data => {
-        // Ocultar el símbolo de carga
-        document.getElementById('loading').style.display = 'none';
+    // Enviar el formulario de manera asíncrona
+    var formData = new FormData(this);
+    fetch('https://script.google.com/macros/s/AKfycbxj39jzQxx83NwniHJaFi54-pL-8JtYMhMZkJZGxcawFxxpiZ3ExmkuIMVIXLQW31hv/exec', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      }
+      throw new Error('Error al enviar el formulario');
+    })
+    .then(data => {
+      // Ocultar el símbolo de carga
+      document.getElementById('loading').style.display = 'none';
 
-        // Mostrar el mensaje de confirmación utilizando un alert
-        alert(data); // El mensaje de confirmación devuelto desde el script de Google Apps Script
-        setTimeout(function() {
-          search();
-        }, 2000); // 2000 milisegundos equivalen a 2 segundos
-      })
-      .catch(error => {
-        // Ocultar el símbolo de carga en caso de error
-        document.getElementById('loading').style.display = 'none';
+      // Mostrar el mensaje de confirmación utilizando SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Formulario enviado',
+        text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
+        confirmButtonText: 'OK'
+      });
 
-        // En caso de error, mostrar un mensaje de error utilizando un alert
-        alert('Error: ' + error.message);
+      // Llamar a search() después de 2 segundos
+      setTimeout(function() {
+        search();
+      }, 2000);
+    })
+    .catch(error => {
+      // Ocultar el símbolo de carga en caso de error
+      document.getElementById('loading').style.display = 'none';
+
+      // Mostrar un mensaje de error utilizando SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error: ' + error.message,
+        confirmButtonText: 'OK'
       });
     });
   });
+});
 </script>
 
 
