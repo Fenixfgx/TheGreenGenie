@@ -2344,60 +2344,77 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Activar el envío solo al hacer clic en el botón
-    document.getElementById('sub1zzz').addEventListener('click', function() {
-        document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+    // Obtener referencias al formulario y al botón de envío
+    const form = document.getElementById('corporateFormzzz');
+    const submitButton = document.getElementById('sub1zzz');
 
-            // Mostrar el símbolo de carga
-            document.getElementById('loading').style.display = 'block';
-            check();
+    // Función para manejar el envío del formulario
+    function handleFormSubmit(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de manera convencional
 
-            // Enviar el formulario de manera asíncrona
-            var formData = new FormData(this);
-            fetch('https://script.google.com/macros/s/AKfycbw4hD5LVRlUjK8v57u3nKq-vJ2rSsS1u85Zrzf_m8qh-EozfJ1_2LXPbWJlW20Ch8v7/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error('Error al enviar el formulario');
-            })
-            .then(data => {
-                // Ocultar el símbolo de carga
-                document.getElementById('loading').style.display = 'none';
+        // Deshabilitar el botón de envío para prevenir múltiples envíos
+        submitButton.disabled = true;
 
-                // Mostrar el mensaje de confirmación utilizando Toastify
-                Toastify({
-                    text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
-                    duration: 3000, // Duración del mensaje en milisegundos
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-                }).showToast();
+        // Mostrar el símbolo de carga
+        document.getElementById('loading').style.display = 'block';
+        check();
 
-                setTimeout(function() {
-                    search();
-                }, 2000); // 2000 milisegundos equivalen a 2 segundos
-            })
-            .catch(error => {
-                // Ocultar el símbolo de carga en caso de error
-                document.getElementById('loading').style.display = 'none';
+        // Enviar el formulario de manera asíncrona
+        var formData = new FormData(form);
+        fetch('https://script.google.com/macros/s/AKfycbw4hD5LVRlUjK8v57u3nKq-vJ2rSsS1u85Zrzf_m8qh-EozfJ1_2LXPbWJlW20Ch8v7/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('Error al enviar el formulario');
+        })
+        .then(data => {
+            // Ocultar el símbolo de carga
+            document.getElementById('loading').style.display = 'none';
 
-                // En caso de error, mostrar un mensaje de error utilizando Toastify
-                Toastify({
-                    text: 'Error: ' + error.message,
-                    duration: 3000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
-                }).showToast();
-            });
+            // Mostrar el mensaje de confirmación utilizando Toastify
+            Toastify({
+                text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
+                duration: 3000, // Duración del mensaje en milisegundos
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
+            }).showToast();
+
+            // Volver a habilitar el botón de envío después de 2 segundos
+            setTimeout(function() {
+                submitButton.disabled = false;
+                search(); // Ejecuta la búsqueda o acción posterior
+            }, 2000); // 2000 milisegundos equivalen a 2 segundos
+        })
+        .catch(error => {
+            // Ocultar el símbolo de carga en caso de error
+            document.getElementById('loading').style.display = 'none';
+
+            // En caso de error, mostrar un mensaje de error utilizando Toastify
+            Toastify({
+                text: 'Error: ' + error.message,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+            }).showToast();
+
+            // Volver a habilitar el botón de envío en caso de error
+            submitButton.disabled = false;
         });
+    }
+
+    // Adjuntar el evento de envío solo una vez
+    submitButton.addEventListener('click', function() {
+        form.removeEventListener('submit', handleFormSubmit); // Asegurar que no se adjunte múltiples veces
+        form.addEventListener('submit', handleFormSubmit);
+        form.submit(); // Enviar el formulario
     });
 });
 </script>
