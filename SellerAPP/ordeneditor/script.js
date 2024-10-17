@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Añadir un retraso de 1 segundo antes de disparar el evento 'click'
     setTimeout(function() {
         document.getElementById('search-button').click();
-    }, 1200); // 1000 milisegundos = 1 segundo
+    }, 2000); // 1000 milisegundos = 1 segundo
 });
 
 document.addEventListener('DOMContentLoaded', function() {
