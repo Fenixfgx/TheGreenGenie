@@ -205,6 +205,7 @@ function prellenarInputs() {
   var dateSelector = document.getElementById('date-selector');
   var fechades = document.getElementById('fechades');
   var clientelzzz = document.getElementById('clientelzzz');
+  var vendedorh = document.getElementById('vendedorh');
 
   if (clientSelector) {
     clientSelector.value = parametros['client-selector'] || '';
@@ -219,6 +220,11 @@ function prellenarInputs() {
   if (fechades) {
     fechades.value = parametros['fechades'] || '';
     fechades.dispatchEvent(new Event('input'));
+  }
+
+ if (vendedorh) {
+    vendedorh.value = parametros['vendedorh'] || '';
+    vendedorh.dispatchEvent(new Event('input'));
   }
 
   if (clientelzzz) {
