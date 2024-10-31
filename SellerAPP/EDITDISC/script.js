@@ -360,3 +360,33 @@ function simulateInteraction() {
         lineaInput.addEventListener("input", function() {
             linea2Input.value = lineaInput.value;
         });
+
+/////////
+
+// Función para obtener parámetros de la URL
+  function obtenerParametrosURL() {
+    var parametros = {};
+    var queryString = window.location.search.substring(1);
+    var pares = queryString.split('&');
+    for (var i = 0; i < pares.length; i++) {
+      var par = pares[i].split('=');
+      parametros[decodeURIComponent(par[0])] = decodeURIComponent(par[1]);
+    }
+    return parametros;
+  }
+
+  // Función para prellenar los inputs con los parámetros de la URL
+  function prellenarInputs() {
+    var parametros = obtenerParametrosURL();
+    document.getElementById('cliente').value = parametros['cliente'] || '';
+    document.getElementById('fecha').value = parametros['fecha'] || '';
+    document.getElementById('fechades').value = parametros['fechades'] || '';
+    document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
+    document.getElementById('linea').value = parametros['linea'] || '';
+    document.getElementById('vendedorzzz').value = parametros['vendedorzzz'] || '';
+  }
+
+  // Llamar a la función para prellenar los inputs al cargar la página
+  window.addEventListener('DOMContentLoaded', function() {
+    prellenarInputs();
+  });
