@@ -380,8 +380,6 @@ function simulateInteraction() {
     var parametros = obtenerParametrosURL();
     document.getElementById('cliente').value = parametros['cliente'] || '';
     document.getElementById('fecha').value = parametros['fecha'] || '';
-    document.getElementById('fechades').value = parametros['fechades'] || '';
-    document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
     document.getElementById('linea').value = parametros['linea'] || '';
     document.getElementById('vendedorzzz').value = parametros['vendedorzzz'] || '';
   }
