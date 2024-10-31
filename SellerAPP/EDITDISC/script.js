@@ -390,3 +390,8 @@ function prellenarInputs() {
 window.addEventListener('DOMContentLoaded', function() {
   prellenarInputs();
 });
+
+// Llamar a la función para prellenar los inputs al cargar la página
+window.addEventListener('DOMContentLoaded', function() {
+  prellenarInputs();
+});
