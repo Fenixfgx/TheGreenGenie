@@ -361,19 +361,17 @@ function simulateInteraction() {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const startButton = document.getElementById('start');
     
-    // Desactiva el botón inicialmente
-    startButton.disabled = true;
+    // Asegúrate de que el botón esté activado
+    startButton.disabled = false;
     
-    // Activa el botón después de 1 segundo
+    // Simula el clic en el botón después de 1 segundo
     setTimeout(() => {
-        startButton.disabled = false;
+        startButton.click();
     }, 500);
 });
-
 
 ////////
 
