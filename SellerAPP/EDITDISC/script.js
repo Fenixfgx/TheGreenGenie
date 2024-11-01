@@ -500,3 +500,15 @@ function prellenarInputs() {
   window.addEventListener('DOMContentLoaded', function() {
     prellenarInputs();
   });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.getElementById('start');
+    
+    // Asegúrate de que el botón esté activado
+    startButton.disabled = false;
+    
+    // Simula el clic en el botón después de 1 segundo
+    setTimeout(() => {
+        startButton.click();
+    }, 500);
+});
