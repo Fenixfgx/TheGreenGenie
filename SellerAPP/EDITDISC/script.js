@@ -439,28 +439,40 @@ function showFields() {
 
 function simulateInteraction() {
     return new Promise((resolve) => {
-        const form = document.getElementById('corporateFormzzz');
-        
-        if (form) {
-            const inputs = form.querySelectorAll('input, select, textarea');
-            
-            inputs.forEach((input) => {
-                // Solo simula interacción si el input no está vacío
-                if (input.value.trim() !== '') {
-                    // Simula interacción enfocando cada campo
-                    input.focus(); // Enfoca el campo
-                    const event = new Event('input', { bubbles: true }); // Crea evento de entrada
-                    input.dispatchEvent(event); // Lanza el evento para registrar la interacción
-                }
-            });
+        const forms = ['corporateFormzzz', 'searchFormhtml']; // Array de IDs de formularios a simular
+        let formsProcessed = 0; // Contador para saber cuántos formularios han sido procesados
 
-            resolve(); // Resuelve la promesa inmediatamente después de la interacción
-        } else {
-            console.error('Formulario no encontrado: corporateFormzzz');
-            resolve();
-        }
+        forms.forEach((formId) => {
+            const form = document.getElementById(formId);
+
+            if (form) {
+                const inputs = form.querySelectorAll('input, select, textarea');
+                
+                inputs.forEach((input) => {
+                    // Solo simula interacción si el input no está vacío
+                    if (input.value.trim() !== '') {
+                        // Simula interacción enfocando cada campo
+                        input.focus(); // Enfoca el campo
+                        const event = new Event('input', { bubbles: true }); // Crea evento de entrada
+                        input.dispatchEvent(event); // Lanza el evento para registrar la interacción
+                    }
+                });
+
+                formsProcessed++;
+                if (formsProcessed === forms.length) {
+                    resolve(); // Resuelve la promesa después de procesar todos los formularios
+                }
+            } else {
+                console.error(`Formulario no encontrado: ${formId}`);
+                formsProcessed++;
+                if (formsProcessed === forms.length) {
+                    resolve(); // Resuelve la promesa aunque algún formulario no se haya encontrado
+                }
+            }
+        });
     });
 }
+
 
 ////////
 
