@@ -362,6 +362,19 @@ function simulateInteraction() {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.getElementById('start');
+    
+    // Desactiva el botón inicialmente
+    startButton.disabled = true;
+    
+    // Activa el botón después de 1 segundo
+    setTimeout(() => {
+        startButton.disabled = false;
+    }, 500);
+});
+
+
 ////////
 
    // Seleccionar los elementos de entrada
