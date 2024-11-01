@@ -27,6 +27,118 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 });
 
+///////////
+
+function delete1() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz', 'talloscajazzz', 'tallosramozzz', 'ramospiezazzz', 'preciozzz', 'gradolistzzz', 'markzzz'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete2() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz3', 'talloscajazzz3', 'tallosramozzz3', 'ramospiezazzz3', 'preciozzz3', 'gradolistzzz3', 'markzzz3'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete3() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz4', 'talloscajazzz4', 'tallosramozzz4', 'ramospiezazzz4', 'preciozzz4', 'gradolistzzz4', 'markzzz4'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete4() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz5', 'talloscajazzz5', 'tallosramozzz5', 'ramospiezazzz5', 'preciozzz5', 'gradolistzzz5', 'markzzz5'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete5() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz6', 'talloscajazzz6', 'tallosramozzz6', 'ramospiezazzz6', 'preciozzz6', 'gradolistzzz6', 'markzzz6'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete6() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz7', 'talloscajazzz7', 'tallosramozzz7', 'ramospiezazzz7', 'preciozzz7', 'gradolistzzz7', 'markzzz7'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete7() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz8', 'talloscajazzz8', 'tallosramozzz8', 'ramospiezazzz8', 'preciozzz8', 'gradolistzzz8', 'markzzz8'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete8() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz9', 'talloscajazzz9', 'tallosramozzz9', 'ramospiezazzz9', 'preciozzz9', 'gradolistzzz9', 'markzzz9'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete9() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz10', 'talloscajazzz10', 'tallosramozzz10', 'ramospiezazzz10', 'preciozzz10', 'gradolistzzz10', 'markzzz10'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
+function delete10() {
+    // Campos que deseas limpiar
+    var fieldsToClear = ['productlistzzz11', 'talloscajazzz11', 'tallosramozzz11', 'ramospiezazzz11', 'preciozzz11', 'gradolistzzz11', 'markzzz11'];
+
+    fieldsToClear.forEach(function(field) {
+        var element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Limpia el valor del campo
+        }
+    });
+}
 ////////////
 
 function clearFields() {
@@ -327,51 +439,28 @@ function showFields() {
 
 function simulateInteraction() {
     return new Promise((resolve) => {
-        const forms = ['corporateFormzzz', 'searchFormhtml']; // Array de IDs de formularios a simular
-        let formsProcessed = 0; // Contador para saber cuántos formularios han sido procesados
-
-        forms.forEach((formId) => {
-            const form = document.getElementById(formId);
-
-            if (form) {
-                const inputs = form.querySelectorAll('input, select, textarea');
-                
-                inputs.forEach((input) => {
-                    // Solo simula interacción si el input no está vacío
-                    if (input.value.trim() !== '') {
-                        // Simula interacción enfocando cada campo
-                        input.focus(); // Enfoca el campo
-                        const event = new Event('input', { bubbles: true }); // Crea evento de entrada
-                        input.dispatchEvent(event); // Lanza el evento para registrar la interacción
-                    }
-                });
-
-                formsProcessed++;
-                if (formsProcessed === forms.length) {
-                    resolve(); // Resuelve la promesa después de procesar todos los formularios
+        const form = document.getElementById('corporateFormzzz');
+        
+        if (form) {
+            const inputs = form.querySelectorAll('input, select, textarea');
+            
+            inputs.forEach((input) => {
+                // Solo simula interacción si el input no está vacío
+                if (input.value.trim() !== '') {
+                    // Simula interacción enfocando cada campo
+                    input.focus(); // Enfoca el campo
+                    const event = new Event('input', { bubbles: true }); // Crea evento de entrada
+                    input.dispatchEvent(event); // Lanza el evento para registrar la interacción
                 }
-            } else {
-                console.error(`Formulario no encontrado: ${formId}`);
-                formsProcessed++;
-                if (formsProcessed === forms.length) {
-                    resolve(); // Resuelve la promesa aunque algún formulario no se haya encontrado
-                }
-            }
-        });
+            });
+
+            resolve(); // Resuelve la promesa inmediatamente después de la interacción
+        } else {
+            console.error('Formulario no encontrado: corporateFormzzz');
+            resolve();
+        }
     });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const startButton = document.getElementById('start');
-    
-    // Asegúrate de que el botón esté activado
-    startButton.disabled = false;
-    
-    // Simula el clic en el botón después de 1 segundo
-    setTimeout(() => {
-        startButton.click();
-    }, 500);
-});
 
 ////////
 
@@ -403,6 +492,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var parametros = obtenerParametrosURL();
     document.getElementById('cliente').value = parametros['cliente'] || '';
     document.getElementById('fecha').value = parametros['fecha'] || '';
+    document.getElementById('fechades').value = parametros['fechades'] || '';
+    document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
     document.getElementById('linea').value = parametros['linea'] || '';
     document.getElementById('vendedorzzz').value = parametros['vendedorzzz'] || '';
   }

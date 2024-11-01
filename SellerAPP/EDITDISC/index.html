@@ -109,7 +109,7 @@ textarea {
       <label for="linea">Línea:</label>
     <input type="text" id="linea" name="linea" required>
       <br><br>
-        <button id="start" type="submit">Buscar</button>
+        <button type="submit">Buscar</button>
     </form>
 <div style="display:none;">
     <h2>Resultados:</h2>
@@ -252,23 +252,9 @@ textarea {
             }
         });
     </script>
-    
-    <button onclick="clearFields()" style="background-color: #007bff;color: #fff; border: none; border-radius: 4px; padding: 0.5rem 1rem;cursor: pointer;font-size: 1rem;margin-top: 1rem;width: 153px;" type="button">Limpiar Campos</button>
+  
+    <button onclick="clearFields()" style="background-color: #007bff;color: #fff; border: none; border-radius: 4px; padding: 0.5rem 1rem;cursor: pointer;font-size: 1rem;margin-top: -1rem;width: 153px;" type="button">Limpiar Campos</button>
     <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-    const startButton = document.getElementById('start');
-    
-    // Asegúrate de que el botón esté activado
-    startButton.disabled = false;
-    
-    // Simula el clic en el botón después de 1 segundo
-    setTimeout(() => {
-        startButton.click();
-    }, 1000);
-});
-
-      
         document.getElementById('cantidadzzz').addEventListener('input', function() {
             var fx1 = document.getElementById('fx2');
             if (this.value) {
@@ -469,9 +455,7 @@ textarea {
       <div class="form-cell" colspan="9">
         <input type="text" id="markzzz" name="markzzz" >
       </div>
-      <div class="form-cell" colspan="9">
-       <button type="button" class="btadd" id="add1">Agregar Fila</button>
-      </div>
+       <button type="button" class="btadd" onclick="delete1()" >Eliminar Fila</button>
       <script>
 document.getElementById('add1').addEventListener('click', function() {
   var formRow = document.getElementById('fila1');
@@ -594,7 +578,7 @@ document.getElementById('add1').addEventListener('click', function() {
     <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz3" name="atpazzz3">
       </div>
-      <button id="add2" type="button">Agregar Fila</button>
+      <button id="add2" type="button" onclick="delete2()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add2').addEventListener('click', function() {
   var formRow = document.getElementById('fila2');
@@ -717,7 +701,7 @@ document.getElementById('add2').addEventListener('click', function() {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz4" name="atpazzz4">
       </div>
-    <button id="add3" type="button">Agregar Fila</button>
+    <button id="add3" type="button" onclick="delete3()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add3').addEventListener('click', function() {
   var formRow = document.getElementById('fila3');
@@ -835,7 +819,7 @@ document.getElementById('add3').addEventListener('click', function() {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz5" name="atpazzz5">
       </div>
-        <button id="add4" type="button">Agregar Fila</button>
+        <button id="add4" type="button" onclick="delete4()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add4').addEventListener('click', function() {
   var formRow = document.getElementById('fila4');
@@ -956,7 +940,7 @@ document.getElementById('add4').addEventListener('click', function() {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz6" name="atpazzz6">
       </div>
-    <button id="add5" type="button">Agregar Fila</button>
+    <button id="add5" type="button" onclick="delete5()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add5').addEventListener('click', function() {
   var formRow = document.getElementById('fila5');
@@ -1078,7 +1062,7 @@ document.getElementById('add5').addEventListener('click', function() {
       <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz7" name="atpazzz7">
       </div>
-      <button id="add6" type="button">Agregar Fila</button>
+      <button id="add6" type="button" onclick="delete6()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add6').addEventListener('click', function() {
   var formRow = document.getElementById('fila6');
@@ -1199,7 +1183,7 @@ document.getElementById('add6').addEventListener('click', function() {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz8" name="atpazzz8">
       </div>
-      <button id="add7" type="button">Agregar Fila</button>
+      <button id="add7" type="button" onclick="delete7()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add7').addEventListener('click', function() {
   var formRow = document.getElementById('fila7');
@@ -1319,7 +1303,7 @@ document.getElementById('add7').addEventListener('click', function() {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz9" name="atpazzz9">
       </div>
-  <button id="add8" type="button">Agregar Fila</button>
+  <button id="add8" type="button" onclick="delete8()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add8').addEventListener('click', function() {
   var formRow = document.getElementById('fila8');
@@ -1420,7 +1404,7 @@ document.getElementById('add8').addEventListener('click', function() {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz10" name="atpazzz10">
       </div>
-  <button id="add9" type="button">Agregar Fila</button>
+  <button id="add9" type="button" onclick="delete9()" class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add9').addEventListener('click', function() {
   var formRow = document.getElementById('fila9');
@@ -1522,7 +1506,7 @@ document.getElementById('add9').addEventListener('click', function() {
   <div  style="display:none;" class="form-cell" colspan="9">
         <input type="text" id="atpazzz11" name="atpazzz11">
       </div>
-  <button id="add10" type="button">Fin de Fila</button>
+  <button id="add10" type="button" onclick="delete10()"class="btadd" >Eliminar Fila</button>
   <script>
 document.getElementById('add10').addEventListener('click', function() {
   var formRow = document.getElementById('fila10');
@@ -1769,7 +1753,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Enviar el formulario de manera asíncrona
                 var formData = new FormData(this);
-                fetch('https://script.google.com/macros/s/AKfycbycID0uo7rODDwkay2vRI3L98sEiZWHOFrFHDjX4oLKoy6KtCMWsrrvPNIMWUU6a4As/exec', {
+                fetch('https://script.google.com/macros/s/AKfycbwZFsi1l5-hsxoGyC6FfLtmCErShYNKXwjaVUHMyB7Rdyg-pQv_pPfWwNYmmYwoDosE/exec', {
                     method: 'POST',
                     body: formData
                 })
@@ -1919,7 +1903,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const valorSeleccionado19 = document.getElementById('productlistzzz19').value;
             const valorSeleccionado20 = document.getElementById('productlistzzz20').value;
             const valorSeleccionado21 = document.getElementById('productlistzzz21').value;
-            const formatoHTML = `<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+            const formatoHTML = `<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
             document.getElementById('productout').value = formatoHTML;
         }
 
@@ -1943,7 +1927,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('talloscajazzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('tcajaout').value = formatoHTML;
     }
 
@@ -1967,7 +1951,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('totaltalloszzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('ttallosout').value = formatoHTML;
     }
 
@@ -1991,7 +1975,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('tallosramozzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size: 9px; ">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size: 9px; ">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('tallosramoout').value = formatoHTML;
     }
 
@@ -2015,7 +1999,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('ramospiezazzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size: 9px; ">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size: 9px; ">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('rapiout').value = formatoHTML;
     }
 
@@ -2039,7 +2023,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('totalramoszzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('traout').value = formatoHTML;
     }
 
@@ -2063,7 +2047,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('tpreciozzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('tpout').value = formatoHTML;
     }
 
@@ -2087,7 +2071,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('preciozzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('pout').value = formatoHTML;
     }
 
@@ -2111,7 +2095,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('gradolistzzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('gradout').value = formatoHTML;
     }
 
@@ -2135,7 +2119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('markzzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('markout').value = formatoHTML;
     }
 
@@ -2159,7 +2143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const valorSeleccionado21 = document.getElementById('atpazzz21').value;
 
         const formatoHTML = `
-<table style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
+<table class="zero" style="border: 1px solid black; border-collapse: collapse; width: 100%;font-size:8px;">${valorSeleccionado1}${valorSeleccionado13}${valorSeleccionado14}${valorSeleccionado15}${valorSeleccionado16}${valorSeleccionado17}${valorSeleccionado18}${valorSeleccionado19}${valorSeleccionado20}${valorSeleccionado21}</table>`;
         document.getElementById('atpaout').value = formatoHTML;
     }
 
@@ -2460,128 +2444,128 @@ document.getElementById('productlistzzz11').addEventListener('change', function(
 
         function actualizarProductoSeleccionado() {
     const valorSeleccionado = document.getElementById('productlistzzz').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
     document.getElementById('productlistzzz1').value = formatoHTML;
 }
 
   function actualizarProductoSeleccionado2() {
   const valorSeleccionado2 = document.getElementById('productlistzzz3').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('productlistzzz13').value = formatoHTML2;
   }
   
   function actualizaratpa() {
   const valorSeleccionado2 = document.getElementById('atpazzz').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz1').value = formatoHTML2;
   }
   
   function actualizaratpa1() {
   const valorSeleccionado2 = document.getElementById('atpazzz3').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz13').value = formatoHTML2;
   }
   
   function actualizaratpa4() {
   const valorSeleccionado2 = document.getElementById('atpazzz4').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz14').value = formatoHTML2;
   }
   
   function actualizaratpa5() {
   const valorSeleccionado2 = document.getElementById('atpazzz5').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz15').value = formatoHTML2;
   }
   
   function actualizaratpa6() {
   const valorSeleccionado2 = document.getElementById('atpazzz6').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz16').value = formatoHTML2;
   }
   
   function actualizaratpa7() {
   const valorSeleccionado2 = document.getElementById('atpazzz7').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz17').value = formatoHTML2;
   }
   
    function actualizaratpa8() {
   const valorSeleccionado2 = document.getElementById('atpazzz8').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz18').value = formatoHTML2;
   }
   
   function actualizaratpa9() {
   const valorSeleccionado2 = document.getElementById('atpazzz9').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz19').value = formatoHTML2;
   }
   
   function actualizaratpa10() {
   const valorSeleccionado2 = document.getElementById('atpazzz10').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz20').value = formatoHTML2;
   }
   
   function actualizaratpa11() {
   const valorSeleccionado2 = document.getElementById('atpazzz11').value;
-    const formatoHTML2 = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
+    const formatoHTML2 = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado2}</td> </tr>`;
     document.getElementById('atpazzz21').value = formatoHTML2;
   }
   
 
         function actualizarTallosCaja() {
             const valorTallosCaja = document.getElementById('talloscajazzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz1').value = formatoHTML;
         }
 
         function actualizarTotalTallos() {
             const valorTotalTallos = document.getElementById('totaltalloszzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz1').value = formatoHTML;
         }
 
         function actualizarTallosRamo() {
             const valorTallosRamo = document.getElementById('tallosramozzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz1').value = formatoHTML;
         }
 
         function actualizarRamosPieza() {
             const valorRamosPieza = document.getElementById('ramospiezazzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz1').value = formatoHTML;
         }
 
         function actualizarTotalRamos() {
             const valorTotalRamos = document.getElementById('totalramoszzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz1').value = formatoHTML;
         }
 
         function actualizarTotalPrecio() {
             const valorTotalPrecio = document.getElementById('tpreciozzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz1').value = formatoHTML;
         }
 
         function actualizarPrecio() {
             const valorPrecio = document.getElementById('preciozzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz1').value = formatoHTML;
         }
 
         function actualizarGrado() {
             const valorGrado = document.getElementById('gradolistzzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz1').value = formatoHTML;
         }
 
         function actualizarMark() {
             const valorMark = document.getElementById('markzzz').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz1').value = formatoHTML;
         }
 
@@ -4118,61 +4102,61 @@ markOut();
 
         function actualizarProductoSeleccionado3() {
             const valorSeleccionado = document.getElementById('productlistzzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
             document.getElementById('productlistzzz13').value = formatoHTML;
         }
 
         function actualizarTallosCaja3() {
             const valorTallosCaja = document.getElementById('talloscajazzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz13').value = formatoHTML;
         }
 
         function actualizarTotalTallos3() {
             const valorTotalTallos = document.getElementById('totaltalloszzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz13').value = formatoHTML;
         }
 
         function actualizarTallosRamo3() {
             const valorTallosRamo = document.getElementById('tallosramozzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz13').value = formatoHTML;
         }
 
         function actualizarRamosPieza3() {
             const valorRamosPieza = document.getElementById('ramospiezazzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz13').value = formatoHTML;
         }
 
         function actualizarTotalRamos3() {
             const valorTotalRamos = document.getElementById('totalramoszzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz13').value = formatoHTML;
         }
 
         function actualizarTotalPrecio3() {
             const valorTotalPrecio = document.getElementById('tpreciozzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz13').value = formatoHTML;
         }
 
         function actualizarPrecio3() {
             const valorPrecio = document.getElementById('preciozzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz13').value = formatoHTML;
         }
 
         function actualizarGrado3() {
             const valorGrado = document.getElementById('gradolistzzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz13').value = formatoHTML;
         }
 
         function actualizarMark3() {
             const valorMark = document.getElementById('markzzz3').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz13').value = formatoHTML;
         }
 
@@ -4238,61 +4222,61 @@ markOut();
 
         function actualizarProductoSeleccionado4() {
             const valorSeleccionado = document.getElementById('productlistzzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
             document.getElementById('productlistzzz14').value = formatoHTML;
         }
 
         function actualizarTallosCaja4() {
             const valorTallosCaja = document.getElementById('talloscajazzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz14').value = formatoHTML;
         }
 
         function actualizarTotalTallos4() {
             const valorTotalTallos = document.getElementById('totaltalloszzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz14').value = formatoHTML;
         }
 
         function actualizarTallosRamo4() {
             const valorTallosRamo = document.getElementById('tallosramozzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz14').value = formatoHTML;
         }
 
         function actualizarRamosPieza4() {
             const valorRamosPieza = document.getElementById('ramospiezazzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz14').value = formatoHTML;
         }
 
         function actualizarTotalRamos4() {
             const valorTotalRamos = document.getElementById('totalramoszzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz14').value = formatoHTML;
         }
 
         function actualizarTotalPrecio4() {
             const valorTotalPrecio = document.getElementById('tpreciozzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz14').value = formatoHTML;
         }
 
         function actualizarPrecio4() {
             const valorPrecio = document.getElementById('preciozzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz14').value = formatoHTML;
         }
 
         function actualizarGrado4() {
             const valorGrado = document.getElementById('gradolistzzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz14').value = formatoHTML;
         }
 
         function actualizarMark4() {
             const valorMark = document.getElementById('markzzz4').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz14').value = formatoHTML;
         }
 
@@ -4359,61 +4343,61 @@ markOut();
 
         function actualizarProductoSeleccionado5() {
             const valorSeleccionado = document.getElementById('productlistzzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
             document.getElementById('productlistzzz15').value = formatoHTML;
         }
 
         function actualizarTallosCaja5() {
             const valorTallosCaja = document.getElementById('talloscajazzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz15').value = formatoHTML;
         }
 
         function actualizarTotalTallos5() {
             const valorTotalTallos = document.getElementById('totaltalloszzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz15').value = formatoHTML;
         }
 
         function actualizarTallosRamo5() {
             const valorTallosRamo = document.getElementById('tallosramozzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz15').value = formatoHTML;
         }
 
         function actualizarRamosPieza5() {
             const valorRamosPieza = document.getElementById('ramospiezazzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz15').value = formatoHTML;
         }
 
         function actualizarTotalRamos5() {
             const valorTotalRamos = document.getElementById('totalramoszzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz15').value = formatoHTML;
         }
 
         function actualizarTotalPrecio5() {
             const valorTotalPrecio = document.getElementById('tpreciozzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz15').value = formatoHTML;
         }
 
         function actualizarPrecio5() {
             const valorPrecio = document.getElementById('preciozzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz15').value = formatoHTML;
         }
 
         function actualizarGrado5() {
             const valorGrado = document.getElementById('gradolistzzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz15').value = formatoHTML;
         }
 
         function actualizarMark5() {
             const valorMark = document.getElementById('markzzz5').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz15').value = formatoHTML;
         }
 
@@ -4479,61 +4463,61 @@ markOut();
 
         function actualizarProductoSeleccionado6() {
             const valorSeleccionado = document.getElementById('productlistzzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
             document.getElementById('productlistzzz16').value = formatoHTML;
         }
 
         function actualizarTallosCaja6() {
             const valorTallosCaja = document.getElementById('talloscajazzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz16').value = formatoHTML;
         }
 
         function actualizarTotalTallos6() {
             const valorTotalTallos = document.getElementById('totaltalloszzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz16').value = formatoHTML;
         }
 
         function actualizarTallosRamo6() {
             const valorTallosRamo = document.getElementById('tallosramozzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz16').value = formatoHTML;
         }
 
         function actualizarRamosPieza6() {
             const valorRamosPieza = document.getElementById('ramospiezazzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz16').value = formatoHTML;
         }
 
         function actualizarTotalRamos6() {
             const valorTotalRamos = document.getElementById('totalramoszzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz16').value = formatoHTML;
         }
 
         function actualizarTotalPrecio6() {
             const valorTotalPrecio = document.getElementById('tpreciozzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz16').value = formatoHTML;
         }
 
         function actualizarPrecio6() {
             const valorPrecio = document.getElementById('preciozzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz16').value = formatoHTML;
         }
 
         function actualizarGrado6() {
             const valorGrado = document.getElementById('gradolistzzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz16').value = formatoHTML;
         }
 
         function actualizarMark6() {
             const valorMark = document.getElementById('markzzz6').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz16').value = formatoHTML;
         }
 
@@ -4599,61 +4583,61 @@ markOut();
 
         function actualizarProductoSeleccionado7() {
             const valorSeleccionado = document.getElementById('productlistzzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
             document.getElementById('productlistzzz17').value = formatoHTML;
         }
 
         function actualizarTallosCaja7() {
             const valorTallosCaja = document.getElementById('talloscajazzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz17').value = formatoHTML;
         }
 
         function actualizarTotalTallos7() {
             const valorTotalTallos = document.getElementById('totaltalloszzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz17').value = formatoHTML;
         }
 
         function actualizarTallosRamo7() {
             const valorTallosRamo = document.getElementById('tallosramozzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz17').value = formatoHTML;
         }
 
         function actualizarRamosPieza7() {
             const valorRamosPieza = document.getElementById('ramospiezazzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz17').value = formatoHTML;
         }
 
         function actualizarTotalRamos7() {
             const valorTotalRamos = document.getElementById('totalramoszzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz17').value = formatoHTML;
         }
 
         function actualizarTotalPrecio7() {
             const valorTotalPrecio = document.getElementById('tpreciozzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz17').value = formatoHTML;
         }
 
         function actualizarPrecio7() {
             const valorPrecio = document.getElementById('preciozzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz17').value = formatoHTML;
         }
 
         function actualizarGrado7() {
             const valorGrado = document.getElementById('gradolistzzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz17').value = formatoHTML;
         }
 
         function actualizarMark7() {
             const valorMark = document.getElementById('markzzz7').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz17').value = formatoHTML;
         }
 
@@ -4719,61 +4703,61 @@ document.getElementById('markzzz7').addEventListener('input', actualizarMark7);
 
         function actualizarProductoSeleccionado8() {
             const valorSeleccionado = document.getElementById('productlistzzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
             document.getElementById('productlistzzz18').value = formatoHTML;
         }
 
         function actualizarTallosCaja8() {
             const valorTallosCaja = document.getElementById('talloscajazzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
             document.getElementById('talloscajazzz18').value = formatoHTML;
         }
 
         function actualizarTotalTallos8() {
             const valorTotalTallos = document.getElementById('totaltalloszzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
             document.getElementById('totaltalloszzz18').value = formatoHTML;
         }
 
         function actualizarTallosRamo8() {
             const valorTallosRamo = document.getElementById('tallosramozzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
             document.getElementById('tallosramozzz18').value = formatoHTML;
         }
 
         function actualizarRamosPieza8() {
             const valorRamosPieza = document.getElementById('ramospiezazzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
             document.getElementById('ramospiezazzz18').value = formatoHTML;
         }
 
         function actualizarTotalRamos8() {
             const valorTotalRamos = document.getElementById('totalramoszzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
             document.getElementById('totalramoszzz18').value = formatoHTML;
         }
 
         function actualizarTotalPrecio8() {
             const valorTotalPrecio = document.getElementById('tpreciozzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
             document.getElementById('tpreciozzz18').value = formatoHTML;
         }
 
         function actualizarPrecio8() {
             const valorPrecio = document.getElementById('preciozzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
             document.getElementById('preciozzz18').value = formatoHTML;
         }
 
         function actualizarGrado8() {
             const valorGrado = document.getElementById('gradolistzzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
             document.getElementById('gradolistzzz18').value = formatoHTML;
         }
 
         function actualizarMark8() {
             const valorMark = document.getElementById('markzzz8').value;
-            const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+            const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
             document.getElementById('markzzz18').value = formatoHTML;
         }
 
@@ -4839,61 +4823,61 @@ document.getElementById('markzzz7').addEventListener('input', actualizarMark7);
 
     function actualizarProductoSeleccionado9() {
         const valorSeleccionado = document.getElementById('productlistzzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
         document.getElementById('productlistzzz19').value = formatoHTML;
     }
 
     function actualizarTallosCaja9() {
         const valorTallosCaja = document.getElementById('talloscajazzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosCaja}</td> </tr>`;
         document.getElementById('talloscajazzz19').value = formatoHTML;
     }
 
     function actualizarTotalTallos9() {
         const valorTotalTallos = document.getElementById('totaltalloszzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
         document.getElementById('totaltalloszzz19').value = formatoHTML;
     }
 
     function actualizarTallosRamo9() {
         const valorTallosRamo = document.getElementById('tallosramozzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
         document.getElementById('tallosramozzz19').value = formatoHTML;
     }
 
     function actualizarRamosPieza9() {
         const valorRamosPieza = document.getElementById('ramospiezazzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
         document.getElementById('ramospiezazzz19').value = formatoHTML;
     }
 
     function actualizarTotalRamos9() {
         const valorTotalRamos = document.getElementById('totalramoszzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
         document.getElementById('totalramoszzz19').value = formatoHTML;
     }
 
     function actualizarTotalPrecio9() {
         const valorTotalPrecio = document.getElementById('tpreciozzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
         document.getElementById('tpreciozzz19').value = formatoHTML;
     }
 
     function actualizarPrecio9() {
         const valorPrecio = document.getElementById('preciozzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
         document.getElementById('preciozzz19').value = formatoHTML;
     }
 
     function actualizarGrado9() {
         const valorGrado = document.getElementById('gradolistzzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
         document.getElementById('gradolistzzz19').value = formatoHTML;
     }
 
     function actualizarMark9() {
         const valorMark = document.getElementById('markzzz9').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
         document.getElementById('markzzz19').value = formatoHTML;
     }
 
@@ -4959,56 +4943,56 @@ document.getElementById('markzzz7').addEventListener('input', actualizarMark7);
 
     function actualizarProductoSeleccionado10() {
         const valorSeleccionado = document.getElementById('productlistzzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;
         ">${valorSeleccionado}</td> </tr>`;
         document.getElementById('productlistzzz20').value = formatoHTML;
     }
 
     function actualizarTallosCaja10() {
         const valorTallosCaja = document.getElementById('talloscajazzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;>${valorTallosCaja}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;>${valorTallosCaja}</td> </tr>`;
         document.getElementById('talloscajazzz20').value = formatoHTML;
     }
 
     function actualizarTotalTallos10() {
         const valorTotalTallos = document.getElementById('totaltalloszzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
         document.getElementById('totaltalloszzz20').value = formatoHTML;
     }
 
     function actualizarTallosRamo10() {
         const valorTallosRamo = document.getElementById('tallosramozzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
         document.getElementById('tallosramozzz20').value = formatoHTML;
     }
 
     function actualizarRamosPieza10() {
         const valorRamosPieza = document.getElementById('ramospiezazzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
         document.getElementById('ramospiezazzz20').value = formatoHTML;
     }
 
     function actualizarTotalRamos10() {
         const valorTotalRamos = document.getElementById('totalramoszzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
         document.getElementById('totalramoszzz20').value = formatoHTML;
     }
 
     function actualizarTotalPrecio10() {
         const valorTotalPrecio = document.getElementById('tpreciozzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
         document.getElementById('tpreciozzz20').value = formatoHTML;
     }
 
     function actualizarPrecio10() {
         const valorPrecio = document.getElementById('preciozzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
         document.getElementById('preciozzz20').value = formatoHTML;
     }
 
     function actualizarGrado10() {
         const valorGrado = document.getElementById('gradolistzzz10').value;
-        const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+        const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
         document.getElementById('gradolistzzz20').value = formatoHTML;
     }
 
@@ -5080,61 +5064,61 @@ function calcularTotalRamos11() {
 
 function actualizarProductoSeleccionado11() {
     const valorSeleccionado = document.getElementById('productlistzzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left; height: 14px;">${valorSeleccionado}</td> </tr>`;
     document.getElementById('productlistzzz21').value = formatoHTML;
 }
 
 function actualizarTallosCaja11() {
     const valorTallosCaja = document.getElementById('talloscajazzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;>${valorTallosCaja}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;>${valorTallosCaja}</td> </tr>`;
     document.getElementById('talloscajazzz21').value = formatoHTML;
 }
 
 function actualizarTotalTallos11() {
     const valorTotalTallos = document.getElementById('totaltalloszzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalTallos}</td> </tr>`;
     document.getElementById('totaltalloszzz21').value = formatoHTML;
 }
 
 function actualizarTallosRamo11() {
     const valorTallosRamo = document.getElementById('tallosramozzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTallosRamo}</td> </tr>`;
     document.getElementById('tallosramozzz21').value = formatoHTML;
 }
 
 function actualizarRamosPieza11() {
     const valorRamosPieza = document.getElementById('ramospiezazzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorRamosPieza}</td> </tr>`;
     document.getElementById('ramospiezazzz21').value = formatoHTML;
 }
 
 function actualizarTotalRamos11() {
     const valorTotalRamos = document.getElementById('totalramoszzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalRamos}</td> </tr>`;
     document.getElementById('totalramoszzz21').value = formatoHTML;
 }
 
 function actualizarTotalPrecio11() {
     const valorTotalPrecio = document.getElementById('tpreciozzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorTotalPrecio}</td> </tr>`;
     document.getElementById('tpreciozzz21').value = formatoHTML;
 }
 
 function actualizarPrecio11() {
     const valorPrecio = document.getElementById('preciozzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;">${valorPrecio}</td> </tr>`;
     document.getElementById('preciozzz21').value = formatoHTML;
 }
 
 function actualizarGrado11() {
     const valorGrado = document.getElementById('gradolistzzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px;solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px;solid black; padding: 2px; text-align: left;">${valorGrado}</td> </tr>`;
     document.getElementById('gradolistzzz21').value = formatoHTML;
 }
 
 function actualizarMark11() {
     const valorMark = document.getElementById('markzzz11').value;
-    const formatoHTML = `<tr> <td style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
+    const formatoHTML = `<tr> <td class="zero" style="border: 1px solid black; padding: 2px; text-align: left;height: 14px;">${valorMark}</td> </tr>`;
     document.getElementById('markzzz21').value = formatoHTML;
 }
 
