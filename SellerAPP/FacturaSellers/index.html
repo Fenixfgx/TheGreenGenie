@@ -2352,10 +2352,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función que maneja el envío del formulario
     function submitForm() {
+        // Validación manual de los campos requeridos
+        var form = document.getElementById('corporateFormzzz');
+        if (!form.checkValidity()) {
+            // Mostrar un mensaje si los campos no están completos
+            Toastify({
+                text: "Por favor, completa todos los campos obligatorios.",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+            }).showToast();
+            return; // Detener el envío si no es válido
+        }
+
         // Mostrar el símbolo de carga
         document.getElementById('loading').style.display = 'block';
 
-        var form = document.getElementById('corporateFormzzz');
         var formData = new FormData(form);
 
         // Enviar el formulario de manera asíncrona
