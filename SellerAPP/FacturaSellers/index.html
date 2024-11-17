@@ -150,6 +150,13 @@
         });
 
     </script>
+
+      <script>
+    document.getElementById('ramospiezazzz').addEventListener('input', function () {
+        // Reemplaza automáticamente los puntos por comas en tiempo real
+        this.value = this.value.replace(/\./g, ',');
+    });
+</script>
       <div class="form-cell" colspan="2" style="display:none;">
         <select id="tipordenzzz" name="tipordenzzz">
           <option value="P.V">P.V</option>
