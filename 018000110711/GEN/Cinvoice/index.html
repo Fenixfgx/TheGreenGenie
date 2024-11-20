@@ -725,7 +725,29 @@ var suma = valor_t1 + valor_t7 + valor_t13 + valor_t19 + valor_t25 + valor_t31 +
 t73.innerHTML = suma;
 
           
-          // Obtén los valores numéricos de t5 y t6
+// Función mejorada para obtener el valor numérico desde un elemento
+function obtenerValorNumerico(elemento) {
+    if (!elemento) return 0; // Si no hay elemento, devuelve 0
+    let valor = 0;
+
+    // Si el elemento tiene contenido HTML
+    if (elemento.innerHTML) {
+        // Busca un número antes de </td>
+        const match = elemento.innerHTML.match(/(\d+)\s*<\/td>/);
+        if (match) {
+            valor = parseFloat(match[1]);
+        }
+    }
+
+    // Si no se extrajo de HTML, intenta parsear directamente el texto
+    if (!valor) {
+        valor = parseFloat(elemento.innerHTML.replace(',', '.'));
+    }
+
+    return isNaN(valor) ? 0 : valor; // Si no es un número válido, devuelve 0
+}
+
+// Actualización del cálculo de suma
 var valor_t4 = obtenerValorNumerico(t4);
 var valor_t10 = obtenerValorNumerico(t10);
 var valor_t16 = obtenerValorNumerico(t16);
@@ -739,10 +761,11 @@ var valor_t58 = obtenerValorNumerico(t58);
 var valor_t64 = obtenerValorNumerico(t64);
 var valor_t70 = obtenerValorNumerico(t70);
 
-// Suma los valores considerando los valores en blanco como 0
-var suma2 = valor_t4 + valor_t10 + valor_t16 + valor_t22 + valor_t28 + valor_t34 + valor_t40 + valor_t46 + valor_t52 + valor_t58 + valor_t64 + valor_t70;
+// Suma los valores
+var suma2 = valor_t4 + valor_t10 + valor_t16 + valor_t22 + valor_t28 + valor_t34 + 
+            valor_t40 + valor_t46 + valor_t52 + valor_t58 + valor_t64 + valor_t70;
 
-// Muestra el resultado en t73
+// Muestra el resultado en t74
 t74.innerHTML = suma2;
 
 
