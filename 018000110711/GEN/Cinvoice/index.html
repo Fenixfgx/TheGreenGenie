@@ -724,50 +724,51 @@ var suma = valor_t1 + valor_t7 + valor_t13 + valor_t19 + valor_t25 + valor_t31 +
 // Muestra el resultado en t73
 t73.innerHTML = suma;
 
-          
-// Función mejorada para obtener el valor numérico desde un elemento
-function obtenerValorNumerico(elemento) {
-    if (!elemento) return 0; // Si no hay elemento, devuelve 0
-    let valor = 0;
+// Función mejorada para obtener todos los valores numéricos desde un elemento HTML
+function obtenerValoresNumericosDesdeHTML(elemento) {
+    let sumaTotal = 0;
 
     // Si el elemento tiene contenido HTML
-    if (elemento.innerHTML) {
-        // Busca un número antes de </td>
-        const match = elemento.innerHTML.match(/(\d+)\s*<\/td>/);
-        if (match) {
-            valor = parseFloat(match[1]);
+    if (elemento && elemento.innerHTML) {
+        // Buscar todos los números dentro del HTML antes de cada </td> y sumarlos
+        const matches = elemento.innerHTML.match(/(\d+)\s*<\/td>/g);
+        if (matches) {
+            // Para cada coincidencia encontrada, extraer el valor numérico y sumarlo
+            matches.forEach(match => {
+                const valor = parseFloat(match.replace(/<\/td>/, '').trim());
+                sumaTotal += isNaN(valor) ? 0 : valor;
+            });
         }
     }
 
-    // Si no se extrajo de HTML, intenta parsear directamente el texto
-    if (!valor) {
-        valor = parseFloat(elemento.innerHTML.replace(',', '.'));
+    // Si el elemento no contiene valores HTML válidos, lo consideramos como un número plano
+    if (sumaTotal === 0 && elemento.innerHTML) {
+        sumaTotal = parseFloat(elemento.innerHTML.replace(',', '.'));
     }
 
-    return isNaN(valor) ? 0 : valor; // Si no es un número válido, devuelve 0
+    return sumaTotal; // Devuelve la suma total de todos los valores encontrados
 }
 
-// Actualización del cálculo de suma
-var valor_t4 = obtenerValorNumerico(t4);
-var valor_t10 = obtenerValorNumerico(t10);
-var valor_t16 = obtenerValorNumerico(t16);
-var valor_t22 = obtenerValorNumerico(t22);
-var valor_t28 = obtenerValorNumerico(t28);
-var valor_t34 = obtenerValorNumerico(t34);
-var valor_t40 = obtenerValorNumerico(t40);
-var valor_t46 = obtenerValorNumerico(t46);
-var valor_t52 = obtenerValorNumerico(t52);
-var valor_t58 = obtenerValorNumerico(t58);
-var valor_t64 = obtenerValorNumerico(t64);
-var valor_t70 = obtenerValorNumerico(t70);
+// Obtén los valores numéricos de los elementos
+var valor_t4 = obtenerValoresNumericosDesdeHTML(t4);
+var valor_t10 = obtenerValoresNumericosDesdeHTML(t10);
+var valor_t16 = obtenerValoresNumericosDesdeHTML(t16);
+var valor_t22 = obtenerValoresNumericosDesdeHTML(t22);
+var valor_t28 = obtenerValoresNumericosDesdeHTML(t28);
+var valor_t34 = obtenerValoresNumericosDesdeHTML(t34);
+var valor_t40 = obtenerValoresNumericosDesdeHTML(t40);
+var valor_t46 = obtenerValoresNumericosDesdeHTML(t46);
+var valor_t52 = obtenerValoresNumericosDesdeHTML(t52);
+var valor_t58 = obtenerValoresNumericosDesdeHTML(t58);
+var valor_t64 = obtenerValoresNumericosDesdeHTML(t64);
+var valor_t70 = obtenerValoresNumericosDesdeHTML(t70);
 
-// Suma los valores
+// Suma todos los valores (numéricos y extraídos de HTML)
 var suma2 = valor_t4 + valor_t10 + valor_t16 + valor_t22 + valor_t28 + valor_t34 + 
             valor_t40 + valor_t46 + valor_t52 + valor_t58 + valor_t64 + valor_t70;
 
-// Muestra el resultado en t74
+// Muestra el resultado en el elemento t74
 t74.innerHTML = suma2;
-
 
           // Obtén los valores numéricos de t5 y t6
 var valor_t6 = obtenerValorNumerico(t6);
