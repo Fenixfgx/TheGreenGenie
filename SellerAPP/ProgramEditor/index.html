@@ -217,12 +217,12 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Copia el valor inicial al input cuando el DOM se ha cargado
-        document.getElementById('client-selector').value = document.getElementById('clientelzzz').value;
+        document.getElementById('clientelzzz').value = document.getElementById('clientselector').value;
         
         // Añade el evento de cambio para actualizar el input cuando se seleccione una nueva opción
-        document.getElementById('day').addEventListener('change', function() {
+        document.getElementById('clientselector').addEventListener('change', function() {
             var selectedValue = this.value;
-            document.getElementById('date-selector').value = selectedValue;
+            document.getElementById('clientelzzz').value = selectedValue;
         });
     });
 </script>
