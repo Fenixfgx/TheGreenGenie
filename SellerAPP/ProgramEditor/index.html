@@ -157,14 +157,16 @@
         <input class="cliente1" id="clientelzzz" name="clientelzzz"></input>
       </div><button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
       <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let input = document.getElementById("clientelzzz");
+    document.addEventListener('DOMContentLoaded', function() {
+        var input = document.getElementById('clientelzzz');
 
-        if (input.value) {  
-            let valorActual = input.value; // Obtiene el valor del input
-            input.value = ""; // Borra el valor temporalmente
-            input.value = valorActual; // Lo reasigna
-            input.dispatchEvent(new Event("input", { bubbles: true })); // Dispara el evento "input"
+        // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
+        if (input.value.trim() !== "") {
+            // Reasigna el mismo valor para confirmar su existencia
+            input.value = input.value;
+
+            // Dispara el evento 'input' para que el navegador lo registre
+            input.dispatchEvent(new Event('input', { bubbles: true }));
         }
     });
 </script>
