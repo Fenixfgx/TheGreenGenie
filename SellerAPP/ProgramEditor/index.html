@@ -203,10 +203,21 @@
 <div class="search-container">
 <label for="client-selector">Cliente:</label>
 <input type="text" id="client-selector" placeholder="Nombre del cliente" Readonly>
-<label for="date-selector">Fecha:</label>
+<label for="date-selector">Día:</label>
 <input type="text" id="date-selector">
 <button id="search-button" type="button">Buscar</button>
 <button id="clear-button" type="button">Limpiar</button>
+
+  <script>
+    document.getElementById('day').addEventListener('change', function() {
+        // Obtiene el valor seleccionado
+        var selectedValue = this.value;
+        
+        // Asigna el valor al input con id 'date-selector'
+        document.getElementById('date-selector').value = selectedValue;
+    });
+</script>
+  
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
