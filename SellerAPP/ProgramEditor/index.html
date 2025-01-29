@@ -154,8 +154,20 @@
 </div>
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
         <label for="fechades">Cliente</label>
-        <input class="cliente1" id="clientelzzz" name="clientelzzz"></select>
+        <input class="cliente1" id="clientelzzz" name="clientelzzz"></input>
       </div><button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
+      <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let input = document.getElementById("clientelzzz");
+
+        if (input.value) {  
+            let valorActual = input.value; // Obtiene el valor del input
+            input.value = ""; // Borra el valor temporalmente
+            input.value = valorActual; // Lo reasigna
+            input.dispatchEvent(new Event("input", { bubbles: true })); // Dispara el evento "input"
+        }
+    });
+</script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Selecciona el botón por su ID
