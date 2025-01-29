@@ -226,11 +226,25 @@
 <button id="clear-button" type="button">Limpiar</button>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        var input = document.getElementById('clientelzzz');
+
+        // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
+        if (input.value.trim() !== "") {
+            // Reasigna el mismo valor para confirmar su existencia
+            input.value = input.value;
+
+            // Dispara eventos para que el navegador lo registre
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        // Espera 1 segundo y luego hace clic en el botón
         setTimeout(function() {
             document.getElementById('search-button').click();
-        }, 3000); // 3000 milisegundos = 3 segundos
+        }, 1000); // 1000 milisegundos = 1 segundo
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Copia el valor inicial al input cuando el DOM se ha cargado
