@@ -158,16 +158,19 @@
       </div><button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
       <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var input = document.getElementById('clientelzzz');
+        setTimeout(function() {
+            var input = document.getElementById('clientelzzz');
 
-        // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
-        if (input.value.trim() !== "") {
-            // Reasigna el mismo valor para confirmar su existencia
-            input.value = input.value;
+            // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
+            if (input.value.trim() !== "") {
+                // Reasigna el mismo valor para confirmar su existencia
+                input.value = input.value;
 
-            // Dispara el evento 'input' para que el navegador lo registre
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-        }
+                // Dispara eventos para que el navegador reconozca el valor sin necesidad de interacción
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }, 500); // Retraso de 500ms (0.5 segundos)
     });
 </script>
     <script>
