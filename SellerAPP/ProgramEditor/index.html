@@ -156,24 +156,7 @@
         <label for="fechades">Cliente</label>
         <input class="cliente1" id="clientelzzz" name="clientelzzz"></input>
       </div><button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
-      <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            var input = document.getElementById('clientelzzz');
-
-            // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
-            if (input.value.trim() !== "") {
-                // Reasigna el mismo valor para confirmar su existencia
-                input.value = input.value;
-
-                // Dispara eventos para que el navegador reconozca el valor sin necesidad de interacción
-                input.dispatchEvent(new Event('input', { bubbles: true }));
-                input.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-        }, 500); // Retraso de 500ms (0.5 segundos)
-    });
-</script>
-    <script>
+         <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Selecciona el botón por su ID
             var button = document.getElementById('fechact');
@@ -241,7 +224,7 @@
         // Espera 1 segundo y luego hace clic en el botón
         setTimeout(function() {
             document.getElementById('search-button').click();
-        }, 1000); // 1000 milisegundos = 1 segundo
+        }, 1800); // 1800 milisegundos = 1.8 segundo
     });
 </script>
 
