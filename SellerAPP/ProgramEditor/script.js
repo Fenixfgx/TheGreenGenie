@@ -196,7 +196,7 @@ function prellenarInputs() {
   var parametros = obtenerParametrosURL();
   document.getElementById('vendedorh').value = parametros['vendedorh'] || '';
   document.getElementById('fechagen').value = parametros['fechagen'] || '';
-  document.getElementById('fechades').value = parametros['fechades'] || '';
+  document.getElementById('date-selector').value = parametros['date-selector'] || '';
   document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
 }
 
