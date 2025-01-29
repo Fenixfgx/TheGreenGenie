@@ -2379,64 +2379,78 @@ document.addEventListener('DOMContentLoaded', function() {
     // Prevenir el envío del formulario al presionar Enter
     document.getElementById('corporateFormzzz').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Previene el envío del formulario
+            event.preventDefault();
         }
     });
 
-    // Activar el envío solo al hacer clic en el botón
-    document.getElementById('sub1zzz').addEventListener('click', function() {
-        document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+    // Evento de envío del formulario (se agrega UNA SOLA VEZ)
+    document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            // Mostrar el símbolo de carga
-            document.getElementById('loading').style.display = 'block';
-            check();
+        // Deshabilitar el botón para evitar múltiples envíos
+        let submitButton = document.getElementById('sub1zzz');
+        submitButton.disabled = true;
+        submitButton.innerText = "Enviando..."; // Cambia el texto del botón
 
-            // Enviar el formulario de manera asíncrona
-            var formData = new FormData(this);
-            fetch('https://script.google.com/macros/s/AKfycbzFBPBVRwBJMQsfM8Sukfr_zToDkLi5u3m4OK7uOUaH6Buctno7bnGAtFtUP1eXoMmw/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error('Error al enviar el formulario');
-            })
-            .then(data => {
-                // Ocultar el símbolo de carga
-                document.getElementById('loading').style.display = 'none';
+        // Mostrar el símbolo de carga
+        document.getElementById('loading').style.display = 'block';
+        check();
 
-                // Mostrar el mensaje de confirmación utilizando Toastify
-                Toastify({
-                    text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
-                    duration: 3000, // Duración del mensaje en milisegundos
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-                }).showToast();
+        // Enviar el formulario de manera asíncrona con POST
+        var formData = new FormData(this);
+        fetch('https://script.google.com/macros/s/AKfycbwGy88_SP0IaJAvMY7fLen65vhixB0X_X6wXyqTKVVy3s4FxU9em8M_QomR_UslDoe0/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('Error al enviar el formulario');
+        })
+        .then(data => {
+            // Ocultar el símbolo de carga
+            document.getElementById('loading').style.display = 'none';
 
-                setTimeout(function() {
-                    search();
-                }, 2000); // 2000 milisegundos equivalen a 2 segundos
-            })
-            .catch(error => {
-                // Ocultar el símbolo de carga en caso de error
-                document.getElementById('loading').style.display = 'none';
+            // Mostrar el mensaje de confirmación utilizando Toastify
+            Toastify({
+                text: data,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
+            }).showToast();
 
-                // En caso de error, mostrar un mensaje de error utilizando Toastify
-                Toastify({
-                    text: 'Error: ' + error.message,
-                    duration: 3000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
-                }).showToast();
-            });
+            setTimeout(function() {
+                search();
+            }, 2000);
+        })
+        .catch(error => {
+            // Ocultar el símbolo de carga en caso de error
+            document.getElementById('loading').style.display = 'none';
+
+            // Mostrar mensaje de error
+            Toastify({
+                text: 'Error: ' + error.message,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+            }).showToast();
+        })
+        .finally(() => {
+            // Rehabilitar el botón después de recibir la respuesta o un error
+            submitButton.disabled = false;
+            submitButton.innerText = "Enviar";
         });
+    });
+
+    // Activar el envío solo al hacer clic en el botón
+    document.getElementById('sub1zzz').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('corporateFormzzz').dispatchEvent(new Event('submit'));
     });
 });
 </script>
