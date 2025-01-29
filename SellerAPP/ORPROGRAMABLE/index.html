@@ -2359,13 +2359,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Prevenir el envío del formulario al presionar Enter
     document.getElementById('corporateFormzzz').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Previene el envío del formulario
+            event.preventDefault();
         }
     });
 
     // Evento de envío del formulario (se agrega UNA SOLA VEZ)
     document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+        event.preventDefault();
+
+        // Deshabilitar el botón para evitar múltiples envíos
+        let submitButton = document.getElementById('sub1zzz');
+        submitButton.disabled = true;
+        submitButton.innerText = "Enviando..."; // Cambia el texto del botón
 
         // Mostrar el símbolo de carga
         document.getElementById('loading').style.display = 'block';
@@ -2374,7 +2379,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Enviar el formulario de manera asíncrona con POST
         var formData = new FormData(this);
         fetch('https://script.google.com/macros/s/AKfycbwGy88_SP0IaJAvMY7fLen65vhixB0X_X6wXyqTKVVy3s4FxU9em8M_QomR_UslDoe0/exec', {
-            method: 'POST', // Asegurar que se usa POST
+            method: 'POST',
             body: formData
         })
         .then(response => {
@@ -2389,7 +2394,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Mostrar el mensaje de confirmación utilizando Toastify
             Toastify({
-                text: data, // Mensaje de confirmación del servidor
+                text: data,
                 duration: 3000,
                 close: true,
                 gravity: "top",
@@ -2414,16 +2419,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 position: "right",
                 backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
             }).showToast();
+        })
+        .finally(() => {
+            // Rehabilitar el botón después de recibir la respuesta o un error
+            submitButton.disabled = false;
+            submitButton.innerText = "Enviar";
         });
     });
 
     // Activar el envío solo al hacer clic en el botón
     document.getElementById('sub1zzz').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que el botón realice un envío convencional
-        document.getElementById('corporateFormzzz').dispatchEvent(new Event('submit')); // Dispara el evento submit
+        event.preventDefault();
+        document.getElementById('corporateFormzzz').dispatchEvent(new Event('submit'));
     });
 });
-
 </script>
 <script>
         function actualizarProductOut() {
