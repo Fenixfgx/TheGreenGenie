@@ -2363,7 +2363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Agregar el evento de submit una sola vez al cargar la página
+    // Evento de envío del formulario (se agrega UNA SOLA VEZ)
     document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario se envíe de manera convencional
 
@@ -2371,10 +2371,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('loading').style.display = 'block';
         check();
 
-        // Enviar el formulario de manera asíncrona
+        // Enviar el formulario de manera asíncrona con POST
         var formData = new FormData(this);
         fetch('https://script.google.com/macros/s/AKfycbwGy88_SP0IaJAvMY7fLen65vhixB0X_X6wXyqTKVVy3s4FxU9em8M_QomR_UslDoe0/exec', {
-            method: 'POST',
+            method: 'POST', // Asegurar que se usa POST
             body: formData
         })
         .then(response => {
@@ -2389,8 +2389,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Mostrar el mensaje de confirmación utilizando Toastify
             Toastify({
-                text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
-                duration: 3000, // Duración del mensaje en milisegundos
+                text: data, // Mensaje de confirmación del servidor
+                duration: 3000,
                 close: true,
                 gravity: "top",
                 position: "right",
@@ -2399,13 +2399,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(function() {
                 search();
-            }, 2000); // 2000 milisegundos equivalen a 2 segundos
+            }, 2000);
         })
         .catch(error => {
             // Ocultar el símbolo de carga en caso de error
             document.getElementById('loading').style.display = 'none';
 
-            // En caso de error, mostrar un mensaje de error utilizando Toastify
+            // Mostrar mensaje de error
             Toastify({
                 text: 'Error: ' + error.message,
                 duration: 3000,
@@ -2418,10 +2418,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Activar el envío solo al hacer clic en el botón
-    document.getElementById('sub1zzz').addEventListener('click', function() {
-        document.getElementById('corporateFormzzz').submit();
+    document.getElementById('sub1zzz').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita que el botón realice un envío convencional
+        document.getElementById('corporateFormzzz').dispatchEvent(new Event('submit')); // Dispara el evento submit
     });
 });
+
 </script>
 <script>
         function actualizarProductOut() {
