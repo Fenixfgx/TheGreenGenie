@@ -208,13 +208,16 @@
 <button id="search-button" type="button">Buscar</button>
 <button id="clear-button" type="button">Limpiar</button>
 
-  <script>
-    document.getElementById('day').addEventListener('change', function() {
-        // Obtiene el valor seleccionado
-        var selectedValue = this.value;
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Copia el valor inicial al input cuando el DOM se ha cargado
+        document.getElementById('date-selector').value = document.getElementById('day').value;
         
-        // Asigna el valor al input con id 'date-selector'
-        document.getElementById('date-selector').value = selectedValue;
+        // Añade el evento de cambio para actualizar el input cuando se seleccione una nueva opción
+        document.getElementById('day').addEventListener('change', function() {
+            var selectedValue = this.value;
+            document.getElementById('date-selector').value = selectedValue;
+        });
     });
 </script>
   
