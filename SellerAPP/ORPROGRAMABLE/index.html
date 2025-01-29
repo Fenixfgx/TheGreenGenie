@@ -2363,7 +2363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Manejar el evento de submit solo una vez
+    // Agregar el evento de submit una sola vez al cargar la página
     document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario se envíe de manera convencional
 
@@ -2392,8 +2392,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
                 duration: 3000, // Duración del mensaje en milisegundos
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
+                gravity: "top",
+                position: "right",
                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
             }).showToast();
 
@@ -2417,12 +2417,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Activar el envío al hacer clic en el botón
+    // Activar el envío solo al hacer clic en el botón
     document.getElementById('sub1zzz').addEventListener('click', function() {
         document.getElementById('corporateFormzzz').submit();
     });
 });
-
 </script>
 <script>
         function actualizarProductOut() {
