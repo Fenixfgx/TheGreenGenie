@@ -154,7 +154,7 @@
 </div>
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
         <label for="fechades">Cliente</label>
-        <select class="cliente1" id="clientelzzz" name="clientelzzz"></select>
+        <input class="cliente1" id="clientelzzz" name="clientelzzz"></select>
       </div><button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -217,7 +217,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Copia el valor inicial al input cuando el DOM se ha cargado
-        document.getElementById('date-selector').value = document.getElementById('day').value;
+        document.getElementById('clientelzzz').value = document.getElementById('client-selector').value;
         
         // Añade el evento de cambio para actualizar el input cuando se seleccione una nueva opción
         document.getElementById('day').addEventListener('change', function() {
