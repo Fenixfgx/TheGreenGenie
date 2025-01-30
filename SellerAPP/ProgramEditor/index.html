@@ -201,7 +201,7 @@
 <button id="search-button" type="button">Buscar</button>
 <button id="clear-button" type="button">Limpiar</button>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+     document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             var input = document.getElementById('clientelzzz');
             var button = document.getElementById('search-button');
@@ -230,16 +230,16 @@
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                     console.log("🔹 Se eliminó '#':", input.value);
 
-                    // Esperar 1.5 segundos más y luego hacer clic en el botón
+                    // Esperar 1 segundo y luego hacer clic en el botón
                     setTimeout(function() {
                         button.click();
                         console.log("🚀 Se hizo clic en el botón 'Buscar'.");
-                    }, 1500); // 1.5 segundos después de eliminar el #
-                }, 500); // 500ms después de agregar el #
+                    }, 1500);
+                }, 500);
             } else {
                 console.warn("⚠️ El input está vacío, no se aplican cambios.");
             }
-        }, 500); // Espera inicial de 0.5 segundos para asegurarse de que el input tenga valor
+        }, 500); // Espera inicial de 0.5 segundos para asegurar que el input tenga valor
     });
 </script>
 
