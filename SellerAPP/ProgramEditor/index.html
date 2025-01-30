@@ -204,30 +204,30 @@
     document.addEventListener('DOMContentLoaded', function() {
         var input = document.getElementById('clientelzzz');
 
-        // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
         if (input.value.trim() !== "") {
-            // Agrega un espacio al final del valor
-            input.value = input.value + " ";
+            // Agregar un espacio temporalmente
+            input.value += " ";
 
-            // Dispara eventos para que el navegador registre el cambio
+            // Disparar eventos para que el navegador lo reconozca
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
 
-            // Pequeño retraso para que el navegador procese el cambio
+            // Pequeño retraso para permitir que el cambio sea registrado
             setTimeout(function() {
-                // Elimina el espacio agregado
+                // Eliminar el espacio añadido
                 input.value = input.value.trim();
 
-                // Dispara eventos nuevamente para reafirmar el cambio
+                // Disparar eventos nuevamente para confirmar el valor final
                 input.dispatchEvent(new Event('input', { bubbles: true }));
                 input.dispatchEvent(new Event('change', { bubbles: true }));
 
-                // Ahora hace clic en el botón
+                // Ahora sí, hacer clic en el botón
                 document.getElementById('search-button').click();
-            }, 1300); // Espera 300ms antes de corregir el valor y hacer clic
+            }, 200); // Pequeño retraso para asegurar que el navegador procese el cambio
         }
     });
 </script>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
