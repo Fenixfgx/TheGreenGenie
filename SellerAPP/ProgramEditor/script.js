@@ -198,7 +198,8 @@ function prellenarInputs() {
   document.getElementById('fechagen').value = parametros['fechagen'] || '';
   document.getElementById('date-selector').value = parametros['date-selector'] || '';
   document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
-  document.getElementById('client-selector').value = parametros['client-selector'] || '';
+  document.getElementById('client-selector').value = parametros['clientselector'] || '';
+  document.getElementById('day').value = parametros['day'] || '';
 }
 
 // Llamar a la función para prellenar los inputs al cargar la página
