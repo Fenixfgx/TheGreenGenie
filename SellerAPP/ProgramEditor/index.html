@@ -212,15 +212,27 @@
             // Dispara eventos para que el navegador lo registre
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
-        }
 
-        // Espera 1 segundo y luego hace clic en el botón
-        setTimeout(function() {
-            document.getElementById('search-button').click();
-        }, 1000); // 1000 milisegundos = 1 segundo
+            // Agrega un "#" al valor del input
+            input.value = "#" + input.value;
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+
+            // Espera 500ms y luego borra el "#"
+            setTimeout(function() {
+                input.value = input.value.replace("#", "");
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+
+                // Espera 1 segundo y luego hace clic en el botón
+                setTimeout(function() {
+                    document.getElementById('search-button').click();
+                }, 1000); // 1000 ms = 1 segundo
+
+            }, 500); // 500 ms = 0.5 segundos
+        }
     });
 </script>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
