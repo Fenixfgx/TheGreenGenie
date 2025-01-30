@@ -206,28 +206,21 @@
 
         // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
         if (input.value.trim() !== "") {
-            // Agrega un '#' temporalmente
-            input.value = input.value + "#";
+            // Reasigna el mismo valor para confirmar su existencia
+            input.value = input.value;
 
-            // Dispara eventos para que el navegador reconozca el cambio
+            // Dispara eventos para que el navegador lo registre
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
-
-            // Espera 1 segundo antes de eliminar el '#'
-            setTimeout(function() {
-                input.value = input.value.slice(0, -1); // Elimina el '#'
-                input.dispatchEvent(new Event('input', { bubbles: true }));
-                input.dispatchEvent(new Event('change', { bubbles: true }));
-
-                // Espera 1 segundo más y luego hace clic en el botón
-                setTimeout(function() {
-                    document.getElementById('search-button').click();
-                }, 1000); // Espera 1 segundo antes de hacer clic en el botón
-
-            }, 1000); // Espera 1 segundo antes de eliminar el '#'
         }
+
+        // Espera 1 segundo y luego hace clic en el botón
+        setTimeout(function() {
+            document.getElementById('search-button').click();
+        }, 1000); // 1000 milisegundos = 1 segundo
     });
 </script>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
