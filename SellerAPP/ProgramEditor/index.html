@@ -206,18 +206,26 @@
 
         // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
         if (input.value.trim() !== "") {
-            // Reasigna el mismo valor para confirmar su existencia
-            input.value = input.value;
+            // Agrega un espacio al final del valor
+            input.value = input.value + " ";
 
-            // Dispara eventos para que el navegador lo registre
+            // Dispara eventos para que el navegador registre el cambio
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
-        }
 
-        // Espera 1 segundo y luego hace clic en el botón
-        setTimeout(function() {
-            document.getElementById('search-button').click();
-        }, 2200); // 1800 milisegundos = 1.8 segundo
+            // Pequeño retraso para que el navegador procese el cambio
+            setTimeout(function() {
+                // Elimina el espacio agregado
+                input.value = input.value.trim();
+
+                // Dispara eventos nuevamente para reafirmar el cambio
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+
+                // Ahora hace clic en el botón
+                document.getElementById('search-button').click();
+            }, 1300); // Espera 300ms antes de corregir el valor y hacer clic
+        }
     });
 </script>
 
