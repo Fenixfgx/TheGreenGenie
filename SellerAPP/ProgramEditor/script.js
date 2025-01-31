@@ -198,6 +198,16 @@ function prellenarInputs() {
   document.getElementById('fechagen').value = parametros['fechagen'] || '';
   document.getElementById('date-selector').value = parametros['dateselector'] || '';
   document.getElementById('clientelzzz').value = parametros['clientelzzz'] || '';
+  document.getElementById('clientezzz').value = parametros['clientezzz'] || '';
+  document.getElementById('clientezzz3').value = parametros['clientezzz3'] || '';
+  document.getElementById('clientezzz4').value = parametros['clientezzz4'] || '';
+  document.getElementById('clientezzz5').value = parametros['clientezzz5'] || '';
+  document.getElementById('clientezzz6').value = parametros['clientezzz6'] || '';
+  document.getElementById('clientezzz7').value = parametros['clientezzz7'] || '';
+  document.getElementById('clientezzz8').value = parametros['clientezzz8'] || '';
+  document.getElementById('clientezzz9').value = parametros['clientezzz9'] || '';
+  document.getElementById('clientezzz10').value = parametros['clientezzz10'] || '';
+  document.getElementById('clientezzz11').value = parametros['clientezzz11'] || '';
   document.getElementById('client-selector').value = parametros['clientselector'] || '';
   document.getElementById('day').value = parametros['day'] || '';
 }
