@@ -1711,61 +1711,86 @@ pairs.forEach((pair) => {
   <img id="loadingImage" src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" alt="Cargando...">
   <script>
 document.addEventListener('DOMContentLoaded', function() {
-            var loadingImage = document.getElementById('loadingImage');
+    var loadingImage = document.getElementById('loadingImage');
+    var submitButton = document.querySelector('#corporateFormzzz button[type="submit"]'); // Selecciona el botón de envío
 
-            document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-                event.preventDefault(); // Evita que el formulario se envíe de manera convencional
-                
-                // Mostrar la imagen de carga
-                loadingImage.style.display = 'block';
-              
+    document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío convencional del formulario
 
-                // Enviar el formulario de manera asíncrona
-                var formData = new FormData(this);
-                fetch('https://script.google.com/macros/s/AKfycbzMiyAcjfJcArKmfgqSnS7bvzMcDrPMuXZMCJ7RaYwEucBs7_LEzkZiMXOJClHdFJSqJw/exec', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        return response.text();
-                    }
-                    throw new Error('Error al enviar el formulario');
-                })
-                .then(data => {
-                    // Ocultar la imagen de carga
-                    loadingImage.style.display = 'none';
+        var clienteSelect = document.getElementById('clientelzzz');
 
-                    // Mostrar el mensaje de confirmación utilizando Toastify
-                    Toastify({
-                        text: data,
-                        duration: 3000, // Duración del mensaje en milisegundos
-                        close: true,
-                        gravity: "top", // Posición del mensaje: top, bottom
-                        position: "right", // left, right, center
-                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-                    }).showToast();
+        // Verificar si el select está vacío
+        if (!clienteSelect.value) {
+            Toastify({
+                text: "No se ha seleccionado Cliente.",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            }).showToast();
+            return; // Detener el envío si no hay cliente seleccionado
+        }
 
-                    setTimeout(function() {
-                        search(); // Reemplaza 'search()' con la función que deseas ejecutar después del tiempo de espera
-                    }, 2000); // 2000 milisegundos equivalen a 2 segundos
-                })
-                .catch(error => {
-                    // Ocultar la imagen de carga
-                    loadingImage.style.display = 'none';
+        // Deshabilitar el botón de envío y cambiar el texto
+        submitButton.disabled = true;
+        submitButton.innerText = "Enviando...";
 
-                    // En caso de error, mostrar un mensaje de error
-                    Toastify({
-                        text: error.message,
-                        duration: 3000, // Duración del mensaje en milisegundos
-                        close: true,
-                        gravity: "top", // Posición del mensaje: top, bottom
-                        position: "right", // left, right, center
-                        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
-                    }).showToast();
-                });
-            });
+        // Mostrar la imagen de carga
+        loadingImage.style.display = 'block';
+
+        // Enviar el formulario de manera asíncrona
+        var formData = new FormData(this);
+        fetch('https://script.google.com/macros/s/AKfycbzMiyAcjfJcArKmfgqSnS7bvzMcDrPMuXZMCJ7RaYwEucBs7_LEzkZiMXOJClHdFJSqJw/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('Error al enviar el formulario');
+        })
+        .then(data => {
+            // Ocultar la imagen de carga
+            loadingImage.style.display = 'none';
+
+            // Mostrar el mensaje de confirmación utilizando Toastify
+            Toastify({
+                text: data,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+
+            setTimeout(function() {
+                search(); // Ejecutar la función después de 2 segundos
+            }, 2000);
+        })
+        .catch(error => {
+            // Ocultar la imagen de carga
+            loadingImage.style.display = 'none';
+
+            // Mostrar un mensaje de error utilizando Toastify
+            Toastify({
+                text: 'Error: ' + error.message,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            }).showToast();
+        })
+        .finally(() => {
+            // Habilitar el botón nuevamente
+            submitButton.disabled = false;
+            submitButton.innerText = "Enviar";
         });
+    });
+});
+
   </script>
 
 
