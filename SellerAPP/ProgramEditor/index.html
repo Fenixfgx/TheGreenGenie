@@ -201,45 +201,23 @@
 <button id="search-button" type="button">Buscar</button>
 <button id="clear-button" type="button">Limpiar</button>
 <script>
-     document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        var input = document.getElementById('clientelzzz');
+
+        // Asegura que el input tiene un valor (ya sea obtenido por URL o de otra forma)
+        if (input.value.trim() !== "") {
+            // Reasigna el mismo valor para confirmar su existencia
+            input.value = input.value;
+
+            // Dispara eventos para que el navegador lo registre
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        // Espera 1 segundo y luego hace clic en el botón
         setTimeout(function() {
-            var input = document.getElementById('clientelzzz');
-            var button = document.getElementById('search-button');
-
-            if (!input || !button) {
-                console.error("❌ No se encontró el input o el botón.");
-                return;
-            }
-
-            console.log("✅ Input y botón encontrados.");
-
-            // Verificar si el input tiene un valor
-            if (input.value.trim() !== "") {
-                console.log("🔹 Valor inicial del input:", input.value);
-
-                // Agregar '#' temporalmente
-                input.value = "#" + input.value;
-                input.dispatchEvent(new Event('input', { bubbles: true }));
-                input.dispatchEvent(new Event('change', { bubbles: true }));
-                console.log("🔹 Se agregó '#':", input.value);
-
-                // Esperar 500ms y luego eliminar el '#'
-                setTimeout(function() {
-                    input.value = input.value.replace("#", "");
-                    input.dispatchEvent(new Event('input', { bubbles: true }));
-                    input.dispatchEvent(new Event('change', { bubbles: true }));
-                    console.log("🔹 Se eliminó '#':", input.value);
-
-                    // Esperar 1 segundo y luego hacer clic en el botón
-                    setTimeout(function() {
-                        button.click();
-                        console.log("🚀 Se hizo clic en el botón 'Buscar'.");
-                    }, 1500);
-                }, 500);
-            } else {
-                console.warn("⚠️ El input está vacío, no se aplican cambios.");
-            }
-        }, 500); // Espera inicial de 0.5 segundos para asegurar que el input tenga valor
+            document.getElementById('search-button').click();
+        }, 1000); // 1000 milisegundos = 1 segundo
     });
 </script>
 
