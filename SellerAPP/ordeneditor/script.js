@@ -209,7 +209,7 @@ function prellenarInputs() {
 
   if (clientSelector) {
     clientSelector.value = parametros['client-selector'] || '';
-    clientSelector.dispatchEvent(new Event('input')); // Forzar que se reconozca el cambio
+    
   }
 
   if (dateSelector) {
