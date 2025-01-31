@@ -2158,54 +2158,70 @@ pairs.forEach((pair) => {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita que el formulario se envíe de manera convencional
+    document.getElementById('corporateFormzzz').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío convencional
 
-    // Mostrar el símbolo de carga
-    document.getElementById('loading').style.display = 'block';
+        // Obtener el botón y deshabilitarlo
+        let submitButton = document.getElementById('sub1zzz');
+        submitButton.disabled = true;
+        submitButton.innerText = "Enviando...";
 
-    // Enviar el formulario de manera asíncrona
-    var formData = new FormData(this);
-    fetch('https://script.google.com/macros/s/AKfycbxj39jzQxx83NwniHJaFi54-pL-8JtYMhMZkJZGxcawFxxpiZ3ExmkuIMVIXLQW31hv/exec', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        return response.text();
-      }
-      throw new Error('Error al enviar el formulario');
-    })
-    .then(data => {
-      // Ocultar el símbolo de carga
-      document.getElementById('loading').style.display = 'none';
+        // Mostrar el símbolo de carga
+        document.getElementById('loading').style.display = 'block';
 
-      // Mostrar el mensaje de confirmación utilizando SweetAlert2
-      Swal.fire({
-        icon: 'success',
-        title: 'Orden Actualizada',
-        text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
-        confirmButtonText: 'OK'
-      });
+        // Enviar el formulario de manera asíncrona
+        var formData = new FormData(this);
+        fetch('https://script.google.com/macros/s/AKfycbxj39jzQxx83NwniHJaFi54-pL-8JtYMhMZkJZGxcawFxxpiZ3ExmkuIMVIXLQW31hv/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('Error al enviar el formulario');
+        })
+        .then(data => {
+            // Ocultar el símbolo de carga
+            document.getElementById('loading').style.display = 'none';
 
-      // Llamar a search() después de 2 segundos
-      setTimeout(function() {
-        search();
-      }, 2000);
-    })
-    .catch(error => {
-      // Ocultar el símbolo de carga en caso de error
-      document.getElementById('loading').style.display = 'none';
+            // Mostrar el mensaje de confirmación utilizando SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'Orden Actualizada',
+                text: data, 
+                confirmButtonText: 'OK'
+            });
 
-      // Mostrar un mensaje de error utilizando SweetAlert2
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Error: ' + error.message,
-        confirmButtonText: 'OK'
-      });
+            // Llamar a search() después de 2 segundos
+            setTimeout(function() {
+                search();
+            }, 2000);
+        })
+        .catch(error => {
+            // Ocultar el símbolo de carga en caso de error
+            document.getElementById('loading').style.display = 'none';
+
+            // Mostrar un mensaje de error utilizando SweetAlert2
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error: ' + error.message,
+                confirmButtonText: 'OK'
+            });
+        })
+        .finally(() => {
+            // Habilitar el botón nuevamente
+            submitButton.disabled = false;
+            submitButton.innerText = "Enviar";
+        });
     });
-  });
+
+    // Activar el envío solo al hacer clic en el botón
+    document.getElementById('sub1zzz').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('corporateFormzzz').dispatchEvent(new Event('submit'));
+    });
 });
 </script>
 
