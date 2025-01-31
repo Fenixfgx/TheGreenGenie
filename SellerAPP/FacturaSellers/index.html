@@ -134,7 +134,7 @@
       
 <div style="min-width: 200px;text-align-last: center;" class="form-cell" colspan="1">
         <label for="fechades">Cliente</label>
-        <select class="cliente1" id="clientelzzz" name="clientelzzz"></select>
+        <select class="cliente1" id="clientelzzz" name="clientelzzz" required></select>
       </div><button style="display:none" type="button" onclick="fetchClientes(); setsellerValue();" id="fechact">Click me</button>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -2359,10 +2359,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función que maneja el envío del formulario
     function submitForm() {
-        // Validación manual de los campos requeridos
         var form = document.getElementById('corporateFormzzz');
+        var submitButton = document.getElementById('sub1zzz');
+
+        // Validación manual de los campos requeridos
         if (!form.checkValidity()) {
-            // Mostrar un mensaje si los campos no están completos
             Toastify({
                 text: "Por favor, completa todos los campos obligatorios.",
                 duration: 3000,
@@ -2371,8 +2372,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 position: "right",
                 backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
             }).showToast();
-            return; // Detener el envío si no es válido
+            return;
         }
+
+        // Deshabilitar el botón y cambiar el texto mientras se envía el formulario
+        submitButton.disabled = true;
+        submitButton.innerText = "Enviando...";
 
         // Mostrar el símbolo de carga
         document.getElementById('loading').style.display = 'block';
@@ -2396,11 +2401,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Mostrar el mensaje de confirmación utilizando Toastify
             Toastify({
-                text: data, // El mensaje de confirmación devuelto desde el script de Google Apps Script
-                duration: 3000, // Duración del mensaje en milisegundos
+                text: data,
+                duration: 3000,
                 close: true,
-                gravity: "top", // top or bottom
-                position: "right", // left, center or right
+                gravity: "top",
+                position: "right",
                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
             }).showToast();
 
@@ -2412,7 +2417,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ocultar el símbolo de carga en caso de error
             document.getElementById('loading').style.display = 'none';
 
-            // En caso de error, mostrar un mensaje de error utilizando Toastify
+            // Mostrar un mensaje de error utilizando Toastify
             Toastify({
                 text: 'Error: ' + error.message,
                 duration: 3000,
@@ -2421,6 +2426,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 position: "right",
                 backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
             }).showToast();
+        })
+        .finally(() => {
+            // Habilitar el botón nuevamente
+            submitButton.disabled = false;
+            submitButton.innerText = "Enviar";
         });
     }
 });
