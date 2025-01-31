@@ -1718,9 +1718,10 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Evita el envío convencional del formulario
 
         var clienteSelect = document.getElementById('clientelzzz');
+        var clienteValor = clienteSelect.value.trim(); // Obtener el valor y eliminar espacios en blanco
 
-        // Verificar si el select está vacío
-        if (!clienteSelect.value) {
+        // Verificar si el select está vacío o tiene una opción no válida
+        if (clienteValor === "" || clienteValor === "Seleccione") {
             Toastify({
                 text: "No se ha seleccionado Cliente.",
                 duration: 3000,
