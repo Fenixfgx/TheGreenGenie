@@ -1723,6 +1723,7 @@ div:where(.swal2-container) .swal2-html-container {
     cursor: pointer;
     height: 25px;
     font-size: 12px;
+    margin-right: 6px;
 }
 
 #sheet-container .deleteButton {

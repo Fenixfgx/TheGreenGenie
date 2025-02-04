@@ -47,6 +47,7 @@ const vendedor = document.getElementById('vendedorh');
 
 // Asignar el valor por defecto al input
 vendedor.value = username;
+
               
 const vendedorh2 = document.getElementById('vendedorh2');
 
@@ -230,7 +231,6 @@ function listaDiv() {
         leftContent.style.marginLeft = '-7px';
         rightContent.style.display = 'none';
         leftContent.style.display = 'block';
-        clock.style.display = 'flex';
         addclient.style.display = 'none';
         adminclients.style.display = 'none';
         preciosxClients.style.display = 'none';

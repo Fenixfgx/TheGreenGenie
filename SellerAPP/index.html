@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Sellers</title>
+  <title>LOGTOK adv</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -193,8 +193,6 @@
   <div style="display:none;" class="ventas">
 <h1>Ventas</h1><button onclick="search()" type="button" class="rech"><svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 489.711 489.711" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M112.156,97.111c72.3-65.4,180.5-66.4,253.8-6.7l-58.1,2.2c-7.5,0.3-13.3,6.5-13,14c0.3,7.3,6.3,13,13.5,13 c0.2,0,0.3,0,0.5,0l89.2-3.3c7.3-0.3,13-6.2,13-13.5v-1c0-0.2,0-0.3,0-0.5v-0.1l0,0l-3.3-88.2c-0.3-7.5-6.6-13.3-14-13 c-7.5,0.3-13.3,6.5-13,14l2.1,55.3c-36.3-29.7-81-46.9-128.8-49.3c-59.2-3-116.1,17.3-160,57.1c-60.4,54.7-86,137.9-66.8,217.1 c1.5,6.2,7,10.3,13.1,10.3c1.1,0,2.1-0.1,3.2-0.4c7.2-1.8,11.7-9.1,9.9-16.3C36.656,218.211,59.056,145.111,112.156,97.111z"></path> <path d="M462.456,195.511c-1.8-7.2-9.1-11.7-16.3-9.9c-7.2,1.8-11.7,9.1-9.9,16.3c16.9,69.6-5.6,142.7-58.7,190.7 c-37.3,33.7-84.1,50.3-130.7,50.3c-44.5,0-88.9-15.1-124.7-44.9l58.8-5.3c7.4-0.7,12.9-7.2,12.2-14.7s-7.2-12.9-14.7-12.2l-88.9,8 c-7.4,0.7-12.9,7.2-12.2,14.7l8,88.9c0.6,7,6.5,12.3,13.4,12.3c0.4,0,0.8,0,1.2-0.1c7.4-0.7,12.9-7.2,12.2-14.7l-4.8-54.1 c36.3,29.4,80.8,46.5,128.3,48.9c3.8,0.2,7.6,0.3,11.3,0.3c55.1,0,107.5-20.2,148.7-57.4 C456.056,357.911,481.656,274.811,462.456,195.511z"></path> </g> </g> </g></svg></button></div>
   
-  
-  <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -310,30 +308,62 @@ const dvv = document.getElementById('dvv');
 
     </script>
 
-      <div style="display: inline-block;">
-        <div class="form-group" style="margin-left: -23px;"> 
-<label for="fecha-despacho" style="margin-bottom: 5px; width: 152px; margin-top: 12px;">Fecha de Despacho</label>
-<input type="date" id="fecha-despacho" style="width: 160px;">
-        </div></div>
-<button style="margin-left: 5px; height: 35px;" onclick="filtrarDatos()">Buscar</button>
+<div style="display: inline-block;">
+    <div class="form-group" style="margin-left: -23px;"> 
+        <label for="fecha-despacho" style="margin-bottom: 5px; width: 152px; margin-top: 12px;">Fecha de Despacho</label>
+        <input type="date" id="fecha-despacho" style="width: 153px;">
+    </div>
+</div>
+<button style="margin-left: 5px; height: 35px;" onclick="filtrarDatos()">Buscar/Actualizar</button>
+
+<button style="margin-left: 5px; height: 35px;" id="editarBtn">Editar</button>
+<select id="clienteSelect" style="display: none; margin-left: 5px; width: 230px;">
+    <option value="">Seleccionar Cliente</option>
+</select>
+<select id="opcionesSelect" style="display: none; width: 150px;" >
+    <option value="">Linea</option>
+    <!-- Opciones del 1 al 12 -->
+    <option value="Orden Normal">Orden Normal</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+</select>  
+<div id="modal" style="display:none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
+    <div style="position: relative; width: 98%;margin: auto; top: 50%; transform: translateY(-50%); background: white; border-radius: 8px; padding: 20px;">
+        <span id="closeModal" onclick="filtrarDatos()" style="cursor: pointer;font-size: 35px;padding: 0px;top: 5px;position: fixed;right: 15px;">&times;</span>
+        <iframe id="modalIframe" src="" style="width: 100%; height: 550px; border: none;"></iframe>
+    </div>
+</div>
       
-        <table id="resultados">
-            <thead>
-                <tr>
-                    <th style="width: 250px;">Cliente</th>
-                    <th style="width: 70px;">Grado</th> 
-                    <th>Línea</th>
-                    <th>Observaciones</th>
-                    <th>Producto</th>
-                    <th>Empaque</th>
-                    <th>Cantidad Cajas</th>
-                    <th>Tallos x Ramo</th>
-                    <th>Ramos x Pieza</th>
-                    <th>Total Ramos</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+<table id="resultados">
+    <thead>
+        <tr>
+            <th style="width: 250px;">Cliente</th>
+            <th style="width: 70px;">Grado</th> 
+            <th>Línea</th>
+            <th>Observaciones</th>
+            <th>Producto</th>
+            <th>Empaque</th>
+            <th>Cantidad Cajas</th>
+            <th>Tallos x Ramo</th>
+            <th>Ramos x Pieza</th>
+            <th>Total Ramos</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
     </div>
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
@@ -508,9 +538,160 @@ const dvv = document.getElementById('dvv');
         handleClientLoad();
       filtrarDatos();
     </script>
+    <script>    
+document.getElementById('editarBtn').addEventListener('click', function() {
+    const resultadosTable = document.getElementById('resultados').getElementsByTagName('tbody')[0];
+    const clienteSelect = document.getElementById('clienteSelect');
+
+    clienteSelect.innerHTML = '<option value="">Seleccionar Cliente</option>';
+    const rows = resultadosTable.getElementsByTagName('tr');
+    const clientes = new Set();
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const clienteCell = row.cells[0];
+
+        if (clienteCell && clienteCell.offsetParent !== null && clienteCell.innerText.trim() !== "") {
+            const clienteName = clienteCell.innerText.trim();
+
+            const isNumeric = /^[0-9]+(\.[0-9]+)?$/.test(clienteName);
+            const containsComma = clienteName.includes(",");
+            const containsCMS = clienteName.includes("CMS");
+            const containsTotal = clienteName.includes("TOTAL");
+            const containsTotalGeneral = clienteName.includes("TOTAL GENERAL");
+            const isProducto = clienteName === "Producto";
+            const isBouquet = clienteName === "BOUQUET";
+
+            const wordsToIgnore = [
+                "MONSTERA",
+                "BRILLANTINA",
+                "CINTA LIRIOPE",
+                "COPROSMA",
+                "COCCULUS",
+                "EUCALIPTO BABY BLUE",
+                "EUCALIPTO BABY BLUE SINGLE",
+                "EUCALIPTO BABY BLUE SPRAY",
+                "EUCALIPTO SILVER DOLLAR",
+                "ERYNGIUM",
+                "FOLLAJE",
+                "HELECHO CUERO",
+                "HYPERICUM GREEN",
+                "HYPERICUM PINK",
+                "HYPERICUM RED",
+                "PALMA ROBELINA",
+                "PINO",
+                "RUSCUS",
+                "TREE FERN"
+            ];
+
+            const isIgnoredWord = wordsToIgnore.includes(clienteName);
+
+            if (!isNumeric && !containsComma && !containsCMS && !containsTotal && !containsTotalGeneral && !isProducto && !isBouquet && !isIgnoredWord) {
+                clientes.add(clienteName);
+            }
+        }
+    }
+
+    clientes.forEach(cliente => {
+        const option = document.createElement('option');
+        option.value = cliente;
+        option.textContent = cliente;
+        clienteSelect.appendChild(option);
+    });
+
+    clienteSelect.style.display = 'inline';
+});
+
+// Mostrar modal o segundo select según el cliente seleccionado
+document.getElementById('clienteSelect').addEventListener('change', function() {
+    const selectedCliente = this.value;
+    const fechaDespacho = document.getElementById('fecha-despacho').value;
+    const user = document.getElementById('vendedorh').value;
+    const opcionesSelect = document.getElementById('opcionesSelect');
+    const resultadosTable = document.getElementById('resultados').getElementsByTagName('tbody')[0];
+
+    let showOpcionesSelect = false;
+
+    // Buscar el cliente seleccionado en la tabla y verificar la longitud de la segunda columna
+    const rows = resultadosTable.getElementsByTagName('tr');
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const clienteCell = row.cells[0];
+        const simboloCell = row.cells[1]; // Segunda columna para verificar la longitud
+
+        if (clienteCell && clienteCell.innerText.trim() === selectedCliente) {
+            console.log(`Verificando fila ${i + 1} para cliente: ${selectedCliente}`);
+            console.log(`Contenido de la segunda columna: "${simboloCell.innerText.trim()}"`);
+
+            if (simboloCell && simboloCell.innerText.trim().length > 8) {
+                console.log("El contenido de la segunda columna supera los 8 caracteres.");
+                showOpcionesSelect = true;
+                break;
+            } else {
+                console.log("El contenido de la segunda columna no supera los 8 caracteres.");
+            }
+        }
+    }
+
+    if (showOpcionesSelect) {
+        opcionesSelect.style.display = 'inline';
+        document.getElementById('modal').style.display = 'none';
+        console.log("Mostrando el select de opciones en lugar del modal.");
+    } else if (selectedCliente && fechaDespacho) {
+        opcionesSelect.style.display = 'none';
+        const modal = document.getElementById('modal');
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = `https://www.thegreengenie.com.co/SellerAPP/ordeneditor/index.html?client-selector=${selectedCliente}&date-selector=${fechaDespacho}&clientelzzz=${selectedCliente}&fechades=${fechaDespacho}&vendedorh=${user}`;
+        modal.style.display = 'block';
+        console.log("Abriendo el modal.");
+    }
+});
+
+document.getElementById('opcionesSelect').addEventListener('change', function () {
+    const selectedCliente = document.getElementById('clienteSelect').value;
+    const fechaDespacho = document.getElementById('fecha-despacho').value;
+    const user = document.getElementById('vendedorh').value;
+    const linea = this.value;
+
+    console.log("Opción seleccionada en opcionesSelect:", linea);
+
+    if (linea === 'Orden Normal') {
+        // Mostrar el modal específico para "Orden Normal"
+        const modal = document.getElementById('modal');
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = `https://www.thegreengenie.com.co/SellerAPP/ordeneditor/index.html?client-selector=${selectedCliente}&date-selector=${fechaDespacho}&clientelzzz=${selectedCliente}&fechades=${fechaDespacho}&vendedorh=${user}`;
+        modal.style.display = 'block';
+        console.log("Abriendo modal para Orden Normal con URL:", iframe.src);
+    } else if (linea) {
+        // Mostrar el modal para otras opciones
+        const modal = document.getElementById('modal');
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = `https://www.thegreengenie.com.co/SellerAPP/EDITDISC/index.html?cliente=${selectedCliente}&clientelzzz=${selectedCliente}&fecha=${fechaDespacho}&vendedorzzz=${user}&linea=${linea}`;
+        modal.style.display = 'block';
+        console.log("Abriendo modal genérico con URL:", iframe.src);
+    }
+});
+
+
+// Cerrar modal
+document.getElementById('closeModal').addEventListener('click', function() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+    document.getElementById('modalIframe').src = "";
+});
+
+// Cerrar modal al hacer clic fuera del contenido del modal
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+        document.getElementById('modalIframe').src = "";
+    }
+});
+ </script>
+  
 </body>
 </html>
-
   
   
   
@@ -952,6 +1133,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Mostrar SweetAlert con el contenido del modal y ejecutar acciones adicionales
     Swal.fire({
       html: content,
+      showCancelButton: true, // Mostrar un botón adicional
+        showConfirmButton: false, // Ocultar el botón "OK" predeterminado
+        cancelButtonText: 'Cerrar', // Cambiar el texto del botón de cancelar
       didOpen: () => {
         // Actualizar la URL del iframe al abrir el modal
         document.getElementById('dynamicIframe').src = parametrosURL;
@@ -2112,9 +2296,9 @@ function displaySheetDataxd(data) {
             actionsCell.appendChild(detailsButton);
                      
             const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Eliminar';
+            deleteButton.textContent = 'Editar';
             deleteButton.className = 'deleteButton';
-            deleteButton.onclick = () => confirmDeletexd(rowIndex + 2); // Pasar el índice de la fila
+            deleteButton.onclick = () => EditarValoresYMostrarModalOP(rowIndex + 2); // Pasar el índice de la fila
             actionsCell.appendChild(deleteButton);
 
             row.appendChild(actionsCell);
@@ -2243,6 +2427,59 @@ document.getElementById('apply-filterxd').addEventListener('click', applyModalFi
     });
 }
 
+  function EditarValoresYMostrarModalOP(rowIndex) {
+    // Obtener los datos de la fila seleccionada desde `sheetDataxd`
+    var rowData = sheetDataxd[rowIndex]; // Asegurarse de que `rowIndex` esté en el rango correcto
+
+    if (!rowData) {
+        console.error('No se encontraron datos para la fila seleccionada.');
+        return;
+    }
+
+    // Obtener valores de la fila seleccionada
+    var vendedor = document.getElementById('vendedorh')?.value || '';
+    var fechaGeneracion = document.getElementById('fechap')?.value || '';
+    var fechaDespacho = document.getElementById('fechadesp')?.value || '';
+
+    // Extraer valores de Cliente y Día Programado
+    var cliente = rowData[5]; // Ajusta el índice según la columna de Cliente
+    var diaProgramado = rowData[45]; // Ajusta el índice según la columna de Día Programado
+
+    // Construir la URL del iframe con los parámetros
+    var urlBase = 'https://www.thegreengenie.com.co/SellerAPP/ProgramEditor/index.html';
+    var parametros = {
+        vendedorh: vendedor,
+        fechagen: fechaGeneracion,
+        fechades: fechaDespacho,
+        clientelzzz: cliente,
+        clientezzz: cliente,
+        clientezzz3: cliente,
+        clientezzz4: cliente,
+        clientezzz5: cliente,
+        clientezzz6: cliente,
+        clientezzz7: cliente,
+        clientezzz8: cliente,
+        clientezzz9: cliente,
+        clientezzz10: cliente,
+        clientezzz11: cliente,
+        clientselector: cliente,
+        day: diaProgramado,
+        dateselector: diaProgramado
+    };
+
+    // Filtrar y codificar los valores de los parámetros
+    var queryString = Object.keys(parametros)
+        .filter(key => parametros[key] && parametros[key].toString().trim() !== '')
+        .map(key => key + '=' + encodeURIComponent(parametros[key]))
+        .join('&');
+
+    var urlCompleta = urlBase + '?' + queryString;
+
+    // Mostrar el modal con la nueva URL
+    mostrarModalFollaje(urlCompleta);
+}
+
+    
 // Función para aplicar el filtro dentro del SweetAlert
 function applyModalFilterxd() {
     const filterCol5 = document.getElementById('filter-col5xd').value.toLowerCase();
