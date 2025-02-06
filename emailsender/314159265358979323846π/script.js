@@ -37,6 +37,7 @@ $(document).ready(function() {
         $('#boton-enturnador').show();
         $('#boton-cliente').show();
         $('#boton-agencias').show();
+        $('#boton-cf').show();
     },
     error: function(xhr, status, error) {
       alert('Hubo un error al ejecutar la función ' + funcion + ': ' + error);
