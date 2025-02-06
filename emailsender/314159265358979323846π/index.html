@@ -33,7 +33,7 @@
   <img src="https://www.thegreengenie.com.co/images/loadgreen.gif" style="width: 188px;right: 34px;position: absolute;top: -37px;" alt="Loader">
 </div>
  </div>
-  <style>
+   <style>
         /* Estilos del modal */
         .modal {
             display: none;
@@ -72,27 +72,46 @@
         .close:hover {
             background: darkred;
         }
+
+        /* Estilos del botón azul */
+        .blue-button {
+            background: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .blue-button:hover {
+            background: darkblue;
+        }
     </style>
-  <!-- Modal (inicialmente oculto) -->
+  <!-- Modal con input y botón -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <p>Hola Mundo</p>
+            <label for="fecha">Seleccione una fecha:</label>
+            <input type="date" id="fecha" required>
+            <button class="blue-button" id="enviarFecha">Cambiar Fecha</button>
             <button class="close">Cerrar</button>
         </div>
     </div>
-
-    <script>
-        // Elementos
+<script>
+        // Elementos del DOM
         const boton = document.getElementById("boton-cf");
         const modal = document.getElementById("modal");
         const closeBtn = document.querySelector(".close");
+        const enviarFechaBtn = document.getElementById("enviarFecha");
+        const inputFecha = document.getElementById("fecha");
 
-        // Mostrar el modal al hacer clic en el botón
+        // Mostrar el modal
         boton.addEventListener("click", () => {
             modal.style.display = "flex";
         });
 
-        // Cerrar el modal al hacer clic en el botón de cerrar
+        // Cerrar el modal con el botón de cerrar
         closeBtn.addEventListener("click", () => {
             modal.style.display = "none";
         });
@@ -101,6 +120,32 @@
         window.addEventListener("click", (e) => {
             if (e.target === modal) {
                 modal.style.display = "none";
+            }
+        });
+
+        // Función para enviar la fecha a Google Sheets
+        enviarFechaBtn.addEventListener("click", async () => {
+            const fechaSeleccionada = inputFecha.value;
+            if (!fechaSeleccionada) {
+                alert("Por favor, seleccione una fecha.");
+                return;
+            }
+
+            try {
+                const response = await fetch("https://script.google.com/macros/s/AKfycby1JpawAwdZOaosDOIdI7MetmOUeMKLccWUaCXqDIB7aftD2lM0n0cy7o56sJ8MEnfT/exec", {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ fecha: fechaSeleccionada }),
+                });
+
+                alert("Fecha registrada correctamente en Google Sheets.");
+                modal.style.display = "none";
+            } catch (error) {
+                console.error("Error al enviar la fecha:", error);
+                alert("Hubo un error al registrar la fecha.");
             }
         });
     </script>
