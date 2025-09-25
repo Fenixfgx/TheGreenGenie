@@ -1,0 +1,9 @@
+// Datos de productos para uso offline (file://)
+window.PRODUCTS_DATA = [
+  { id: 1, name: 'Bouquette 1', image: 'img/gallery/BOUQUETTE1.png', description: 'Hermosa Planta tropical de interior con hojas perforadas características' },
+  { id: 2, name: 'Ficus Lyrata', image: 'img/gallery/BOUQUETTE2.png', description: 'Árbol de hojas grandes ideal para decoración de interiores' },
+  { id: 3, name: 'Sansevieria', image: 'img/gallery/BOUQUETTE3.png', description: 'Planta resistente perfecta para principiantes' },
+  { id: 4, name: 'Pothos Dorado', image: 'img/gallery/PRODUCT1.png', description: 'Planta colgante de fácil cuidado y crecimiento rápido' },
+  { id: 5, name: 'Philodendron', image: 'img/gallery/PRODUCT2.png', description: 'Follaje exuberante para espacios con poca luz' },
+  { id: 6, name: 'Calathea', image: 'img/gallery/PRODUCT3.png', description: 'Planta de hojas ornamentales con patrones únicos' }
+  ];
