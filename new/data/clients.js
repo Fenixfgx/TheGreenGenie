@@ -1,0 +1,21 @@
+// Fuente de datos offline para file:// (editar aquí si no se usa servidor)
+window.CLIENTS_DATA = [
+  { country: 'Colombia', code: 'CO', intensity: 1.00, productName: 'The Green Genie', productImage: 'img/logo.png' },
+  { country: 'Estados Unidos', code: 'US', value: 13, projects: 16, intensity: 0.90, productName: 'Aceite Orgánico Full Spectrum', productImage: 'img/products/DSC00598.JPG' },
+  { country: 'Corea del Sur', code: 'KR', value: 10, projects: 12, intensity: 0.60, productName: 'Cápsulas Softgel Balance', productImage: 'img/products/DSC00632.JPG' },
+  { country: 'Reino Unido', code: 'GB', value: 11, projects: 13, intensity: 0.70, productName: 'Gotas Sublinguales Daily', productImage: 'img/products/DSC01301.JPG' },
+  { country: 'Japón', code: 'JP', value: 10, projects: 12, intensity: 0.62, productName: 'Matcha Fusion CBD', productImage: 'img/products/matcha-fusion.jpg' },
+  { country: 'Países Bajos', code: 'NL', value: 9, projects: 11, intensity: 0.55, productName: 'Resina Terpénica Gold', productImage: 'img/products/resina-gold.jpg' },
+  { country: 'Canadá', code: 'CA', value: 11, projects: 13, intensity: 0.72, productName: 'Gominolas Relax Plus', productImage: 'img/products/gominolas-relax.jpg' },
+  { country: 'España', code: 'ES', value: 12, projects: 14, intensity: 0.80, productName: 'Crema Muscular Active', productImage: 'img/products/crema-muscular.jpg' },
+  { country: 'Panamá', code: 'PA', value: 9, projects: 11, intensity: 0.50, productName: 'Spray Rápida Absorción', productImage: 'img/products/spray-rapido.jpg' },
+  { country: 'Ecuador', code: 'EC', value: 9, projects: 11, intensity: 0.52, productName: 'Té Herbal Calm', productImage: 'img/products/te-herbal.jpg' },
+  { country: 'Emiratos Árabes Unidos', code: 'AE', value: 12, projects: 14, intensity: 0.82, productName: 'Serum Facial Renewal', productImage: 'img/products/serum-facial.jpg' },
+  { country: 'Uzbekistán', code: 'UZ', value: 9, projects: 11, intensity: 0.48, productName: 'Infusión Nocturna Rest', productImage: 'img/products/infusion-rest.jpg' },
+  { country: 'Rumania', code: 'RO', value: 9, projects: 11, intensity: 0.49, productName: 'Bálsamo Regenerativo Skin', productImage: 'img/products/balsamo-skin.jpg' },
+  { country: 'Qatar', code: 'QA', value: 10, projects: 12, intensity: 0.58, productName: 'Roll-On Alivio Total', productImage: 'img/products/rollon-alivio.jpg' },
+  { country: 'Kazajstán', code: 'KZ', value: 9, projects: 11, intensity: 0.47, productName: 'Elixir Botanical Core', productImage: 'img/products/elixir-core.jpg' },
+  { country: 'Nueva Zelanda', code: 'NZ', value: 9, projects: 11, intensity: 0.53, productName: 'Tabletas Focus Mind', productImage: 'img/products/tabletas-focus.jpg' },
+  { country: 'República Dominicana', code: 'DO', value: 9, projects: 11, intensity: 0.54, productName: 'Shot Energético DayStart', productImage: 'img/products/shot-daystart.jpg' },
+  { country: 'Rusia', code: 'RU', value: 12, projects: 12, intensity: 0.78, productName: 'Gel Tópico Sport Recovery', productImage: 'img/products/gel-sport.jpg' }
+];
