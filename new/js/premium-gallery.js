@@ -256,6 +256,5 @@ if (document.readyState === 'loading') {
     initializeGallery();
 }
 
-// Export functions for global access
-window.openProductGallery = openProductGallery;
-window.closeProductGallery = closeProductGallery;
+// Note: Gallery modal functions are now handled in index.html
+// This file provides the data and initialization only

@@ -12,22 +12,38 @@
             historia: {
                 title: window.getTranslation ? window.getTranslation('story.historia.title') : 'Historia',
                 content: window.getTranslation ? window.getTranslation('story.historia.content') : "The Green Genie nació en el municipio de Cachipay, Cundinamarca...",
-                images: [
-                    "img/about/portada/1.jpg",
-                    "img/about/portada/17.jpg",
-                    "img/about/portada/3.jpg",
-                    "img/about/portada/4.jpg",
-                    "img/about/portada/5.jpg"
+                // Images organized by paragraph for easy control
+                paragraphImages: [
+                    // Paragraph 1 images
+                    [
+                        "img/about/portada/1.jpg",
+                        "img/about/portada/2.jpg",
+                        "img/about/portada/3.jpg"
+                    ],
+                    // Paragraph 2 images
+                    [
+                        "img/about/portada/4.jpg",
+                        "img/about/portada/5.jpg"
+                    ],
+                    // Add more arrays for additional paragraphs
                 ]
             },
             acercaDe: {
                 title: window.getTranslation ? window.getTranslation('story.acerca.title') : 'Acerca de Nosotros',
                 content: window.getTranslation ? window.getTranslation('story.acerca.content') : "Somos THE GREEN GENIE, una empresa familiar...",
-                images: [
-                    "img/about/portada/6.jpg",
-                    "img/about/portada/7.jpg",
-                    "img/about/portada/9.jpg",
-                    "img/about/portada/16.jpg"
+                // Images organized by paragraph for easy control
+                paragraphImages: [
+                    // Paragraph 1 images
+                    [
+                        "img/about/portada/6.jpg",
+                        "img/about/portada/7.jpg",
+                        "img/about/portada/9.jpg"
+                    ],
+                    // Paragraph 2 images
+                    [
+                        "img/about/portada/16.jpg"
+                    ],
+                    // Add more arrays for additional paragraphs
                 ]
             },
             valores: {
@@ -63,12 +79,12 @@
         };
     }
 
-    // Fallback images in case portada images are not found
+    // Fallback images from the portada folder only
     const fallbackImages = [
-        "img/service-1.jpg",
-        "img/service-2.jpg",
-        "img/service-3.jpg",
-        "img/service-4.jpg"
+        "img/about/portada/1.jpg",
+        "img/about/portada/2.jpg",
+        "img/about/portada/3.jpg",
+        "img/about/portada/4.jpg"
     ];
 
     /**
@@ -154,93 +170,236 @@
      */
     function loadStoryContent(container) {
         try {
-            const storyContent = getStoryContent(); // Get current translations
+            const storyContent = getStoryContent();
             container.innerHTML = '';
-            
-            let imageIndex = 0;
-            
-            // Create Historia sections - one for each paragraph
-            const historiaParagraphs = storyContent.historia.content.split('\n\n');
-            historiaParagraphs.forEach((paragraph, index) => {
-                if (paragraph.trim()) {
-                    const isImageLeft = index % 2 === 1; // Alterna: 1er párrafo imagen derecha, 2do izquierda, etc.
-                    const imageUrl = storyContent.historia.images[index] || fallbackImages[imageIndex % fallbackImages.length];
-                    
-                    const section = createParagraphSection(
-                        index === 0 ? storyContent.historia.title : '', // Solo título en el primer párrafo
-                        paragraph,
-                        imageUrl,
-                        isImageLeft ? 'left' : 'right'
-                    );
-                    container.appendChild(section);
-                    imageIndex++;
-                }
-            });
-            
-            // Create Acerca de sections - continúa la alternancia
-            const acercaParagraphs = storyContent.acercaDe.content.split('\n\n');
-            acercaParagraphs.forEach((paragraph, index) => {
-                if (paragraph.trim()) {
-                    const totalPreviousParagraphs = historiaParagraphs.length;
-                    const currentIndex = totalPreviousParagraphs + index;
-                    const isImageLeft = currentIndex % 2 === 1;
-                    const imageUrl = storyContent.acercaDe.images[index] || fallbackImages[imageIndex % fallbackImages.length];
-                    
-                    const section = createParagraphSection(
-                        index === 0 ? storyContent.acercaDe.title : '', // Solo título en el primer párrafo
-                        paragraph,
-                        imageUrl,
-                        isImageLeft ? 'left' : 'right'
-                    );
-                    container.appendChild(section);
-                    imageIndex++;
-                }
-            });
-            
-            // Create Values section
-            const valuesSection = createValuesSection();
-            container.appendChild(valuesSection);
-            
-            // Initialize VanillaTilt if available
+
+            const slidersToInit = [];
+            const getFallbackImage = createFallbackProvider();
+
+            const historiaSection = buildStorySection(
+                {
+                    title: storyContent.historia.title,
+                    content: storyContent.historia.content,
+                    paragraphImages: storyContent.historia.paragraphImages
+                },
+                storyContent.historia.paragraphImages ? storyContent.historia.paragraphImages.flat() : [],
+                'right',
+                getFallbackImage,
+                slidersToInit
+            );
+
+            if (historiaSection) {
+                container.appendChild(historiaSection);
+            }
+
+            const acercaSection = buildStorySection(
+                {
+                    title: storyContent.acercaDe.title,
+                    content: storyContent.acercaDe.content,
+                    paragraphImages: storyContent.acercaDe.paragraphImages
+                },
+                storyContent.acercaDe.paragraphImages ? storyContent.acercaDe.paragraphImages.flat() : [],
+                historiaSection ? 'left' : 'right',
+                getFallbackImage,
+                slidersToInit
+            );
+
+            if (acercaSection) {
+                container.appendChild(acercaSection);
+            }
+
+            // Removed values section as requested
+
+            initializeStorySliders(slidersToInit);
+
             if (window.VanillaTilt) {
                 const frames = container.querySelectorAll('.story-image-frame');
                 VanillaTilt.init(frames);
             }
-            
+
             console.log('[Story Modal] Story content loaded successfully');
-            
+
         } catch (error) {
             console.error('[Story Modal] Error loading story content:', error);
             showStoryError(container);
         }
     }
 
-    /**
-     * Creates a story section with a single paragraph and image
-     */
-    function createParagraphSection(title, content, imageUrl, imagePosition) {
-        const section = document.createElement('div');
-        section.className = `story-section with-image ${imagePosition === 'left' ? 'image-left' : ''}`;
-        
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'story-content';
-        
-        // Add title only if provided
-        if (title) {
-            const titleElement = document.createElement('h2');
-            titleElement.textContent = title;
-            contentDiv.appendChild(titleElement);
+    function buildStorySection(sectionData, imageUrls, imagePosition, getFallbackImage, slidersToInit) {
+        if (!sectionData || !sectionData.content) {
+            return null;
         }
+
+        const paragraphs = splitIntoParagraphs(sectionData.content);
+        if (!paragraphs.length) {
+            return null;
+        }
+
+        const section = document.createElement('div');
+        section.className = `story-section with-paragraph-sliders ${imagePosition === 'left' ? 'image-left' : ''}`;
+
+        if (sectionData.title) {
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = sectionData.title;
+            section.appendChild(titleElement);
+        }
+
+        // Use paragraphImages if available, otherwise fall back to old logic
+        const paragraphImages = sectionData.paragraphImages || [];
+
+        paragraphs.forEach((paragraph, index) => {
+            const paragraphContainer = document.createElement('div');
+            paragraphContainer.className = 'story-paragraph-container';
+
+            // Alternate image position for each paragraph
+            const isImageLeft = index % 2 === 1;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'story-content';
+
+            const p = document.createElement('p');
+            p.textContent = paragraph;
+            contentDiv.appendChild(p);
+
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'story-image-container';
+
+            // Get images for this paragraph - use specified images or fall back to distribution
+            let paragraphImagesForSlider = [];
+            if (paragraphImages[index] && Array.isArray(paragraphImages[index])) {
+                paragraphImagesForSlider = paragraphImages[index];
+            } else {
+                // Fallback to old distribution logic if paragraphImages not specified
+                const sanitizedImages = Array.isArray(imageUrls) ? imageUrls.filter(Boolean) : [];
+                const imagesPerParagraph = Math.max(1, Math.ceil(sanitizedImages.length / paragraphs.length));
+                const startIndex = index * imagesPerParagraph;
+                const endIndex = Math.min(startIndex + imagesPerParagraph, sanitizedImages.length);
+                paragraphImagesForSlider = sanitizedImages.slice(startIndex, endIndex);
+            }
+
+            // Ensure at least 3 unique images per slider
+            const usedImages = new Set(paragraphImagesForSlider);
+            while (paragraphImagesForSlider.length < 3) {
+                const fallbackImage = getFallbackImage();
+                if (!usedImages.has(fallbackImage)) {
+                    paragraphImagesForSlider.push(fallbackImage);
+                    usedImages.add(fallbackImage);
+                } else {
+                    // If all fallback images are used, repeat the last image
+                    paragraphImagesForSlider.push(paragraphImagesForSlider[paragraphImagesForSlider.length - 1]);
+                    break;
+                }
+            }
+
+            const { sliderElement, sliderId } = createImageSlider(paragraphImagesForSlider, sectionData.title, getFallbackImage);
+            imageContainer.appendChild(sliderElement);
+            slidersToInit.push({ sliderId, sliderElement });
+
+            if (isImageLeft) {
+                paragraphContainer.appendChild(imageContainer);
+                paragraphContainer.appendChild(contentDiv);
+                paragraphContainer.classList.add('image-left');
+            } else {
+                paragraphContainer.appendChild(contentDiv);
+                paragraphContainer.appendChild(imageContainer);
+            }
+
+            section.appendChild(paragraphContainer);
+        });
+
+        return section;
+    }
+
+    function splitIntoParagraphs(content) {
+        return content
+            .split('\n\n')
+            .map(paragraph => paragraph.trim())
+            .filter(Boolean);
+    }
+
+    function createFallbackProvider() {
+        const availableImages = [...fallbackImages]; // Copy the array
+        let currentIndex = 0;
         
-        // Add single paragraph
-        const p = document.createElement('p');
-        p.textContent = content.trim();
-        contentDiv.appendChild(p);
-        
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'story-image-container';
-        
-        // Frame wrapper
+        return () => {
+            if (availableImages.length === 0) {
+                // If all images have been used, reset the pool
+                availableImages.push(...fallbackImages);
+                currentIndex = 0;
+            }
+            
+            // Return the next available image and remove it from the pool
+            const image = availableImages.splice(currentIndex % availableImages.length, 1)[0];
+            return image;
+        };
+    }
+
+    function createImageSlider(imageUrls = [], title, getFallbackImage) {
+        const sliderId = `story-slider-${Math.random().toString(36).slice(2, 11)}`;
+        const sliderElement = document.createElement('div');
+        sliderElement.className = 'story-image-slider swiper';
+        sliderElement.dataset.sliderId = sliderId;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'swiper-wrapper';
+        sliderElement.appendChild(wrapper);
+
+        const sanitizedImages = Array.isArray(imageUrls) ? imageUrls.filter(Boolean) : [];
+        const finalImages = [...sanitizedImages];
+        const usedImages = new Set(finalImages); // Track used images to avoid duplicates
+
+        // Add unique fallback images if needed
+        while (finalImages.length < 3) {
+            const fallbackImage = getFallbackImage();
+            if (!usedImages.has(fallbackImage)) {
+                finalImages.push(fallbackImage);
+                usedImages.add(fallbackImage);
+            }
+            // If we've exhausted all fallback images and still need more, break to avoid infinite loop
+            if (usedImages.size >= fallbackImages.length && finalImages.length < 3) {
+                break;
+            }
+        }
+
+        // If still not enough unique images, use what's available (will have duplicates as last resort)
+        while (finalImages.length < 3) {
+            finalImages.push(finalImages[finalImages.length - 1]);
+        }
+
+        finalImages.forEach(imageUrl => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+
+            const frame = createImageFrame(imageUrl, title, getFallbackImage);
+            slide.appendChild(frame);
+
+            wrapper.appendChild(slide);
+        });
+
+        const pagination = document.createElement('div');
+        pagination.className = 'story-slider-pagination';
+        pagination.dataset.sliderId = sliderId;
+        sliderElement.appendChild(pagination);
+
+        const prevButton = document.createElement('button');
+        prevButton.className = 'story-slider-nav story-slider-prev';
+        prevButton.type = 'button';
+        prevButton.dataset.sliderId = sliderId;
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+
+        const nextButton = document.createElement('button');
+        nextButton.className = 'story-slider-nav story-slider-next';
+        nextButton.type = 'button';
+        nextButton.dataset.sliderId = sliderId;
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+
+        sliderElement.appendChild(prevButton);
+        sliderElement.appendChild(nextButton);
+
+        return { sliderElement, sliderId };
+    }
+
+    function createImageFrame(imageUrl, title, getFallbackImage) {
         const frame = document.createElement('div');
         frame.className = 'story-image-frame';
         frame.setAttribute('data-tilt', '');
@@ -248,86 +407,62 @@
         frame.setAttribute('data-tilt-speed', '600');
         frame.setAttribute('data-tilt-glare', 'true');
         frame.setAttribute('data-tilt-max-glare', '0.25');
-        
+
         const image = document.createElement('img');
         image.className = 'story-image';
         image.src = imageUrl;
-        image.alt = title || 'Green Genie';
+        image.alt = title || 'The Green Genie';
         image.loading = 'lazy';
-        
-        // Add error handling with fallback
-        const fallbackUrl = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
-        image.onerror = function() {
-            this.src = fallbackUrl;
+
+        image.onerror = function handleImageError() {
+            const fallbackUrl = getFallbackImage();
+            if (this.src !== fallbackUrl) {
+                this.src = fallbackUrl;
+            }
         };
-        
+
         frame.appendChild(image);
-        imageContainer.appendChild(frame);
-        
-        // Append in correct order based on position
-        if (imagePosition === 'left') {
-            section.appendChild(imageContainer);
-            section.appendChild(contentDiv);
-        } else {
-            section.appendChild(contentDiv);
-            section.appendChild(imageContainer);
-        }
-        
-        // Initialize tilt later on loadStoryContent
-        return section;
+        return frame;
     }
 
-    /**
-     * Creates a story section with text and image (legacy function kept for compatibility)
-     */
-    function createStorySection(title, content, imageUrl, imagePosition) {
-        const section = document.createElement('div');
-        section.className = `story-section with-image ${imagePosition === 'left' ? 'image-left' : ''}`;
-        
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'story-content';
-        
-        const titleElement = document.createElement('h2');
-        titleElement.textContent = title;
-        contentDiv.appendChild(titleElement);
-        
-        // Split content into paragraphs
-        const paragraphs = content.split('\n\n');
-        paragraphs.forEach(paragraph => {
-            if (paragraph.trim()) {
-                const p = document.createElement('p');
-                p.textContent = paragraph.trim();
-                contentDiv.appendChild(p);
-            }
-        });
-        
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'story-image-container';
-        
-        const image = document.createElement('img');
-        image.className = 'story-image';
-        image.src = imageUrl;
-        image.alt = title;
-        image.loading = 'lazy';
-        
-        // Add error handling with fallback
-        const fallbackUrl = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
-        image.onerror = function() {
-            this.src = fallbackUrl;
-        };
-        
-        imageContainer.appendChild(image);
-        
-        // Append in correct order based on position
-        if (imagePosition === 'left') {
-            section.appendChild(imageContainer);
-            section.appendChild(contentDiv);
-        } else {
-            section.appendChild(contentDiv);
-            section.appendChild(imageContainer);
+    function initializeStorySliders(slidersToInit) {
+        if (!Array.isArray(slidersToInit) || !slidersToInit.length) {
+            return;
         }
-        
-        return section;
+
+        if (typeof Swiper === 'undefined') {
+            console.warn('[Story Modal] Swiper library not found, skipping slider initialization');
+            return;
+        }
+
+        slidersToInit.forEach(({ sliderElement, sliderId }) => {
+            if (!sliderElement) {
+                return;
+            }
+
+            const prevButton = sliderElement.querySelector(`.story-slider-prev[data-slider-id="${sliderId}"]`);
+            const nextButton = sliderElement.querySelector(`.story-slider-next[data-slider-id="${sliderId}"]`);
+            const pagination = sliderElement.querySelector(`.story-slider-pagination[data-slider-id="${sliderId}"]`);
+            const slideCount = sliderElement.querySelectorAll('.swiper-slide').length;
+
+            new Swiper(sliderElement, {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: slideCount > 1,
+                autoHeight: true,
+                navigation: {
+                    prevEl: prevButton,
+                    nextEl: nextButton
+                },
+                pagination: {
+                    el: pagination,
+                    clickable: true,
+                    bulletClass: 'story-slider-bullet',
+                    bulletActiveClass: 'story-slider-bullet-active'
+                },
+                speed: 600
+            });
+        });
     }
 
     /**

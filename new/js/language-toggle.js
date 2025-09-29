@@ -12,10 +12,33 @@
             // Navigation
             "nav.home": "Home",
             "nav.products": "Products",
+            "nav.clients": "Our Clients",
             "nav.about": "About Us",
+            "nav.essence": "Our Essence",
             "nav.team": "Our Team",
             "nav.crops": "Our Crops",
             "nav.contact": "Contact Us",
+
+            // Essence Section
+            "essence.title": "Our Essence",
+            "essence.subtitle": "Mission, Vision and Values",
+            "essence.mission.title": "Mission",
+            "essence.mission.content": "We are a family business dedicated to the production and export of foliage, committed to high quality standards and the development of a technified, responsible and environmentally sustainable cultivation. Our work is based on innovation, respect for nature and agricultural tradition, to offer differentiated products to the national and international market that exceed our clients' expectations and contribute to the well-being of the communities we work with.",
+            "essence.vision.title": "Vision",
+            "essence.vision.content": "The Green Genie will be recognized as a global reference in the international foliage market, distinguished by its leadership in innovation, excellence in quality and a firm commitment to sustainability, contributing to positively transform the sector, strengthen communities and protect the environment.",
+            "essence.values.title": "Our Values",
+            "essence.values.family.title": "Family Unity",
+            "essence.values.family.description": "We grow thanks to our family bond and the strength of the values that unite us.",
+            "essence.values.commitment.title": "Commitment",
+            "essence.values.commitment.description": "To quality, compliance and trust of each client.",
+            "essence.values.perseverance.title": "Perseverance",
+            "essence.values.perseverance.description": "More than 20 years of continuous effort have taught us to overcome every challenge.",
+            "essence.values.passion.title": "Passion",
+            "essence.values.passion.description": "More than a business, GREEN GENIE is a life project that reflects dedication and love for foliage.",
+            "essence.values.creativity.title": "Creativity",
+            "essence.values.creativity.description": "Innovation is our essence, always looking for new ways to offer the best to the world.",
+            "essence.values.sustainability.title": "Sustainability",
+            "essence.values.sustainability.description": "We care for the environment with responsible agricultural practices and commitment to nature.",
 
             // Hero Section
             "hero.title": "Green that Conquer the World",
@@ -41,7 +64,19 @@
 
             // Crops Section
             "crops.title": "Our Crops",
-            "crops.subtitle": "Discover Our Beautiful Plants",
+            "crops.subtitle": "Discover our exuberant foliage",
+            "crops.slider.1.title": "Arboreal Serenity",
+            "crops.slider.1.description": "The majesty of fully-grown eucalyptus.",
+            "crops.slider.2.title": "Immersed in Nature",
+            "crops.slider.2.description": "Immersed in a sea of leaves.",
+            "crops.slider.3.title": "Cultivating Abundance",
+            "crops.slider.3.description": "Dedication and care in the greenhouse.",
+            "crops.slider.4.title": "Vital Connection",
+            "crops.slider.4.description": "A hand that tenderly holds the growing life of ruscus.",
+            "crops.slider.5.title": "Rejuvenating Essence",
+            "crops.slider.5.description": "The green expanse of foliage, a refuge of peace and tranquility amidst nature.",
+            "crops.slider.6.title": "Amidst Sparkles",
+            "crops.slider.6.description": "In the midst of glittering plants, a magical universe unfolds, where imagination comes to life.",
 
             // Clients Section
             "clients.title": "Our Clients",
@@ -70,6 +105,8 @@
             // Gallery Modal
             "gallery.title": "Our Premium Collection",
             "gallery.subtitle": "Plants and foliage of the highest quality for exceptional spaces",
+            "gallery.filter.products": "Products",
+            "gallery.filter.bouquets": "Bouquets",
 
             // Story Modal
             "story.title": "The Green Genie",
@@ -171,10 +208,33 @@
             // Navigation
             "nav.home": "Inicio",
             "nav.products": "Productos",
+            "nav.clients": "Nuestros Clientes",
             "nav.about": "Sobre Nosotros",
+            "nav.essence": "Nuestra Esencia",
             "nav.team": "Nuestro Equipo",
             "nav.crops": "Nuestros Cultivos",
             "nav.contact": "Contáctanos",
+
+            // Essence Section
+            "essence.title": "Nuestra Esencia",
+            "essence.subtitle": "Misión, Visión y Valores",
+            "essence.mission.title": "Misión",
+            "essence.mission.content": "Somos una empresa familiar dedicada a la producción y exportación de follajes, comprometida con altos estándares de calidad y el desarrollo de un cultivo tecnificado, responsable y ambientalmente sostenible. Nuestra labor se fundamenta en la innovación, el respeto por la naturaleza y la tradición agrícola, para ofrecer al mercado nacional e internacional productos diferenciados que superen las expectativas de nuestros clientes y contribuyan al bienestar de las comunidades con las que trabajamos.",
+            "essence.vision.title": "Visión",
+            "essence.vision.content": "The Green Genie será reconocida como un referente global en el mercado internacional de follajes, distinguida por su liderazgo en innovación, la excelencia de su calidad y un firme compromiso con la sostenibilidad, contribuyendo a transformar positivamente el sector, fortalecer a las comunidades y proteger el medio ambiente.",
+            "essence.values.title": "Nuestros Valores",
+            "essence.values.family.title": "Unidad Familiar",
+            "essence.values.family.description": "Nos une la fuerza de nuestros valores familiares y el amor por la tierra.",
+            "essence.values.commitment.title": "Compromiso",
+            "essence.values.commitment.description": "Con la calidad, el cumplimiento y la confianza de cada cliente.",
+            "essence.values.perseverance.title": "Perseverancia",
+            "essence.values.perseverance.description": "Más de 20 años de esfuerzo continuo nos han enseñado a superar cada desafío.",
+            "essence.values.passion.title": "Pasión",
+            "essence.values.passion.description": "Más que un negocio, GREEN GENIE es un proyecto de vida que refleja dedicación y amor por los follajes.",
+            "essence.values.creativity.title": "Creatividad",
+            "essence.values.creativity.description": "La innovación es nuestra esencia, siempre buscando nuevas formas de ofrecer lo mejor al mundo.",
+            "essence.values.sustainability.title": "Sostenibilidad",
+            "essence.values.sustainability.description": "Cuidamos el medio ambiente con prácticas agrícolas responsables y compromiso con la naturaleza.",
 
             // Hero Section
             "hero.title": "Verdes que Conquistan el Mundo",
@@ -200,7 +260,19 @@
 
             // Crops Section
             "crops.title": "Nuestros Cultivos",
-            "crops.subtitle": "Descubre Nuestras Hermosas Plantas",
+            "crops.subtitle": "Descubre nuestros exuberante follajes",
+            "crops.slider.1.title": "Serenidad Arbórea",
+            "crops.slider.1.description": "La majestuosidad de los eucaliptos completamente crecidos.",
+            "crops.slider.2.title": "Inmerso en la Naturaleza",
+            "crops.slider.2.description": "Inmerso en un mar de hojas.",
+            "crops.slider.3.title": "Cultivando Abundancia",
+            "crops.slider.3.description": "Dedicación y cuidado en el invernadero.",
+            "crops.slider.4.title": "Conexión Vital",
+            "crops.slider.4.description": "Una mano que tiernamente sostiene la vida creciente del ruscus.",
+            "crops.slider.5.title": "Esencia Rejuvenecedora",
+            "crops.slider.5.description": "La extensión verde del follaje, un refugio de paz y tranquilidad en medio de la naturaleza.",
+            "crops.slider.6.title": "En Medio de Destellos",
+            "crops.slider.6.description": "En medio de plantas centelleantes, se despliega un universo mágico, donde la imaginación cobra vida.",
 
             // Clients Section
             "clients.title": "Nuestros Clientes",
@@ -229,6 +301,8 @@
             // Gallery Modal
             "gallery.title": "Nuestra Colección Premium",
             "gallery.subtitle": "Plantas y follajes de la más alta calidad para espacios excepcionales",
+            "gallery.filter.products": "Productos",
+            "gallery.filter.bouquets": "Bouquets",
 
             // Story Modal
             "story.title": "The Green Genie",
