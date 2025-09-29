@@ -1,0 +1,184 @@
+/* Nuestra Esencia Section Styles */
+
+#essence {
+    position: relative;
+    overflow: hidden;
+}
+
+#essence::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23e8f5e8" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23e8f5e8" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23e8f5e8" opacity="0.15"/><circle cx="10" cy="50" r="0.5" fill="%23e8f5e8" opacity="0.15"/><circle cx="90" cy="50" r="0.5" fill="%23e8f5e8" opacity="0.15"/><circle cx="50" cy="90" r="0.5" fill="%23e8f5e8" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+    z-index: 0;
+}
+
+#essence .container {
+    position: relative;
+    z-index: 1;
+}
+
+.essence-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+}
+
+.essence-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.essence-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.essence-image-container img {
+    transition: all 0.4s ease;
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.essence-image-container:hover img {
+    transform: scale(1.03);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    z-index: 2;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.value-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.value-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+}
+
+.value-card .value-icon {
+    transition: all 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.value-card .card-decoration {
+    transition: all 0.4s ease;
+}
+
+.value-card:hover .card-decoration {
+    transform: scale(1.5);
+    opacity: 0.3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .essence-card {
+        margin-bottom: 2rem;
+    }
+
+    .value-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .image-overlay {
+        position: relative !important;
+        margin-top: 10px;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 576px) {
+    #essence .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .essence-card {
+        padding: 1.5rem;
+    }
+
+    .value-card {
+        padding: 1.5rem;
+    }
+
+    .value-card .value-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .value-card .value-icon i {
+        font-size: 24px;
+    }
+}
+
+/* New Values List Styles */
+.values-list {
+    position: relative;
+}
+
+.value-item {
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.value-item:hover {
+    background: rgba(255, 152, 0, 0.02);
+    border-radius: 10px;
+    padding-left: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.value-number {
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.value-item:hover .value-number {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.value-content h5 {
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.value-item:hover .value-content h5 {
+    transform: translateX(5px);
+}
+
+.value-content p {
+    transition: all 0.3s ease;
+}
+
+.value-item:hover .value-content p {
+    transform: translateX(5px);
+    color: #555 !important;
+}
+
+/* Remove old card styles that are no longer needed */
+.value-card {
+    display: none !important;
+}
+
+.card-decoration {
+    display: none !important;
+}
