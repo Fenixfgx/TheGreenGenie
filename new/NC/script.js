@@ -286,29 +286,35 @@ class Slider {
   }}
 
 
-const sliderEl = document.getElementById('slider');
-const slider = new Slider(sliderEl);
+window.Slider = Slider;
+
+// Initialize slider only if content exists (for backwards compatibility)
+// const sliderEl = document.getElementById('slider');
+// if (sliderEl && sliderEl.querySelector('.slider__images-item')) {
+//   const slider = new Slider(sliderEl);
+// }
 
 // ------------------ Demo stuff ------------------------ //
 
-let timer = 0;
+// Auto-slide functionality moved to crops-slider.js for dynamic content support
+// let timer = 0;
 
-function autoSlide() {
-  requestAnimationFrame(() => {
-    slider.next();
-  });
+// function autoSlide() {
+//   requestAnimationFrame(() => {
+//     slider.next();
+//   });
 
-  timer = setTimeout(autoSlide, 5000);
-}
+//   timer = setTimeout(autoSlide, 5000);
+// }
 
-function stopAutoSlide() {
-  clearTimeout(timer);
+// function stopAutoSlide() {
+//   clearTimeout(timer);
 
-  this.removeEventListener('touchstart', stopAutoSlide);
-  this.removeEventListener('mousemove', stopAutoSlide);
-}
+//   this.removeEventListener('touchstart', stopAutoSlide);
+//   this.removeEventListener('mousemove', stopAutoSlide);
+// }
 
-sliderEl.addEventListener('mousemove', stopAutoSlide);
-sliderEl.addEventListener('touchstart', stopAutoSlide);
+// sliderEl.addEventListener('mousemove', stopAutoSlide);
+// sliderEl.addEventListener('touchstart', stopAutoSlide);
 
-timer = setTimeout(autoSlide, 2000);
+// timer = setTimeout(autoSlide, 2000);
