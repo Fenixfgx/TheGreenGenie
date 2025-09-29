@@ -36,8 +36,72 @@
     <link href="css/premium-footer.css" rel="stylesheet">
     <!-- Premium Gallery Stylesheet -->
     <link href="css/premium-gallery.css" rel="stylesheet">
+    <!-- Neumorphic Products Buttons Stylesheet -->
+    <link href="css/neumorphic-products-buttons.css" rel="stylesheet">
     <!-- Neumorphic Story Stylesheet -->
     <link href="css/neumorphic-story.css" rel="stylesheet">
+    <!-- Essence Section Stylesheet -->
+    <link href="css/essence-section.css" rel="stylesheet">
+
+    <!-- Custom Team Group Slider Styles -->
+    <style>
+        .team-group-carousel {
+            position: relative;
+        }
+        .team-group-carousel .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        .team-group-carousel .owl-nav button {
+            position: absolute;
+            background: rgba(27,94,32,0.8) !important;
+            color: white !important;
+            border: none !important;
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 18px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            pointer-events: auto !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+        }
+        .team-group-carousel .owl-nav button:hover {
+            background: rgba(27,94,32,1) !important;
+            transform: scale(1.1) !important;
+        }
+        .team-group-carousel .owl-nav .owl-prev {
+            left: -25px;
+        }
+        .team-group-carousel .owl-nav .owl-next {
+            right: -25px;
+        }
+        .team-group-carousel .owl-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .team-group-carousel .owl-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: rgba(27,94,32,0.3) !important;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .team-group-carousel .owl-dot.active {
+            background: rgba(27,94,32,0.8) !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,9 +110,13 @@
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <small class="text-white"><i class="fa fa-phone-alt mr-2"></i>+57 3222180626</small>
+                    <a href="https://wa.me/573222180626" class="text-white" target="_blank">
+                        <small><i class="fab fa-whatsapp mr-2"></i>+57 322 218 0626</small>
+                    </a>
                     <small class="px-3 text-white">|</small>
-                    <small class="text-white"><i class="fa fa-envelope mr-2"></i>salesmanagerthegreengenie@hotmail.com</small>
+                    <a href="mailto:salesmanagerthegreengenie@hotmail.com" class="text-white">
+                        <small><i class="fa fa-envelope mr-2"></i>salesmanagerthegreengenie@hotmail.com</small>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-6 text-right">
@@ -83,29 +151,35 @@
     <div class="navbar-container" id="navbarContainer">
         <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
-                <img src="img/logo.png" alt="The Green Genie" style="height: 91px;">
+            <a href="index.html" class="navbar-brand d-lg-none mr-auto">
+                <img src="img/logo.png" alt="The Green Genie" style="height: 50px;">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav m-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active" data-i18n="nav.home">Home</a>
+            <div class="collapse navbar-collapse align-items-center px-lg-3 justify-content-center justify-content-lg-between" id="navbarCollapse">
+                <div class="navbar-nav d-flex align-items-center flex-column flex-lg-row mx-lg-auto">
                     <a href="#products-section" class="nav-item nav-link" onclick="scrollToProducts(event)" data-i18n="nav.products">Products</a>
+                    <a href="#world-clients" class="nav-item nav-link" onclick="scrollToSection(event, 'world-clients')" data-i18n="nav.clients">Nuestros Clientes</a>
                     <a href="#about" class="nav-item nav-link" onclick="scrollToSection(event, 'about')" data-i18n="nav.about">About Us</a>
+                    <a href="index.html" class="navbar-brand mx-4 d-none d-lg-block">
+                        <img src="img/logo.png" alt="The Green Genie" style="height: 91px;">
+                    </a>
+                    <a href="#essence" class="nav-item nav-link" onclick="scrollToSection(event, 'essence')" data-i18n="nav.essence">Nuestra Esencia</a>
                     <a href="#team" class="nav-item nav-link" onclick="scrollToSection(event, 'team')" data-i18n="nav.team">Our Team</a>
                     <a href="#crops" class="nav-item nav-link" onclick="scrollToSection(event, 'crops')" data-i18n="nav.crops">Our Crops</a>
-                    <a href="#contact-section" class="nav-item nav-link" onclick="scrollToContact(event)" data-i18n="nav.contact">Contact Us</a>
-                    <div class="mobile-language-toggle-wrapper d-lg-none">
-                        <span class="label-text">Idioma</span>
-                        <button class="language-toggle" id="languageToggleMobile" onclick="toggleLanguage('mobile')">
-                            <div class="language-toggle-ball"></div>
-                        </button>
-                        <div class="language-labels ml-2">
-                            <span class="language-label active" id="spanishLabelMobile">ES</span>
-                            <span class="language-label" id="englishLabelMobile">EN</span>
-                        </div>
+                </div>
+                <a href="#contact-section" class="contact-nav-btn ml-lg-4 mt-3 mt-lg-0" onclick="scrollToContact(event)" style="display: none;">
+                    <span data-i18n="nav.contact">Contáctanos</span>
+                </a>
+                <div class="mobile-language-toggle-wrapper d-lg-none w-100 mt-3">
+                    <span class="label-text">Idioma</span>
+                    <button class="language-toggle" id="languageToggleMobile" onclick="toggleLanguage('mobile')">
+                        <div class="language-toggle-ball"></div>
+                    </button>
+                    <div class="language-labels ml-2">
+                        <span class="language-label active" id="spanishLabelMobile">ES</span>
+                        <span class="language-label" id="englishLabelMobile">EN</span>
                     </div>
                 </div>
             </div>
@@ -137,12 +211,12 @@
 
 
     <!-- Nuestros Productos Start -->
-    <div class="container-fluid py-3" style="background-color: #f8f9fa;" id="products-section">
+    <div class="container-fluid py-3" style="background-color: #f8f9fa; padding-bottom: 8rem !important;" id="products-section">
         <div class="container">
             <div class="row justify-content-center text-center mb-2">
                 <div class="col-lg-8">
                     <h6 class="d-inline-block bg-light text-primary text-uppercase py-1 px-2 mb-1" data-i18n="products.title">Nuestros Productos</h6>
-                    <h1 class="mb-2" style="font-size:2rem;" data-i18n="products.subtitle">Follajes y Plantas de Alta Calidad</h1>
+                    <h1 class="mb-2" style="font-size:2rem;" data-i18n="products.subtitle">Follajes de Alta Calidad</h1>
                     <p class="text-muted mb-3" style="font-size:0.95rem;" data-i18n="products.description">Descubre nuestra amplia selección de plantas y follajes cuidadosamente seleccionados para transformar cualquier espacio</p>
                     
                     <!-- Action Buttons -->
@@ -159,14 +233,8 @@
             
             <!-- Products Slider -->
             <div class="products-slider-container">
-                <div class="swiper products-swiper">
-                    <div class="swiper-wrapper" id="productsWrapper">
-                        <!-- Los productos se cargarán dinámicamente aquí -->
-                    </div>
-                    
-                    <!-- Navigation buttons -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                <div class="owl-carousel products-carousel" id="productsCarousel">
+                    <!-- Los productos se cargarán dinámicamente aquí -->
                 </div>
             </div>
         </div>
@@ -186,17 +254,23 @@
                     <div class="h-100 d-flex flex-column justify-content-between" style="gap:18px;">
                         <div class="p-4" style="background:linear-gradient(160deg,#113142,#0b2533); border:1px solid rgba(255,255,255,0.06); border-radius:16px; box-shadow:0 8px 18px -6px rgba(0,0,0,0.5);">
                             <div style="font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; color:#6dbfa0; font-weight:600;" data-i18n="clients.active_clients">Clientes Activos</div>
-                            <div style="font-size:2.3rem; font-weight:700; color:#82e6b4; line-height:1;">70</div>
+                            <div style="font-size:2.3rem; font-weight:700; color:#82e6b4; line-height:1;">
+                                <span class="client-counter" data-target="70" aria-label="70">0</span>
+                            </div>
                             <div style="color:#9fc9d8; font-size:0.8rem;" data-i18n="clients.sustainable_relationships">Relaciones comerciales sostenibles</div>
                         </div>
                         <div class="p-4" style="background:linear-gradient(160deg,#113142,#0b2533); border:1px solid rgba(255,255,255,0.06); border-radius:16px; box-shadow:0 8px 18px -6px rgba(0,0,0,0.5);">
                             <div style="font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; color:#6dbfa0; font-weight:600;" data-i18n="clients.experience_years">Años de Experiencia</div>
-                            <div style="font-size:2.3rem; font-weight:700; color:#82e6b4; line-height:1;">20</div>
+                            <div style="font-size:2.3rem; font-weight:700; color:#82e6b4; line-height:1;">
+                                <span class="client-counter" data-target="20" aria-label="20">0</span>
+                            </div>
                             <div style="color:#9fc9d8; font-size:0.8rem;" data-i18n="clients.consolidated_trajectory">Trayectoria consolidada</div>
                         </div>
                         <div class="p-4" style="background:linear-gradient(160deg,#113142,#0b2533); border:1px solid rgba(255,255,255,0.06); border-radius:16px; box-shadow:0 8px 18px -6px rgba(0,0,0,0.5);">
                             <div style="font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; color:#6dbfa0; font-weight:600;" data-i18n="clients.production_hectares">Hectáreas de Producción</div>
-                            <div style="font-size:2.3rem; font-weight:700; color:#82e6b4; line-height:1;">35</div>
+                            <div style="font-size:2.3rem; font-weight:700; color:#82e6b4; line-height:1;">
+                                <span class="client-counter" data-target="35" aria-label="35">0</span>
+                            </div>
                             <div style="color:#9fc9d8; font-size:0.8rem;" data-i18n="clients.capacity_scale">Capacidad y escala verde</div>
                         </div>
                     </div>
@@ -269,6 +343,157 @@
     <!-- About End -->
 
 
+    <!-- Nuestra Esencia Start -->
+    <div class="container-fluid py-5" id="essence" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9f4f0 100%);">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h6 class="d-inline-block bg-light text-primary text-uppercase py-1 px-2" data-i18n="essence.title">Nuestra Esencia</h6>
+                <h1 class="mb-5" data-i18n="essence.subtitle">Misión, Visión y Valores</h1>
+            </div>
+
+            <!-- Misión Section -->
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="essence-card p-4 h-100" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #e8f5e8;">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="essence-icon mr-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #4CAF50, #2E7D32); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);">
+                                <i class="fas fa-bullseye text-white" style="font-size: 24px;"></i>
+                            </div>
+                            <h3 class="mb-0 text-success font-weight-bold" data-i18n="essence.mission.title">Misión</h3>
+                        </div>
+                        <p class="text-muted mb-0" style="line-height: 1.7; font-size: 1.1rem;" data-i18n="essence.mission.content">
+                            Somos una empresa familiar dedicada a la producción y exportación de follajes, comprometida con altos estándares de calidad y el desarrollo de un cultivo tecnificado, responsable y ambientalmente sostenible. Nuestra labor se fundamenta en la innovación, el respeto por la naturaleza y la tradición agrícola, para ofrecer al mercado nacional e internacional productos diferenciados que superen las expectativas de nuestros clientes y contribuyan al bienestar de las comunidades con las que trabajamos.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="essence-image-container text-center">
+                        <img src="img/hojas.png" alt="Misión - The Green Genie" class="img-fluid rounded-3 shadow-lg" style="border: 4px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+                        <div class="image-overlay" style="position: absolute; top: 20px; right: 20px; background: rgba(76, 175, 80, 0.9); color: white; padding: 10px 15px; border-radius: 25px; font-weight: bold;">
+                            <i class="fas fa-leaf mr-1"></i> Sostenibilidad
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visión Section -->
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <div class="essence-card p-4 h-100" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #e8f5e8;">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="essence-icon mr-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #2196F3, #0D47A1); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);">
+                                <i class="fas fa-eye text-white" style="font-size: 24px;"></i>
+                            </div>
+                            <h3 class="mb-0 text-primary font-weight-bold" data-i18n="essence.vision.title">Visión</h3>
+                        </div>
+                        <p class="text-muted mb-0" style="line-height: 1.7; font-size: 1.1rem;" data-i18n="essence.vision.content">
+                            The Green Genie será reconocida como un referente global en el mercado internacional de follajes, distinguida por su liderazgo en innovación, la excelencia de su calidad y un firme compromiso con la sostenibilidad, contribuyendo a transformar positivamente el sector, fortalecer a las comunidades y proteger el medio ambiente.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="essence-image-container text-center">
+                        <img src="img/hyper.jpg" alt="Visión - The Green Genie" class="img-fluid rounded-3 shadow-lg" style="border: 4px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+                        <div class="image-overlay" style="position: absolute; top: 20px; left: 20px; background: rgba(33, 150, 243, 0.9); color: white; padding: 10px 15px; border-radius: 25px; font-weight: bold;">
+                            <i class="fas fa-globe mr-1"></i> Liderazgo Global
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Valores Section -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="essence-card p-4" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #e8f5e8;">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="essence-icon mr-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF9800, #F57C00); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);">
+                                <i class="fas fa-heart text-white" style="font-size: 24px;"></i>
+                            </div>
+                            <h3 class="mb-0 text-warning font-weight-bold" data-i18n="essence.values.title">Nuestros Valores</h3>
+                        </div>
+
+                        <div class="values-list">
+                            <div class="value-item mb-4 pb-3" style="border-bottom: 1px solid #f0f0f0;">
+                                <div class="d-flex align-items-start">
+                                    <div class="value-number mr-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF9800, #F57C00); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;">
+                                        1
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 class="text-warning font-weight-bold mb-2" data-i18n="essence.values.family.title">Unidad Familiar</h5>
+                                        <p class="text-muted mb-0" style="line-height: 1.6;" data-i18n="essence.values.family.description">Nos une la fuerza de nuestros valores familiares y el amor por la tierra.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="value-item mb-4 pb-3" style="border-bottom: 1px solid #f0f0f0;">
+                                <div class="d-flex align-items-start">
+                                    <div class="value-number mr-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #4CAF50, #2E7D32); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;">
+                                        2
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 class="text-success font-weight-bold mb-2" data-i18n="essence.values.commitment.title">Compromiso</h5>
+                                        <p class="text-muted mb-0" style="line-height: 1.6;" data-i18n="essence.values.commitment.description">Con la calidad, el cumplimiento y la confianza de cada cliente.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="value-item mb-4 pb-3" style="border-bottom: 1px solid #f0f0f0;">
+                                <div class="d-flex align-items-start">
+                                    <div class="value-number mr-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #2196F3, #0D47A1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;">
+                                        3
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 class="text-primary font-weight-bold mb-2" data-i18n="essence.values.perseverance.title">Perseverancia</h5>
+                                        <p class="text-muted mb-0" style="line-height: 1.6;" data-i18n="essence.values.perseverance.description">Más de 20 años de esfuerzo continuo nos han enseñado a superar cada desafío.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="value-item mb-4 pb-3" style="border-bottom: 1px solid #f0f0f0;">
+                                <div class="d-flex align-items-start">
+                                    <div class="value-number mr-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #E91E63, #C2185B); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;">
+                                        4
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 class="text-danger font-weight-bold mb-2" data-i18n="essence.values.passion.title">Pasión</h5>
+                                        <p class="text-muted mb-0" style="line-height: 1.6;" data-i18n="essence.values.passion.description">Más que un negocio, GREEN GENIE es un proyecto de vida que refleja dedicación y amor por los follajes.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="value-item mb-4 pb-3" style="border-bottom: 1px solid #f0f0f0;">
+                                <div class="d-flex align-items-start">
+                                    <div class="value-number mr-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #9C27B0, #7B1FA2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;">
+                                        5
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 class="text-purple font-weight-bold mb-2" data-i18n="essence.values.creativity.title">Creatividad</h5>
+                                        <p class="text-muted mb-0" style="line-height: 1.6;" data-i18n="essence.values.creativity.description">La innovación es nuestra esencia, siempre buscando nuevas formas de ofrecer lo mejor al mundo.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="value-item mb-0">
+                                <div class="d-flex align-items-start">
+                                    <div class="value-number mr-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF5722, #D84315); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;">
+                                        6
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 class="text-orange font-weight-bold mb-2" data-i18n="essence.values.sustainability.title">Sostenibilidad</h5>
+                                        <p class="text-muted mb-0" style="line-height: 1.6;" data-i18n="essence.values.sustainability.description">Cuidamos el medio ambiente con prácticas agrícolas responsables y compromiso con la naturaleza.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nuestra Esencia End -->
+
+
     <!-- Team Start -->
     <div class="container-fluid py-5" id="team">
         <div class="container pt-5">
@@ -282,6 +507,25 @@
             <!-- Team Slider -->
             <div class="owl-carousel team-carousel" id="teamCarousel">
                 <!-- Los miembros del equipo se cargarán dinámicamente aquí -->
+            </div>
+            
+            <!-- Team Group Slider -->
+            <div class="owl-carousel team-group-carousel mt-5" style="margin-top: 0px !important;" id="teamGroupCarousel">
+                <div class="item">
+                    <img src="img/team/group/A1.jpg" alt="Equipo The Green Genie" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="item">
+                    <img src="img/team/group/DSC00546.jpg" alt="Equipo The Green Genie" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="item">
+                    <img src="img/team/group/DSC00725.jpg" alt="Equipo The Green Genie" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="item">
+                    <img src="img/team/group/DSC01239.jpg" alt="Equipo The Green Genie" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="item">
+                    <img src="img/team/group/DSC01253.jpg" alt="Equipo The Green Genie" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
             </div>
         </div>
     </div>
@@ -297,64 +541,7 @@
             <!-- NC Slider -->
             <div class="slider" id="slider" style="--img-prev:url(https://www.theGreenGenie.com.co/images/sl.jpeg);"> 
               <div class="slider__content" id="slider-content">
-                <div class="slider__images">
-                  <div class="slider__images-item slider__images-item--active" data-id="1"><img src="https://www.theGreenGenie.com.co/images/sl.jpeg"/></div>
-                  <div class="slider__images-item" data-id="2"><img src="https://www.theGreenGenie.com.co/images/DSC01420.jpg"/></div>
-                  <div class="slider__images-item" data-id="3"><img src="https://www.theGreenGenie.com.co/images/DSC01441.jpg"/></div>
-                  <div class="slider__images-item" data-id="4"><img src="https://www.theGreenGenie.com.co/images/DSC01468.jpg"/></div>
-                  <div class="slider__images-item" data-id="5"><img src="https://www.theGreenGenie.com.co/images/fondo1.jpeg"/></div>
-                  <div class="slider__images-item" data-id="6"><img src="https://www.theGreenGenie.com.co/images/fondo2.jpeg"/></div>
-                </div>
-                <div class="slider__text">
-                  <div class="slider__text-item slider__text-item--active" data-id="1">
-                    <div class="slider__text-item-head">
-                      <h3>Arboreal_Serenity</h3>
-                    </div>
-                    <div class="slider__text-item-info">
-                      <p>"The majesty of fully-grown eucalyptus."</p>
-                    </div>
-                  </div>
-                  <div class="slider__text-item" data-id="2">
-                    <div class="slider__text-item-head">
-                      <h3>Immersed_in_Nature</h3>
-                    </div>
-                    <div class="slider__text-item-info">
-                      <p>"Immersed in a sea of leaves, connect with the essence of nature."</p>
-                    </div>
-                  </div>
-                  <div class="slider__text-item" data-id="3">
-                    <div class="slider__text-item-head">
-                      <h3>Cultivating_Abundance</h3>
-                    </div>
-                    <div class="slider__text-item-info">
-                      <p>"Dedication and care in the growth of ruscus in the greenhouse, where life flourishes."</p>
-                    </div>
-                  </div>
-                  <div class="slider__text-item" data-id="4">
-                    <div class="slider__text-item-head">
-                      <h3>Vital_Connection</h3>
-                    </div>
-                    <div class="slider__text-item-info">
-                      <p>"A hand that tenderly holds the growing life of ruscus."</p>
-                    </div>
-                  </div>
-                  <div class="slider__text-item" data-id="5">
-                    <div class="slider__text-item-head">
-                      <h3>Rejuvenating_Essence</h3>
-                    </div>
-                    <div class="slider__text-item-info">
-                      <p>"The green expanse of foliage, a refuge of peace and tranquility amidst nature."</p>
-                    </div>
-                  </div>
-                  <div class="slider__text-item" data-id="6">
-                    <div class="slider__text-item-head">
-                      <h3>Amidst_Sparkles</h3>
-                    </div>
-                    <div class="slider__text-item-info">
-                      <p>"In the midst of glittering plants, a magical universe unfolds, where imagination comes to life."</p>
-                    </div>
-                  </div>
-                </div>
+                <!-- Content will be loaded dynamically by crops-slider.js -->
               </div>
               <div class="slider__nav">
                 <div class="slider__nav-arrows">
@@ -394,9 +581,6 @@
                         <a href="https://wa.me/+573209769753" target="_blank" class="contact-social-btn contact-whatsapp" title="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="skype:EFRA-TGG?chat" target="_blank" class="contact-social-btn contact-skype" title="Skype">
-                            <i class="fab fa-skype"></i>
-                        </a>
                         <a href="mailto:greengenieceo@hotmail.com" target="_blank" class="contact-social-btn contact-email" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
@@ -414,9 +598,6 @@
                     <div class="contact-social-buttons">
                         <a href="https://wa.me/+573222180626" target="_blank" class="contact-social-btn contact-whatsapp" title="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="skype:CristianR-TGG?chat" target="_blank" class="contact-social-btn contact-skype" title="Skype">
-                            <i class="fab fa-skype"></i>
                         </a>
                         <a href="mailto:Salesmanagerthegreengenie@hotmail.com" target="_blank" class="contact-social-btn contact-email" title="Email">
                             <i class="fas fa-envelope"></i>
@@ -589,41 +770,84 @@
     
     <!-- Products Slider Script -->
     <script>
-        // Función para cargar productos desde JSON
+
+    // Función para cargar productos desde JSON
         async function loadProducts() {
             try {
                 if(location.protocol === 'file:' && Array.isArray(window.PRODUCTS_DATA)){
                     console.info('[Products] Usando datos offline products.js:', window.PRODUCTS_DATA.length);
-                    renderProducts(window.PRODUCTS_DATA);
+                    loadedProducts = window.PRODUCTS_DATA.slice();
+                    loadedProducts = prepareProductDescriptions(loadedProducts);
+                    renderProducts(loadedProducts);
                     return;
                 }
                 const response = await fetch('data/products.json');
                 if(!response.ok) throw new Error('HTTP '+response.status);
                 const products = await response.json();
-                renderProducts(products);
+                loadedProducts = prepareProductDescriptions(products.slice());
+                renderProducts(loadedProducts);
             } catch (error) {
                 console.warn('[Products] Fallback por error/carga offline:', error);
                 loadFallbackProducts();
             }
         }
+        // Normaliza y separa descripciones ES/EN una sola vez
+        function prepareProductDescriptions(products){
+            return products.map(p=>{
+                if(!p) return p;
+                if(p.description && (p.description.includes(' | ') || p.description.includes('|'))){
+                    const parts = p.description.split(' | ');
+                    if(parts.length === 1) { // quizá sin espacios
+                        const rawParts = p.description.split('|');
+                        if(rawParts.length === 2){
+                            p.descriptionEs = rawParts[0].trim();
+                            p.descriptionEn = rawParts[1].trim();
+                        }
+                    } else {
+                        p.descriptionEs = (parts[0]||'').trim();
+                        p.descriptionEn = (parts[1]||'').trim();
+                    }
+                }
+                return p;
+            });
+        }
+
+        // Obtiene la descripción según idioma del objeto producto
+        function getProductDescription(product){
+            if(!product) return '';
+            if(product.descriptionEs || product.descriptionEn){
+                return isEnglish ? (product.descriptionEn || product.descriptionEs || '') : (product.descriptionEs || product.descriptionEn || '');
+            }
+            // fallback a lógica previa basada en la cadena completa
+            return getLocalizedDescription(product.description);
+        }
         function renderProducts(products){
-            const wrapper = document.getElementById('productsWrapper');
+            const wrapper = document.getElementById('productsCarousel');
             if(!wrapper) return;
             wrapper.innerHTML = '';
-            products.forEach(product => {
+            const minSlides = 8; // suficiente para loop infinito
+            let slidesToRender = products;
+            if (products.length && products.length < minSlides) {
+                slidesToRender = [];
+                for (let i = 0; i < minSlides; i++) {
+                    slidesToRender.push(products[i % products.length]);
+                }
+            }
+            slidesToRender.forEach(product => {
                 const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
+                slide.className = 'item';
                 slide.innerHTML = `
                         <div class="product-slide">
                             <img src="${product.image}" alt="${product.name}" class="product-image">
                             <div class="product-info">
                                 <h3 class="product-name">${product.name}</h3>
-                                <p class="product-description">${product.description}</p>
+                                <p class="product-description">${getProductDescription(product)}</p>
                             </div>
                         </div>`;
                 wrapper.appendChild(slide);
             });
-            initializeSwiper();
+            console.log('[renderProducts] Re-initializing carousel after rendering products');
+            initializeProductsCarousel();
         }
         
         // Productos de respaldo en caso de error
@@ -638,131 +862,71 @@
                 { name: "Anthurium", image: "img/service-1.jpg", description: "Planta con flores rojas brillantes" },
                 { name: "Pachira Aquatica", image: "img/service-2.jpg", description: "Árbol del dinero para oficinas" }
             ];
-            
-            const wrapper = document.getElementById('productsWrapper');
-            wrapper.innerHTML = '';
-            
-            fallbackProducts.forEach(product => {
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
-                slide.innerHTML = `
-                    <div class="product-slide">
-                        <img src="${product.image}" alt="${product.name}" class="product-image">
-                        <div class="product-info">
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-description">${product.description}</p>
-                        </div>
-                    </div>
-                `;
-                wrapper.appendChild(slide);
-            });
-            
-            initializeSwiper();
+            // Añadir formato bilingüe básico al fallback
+            loadedProducts = fallbackProducts.map(p=>({
+                ...p,
+                description: p.description + ' | ' + (p.description_en || p.description),
+                descriptionEs: p.description,
+                descriptionEn: p.description_en || p.description
+            }));
+            renderProducts(loadedProducts);
         }
         
-        // Inicializar Swiper
-        function initializeSwiper() {
-            let autoplayTimeout;
-            
-            const swiper = new Swiper('.products-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                loopFillGroupWithBlank: false,
-                centeredSlides: false,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                    enabled: false, // Deshabilitamos los puntos
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 40,
-                    },
-                    1200: {
-                        slidesPerView: 4,
-                        spaceBetween: 50,
-                    },
-                },
-                effect: 'slide',
-                speed: 800,
-                grabCursor: true,
-                touchRatio: 1,
-                threshold: 5,
-                allowTouchMove: true,
-                watchSlidesProgress: true,
-                on: {
-                    init: function () {
-                        // Asegurar que el loop funcione correctamente
-                        this.loopFix();
-                    },
-                    navigationNext: function () {
-                        // Pausar autoplay por 10 segundos al hacer clic en next
-                        this.autoplay.stop();
-                        clearTimeout(autoplayTimeout);
-                        autoplayTimeout = setTimeout(() => {
-                            this.autoplay.start();
-                        }, 10000);
-                    },
-                    navigationPrev: function () {
-                        // Pausar autoplay por 10 segundos al hacer clic en prev
-                        this.autoplay.stop();
-                        clearTimeout(autoplayTimeout);
-                        autoplayTimeout = setTimeout(() => {
-                            this.autoplay.start();
-                        }, 10000);
-                    },
-                    touchStart: function () {
-                        // Pausar autoplay al tocar
-                        this.autoplay.stop();
-                        clearTimeout(autoplayTimeout);
-                    },
-                    touchEnd: function () {
-                        // Reanudar autoplay después de 5 segundos de tocar
-                        clearTimeout(autoplayTimeout);
-                        autoplayTimeout = setTimeout(() => {
-                            this.autoplay.start();
-                        }, 5000);
-                    },
-                },
-            });
-            
-            // Manejar clics en los botones de navegación manualmente
-            document.querySelector('.swiper-button-next').addEventListener('click', function() {
-                swiper.slideNext();
-                swiper.autoplay.stop();
-                clearTimeout(autoplayTimeout);
-                autoplayTimeout = setTimeout(() => {
-                    swiper.autoplay.start();
-                }, 10000);
-            });
-            
-            document.querySelector('.swiper-button-prev').addEventListener('click', function() {
-                swiper.slidePrev();
-                swiper.autoplay.stop();
-                clearTimeout(autoplayTimeout);
-                autoplayTimeout = setTimeout(() => {
-                    swiper.autoplay.start();
-                }, 10000);
-            });
+        // Inicializar Owl Carousel para productos
+        function initializeProductsCarousel() {
+            try {
+                const productsCarousel = $('#productsCarousel');
+
+                if (!productsCarousel.length) {
+                    console.warn('[Products Carousel] No se encontró el contenedor del carousel');
+                    return;
+                }
+
+                // Destruir instancia previa si existe
+                if (productsCarousel.hasClass('owl-loaded')) {
+                    productsCarousel.trigger('destroy.owl.carousel').removeClass('owl-loaded');
+                    productsCarousel.find('.owl-stage-outer').children().unwrap();
+                }
+
+                // Configurar Owl Carousel con loop infinito
+                productsCarousel.owlCarousel({
+                    loop: true,
+                    margin: 30,
+                    nav: true,
+                    navText: [
+                        '<i class="fa fa-angle-left"></i>',
+                        '<i class="fa fa-angle-right"></i>'
+                    ],
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    autoplaySpeed: 800,
+                    autoplayHoverPause: true,
+                    smartSpeed: 800,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        640: {
+                            items: 2
+                        },
+                        768: {
+                            items: 2
+                        },
+                        1024: {
+                            items: 3
+                        },
+                        1200: {
+                            items: 4
+                        }
+                    }
+                });
+
+                console.info('[Products Carousel] Owl Carousel inicializado correctamente');
+
+            } catch (error) {
+                console.error('[Products Carousel] Error al inicializar:', error);
+            }
         }
         
         // Función para inicializar el slider del equipo
@@ -822,6 +986,64 @@
             }
         }
         
+        // Función para inicializar el slider del grupo del equipo
+        function initializeTeamGroupCarousel() {
+            try {
+                const teamGroupCarousel = $('#teamGroupCarousel');
+                
+                if (!teamGroupCarousel.length) {
+                    console.warn('[Team Group Carousel] No se encontró el contenedor del carousel');
+                    return;
+                }
+                
+                // Destruir instancia previa si existe
+                if (teamGroupCarousel.hasClass('owl-loaded')) {
+                    teamGroupCarousel.trigger('destroy.owl.carousel').removeClass('owl-loaded');
+                    teamGroupCarousel.find('.owl-stage-outer').children().unwrap();
+                }
+                
+                // Configurar Owl Carousel para mostrar una imagen a la vez
+                teamGroupCarousel.owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    nav: true,
+                    navText: [
+                        '<i class="fa fa-chevron-left"></i>',
+                        '<i class="fa fa-chevron-right"></i>'
+                    ],
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplaySpeed: 1000,
+                    autoplayHoverPause: true,
+                    smartSpeed: 1000,
+                    items: 1,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        576: {
+                            items: 1
+                        },
+                        768: {
+                            items: 1
+                        },
+                        992: {
+                            items: 1
+                        },
+                        1200: {
+                            items: 1
+                        }
+                    }
+                });
+                
+                console.info('[Team Group Carousel] Owl Carousel inicializado correctamente');
+                
+            } catch (error) {
+                console.error('[Team Group Carousel] Error al inicializar:', error);
+            }
+        }
+        
         // Cargar productos al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
@@ -859,6 +1081,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadAboutSlider();
             loadTeam();
+            initializeTeamGroupCarousel();
         });
 
         // Función para cargar miembros del equipo
@@ -1013,18 +1236,357 @@
         }
     </script>
     
+    <!-- Gallery Modal Functions -->
+    <script>
+        // Gallery Modal Functions
+        let currentGalleryFilter = 'productos'; // Default filter
+        
+        const openProductGalleryEnhanced = (event) => {
+            event.preventDefault();
+            
+            const modal = document.getElementById('productGalleryModal');
+            if (!modal) {
+                console.error('[Gallery] Modal not found');
+                return;
+            }
+            
+            // Load gallery content
+            loadGalleryContent();
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Simulate clicking the Products filter shortly after open to ensure default state
+            setTimeout(() => {
+                const productsButton = modal.querySelector('.filter-btn[data-filter="productos"]');
+                if (productsButton) {
+                    console.log('[Gallery] Auto-triggering Products filter');
+                    productsButton.click();
+                } else {
+                    console.warn('[Gallery] Products filter button not found for auto-click');
+                }
+            }, 300);
+
+            console.log('[Gallery] Modal opened');
+        };
+        
+        const closeProductGalleryEnhanced = () => {
+            const modal = document.getElementById('productGalleryModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                console.log('[Gallery] Modal closed');
+            }
+        };
+        
+        function loadGalleryContent() {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            
+            // Clear existing content
+            grid.innerHTML = '<div class="gallery-loading"><i class="fas fa-spinner fa-spin"></i><span data-i18n="loading.gallery">Cargando galería...</span></div>';
+            
+            // Get products data
+            let products = [];
+            
+            if (location.protocol === 'file:' && Array.isArray(window.PRODUCTS_DATA)) {
+                products = window.PRODUCTS_DATA;
+                console.log('[Gallery] Using offline data:', products.length, 'items');
+                renderGallery(products);
+            } else {
+                // Try to load from JSON
+                fetch('data/products.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error('HTTP ' + response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        products = data;
+                        console.log('[Gallery] Loaded from JSON:', products.length, 'items');
+                        renderGallery(products);
+                    })
+                    .catch(error => {
+                        console.warn('[Gallery] Fallback to offline data:', error);
+                        if (Array.isArray(window.PRODUCTS_DATA)) {
+                            products = window.PRODUCTS_DATA;
+                            renderGallery(products);
+                        } else {
+                            grid.innerHTML = '<div class="gallery-error"><i class="fas fa-exclamation-triangle"></i><span data-i18n="error.gallery">Error al cargar la galería. Por favor, intenta nuevamente.</span></div>';
+                        }
+                    });
+            }
+        }
+        
+        // Extract description based on current language
+        function getLocalizedDescription(description) {
+            console.log('[getLocalizedDescription] Input:', description);
+            console.log('[getLocalizedDescription] isEnglish:', isEnglish);
+            
+            if (!description) return '';
+            
+            // Check if description contains bilingual format (text | text)
+            if (description.includes(' | ')) {
+                const parts = description.split(' | ');
+                const result = isEnglish ? (parts[1] || parts[0]) : parts[0];
+                console.log('[getLocalizedDescription] Parts:', parts);
+                console.log('[getLocalizedDescription] Result:', result);
+                return result;
+            }
+            
+            // If no bilingual format, return as is
+            console.log('[getLocalizedDescription] No bilingual format, returning:', description);
+            return description;
+        }
+        
+        function renderGallery(products) {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            
+            // Filter products based on current filter
+            const filteredProducts = products.filter(product => 
+                product.category === currentGalleryFilter
+            );
+            
+            if (filteredProducts.length === 0) {
+                const emptyMessage = isEnglish ? 'No products in this category' : 'No hay productos en esta categoría';
+                grid.innerHTML = `<div class="gallery-empty"><i class="fas fa-search"></i><span>${emptyMessage}</span></div>`;
+                return;
+            }
+            
+            // Render gallery items
+            const galleryHTML = filteredProducts.map(product => `
+                <div class="gallery-item" data-category="${product.category}">
+                    <img class="gallery-item-image" src="${product.image}" alt="${product.name}" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h4 class="gallery-item-title">${product.name}</h4>
+                        <p class="gallery-item-description">${getProductDescription(product)}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            grid.innerHTML = galleryHTML;
+            console.log('[Gallery] Rendered', filteredProducts.length, 'items for filter:', currentGalleryFilter);
+        }
+        
+        function filterGallery(filterType) {
+            currentGalleryFilter = filterType;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-filter="${filterType}"]`).classList.add('active');
+            
+            // Re-render gallery with new filter
+            let products = [];
+            if (location.protocol === 'file:' && Array.isArray(window.PRODUCTS_DATA)) {
+                products = window.PRODUCTS_DATA;
+            }
+            
+            if (products.length > 0) {
+                renderGallery(products);
+            } else {
+                loadGalleryContent();
+            }
+            
+            console.log('[Gallery] Filter changed to:', filterType);
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('productGalleryModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeProductGalleryEnhanced();
+                    }
+                });
+                
+                // Close on ESC key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        closeProductGalleryEnhanced();
+                    }
+                });
+            }
+
+            // Ensure our enhanced gallery handlers override legacy definitions
+            window.openProductGallery = openProductGalleryEnhanced;
+            window.closeProductGallery = closeProductGalleryEnhanced;
+        });
+    </script>
+    
     <!-- D3 World Map & Language Toggle Script -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
     <script>
         // ===================== Estado Global =====================
-        let isEnglish = false;
+    let isEnglish = true; // Default language set to English
         let lastScrollTop = 0;
         let mapDarkMode = true;
         let clientsData = [];
         let worldGeo = null;
         let d3MapInitialized = false;
-        let mapSvg, mapG, colorScale, projection, pathGen, legendG;
+    let mapSvg, mapG, colorScale, projection, pathGen, legendG;
+    // Cache global para productos cargados (carrusel) y reutilización en cambio de idioma
+    let loadedProducts = [];
+
+        // ===================== Traducciones =====================
+        const translations = {
+            es: {
+                'nav.products': 'Productos',
+                'nav.clients': 'Nuestros Clientes',
+                'nav.about': 'Nosotros',
+                'nav.essence': 'Nuestra Esencia',
+                'nav.team': 'Nuestro Equipo',
+                'team.group.title': 'Nuestro Equipo',
+                'team.group.subtitle': 'Trabajando Juntos',
+                'team.group.description': 'Conoce momentos de nuestro equipo trabajando en armonía para llevar la mejor calidad a tus espacios.',
+                'nav.crops': 'Nuestros Cultivos',
+                'nav.contact': 'Contáctanos',
+                'hero.title': 'Verdes que conquistan el Mundo',
+                'hero.subtitle': 'Descubre la belleza natural con nuestros follajes y plantas de la más alta calidad',
+                'hero.button': 'Contáctanos',
+                'products.title': 'Nuestros Productos',
+                'products.subtitle': 'Follajes de Alta Calidad',
+                'products.description': 'Descubre nuestra amplia selección de plantas y follajes cuidadosamente seleccionados para transformar cualquier espacio',
+                'products.view_more': 'Ver Más',
+                'products.download_catalog': 'Descargar Catálogo',
+                'clients.title': 'Nuestros Clientes',
+                'clients.subtitle': 'Presencia Global',
+                'clients.description': 'Estamos llevando el verde a distintos rincones del planeta. Estos indicadores reflejan nuestra trayectoria y alcance sostenible en cultivos y proyectos especializados.',
+                'clients.active_clients': 'Clientes Activos',
+                'clients.sustainable_relationships': 'Relaciones comerciales sostenibles',
+                'clients.experience_years': 'Años de Experiencia',
+                'clients.consolidated_trajectory': 'Trayectoria consolidada',
+                'clients.production_hectares': 'Hectáreas de Producción',
+                'clients.capacity_scale': 'Capacidad y escala verde',
+                'gallery.title': 'Nuestra Colección Premium',
+                'gallery.subtitle': 'Follajes de la más alta calidad para espacios excepcionales',
+                'gallery.filter.products': 'Productos',
+                'gallery.filter.bouquets': 'Bouquets'
+            },
+            en: {
+                'nav.products': 'Products',
+                'nav.clients': 'Our Clients',
+                'nav.about': 'About Us',
+                'nav.essence': 'Our Essence',
+                'nav.team': 'Our Team',
+                'team.group.title': 'Our Team',
+                'team.group.subtitle': 'Working Together',
+                'team.group.description': 'Discover moments of our team working in harmony to bring the best quality to your spaces.',
+                'nav.crops': 'Our Crops',
+                'nav.contact': 'Contact Us',
+                'hero.title': 'Greens that conquer the World',
+                'hero.subtitle': 'Discover natural beauty with our highest quality foliage and plants',
+                'hero.button': 'Contact Us',
+                'products.title': 'Our Products',
+                'products.subtitle': 'High Quality Foliage',
+                'products.description': 'Discover our wide selection of plants and foliage carefully selected to transform any space',
+                'products.view_more': 'View More',
+                'products.download_catalog': 'Download Catalog',
+                'clients.title': 'Our Clients',
+                'clients.subtitle': 'Global Presence',
+                'clients.description': 'We are bringing green to different corners of the planet. These indicators reflect our sustainable trajectory and reach in specialized crops and projects.',
+                'clients.active_clients': 'Active Clients',
+                'clients.sustainable_relationships': 'Sustainable business relationships',
+                'clients.experience_years': 'Years of Experience',
+                'clients.consolidated_trajectory': 'Consolidated trajectory',
+                'clients.production_hectares': 'Production Hectares',
+                'clients.capacity_scale': 'Green capacity and scale',
+                'gallery.title': 'Our Premium Collection',
+                'gallery.subtitle': 'Highest quality foliage for exceptional spaces',
+                'gallery.filter.products': 'Products',
+                'gallery.filter.bouquets': 'Bouquets'
+            }
+        };
+
+        // ===================== Sistema de Traducción =====================
+        function updatePageLanguage() {
+            const currentLang = isEnglish ? 'en' : 'es';
+            const langTranslations = translations[currentLang];
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (langTranslations[key]) {
+                    element.textContent = langTranslations[key];
+                }
+            });
+        }
+
+        function updateCounterLocales() {
+            const locale = isEnglish ? 'en-US' : 'es-CO';
+            document.querySelectorAll('.client-counter').forEach(counter => {
+                const target = Number(counter.dataset.target || '0');
+                const isAnimated = counter.dataset.animated === 'true';
+                if (isAnimated) {
+                    counter.textContent = target.toLocaleString(locale);
+                } else {
+                    counter.textContent = (0).toLocaleString(locale);
+                }
+                counter.setAttribute('aria-label', target.toLocaleString(locale));
+            });
+        }
+
+        function animateCounter(counter) {
+            const target = Number(counter.dataset.target || '0');
+            const duration = Number(counter.dataset.duration || 1800);
+            const locale = isEnglish ? 'en-US' : 'es-CO';
+            let startTimestamp = null;
+            counter.dataset.animated = 'in-progress';
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * target);
+                counter.textContent = currentValue.toLocaleString(locale);
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    counter.textContent = target.toLocaleString(locale);
+                    counter.dataset.animated = 'true';
+                    counter.setAttribute('aria-label', target.toLocaleString(locale));
+                }
+            };
+
+            requestAnimationFrame(step);
+        }
+
+        function initClientCounters() {
+            const counters = document.querySelectorAll('.client-counter');
+            if (!counters.length) return;
+
+            const triggerAnimation = () => {
+                counters.forEach(counter => {
+                    if (counter.dataset.animated === 'true' || counter.dataset.animated === 'in-progress') return;
+                    animateCounter(counter);
+                });
+            };
+
+            if ('IntersectionObserver' in window) {
+                const section = document.getElementById('world-clients');
+                if (!section) {
+                    triggerAnimation();
+                    return;
+                }
+
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            triggerAnimation();
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                observer.observe(section);
+            } else {
+                triggerAnimation();
+            }
+        }
 
         // ===================== Idioma =====================
         function syncLanguageUI() {
@@ -1034,16 +1596,59 @@
             toggles.forEach(t => t.classList.toggle('active', isEnglish));
             esLabels.forEach(l => l.classList.toggle('active', !isEnglish));
             enLabels.forEach(l => l.classList.toggle('active', isEnglish));
+            
+            // Update page translations
+            updatePageLanguage();
+            updateCounterLocales();
+            
             // Actualizar texto de botón de tema
             const themeBtn = document.getElementById('mapThemeBtn');
             if (themeBtn) themeBtn.textContent = mapDarkMode ? (isEnglish ? 'Light Theme' : 'Tema Claro') : (isEnglish ? 'Dark Theme' : 'Tema Oscuro');
         }
 
         function toggleLanguage(origin) {
-            isEnglish = !isEnglish;
-            syncLanguageUI();
-            updateChoropleth();
-            console.log('Idioma actual:', isEnglish ? 'EN' : 'ES', 'trigger:', origin || 'desktop');
+                    console.log('[toggleLanguage] Starting toggle. Current isEnglish:', isEnglish, 'Origin:', origin);
+                    setLanguage(isEnglish ? 'es' : 'en', { origin });
+                }
+
+                // Centraliza cambio de idioma
+                function setLanguage(lang, ctx={}) {
+                    const prev = isEnglish;
+                    isEnglish = (lang === 'en');
+                    localStorage.setItem('preferredLanguage', lang);
+                    document.documentElement.setAttribute('lang', lang);
+                    console.log('[setLanguage] prevEnglish:', prev, 'newEnglish:', isEnglish, 'ctx:', ctx);
+                    syncLanguageUI();
+                    updateChoropleth();
+
+            // Re-render sección de productos usando cache
+            if (loadedProducts.length) {
+                console.log('[toggleLanguage] Re-render products with cached list length:', loadedProducts.length);
+                // Asegurar que tienen campos descriptionEs/descriptionEn
+                loadedProducts = prepareProductDescriptions(loadedProducts);
+                renderProducts(loadedProducts);
+            } else if (location.protocol === 'file:' && Array.isArray(window.PRODUCTS_DATA)) {
+                loadedProducts = window.PRODUCTS_DATA.slice();
+                loadedProducts = prepareProductDescriptions(loadedProducts);
+                renderProducts(loadedProducts);
+            } else {
+                // Si no hay cache intentar recargar
+                loadProducts();
+            }
+
+            // Re-render galería si está abierta
+            const galleryModal = document.getElementById('productGalleryModal');
+            if (galleryModal && (galleryModal.style.display === 'block' || galleryModal.classList.contains('active'))) {
+                console.log('[toggleLanguage] Gallery open -> re-render');
+                // Preferir PRODUCTS_DATA si existe, sino cache
+                const gallerySource = (location.protocol === 'file:' && Array.isArray(window.PRODUCTS_DATA)) ? window.PRODUCTS_DATA : loadedProducts;
+                if (gallerySource.length) {
+                    const prepared = prepareProductDescriptions(gallerySource);
+                    renderGallery(gallerySource);
+                }
+            }
+
+            console.log('Idioma actual:', isEnglish ? 'EN' : 'ES', 'trigger:', ctx.origin || 'desktop');
         }
 
         // ===================== Navbar Scroll =====================
@@ -1232,7 +1837,33 @@
                     .style('line-height','1.35')
                     .style('color','#d8efe6')
                     .style('box-shadow','0 10px 25px -8px rgba(0,0,0,0.5)')
-                    .style('opacity',0);
+                    .style('opacity',0)
+                    .style('max-width','220px')
+                    .style('word-wrap','break-word');
+            }
+
+            // Función para posicionar tooltip inteligentemente
+            function positionTooltip(event, tooltipEl) {
+                const tooltipRect = tooltipEl.node().getBoundingClientRect();
+                const mapRect = d3.select('#clientsMap').node().getBoundingClientRect();
+                let left = event.offsetX + 15;
+                let top = event.offsetY + 15;
+
+                // Ajustar si se sale por la derecha
+                if (left + tooltipRect.width > mapRect.width) {
+                    left = event.offsetX - tooltipRect.width - 15;
+                }
+
+                // Ajustar si se sale por abajo
+                if (top + tooltipRect.height > mapRect.height) {
+                    top = event.offsetY - tooltipRect.height - 15;
+                }
+
+                // Asegurar que no se salga por arriba o izquierda
+                left = Math.max(10, left);
+                top = Math.max(10, top);
+
+                return { left, top };
             }
 
             // Países
@@ -1252,15 +1883,17 @@
                     let html;
                     if(item){
                         const prodName = item.productName || '';
-                        const prodImg = item.productImage ? `<div style='margin-top:8px;'><img src='${item.productImage}' alt='${prodName}' style='width:180px;max-width:180px;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.45);object-fit:cover;'/></div>` : '';
+                        const prodImg = item.productImage ? `<div style='margin-top:8px;'><img src='${item.productImage}' alt='${prodName}' style='width:160px;max-width:160px;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.45);object-fit:cover;'/></div>` : '';
                         html = `<strong style=\"color:#82e6b4;font-size:14px;letter-spacing:0.5px;\">${displayName}</strong>${prodName?`<div style='margin-top:6px;font-size:13px;font-weight:500;color:#d5f6ff;'>${prodName}</div>`:''}${prodImg}`;
                     } else {
                         html = `<strong style=\"color:#82e6b4;font-size:14px;letter-spacing:0.5px;\">${displayName}</strong><div style='margin-top:6px;font-size:12px;color:#aac7d4;'>${isEnglish?'No data':'Sin datos'}</div>`;
                     }
-                    tooltip.html(html)
-                        .style('left', (event.offsetX + 15) + 'px')
-                        .style('top', (event.offsetY + 15) + 'px')
-                        .transition().duration(120).style('opacity',1);
+                    tooltip.html(html);
+                    // Posicionar inteligentemente
+                    const pos = positionTooltip(event, tooltip);
+                    tooltip.style('left', pos.left + 'px')
+                          .style('top', pos.top + 'px')
+                          .transition().duration(120).style('opacity',1);
                 })
                 .on('mouseleave', () => tooltip.transition().duration(180).style('opacity',0));
 
@@ -1340,7 +1973,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             const desktopToggle = document.getElementById('languageToggle');
             if (desktopToggle) setTimeout(() => desktopToggle.style.opacity = '1', 400);
-            syncLanguageUI();
+                    // Inicialización de idioma persistido
+                    const storedLang = localStorage.getItem('preferredLanguage');
+                    if (storedLang && (storedLang === 'en' || storedLang === 'es')) {
+                        setLanguage(storedLang, { origin: 'init-storage' });
+                    } else {
+                        // Asegurar que se establece el idioma por defecto actual
+                        setLanguage(isEnglish ? 'en' : 'es', { origin: 'init-default' });
+                    }
+            initClientCounters();
+            updateCounterLocales();
             const navbarContainer = document.getElementById('navbarContainer');
             navbarContainer.classList.add('with-topbar');
             window.addEventListener('scroll', handleNavbarScroll);
@@ -1396,6 +2038,7 @@
     <script src="data/about-images.js"></script>
     <script src="data/team.js"></script>
     <script src="data/testimonials.js"></script>
+    <script src="data/crops.js"></script>
     <!-- NC Slider Script -->
     <script src="NC/script.js"></script>
     <script src="js/testimonials-loader.js"></script>
@@ -1403,6 +2046,8 @@
     <script src="js/contact-parallax.js"></script>
     <!-- Premium Gallery Script -->
     <script src="js/premium-gallery.js"></script>
+    <!-- Language Toggle Script -->
+    <script src="js/language-toggle.js"></script>
     <!-- Neumorphic Story Script -->
     <script src="js/neumorphic-story.js"></script>
 
@@ -1420,6 +2065,18 @@
                 </button>
             </div>
             
+            <!-- Filter Top Bar -->
+            <div class="gallery-filter-bar">
+                <button class="filter-btn active" data-filter="productos" onclick="filterGallery('productos')">
+                    <i class="fas fa-seedling"></i>
+                    <span data-i18n="gallery.filter.products">Productos</span>
+                </button>
+                <button class="filter-btn" data-filter="bouquets" onclick="filterGallery('bouquets')">
+                    <i class="fas fa-spa"></i>
+                    <span data-i18n="gallery.filter.bouquets">Bouquets</span>
+                </button>
+            </div>
+            
             <div class="gallery-modal-content">
                 <div class="gallery-grid" id="galleryGrid">
                     <!-- Gallery items will be loaded here -->
@@ -1428,7 +2085,7 @@
             
             <div class="gallery-modal-footer">
                 <p class="gallery-subtitle" data-i18n="gallery.subtitle">
-                    Plantas y follajes de la más alta calidad para espacios excepcionales
+                Follajes de la más alta calidad para espacios excepcionales
                 </p>
             </div>
         </div>
@@ -1455,8 +2112,8 @@
     </div>
 
     <!-- Resto de scripts existentes abajo -->
-    <!-- Language Toggle Script -->
-    <script src="js/language-toggle.js"></script>
+    <!-- Crops Slider Script -->
+    <script src="js/crops-slider.js"></script>
 </body>
 
 </html>
