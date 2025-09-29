@@ -93,7 +93,7 @@ class Slider {
     }
 
     const maxX = 10;
-    const maxY = 10;
+    const maxY = 0.5;
 
     const newPos = lerp({
       x: this.lastX,
@@ -135,7 +135,7 @@ class Slider {
     lastY == targetY || lastY - 1 == targetY || lastY + 1 == targetY);
   }
   positionImage({ xCoeff, yCoeff }) {
-    const maxImgOffset = 1;
+    const maxImgOffset = 0;
     const currentImage = this.activeImg[0].children[0];
 
     currentImage.style.setProperty('transform', `
@@ -286,29 +286,35 @@ class Slider {
   }}
 
 
-const sliderEl = document.getElementById('slider');
-const slider = new Slider(sliderEl);
+window.Slider = Slider;
+
+// Initialize slider only if content exists (for backwards compatibility)
+// const sliderEl = document.getElementById('slider');
+// if (sliderEl && sliderEl.querySelector('.slider__images-item')) {
+//   const slider = new Slider(sliderEl);
+// }
 
 // ------------------ Demo stuff ------------------------ //
 
-let timer = 0;
+// Auto-slide functionality moved to crops-slider.js for dynamic content support
+// let timer = 0;
 
-function autoSlide() {
-  requestAnimationFrame(() => {
-    slider.next();
-  });
+// function autoSlide() {
+//   requestAnimationFrame(() => {
+//     slider.next();
+//   });
 
-  timer = setTimeout(autoSlide, 5000);
-}
+//   timer = setTimeout(autoSlide, 5000);
+// }
 
-function stopAutoSlide() {
-  clearTimeout(timer);
+// function stopAutoSlide() {
+//   clearTimeout(timer);
 
-  this.removeEventListener('touchstart', stopAutoSlide);
-  this.removeEventListener('mousemove', stopAutoSlide);
-}
+//   this.removeEventListener('touchstart', stopAutoSlide);
+//   this.removeEventListener('mousemove', stopAutoSlide);
+// }
 
-sliderEl.addEventListener('mousemove', stopAutoSlide);
-sliderEl.addEventListener('touchstart', stopAutoSlide);
+// sliderEl.addEventListener('mousemove', stopAutoSlide);
+// sliderEl.addEventListener('touchstart', stopAutoSlide);
 
-timer = setTimeout(autoSlide, 2000);
+// timer = setTimeout(autoSlide, 2000);
