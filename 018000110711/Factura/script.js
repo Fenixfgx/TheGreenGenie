@@ -37,21 +37,19 @@ function imprimirContenido() {
   });
 
   const ventanaImpresion = window.open('', '_blank');
-  ventanaImpresion.document.write('<html><head><title>Imprimir</title></head><body>' + contenido + '</body></html>');
+  ventanaImpresion.document.write('<html><head><title>Factura</title></head><body>' + contenido + '</body></html>');
   ventanaImpresion.print();
   ventanaImpresion.close();
 }
 
 function buscarPorFechaYDestinatario() {
   const fechaInput = document.getElementById("fechaInput").value;
-  const destinatarioInput = document.getElementById("destinatarioInput").value;
-
-  const tarjetas = document.querySelectorAll(".cardas");
-  tarjetas.forEach(tarjeta => {
+  
+ const tarjetas = document.querySelectorAll(".cardas");
+  tarjetas.forEach((tarjeta) => {
     const fechaTarjeta = tarjeta.querySelector("#fecha").textContent.trim();
-    const destinatarioTarjeta = tarjeta.querySelector("#destinatario").textContent.trim();
 
-    if (fechaTarjeta === fechaInput && destinatarioTarjeta === destinatarioInput) {
+    if (fechaTarjeta === fechaInput) {
       tarjeta.style.display = "block";
     } else {
       tarjeta.style.display = "none";
